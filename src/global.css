@@ -24,7 +24,7 @@
 
 @layer components {
   .nav-link {
-    @apply text-sm font-medium text-gray-500 transition-colors duration-200 relative dark:text-gray-400;
+    @apply text-sm md:text-base font-medium text-gray-500 transition-colors duration-200 relative dark:text-gray-400 md:uppercase md:tracking-wide;
   }
   .nav-link:hover {
     @apply text-[#1a1a1a] dark:text-white;

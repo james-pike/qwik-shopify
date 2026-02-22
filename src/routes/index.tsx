@@ -15,25 +15,25 @@ export default component$(() => {
       name: "Work Wear",
       handle: "work-wear",
       desc: "Professional clothing for the job site",
-      bg: "linear-gradient(135deg, #1b2838 0%, #2c3e50 100%)",
+      img: "/workwear.jpg",
     },
     {
       name: "Safety Footwear",
       handle: "safety-footwear",
       desc: "CSA-approved boots and shoes",
-      bg: "linear-gradient(135deg, #2d1b00 0%, #5a3a1a 100%)",
+      img: "/footwear.jpg",
     },
     {
       name: "Flame Resistant",
       handle: "flame-resistant",
       desc: "Specialized protective garments",
-      bg: "linear-gradient(135deg, #4a1a1a 0%, #7a2e2e 100%)",
+      img: "/flame-resistant-clothing.jpg",
     },
     {
       name: "School Wear",
       handle: "school-wear",
       desc: "Sports and institutional apparel",
-      bg: "linear-gradient(135deg, #1a2a1a 0%, #2e5a3a 100%)",
+      img: "/schoolwear.jpg",
     },
   ];
 
@@ -61,8 +61,16 @@ export default component$(() => {
   return (
     <>
       {/* Hero */}
-      <section class="bg-gradient-to-br from-dark to-[#2d2d2d] text-white py-20 px-8 text-center">
-        <div class="max-w-[720px] mx-auto">
+      <section class="relative text-white py-20 px-8 text-center overflow-hidden">
+        <img
+          src="/hero.jpg"
+          alt=""
+          width={1400}
+          height={600}
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-br from-dark/85 to-[#2d2d2d]/80" />
+        <div class="relative z-10 max-w-[720px] mx-auto">
           <div class="inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-xs font-bold tracking-widest uppercase mb-5 border border-primary/30">
             Eastern Ontario's Safety Experts
           </div>
@@ -107,14 +115,21 @@ export default component$(() => {
             <Link
               key={cat.name}
               href={`/collections/${cat.handle}/`}
-              class="group relative rounded-xl overflow-hidden aspect-[4/3] flex items-end p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
-              style={{ background: cat.bg }}
+              class="group relative rounded-xl overflow-hidden aspect-[4/3] md:aspect-square flex items-end p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
             >
-              <div>
+              <img
+                src={cat.img}
+                alt={cat.name}
+                width={520}
+                height={390}
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div class="relative z-10">
                 <h3 class="text-white text-lg font-bold">{cat.name}</h3>
                 <p class="text-white/60 text-xs mt-1">{cat.desc}</p>
               </div>
-              <span class="text-primary text-lg ml-auto transition-transform duration-200 group-hover:translate-x-1">
+              <span class="relative z-10 text-primary text-lg ml-auto transition-transform duration-200 group-hover:translate-x-1">
                 &rarr;
               </span>
             </Link>
