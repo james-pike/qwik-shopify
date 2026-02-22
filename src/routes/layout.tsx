@@ -17,16 +17,25 @@ export default component$(() => {
   });
 
   return (
-    <>
+    <div class="max-w-site mx-auto bg-white dark:bg-[#121212] shadow-xl">
       {/* Announcement Bar */}
-      <div class="bg-dark text-white text-center py-2 px-4 text-[0.65rem] md:text-[0.8rem] font-medium tracking-wider whitespace-nowrap overflow-hidden text-ellipsis">
-        <span class="text-primary font-bold">WE ARE OPEN</span> &mdash; 595
-        West Hunt Club Road, Nepean, ON &bull; Mon-Sat &bull; 613-224-6804
+      <div class="bg-dark text-white py-2 px-4 md:px-8 text-[0.65rem] md:text-[0.8rem] font-medium tracking-wider whitespace-nowrap overflow-hidden text-ellipsis text-center md:text-left">
+        <div class="flex items-center justify-between">
+          <span>
+            <span class="text-primary font-bold">WE ARE OPEN</span> &mdash; 595
+            West Hunt Club Road, Nepean, ON &bull; Mon-Sat &bull; 613-224-6804
+          </span>
+          <nav class="hidden md:flex items-center gap-5">
+            <Link href="/about/" class="text-white/60 hover:text-white transition-colors">ABOUT</Link>
+            <Link href="/faq/" class="text-white/60 hover:text-white transition-colors">FAQ</Link>
+            <Link href="/contact/" class="text-white/60 hover:text-white transition-colors">CONTACT</Link>
+          </nav>
+        </div>
       </div>
 
       {/* Header */}
-      <header class="bg-white dark:bg-[#1e1e1e] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-[100] shadow-sm">
-        <div class="max-w-site mx-auto py-0 md:py-2 px-4 md:px-8 flex items-center justify-between">
+      <header class="bg-white dark:bg-[#1e1e1e] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-[100] shadow-sm px-4 md:px-8">
+        <div class="py-0 md:py-2 flex items-center justify-between">
           <Link href="/" class="text-xl font-extrabold tracking-tight flex items-center gap-2">
             <img
               src="/logo.png"
@@ -111,7 +120,7 @@ export default component$(() => {
 
       {/* Footer */}
       <footer class="bg-dark text-white/80 mt-16">
-        <div class="max-w-site mx-auto pt-14 px-8 pb-8">
+        <div class="pt-14 px-8 pb-8">
           <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10 mb-10">
             <div>
               <img
@@ -190,6 +199,6 @@ export default component$(() => {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 });

@@ -79,7 +79,7 @@ export default component$(() => {
 
   if (!product.value) {
     return (
-      <div class="max-w-site mx-auto text-center py-24 px-8">
+      <div class="text-center py-24 px-8">
         <h1 class="text-2xl font-bold mb-4">Product not found</h1>
         <Link
           href="/"
@@ -104,7 +104,7 @@ export default component$(() => {
   const activeVariant = variants.find((v) => v.id === selectedVariantId.value);
 
   return (
-    <div class="max-w-site mx-auto px-4 md:px-8 py-12 md:py-16">
+    <div class="px-4 md:px-8 py-12 md:py-16">
       <Link
         href="/"
         class="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm font-medium mb-6 transition-colors hover:text-dark dark:hover:text-white"

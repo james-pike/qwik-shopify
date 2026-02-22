@@ -46,7 +46,7 @@ export default component$(() => {
   return (
     <>
       {/* Hero */}
-      <div class="bg-gradient-to-br from-dark to-[#2d2d2d] text-white py-20 md:py-28 px-8 text-center">
+      <div class="bg-gradient-to-br from-dark to-[#2d2d2d] text-white py-24 md:py-32 px-8 text-center">
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
           Frequently Asked Questions
         </h1>
@@ -56,7 +56,7 @@ export default component$(() => {
       </div>
 
       {/* FAQ Content */}
-      <section class="max-w-site mx-auto px-4 md:px-8 py-16 md:py-24">
+      <section class="px-4 md:px-8 py-16 md:py-24">
         <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 md:gap-16">
           {/* Sidebar */}
           <div>

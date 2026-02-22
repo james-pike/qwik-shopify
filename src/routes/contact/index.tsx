@@ -5,7 +5,7 @@ export default component$(() => {
   return (
     <>
       {/* Hero */}
-      <div class="bg-gradient-to-br from-dark to-[#2d2d2d] text-white py-20 md:py-28 px-8 text-center">
+      <div class="bg-gradient-to-br from-dark to-[#2d2d2d] text-white py-24 md:py-32 px-8 text-center">
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">Contact Us</h1>
         <p class="text-white/60 text-base max-w-[520px] mx-auto leading-relaxed">
           We'd love to hear from you. Visit us in-store, call, or send an email.
@@ -13,7 +13,7 @@ export default component$(() => {
       </div>
 
       {/* Contact Info — image left, details right */}
-      <section class="max-w-site mx-auto px-4 md:px-8 py-16 md:py-24">
+      <section class="px-4 md:px-8 py-16 md:py-24">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div class="rounded-2xl overflow-hidden aspect-[4/3]">
             <img
@@ -76,12 +76,12 @@ export default component$(() => {
       </section>
 
       {/* Divider */}
-      <div class="max-w-site mx-auto px-8">
+      <div class="px-8">
         <div class="border-t border-gray-200 dark:border-gray-800" />
       </div>
 
       {/* Hours — text left, visual right */}
-      <section class="max-w-site mx-auto px-4 md:px-8 py-16 md:py-24">
+      <section class="px-4 md:px-8 py-16 md:py-24">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
           <div class="order-2 md:order-1">
             <p class="text-xs uppercase tracking-[0.15em] text-primary font-bold mb-3">Visit Us</p>

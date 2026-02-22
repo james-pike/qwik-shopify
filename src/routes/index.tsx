@@ -69,7 +69,7 @@ export default component$(() => {
           height={600}
           class="absolute inset-0 w-full h-full object-cover"
         />
-        <div class="absolute inset-0 bg-gradient-to-br from-dark/85 to-[#2d2d2d]/80" />
+        <div class="absolute inset-0 bg-gradient-to-br from-dark/60 to-[#2d2d2d]/50" />
         <div class="relative z-10 max-w-[720px] mx-auto">
           <div class="inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-xs font-bold tracking-widest uppercase mb-5 border border-primary/30">
             Eastern Ontario's Safety Experts
@@ -101,7 +101,7 @@ export default component$(() => {
       </section>
 
       {/* Categories */}
-      <section class="max-w-site mx-auto px-4 md:px-8 py-12 md:py-16">
+      <section class="px-4 md:px-8 py-12 md:py-16">
         <div class="text-center mb-10">
           <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
             Shop by Category
@@ -142,7 +142,7 @@ export default component$(() => {
         <h2 class="text-xs uppercase tracking-[0.12em] text-gray-500 mb-6 font-semibold">
           Trusted Brands We Carry
         </h2>
-        <div class="flex flex-wrap justify-center gap-x-10 gap-y-6 max-w-site mx-auto">
+        <div class="flex flex-wrap justify-center gap-x-10 gap-y-6">
           {brands.map((brand) => (
             <span
               key={brand}
@@ -155,7 +155,7 @@ export default component$(() => {
       </div>
 
       {/* Products */}
-      <section class="max-w-site mx-auto px-4 md:px-8 py-12 md:py-16" id="products">
+      <section class="px-4 md:px-8 py-12 md:py-16" id="products">
         <div class="text-center mb-10">
           <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
             Our Products
@@ -203,7 +203,7 @@ export default component$(() => {
       </section>
 
       {/* Why The Safety House */}
-      <section class="max-w-site mx-auto px-4 md:px-8 py-12 md:py-16">
+      <section class="px-4 md:px-8 py-12 md:py-16">
         <div class="text-center mb-10">
           <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
             Why The Safety House?

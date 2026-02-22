@@ -20,7 +20,7 @@ export default component$(() => {
 
   if (!collection.value) {
     return (
-      <div class="max-w-site mx-auto text-center py-24 px-8">
+      <div class="text-center py-24 px-8">
         <h1 class="text-2xl font-bold mb-4">Collection not found</h1>
         <Link
           href="/"
@@ -35,14 +35,40 @@ export default component$(() => {
   const c = collection.value;
   const products = c.products.edges.map((e) => e.node);
 
+  const heroData: Record<string, { img?: string; subtitle?: string }> = {
+    "safety-footwear": {
+      subtitle: "Looking for Work Wear or Footwear? We've got you covered. The Safety House carries the best brands of men's and women's work clothing and footwear.",
+    },
+  };
+  const hero = heroData[c.handle] || {};
+  const heroImg = hero.img || c.image?.url;
+
   return (
     <>
-      <div class="bg-gradient-to-br from-dark to-[#2d2d2d] text-white py-14 px-8 text-center">
-        <h1 class="text-4xl font-extrabold tracking-tight mb-2">{c.title}</h1>
-        {c.description && <p class="text-white/60 text-base">{c.description}</p>}
+      <div class="relative text-white py-20 md:py-28 px-8 text-center overflow-hidden">
+        {heroImg ? (
+          <>
+            <img
+              src={heroImg}
+              alt={c.image?.altText || ""}
+              width={1400}
+              height={600}
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-br from-dark/60 to-[#2d2d2d]/50" />
+          </>
+        ) : (
+          <div class="absolute inset-0 bg-gradient-to-br from-dark to-[#2d2d2d]" />
+        )}
+        <h1 class="relative z-10 text-4xl md:text-5xl font-extrabold tracking-tight mb-3">{c.title}</h1>
+        {hero.subtitle ? (
+          <p class="relative z-10 text-white/60 text-base max-w-[560px] mx-auto leading-relaxed">{hero.subtitle}</p>
+        ) : (
+          c.description && <p class="relative z-10 text-white/60 text-base max-w-[560px] mx-auto leading-relaxed">{c.description}</p>
+        )}
       </div>
 
-      <section class="max-w-site mx-auto px-4 md:px-8 py-8 md:py-16">
+      <section class="px-4 md:px-8 py-8 md:py-16">
         <Link
           href="/"
           class="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm font-medium mb-6 transition-colors hover:text-dark dark:hover:text-white"
