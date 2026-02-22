@@ -61,23 +61,31 @@ export default component$(() => {
   return (
     <>
       {/* Hero */}
-      <section class="hero">
-        <div class="hero-inner">
-          <div class="hero-badge">Eastern Ontario's Safety Experts</div>
-          <h1>
+      <section class="bg-gradient-to-br from-dark to-[#2d2d2d] text-white py-20 px-8 text-center">
+        <div class="max-w-[720px] mx-auto">
+          <div class="inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-xs font-bold tracking-widest uppercase mb-5 border border-primary/30">
+            Eastern Ontario's Safety Experts
+          </div>
+          <h1 class="text-[2rem] md:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4">
             Where Work &amp; Lifestyle
             <br />
-            Apparel <em>Intersect</em>
+            Apparel <em class="not-italic text-primary">Intersect</em>
           </h1>
-          <p>
+          <p class="text-lg text-white/70 max-w-[520px] mx-auto mb-8 leading-relaxed">
             The Safety House is your one stop shop for quality specialized
             clothing, CSA safety footwear, and in-house embroidery services.
           </p>
-          <div class="hero-actions">
-            <Link href="/#products" class="btn btn-primary">
+          <div class="flex gap-4 justify-center flex-wrap">
+            <Link
+              href="/#products"
+              class="inline-flex items-center justify-center py-3 px-7 text-[0.9rem] font-semibold rounded-lg border-none transition-all duration-200 bg-primary text-white hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg"
+            >
               Shop Products
             </Link>
-            <Link href="/about/" class="btn btn-outline">
+            <Link
+              href="/about/"
+              class="inline-flex items-center justify-center py-3 px-7 text-[0.9rem] font-semibold rounded-lg transition-all duration-200 bg-transparent text-white border border-white/30 hover:bg-white/10 hover:border-white/50"
+            >
               Our Story
             </Link>
           </div>
@@ -85,37 +93,46 @@ export default component$(() => {
       </section>
 
       {/* Categories */}
-      <section class="section">
-        <div class="section-header">
-          <h2>Shop by Category</h2>
-          <p>
+      <section class="max-w-site mx-auto px-4 md:px-8 py-12 md:py-16">
+        <div class="text-center mb-10">
+          <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
+            Shop by Category
+          </h2>
+          <p class="text-gray-500 text-base max-w-[480px] mx-auto">
             From the job site to the classroom, we've got you covered.
           </p>
         </div>
-        <div class="category-grid">
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
           {categories.map((cat) => (
             <Link
               key={cat.name}
               href={`/collections/${cat.handle}/`}
-              class="category-card"
+              class="group relative rounded-xl overflow-hidden aspect-[4/3] flex items-end p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
               style={{ background: cat.bg }}
             >
               <div>
-                <h3>{cat.name}</h3>
-                <p>{cat.desc}</p>
+                <h3 class="text-white text-lg font-bold">{cat.name}</h3>
+                <p class="text-white/60 text-xs mt-1">{cat.desc}</p>
               </div>
-              <span class="card-arrow">&rarr;</span>
+              <span class="text-primary text-lg ml-auto transition-transform duration-200 group-hover:translate-x-1">
+                &rarr;
+              </span>
             </Link>
           ))}
         </div>
       </section>
 
       {/* Brands */}
-      <div class="brands-banner">
-        <h2>Trusted Brands We Carry</h2>
-        <div class="brands-list">
+      <div class="bg-white border-y border-gray-200 py-12 px-8 text-center">
+        <h2 class="text-xs uppercase tracking-[0.12em] text-gray-500 mb-6 font-semibold">
+          Trusted Brands We Carry
+        </h2>
+        <div class="flex flex-wrap justify-center gap-x-10 gap-y-6 max-w-site mx-auto">
           {brands.map((brand) => (
-            <span key={brand} class="brand-tag">
+            <span
+              key={brand}
+              class="text-sm font-semibold text-gray-500 py-1.5 px-3 rounded transition-colors hover:text-dark"
+            >
               {brand}
             </span>
           ))}
@@ -123,23 +140,25 @@ export default component$(() => {
       </div>
 
       {/* Products */}
-      <section class="section" id="products">
-        <div class="section-header">
-          <h2>Our Products</h2>
-          <p>Quality workwear, safety gear, and more.</p>
+      <section class="max-w-site mx-auto px-4 md:px-8 py-12 md:py-16" id="products">
+        <div class="text-center mb-10">
+          <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
+            Our Products
+          </h2>
+          <p class="text-gray-500 text-base max-w-[480px] mx-auto">
+            Quality workwear, safety gear, and more.
+          </p>
         </div>
 
         {products.value.length === 0 ? (
-          <p style={{ textAlign: "center", color: "var(--color-text-muted)" }}>
-            No products found.
-          </p>
+          <p class="text-center text-gray-500">No products found.</p>
         ) : (
-          <div class="product-grid">
+          <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
             {products.value.map((product) => (
               <Link
                 key={product.id}
                 href={`/product/${product.handle}/`}
-                class="product-card"
+                class="bg-white rounded-xl overflow-hidden border border-gray-200 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col"
               >
                 {product.featuredImage ? (
                   <img
@@ -147,14 +166,18 @@ export default component$(() => {
                     alt={product.featuredImage.altText || product.title}
                     width={400}
                     height={400}
-                    class="product-card-img"
+                    class="w-full h-[280px] object-cover bg-gray-100"
                   />
                 ) : (
-                  <div class="no-image">No image</div>
+                  <div class="w-full h-[280px] bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+                    No image
+                  </div>
                 )}
-                <div class="product-card-body">
-                  <h3>{product.title}</h3>
-                  <span class="price">
+                <div class="p-4 px-5 flex-1 flex flex-col">
+                  <h3 class="text-[0.95rem] font-semibold mb-1 leading-snug">
+                    {product.title}
+                  </h3>
+                  <span class="text-base font-bold text-primary mt-auto pt-2">
                     {formatPrice(product.priceRange.minVariantPrice)}
                   </span>
                 </div>
@@ -164,34 +187,44 @@ export default component$(() => {
         )}
       </section>
 
-      {/* Decoration / Services Teaser */}
-      <section class="section">
-        <div class="section-header">
-          <h2>Why The Safety House?</h2>
-          <p>Decades of experience serving Eastern Ontario.</p>
+      {/* Why The Safety House */}
+      <section class="max-w-site mx-auto px-4 md:px-8 py-12 md:py-16">
+        <div class="text-center mb-10">
+          <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
+            Why The Safety House?
+          </h2>
+          <p class="text-gray-500 text-base max-w-[480px] mx-auto">
+            Decades of experience serving Eastern Ontario.
+          </p>
         </div>
-        <div class="info-grid">
-          <div class="info-card">
-            <div class="icon">&#9874;</div>
-            <h3>Quality CSA Gear</h3>
-            <p>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
+          <div class="bg-white border border-gray-200 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
+            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-4">
+              &#9874;
+            </div>
+            <h3 class="text-base font-bold mb-2">Quality CSA Gear</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
               We focus on the best quality CSA footwear and clothing on the
               market from brands like Timberland Pro, Red Wing, Blundstone, and
               more.
             </p>
           </div>
-          <div class="info-card">
-            <div class="icon">&#9997;</div>
-            <h3>Decoration Done Right</h3>
-            <p>
+          <div class="bg-white border border-gray-200 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
+            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-4">
+              &#9997;
+            </div>
+            <h3 class="text-base font-bold mb-2">Decoration Done Right</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
               In-house embroidery and transfer services. Timely, budget-conscious
               personalization for your team, school, or company.
             </p>
           </div>
-          <div class="info-card">
-            <div class="icon">&#9734;</div>
-            <h3>Expert Service</h3>
-            <p>
+          <div class="bg-white border border-gray-200 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
+            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-4">
+              &#9734;
+            </div>
+            <h3 class="text-base font-bold mb-2">Expert Service</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
               Our management team brings years of successful apparel market
               experience with superior design, sourcing, and focused customer
               support.

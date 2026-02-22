@@ -79,20 +79,12 @@ export default component$(() => {
 
   if (!product.value) {
     return (
-      <div
-        class="section"
-        style={{ textAlign: "center", padding: "6rem 2rem" }}
-      >
-        <h1
-          style={{
-            fontSize: "1.5rem",
-            fontWeight: "700",
-            marginBottom: "1rem",
-          }}
+      <div class="max-w-site mx-auto text-center py-24 px-8">
+        <h1 class="text-2xl font-bold mb-4">Product not found</h1>
+        <Link
+          href="/"
+          class="inline-flex items-center justify-center py-3 px-7 text-[0.9rem] font-semibold rounded-lg border-none transition-all duration-200 bg-primary text-white hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg"
         >
-          Product not found
-        </h1>
-        <Link href="/" class="btn btn-primary">
           Back to Shop
         </Link>
       </div>
@@ -108,20 +100,19 @@ export default component$(() => {
     return variant.availableForSale ? "In stock" : "Out of stock";
   };
 
-  const getStockColor = (variant: ShopifyVariant) => {
-    return variant.availableForSale ? "#16a34a" : "#dc2626";
-  };
-
   // Find the currently selected variant for stock display
   const activeVariant = variants.find((v) => v.id === selectedVariantId.value);
 
   return (
-    <div class="section">
-      <Link href="/" class="back-link">
+    <div class="max-w-site mx-auto px-4 md:px-8 py-12 md:py-16">
+      <Link
+        href="/"
+        class="inline-flex items-center gap-2 text-gray-500 text-sm font-medium mb-6 transition-colors hover:text-dark"
+      >
         &larr; Back to products
       </Link>
 
-      <div class="product-detail">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
         {/* Images */}
         <div>
           {images.length > 0 ? (
@@ -129,19 +120,24 @@ export default component$(() => {
               <img
                 src={images[selectedImage.value]?.url}
                 alt={images[selectedImage.value]?.altText || p.title}
-                class="product-detail-img"
+                class="w-full rounded-xl aspect-square object-cover border border-gray-200"
               />
               {images.length > 1 && (
-                <div class="product-thumbnails">
+                <div class="flex gap-2 mt-3 overflow-x-auto">
                   {images.map((img, i) => (
                     <button
                       key={img.url}
                       onClick$={() => (selectedImage.value = i)}
-                      class={`product-thumb ${i === selectedImage.value ? "active" : ""}`}
+                      class={`w-16 h-16 rounded-lg overflow-hidden border-2 p-0 bg-transparent flex-shrink-0 transition-colors ${
+                        i === selectedImage.value
+                          ? "border-primary"
+                          : "border-transparent"
+                      }`}
                     >
                       <img
                         src={img.url}
                         alt={img.altText || `${p.title} ${i + 1}`}
+                        class="w-full h-full object-cover"
                       />
                     </button>
                   ))}
@@ -149,28 +145,23 @@ export default component$(() => {
               )}
             </>
           ) : (
-            <div
-              class="no-image"
-              style={{
-                aspectRatio: "1",
-                height: "auto",
-                borderRadius: "var(--radius-lg)",
-              }}
-            >
+            <div class="w-full bg-gray-100 flex items-center justify-center text-gray-400 text-sm aspect-square rounded-xl">
               No image
             </div>
           )}
         </div>
 
         {/* Product Info */}
-        <div class="product-info">
-          <h1>{p.title}</h1>
+        <div>
+          <h1 class="text-[1.75rem] font-extrabold tracking-tight mb-3">
+            {p.title}
+          </h1>
 
-          <p class="product-price">
+          <p class="text-2xl font-bold text-primary mb-6">
             {formatPrice(p.priceRange.minVariantPrice)}
             {p.priceRange.minVariantPrice.amount !==
               p.priceRange.maxVariantPrice.amount && (
-              <span class="price-range">
+              <span class="text-gray-500 font-normal text-lg">
                 {" "}
                 &ndash; {formatPrice(p.priceRange.maxVariantPrice)}
               </span>
@@ -179,29 +170,20 @@ export default component$(() => {
 
           {/* Availability Indicator */}
           {activeVariant && (
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                marginBottom: "1.5rem",
-              }}
-            >
+            <div class="flex items-center gap-2 mb-6">
               <span
-                style={{
-                  width: "8px",
-                  height: "8px",
-                  borderRadius: "50%",
-                  background: getStockColor(activeVariant),
-                  display: "inline-block",
-                }}
+                class={`w-2 h-2 rounded-full inline-block ${
+                  activeVariant.availableForSale
+                    ? "bg-green-600"
+                    : "bg-red-600"
+                }`}
               />
               <span
-                style={{
-                  fontSize: "0.85rem",
-                  fontWeight: "600",
-                  color: getStockColor(activeVariant),
-                }}
+                class={`text-sm font-semibold ${
+                  activeVariant.availableForSale
+                    ? "text-green-600"
+                    : "text-red-600"
+                }`}
               >
                 {getStockLabel(activeVariant)}
               </span>
@@ -210,17 +192,23 @@ export default component$(() => {
 
           {/* Variant Selector */}
           {variants.length > 1 && (
-            <div style={{ marginBottom: "1.5rem" }}>
-              <p class="variant-label">Select Option</p>
-              <div class="variant-list">
+            <div class="mb-6">
+              <p class="text-xs uppercase tracking-widest text-gray-500 font-semibold mb-2">
+                Select Option
+              </p>
+              <div class="flex flex-wrap gap-2">
                 {variants.map((v) => (
                   <button
                     key={v.id}
                     onClick$={() => {
                       if (v.availableForSale) selectedVariantId.value = v.id;
                     }}
-                    class={`variant-chip ${!v.availableForSale ? "unavailable" : ""} ${
-                      v.id === selectedVariantId.value ? "selected" : ""
+                    class={`py-1.5 px-3.5 rounded-full border text-xs font-medium transition-all duration-200 ${
+                      !v.availableForSale
+                        ? "opacity-40 cursor-not-allowed line-through border-gray-200"
+                        : v.id === selectedVariantId.value
+                          ? "border-primary bg-primary/[0.08] text-primary font-semibold"
+                          : "border-gray-200"
                     }`}
                     disabled={!v.availableForSale}
                   >
@@ -232,9 +220,13 @@ export default component$(() => {
           )}
 
           {/* Add to Cart */}
-          <div style={{ display: "flex", gap: "0.75rem", alignItems: "center", marginBottom: "1.5rem" }}>
+          <div class="flex gap-3 items-center mb-6">
             <button
-              class={`btn ${anyAvailable ? "btn-primary" : "btn-disabled"} add-to-cart-btn`}
+              class={`inline-flex items-center justify-center py-3.5 px-8 text-base font-semibold rounded-lg border-none transition-all duration-200 min-w-[180px] ${
+                anyAvailable
+                  ? "bg-primary text-white hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg"
+                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+              }`}
               onClick$={handleAddToCart}
               disabled={!anyAvailable || adding.value}
             >
@@ -249,8 +241,12 @@ export default component$(() => {
 
             {cartCount.value > 0 && (
               <a
-                href={typeof window !== "undefined" ? localStorage.getItem("cart_checkout_url") || "#" : "#"}
-                class="btn btn-dark"
+                href={
+                  typeof window !== "undefined"
+                    ? localStorage.getItem("cart_checkout_url") || "#"
+                    : "#"
+                }
+                class="inline-flex items-center justify-center py-3 px-7 text-[0.9rem] font-semibold rounded-lg border-none transition-all duration-200 bg-dark text-white hover:bg-dark-soft hover:-translate-y-0.5"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -262,7 +258,7 @@ export default component$(() => {
           {/* Description */}
           {p.descriptionHtml && (
             <div
-              class="product-description"
+              class="border-t border-gray-200 pt-6 text-[#444] leading-loose text-[0.925rem]"
               dangerouslySetInnerHTML={p.descriptionHtml}
             />
           )}

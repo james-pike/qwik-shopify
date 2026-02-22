@@ -39,16 +39,23 @@ export default component$(() => {
 
   return (
     <>
-      <div class="page-header">
-        <h1>Frequently Asked Questions</h1>
-        <p>Everything you need to know about The Safety House.</p>
+      <div class="bg-gradient-to-br from-dark to-[#2d2d2d] text-white py-14 px-8 text-center">
+        <h1 class="text-4xl font-extrabold tracking-tight mb-2">
+          Frequently Asked Questions
+        </h1>
+        <p class="text-white/60 text-base">
+          Everything you need to know about The Safety House.
+        </p>
       </div>
 
-      <div class="page-content">
+      <div class="max-w-[800px] mx-auto py-12 px-8">
         {faqs.map((faq) => (
-          <div key={faq.q} class="faq-item">
-            <h3>{faq.q}</h3>
-            <p>{faq.a}</p>
+          <div
+            key={faq.q}
+            class="bg-white border border-gray-200 rounded-xl p-6 mb-4"
+          >
+            <h3 class="text-base font-bold mb-2 text-dark">{faq.q}</h3>
+            <p class="text-gray-500 text-[0.9rem] leading-relaxed">{faq.a}</p>
           </div>
         ))}
       </div>

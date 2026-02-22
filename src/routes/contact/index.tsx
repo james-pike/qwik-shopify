@@ -4,26 +4,38 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 export default component$(() => {
   return (
     <>
-      <div class="page-header">
-        <h1>Contact Us</h1>
-        <p>We'd love to hear from you. Reach out any time.</p>
+      <div class="bg-gradient-to-br from-dark to-[#2d2d2d] text-white py-14 px-8 text-center">
+        <h1 class="text-4xl font-extrabold tracking-tight mb-2">Contact Us</h1>
+        <p class="text-white/60 text-base">
+          We'd love to hear from you. Reach out any time.
+        </p>
       </div>
 
-      <div class="page-content" style={{ maxWidth: "900px" }}>
-        <div class="contact-grid">
-          <div class="contact-card">
-            <h3>Get in Touch</h3>
-            <p>
+      <div class="max-w-[900px] mx-auto py-12 px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white border border-gray-200 rounded-xl p-8">
+            <h3 class="text-base font-bold mb-4 text-dark">Get in Touch</h3>
+            <p class="text-gray-500 text-[0.9rem] leading-loose">
               <strong>Phone &amp; Fax</strong>
               <br />
-              <a href="tel:613-224-6804">613-224-6804</a>
+              <a
+                href="tel:613-224-6804"
+                class="text-primary font-semibold transition-colors hover:text-primary-dark"
+              >
+                613-224-6804
+              </a>
             </p>
-            <p style={{ marginTop: "1rem" }}>
+            <p class="text-gray-500 text-[0.9rem] leading-loose mt-4">
               <strong>Email</strong>
               <br />
-              <a href="mailto:info@safetyhouse.ca">info@safetyhouse.ca</a>
+              <a
+                href="mailto:info@safetyhouse.ca"
+                class="text-primary font-semibold transition-colors hover:text-primary-dark"
+              >
+                info@safetyhouse.ca
+              </a>
             </p>
-            <p style={{ marginTop: "1rem" }}>
+            <p class="text-gray-500 text-[0.9rem] leading-loose mt-4">
               <strong>Address</strong>
               <br />
               595 West Hunt Club Road
@@ -32,41 +44,31 @@ export default component$(() => {
             </p>
           </div>
 
-          <div class="contact-card">
-            <h3>Store Hours</h3>
-            <table class="hours-table">
+          <div class="bg-white border border-gray-200 rounded-xl p-8">
+            <h3 class="text-base font-bold mb-4 text-dark">Store Hours</h3>
+            <table class="w-full border-collapse">
               <tbody>
-                <tr>
-                  <td>Monday</td>
-                  <td>8:30 AM - 6:00 PM</td>
-                </tr>
-                <tr>
-                  <td>Tuesday</td>
-                  <td>8:30 AM - 6:00 PM</td>
-                </tr>
-                <tr>
-                  <td>Wednesday</td>
-                  <td>8:30 AM - 6:00 PM</td>
-                </tr>
-                <tr>
-                  <td>Thursday</td>
-                  <td>8:30 AM - 7:00 PM</td>
-                </tr>
-                <tr>
-                  <td>Friday</td>
-                  <td>8:30 AM - 6:00 PM</td>
-                </tr>
-                <tr>
-                  <td>Saturday</td>
-                  <td>9:00 AM - 4:00 PM</td>
-                </tr>
-                <tr>
-                  <td>Sunday</td>
-                  <td>Closed</td>
-                </tr>
+                {[
+                  ["Monday", "8:30 AM - 6:00 PM"],
+                  ["Tuesday", "8:30 AM - 6:00 PM"],
+                  ["Wednesday", "8:30 AM - 6:00 PM"],
+                  ["Thursday", "8:30 AM - 7:00 PM"],
+                  ["Friday", "8:30 AM - 6:00 PM"],
+                  ["Saturday", "9:00 AM - 4:00 PM"],
+                  ["Sunday", "Closed"],
+                ].map(([day, hours]) => (
+                  <tr key={day}>
+                    <td class="py-1.5 text-sm border-b border-gray-200 font-semibold text-[#1a1a1a]">
+                      {day}
+                    </td>
+                    <td class="py-1.5 text-sm text-gray-500 border-b border-gray-200">
+                      {hours}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
-            <p style={{ marginTop: "1rem", fontSize: "0.8rem" }}>
+            <p class="mt-4 text-[0.8rem] text-gray-500">
               Closed on long weekends.
               <br />
               December Sundays: 10:00 AM - 4:00 PM

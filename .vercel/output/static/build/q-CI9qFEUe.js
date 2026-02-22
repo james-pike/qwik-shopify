@@ -1,0 +1,1 @@
+import{_ as t}from"./q-BKZ00VYc.js";import{n as e,c as o}from"./q-vaVJyAHe.js";const s=e(o(()=>t(()=>import("./q-BQxqLKzK.js"),[]),"s_tySZ00tiUmE")),i={title:"Contact | The Safety House",meta:[{name:"description",content:"Contact The Safety House at 595 West Hunt Club Road, Nepean, ON. Phone: 613-224-6804. Email: info@safetyhouse.ca."}]};export{s as default,i as head};

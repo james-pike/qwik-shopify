@@ -1,0 +1,1 @@
+import{_ as e}from"./q-BKZ00VYc.js";import{n as t,c as o}from"./q-vaVJyAHe.js";const s=t(o(()=>e(()=>import("./q-fwZjGatg.js"),[]),"s_dT0sDkUStYI")),n={title:"About Us | The Safety House",meta:[{name:"description",content:"The Safety House - quality specialized clothing, CSA safety footwear, and in-house embroidery services in Nepean, Ontario."}]};export{s as default,n as head};
