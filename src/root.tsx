@@ -16,6 +16,15 @@ export default component$(() => {
     <QwikCityProvider>
       <head>
         <meta charset="utf-8" />
+        <script
+          dangerouslySetInnerHTML={`
+            try {
+              if (localStorage.getItem('darkMode') === 'true') {
+                document.documentElement.classList.add('dark');
+              }
+            } catch(e) {}
+          `}
+        />
         {!isDev && (
           <link
             rel="manifest"

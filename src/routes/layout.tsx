@@ -1,7 +1,21 @@
-import { component$, Slot } from "@builder.io/qwik";
+import { component$, Slot, useSignal, useVisibleTask$, $ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
+import { Modal } from "@qwik-ui/headless";
 
 export default component$(() => {
+  const darkMode = useSignal(false);
+
+  useVisibleTask$(() => {
+    // Sync signal with current state (inline script in <head> already applied the class)
+    darkMode.value = document.documentElement.classList.contains("dark");
+  });
+
+  const toggleDarkMode = $(() => {
+    const isDark = document.documentElement.classList.toggle("dark");
+    darkMode.value = isDark;
+    localStorage.setItem("darkMode", String(isDark));
+  });
+
   return (
     <>
       {/* Announcement Bar */}
@@ -11,23 +25,103 @@ export default component$(() => {
       </div>
 
       {/* Header */}
-      <header class="bg-white border-b border-gray-200 sticky top-0 z-[100] shadow-sm">
+      <header class="bg-white dark:bg-[#1e1e1e] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-[100] shadow-sm">
         <div class="max-w-site mx-auto py-1 md:py-2 px-4 md:px-8 flex items-center justify-between">
           <Link href="/" class="text-xl font-extrabold tracking-tight flex items-center gap-2">
             <img
               src="/logo.png"
               alt="The Safety House"
-              width="170"
-              height="48"
-              class="object-contain w-[170px] md:w-[210px]"
+              width="210"
+              height="60"
+              class="object-contain w-[190px] md:w-[240px] dark:invert"
+            />
+            <img
+              src="/flag.webp"
+              alt=""
+              width="32"
+              height="32"
+              class="w-7 h-7 md:w-8 md:h-8 object-contain"
             />
           </Link>
-          <nav class="flex items-center gap-3 xs:gap-4 md:gap-7">
+
+          {/* Desktop nav */}
+          <nav class="hidden md:flex items-center gap-7">
             <Link href="/" class="nav-link">Shop</Link>
             <Link href="/about/" class="nav-link">About</Link>
             <Link href="/faq/" class="nav-link">FAQ</Link>
             <Link href="/contact/" class="nav-link">Contact</Link>
           </nav>
+
+          {/* Mobile hamburger menu */}
+          <Modal.Root>
+            <Modal.Trigger class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 bg-transparent border-none">
+              <span class="block w-5 h-0.5 bg-dark dark:bg-white rounded-full" />
+              <span class="block w-5 h-0.5 bg-dark dark:bg-white rounded-full" />
+              <span class="block w-5 h-0.5 bg-dark dark:bg-white rounded-full" />
+            </Modal.Trigger>
+            <Modal.Panel class="mobile-sheet">
+              <div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+                <img src="/logo.png" alt="The Safety House" width="180" height="52" class="object-contain w-[180px] dark:invert" />
+                <Modal.Close class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-dark dark:hover:text-white bg-transparent border-none text-xl">
+                  &times;
+                </Modal.Close>
+              </div>
+              <nav class="flex flex-col p-4 gap-1 overflow-y-auto">
+                <Modal.Close class="bg-transparent border-none text-left">
+                  <Link href="/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                    Shop
+                  </Link>
+                </Modal.Close>
+                <Modal.Close class="bg-transparent border-none text-left">
+                  <Link href="/about/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                    About
+                  </Link>
+                </Modal.Close>
+                <Modal.Close class="bg-transparent border-none text-left">
+                  <Link href="/faq/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                    FAQ
+                  </Link>
+                </Modal.Close>
+                <Modal.Close class="bg-transparent border-none text-left">
+                  <Link href="/contact/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                    Contact
+                  </Link>
+                </Modal.Close>
+                <div class="mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
+                  <p class="px-3 py-2 text-[0.7rem] uppercase tracking-[0.12em] text-gray-400 font-semibold">Collections</p>
+                  <Modal.Close class="bg-transparent border-none text-left">
+                    <Link href="/collections/work-wear/" class="block py-2.5 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                      Work Wear
+                    </Link>
+                  </Modal.Close>
+                  <Modal.Close class="bg-transparent border-none text-left">
+                    <Link href="/collections/safety-footwear/" class="block py-2.5 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                      Safety Footwear
+                    </Link>
+                  </Modal.Close>
+                  <Modal.Close class="bg-transparent border-none text-left">
+                    <Link href="/collections/safety-supplies/" class="block py-2.5 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                      Safety Supplies
+                    </Link>
+                  </Modal.Close>
+                  <Modal.Close class="bg-transparent border-none text-left">
+                    <Link href="/collections/flame-resistant/" class="block py-2.5 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                      Flame Resistant
+                    </Link>
+                  </Modal.Close>
+                  <Modal.Close class="bg-transparent border-none text-left">
+                    <Link href="/collections/school-wear/" class="block py-2.5 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                      School Wear
+                    </Link>
+                  </Modal.Close>
+                </div>
+              </nav>
+              <div class="mt-auto p-4 border-t border-gray-200 dark:border-gray-700">
+                <p class="text-xs text-gray-400">613-224-6804</p>
+                <p class="text-xs text-gray-400">info@safetyhouse.ca</p>
+              </div>
+            </Modal.Panel>
+          </Modal.Root>
         </div>
       </header>
 
@@ -39,9 +133,22 @@ export default component$(() => {
         <div class="max-w-site mx-auto pt-14 px-8 pb-8">
           <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10 mb-10">
             <div>
-              <h3 class="text-lg font-extrabold text-white mb-3">
-                THE SAFETY <span class="text-primary">HOUSE</span>
-              </h3>
+              <div class="flex items-center gap-2 mb-3">
+                <img
+                  src="/logo.png"
+                  alt="The Safety House"
+                  width="160"
+                  height="46"
+                  class="object-contain w-[160px] invert"
+                />
+                <img
+                  src="/flag.webp"
+                  alt=""
+                  width="28"
+                  height="28"
+                  class="w-7 h-7 object-contain"
+                />
+              </div>
               <p class="text-sm leading-relaxed text-white/50">
                 Where work and lifestyle apparel intersect. Your one stop shop
                 for quality specialized clothing, safety footwear, and in-house
@@ -86,6 +193,13 @@ export default component$(() => {
           </div>
           <div class="border-t border-white/10 pt-6 flex justify-between items-center text-xs text-white/35">
             <span>&copy; {new Date().getFullYear()} The Safety House</span>
+            <button
+              onClick$={toggleDarkMode}
+              class="text-white/50 hover:text-white transition-colors text-base bg-transparent border-none"
+              aria-label="Toggle dark mode"
+            >
+              {darkMode.value ? "\u2600\uFE0F" : "\uD83C\uDF19"}
+            </button>
             <span>Powered by Qwik + Shopify</span>
           </div>
         </div>

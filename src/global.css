@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply font-sans text-[#1a1a1a] bg-gray-50 leading-relaxed antialiased;
+    @apply font-sans text-[#1a1a1a] bg-gray-50 leading-relaxed antialiased dark:bg-[#121212] dark:text-white;
   }
 
   a {
@@ -24,10 +24,10 @@
 
 @layer components {
   .nav-link {
-    @apply text-sm font-medium text-gray-500 transition-colors duration-200 relative;
+    @apply text-sm font-medium text-gray-500 transition-colors duration-200 relative dark:text-gray-400;
   }
   .nav-link:hover {
-    @apply text-[#1a1a1a];
+    @apply text-[#1a1a1a] dark:text-white;
   }
   .nav-link::after {
     content: "";
@@ -36,4 +36,36 @@
   .nav-link:hover::after {
     @apply w-full;
   }
+
+  /* Mobile menu sheet */
+  .mobile-sheet::backdrop {
+    animation: sheetBackdropIn 0.3s ease forwards;
+  }
+  .mobile-sheet[data-closing]::backdrop {
+    animation: sheetBackdropOut 0.2s ease forwards;
+  }
+  .mobile-sheet {
+    @apply fixed left-0 top-0 m-0 mr-auto h-dvh w-80 border-none bg-white p-0 dark:bg-[#1e1e1e];
+    animation: sheetSlideIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .mobile-sheet[data-closing] {
+    animation: sheetSlideOut 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+@keyframes sheetBackdropIn {
+  from { background-color: rgba(0, 0, 0, 0); }
+  to { background-color: rgba(0, 0, 0, 0.5); }
+}
+@keyframes sheetBackdropOut {
+  from { background-color: rgba(0, 0, 0, 0.5); }
+  to { background-color: rgba(0, 0, 0, 0); }
+}
+@keyframes sheetSlideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+@keyframes sheetSlideOut {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
 }

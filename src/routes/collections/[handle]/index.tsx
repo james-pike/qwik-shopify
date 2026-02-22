@@ -42,16 +42,16 @@ export default component$(() => {
         {c.description && <p class="text-white/60 text-base">{c.description}</p>}
       </div>
 
-      <section class="max-w-site mx-auto px-4 md:px-8 py-10 md:py-16">
+      <section class="max-w-site mx-auto px-4 md:px-8 py-8 md:py-16">
         <Link
           href="/"
-          class="inline-flex items-center gap-2 text-gray-500 text-sm font-medium mb-6 transition-colors hover:text-dark"
+          class="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm font-medium mb-6 transition-colors hover:text-dark dark:hover:text-white"
         >
           &larr; Back to shop
         </Link>
 
         {products.length === 0 ? (
-          <p class="text-center text-gray-500 py-12">
+          <p class="text-center text-gray-500 dark:text-gray-400 py-12">
             No products in this collection yet.
           </p>
         ) : (
@@ -60,7 +60,7 @@ export default component$(() => {
               <Link
                 key={product.id}
                 href={`/product/${product.handle}/`}
-                class="bg-white rounded-xl overflow-hidden border border-gray-200 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col"
+                class="bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col"
               >
                 {product.featuredImage ? (
                   <img
@@ -68,10 +68,10 @@ export default component$(() => {
                     alt={product.featuredImage.altText || product.title}
                     width={400}
                     height={400}
-                    class="w-full h-[280px] object-cover bg-gray-100"
+                    class="w-full h-[280px] object-cover bg-gray-100 dark:bg-gray-800"
                   />
                 ) : (
-                  <div class="w-full h-[280px] bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+                  <div class="w-full h-[280px] bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-sm">
                     No image
                   </div>
                 )}

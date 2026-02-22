@@ -107,7 +107,7 @@ export default component$(() => {
     <div class="max-w-site mx-auto px-4 md:px-8 py-12 md:py-16">
       <Link
         href="/"
-        class="inline-flex items-center gap-2 text-gray-500 text-sm font-medium mb-6 transition-colors hover:text-dark"
+        class="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm font-medium mb-6 transition-colors hover:text-dark dark:hover:text-white"
       >
         &larr; Back to products
       </Link>
@@ -120,7 +120,7 @@ export default component$(() => {
               <img
                 src={images[selectedImage.value]?.url}
                 alt={images[selectedImage.value]?.altText || p.title}
-                class="w-full rounded-xl aspect-square object-cover border border-gray-200"
+                class="w-full rounded-xl aspect-square object-cover border border-gray-200 dark:border-gray-700"
               />
               {images.length > 1 && (
                 <div class="flex gap-2 mt-3 overflow-x-auto">
@@ -145,7 +145,7 @@ export default component$(() => {
               )}
             </>
           ) : (
-            <div class="w-full bg-gray-100 flex items-center justify-center text-gray-400 text-sm aspect-square rounded-xl">
+            <div class="w-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-sm aspect-square rounded-xl">
               No image
             </div>
           )}
@@ -161,7 +161,7 @@ export default component$(() => {
             {formatPrice(p.priceRange.minVariantPrice)}
             {p.priceRange.minVariantPrice.amount !==
               p.priceRange.maxVariantPrice.amount && (
-              <span class="text-gray-500 font-normal text-lg">
+              <span class="text-gray-500 dark:text-gray-400 font-normal text-lg">
                 {" "}
                 &ndash; {formatPrice(p.priceRange.maxVariantPrice)}
               </span>
@@ -193,7 +193,7 @@ export default component$(() => {
           {/* Variant Selector */}
           {variants.length > 1 && (
             <div class="mb-6">
-              <p class="text-xs uppercase tracking-widest text-gray-500 font-semibold mb-2">
+              <p class="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold mb-2">
                 Select Option
               </p>
               <div class="flex flex-wrap gap-2">
@@ -205,10 +205,10 @@ export default component$(() => {
                     }}
                     class={`py-1.5 px-3.5 rounded-full border text-xs font-medium transition-all duration-200 ${
                       !v.availableForSale
-                        ? "opacity-40 cursor-not-allowed line-through border-gray-200"
+                        ? "opacity-40 cursor-not-allowed line-through border-gray-200 dark:border-gray-700"
                         : v.id === selectedVariantId.value
                           ? "border-primary bg-primary/[0.08] text-primary font-semibold"
-                          : "border-gray-200"
+                          : "border-gray-200 dark:border-gray-700"
                     }`}
                     disabled={!v.availableForSale}
                   >
@@ -258,7 +258,7 @@ export default component$(() => {
           {/* Description */}
           {p.descriptionHtml && (
             <div
-              class="border-t border-gray-200 pt-6 text-[#444] leading-loose text-[0.925rem]"
+              class="border-t border-gray-200 dark:border-gray-700 pt-6 text-[#444] dark:text-gray-300 leading-loose text-[0.925rem]"
               dangerouslySetInnerHTML={p.descriptionHtml}
             />
           )}

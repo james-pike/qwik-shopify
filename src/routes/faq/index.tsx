@@ -52,10 +52,10 @@ export default component$(() => {
         {faqs.map((faq) => (
           <div
             key={faq.q}
-            class="bg-white border border-gray-200 rounded-xl p-6 mb-4"
+            class="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-6 mb-4"
           >
-            <h3 class="text-base font-bold mb-2 text-dark">{faq.q}</h3>
-            <p class="text-gray-500 text-[0.9rem] leading-relaxed">{faq.a}</p>
+            <h3 class="text-base font-bold mb-2 text-dark dark:text-white">{faq.q}</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-[0.9rem] leading-relaxed">{faq.a}</p>
           </div>
         ))}
       </div>

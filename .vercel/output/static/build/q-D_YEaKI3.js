@@ -1,0 +1,1 @@
+import{f as e,z as s,i,R as m,A as n,s as r}from"./q-Dp3fz16h.js";import{c}from"./q-D2FK_hHf.js";const p=o=>{const t=e(c);return s("div",{"data-qui-combobox-empty":!0,get"data-empty"(){return t.isNoItemsSig.value?"":void 0},...o,children:n(r,null,3,"AS_0")},{"data-qui-combobox-empty":i,"data-empty":m(a=>a.isNoItemsSig.value?"":void 0,[t])},0,"AS_1")};export{p as s_LMBuJAflRxw};

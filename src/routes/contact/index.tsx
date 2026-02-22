@@ -13,9 +13,9 @@ export default component$(() => {
 
       <div class="max-w-[900px] mx-auto py-12 px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-white border border-gray-200 rounded-xl p-8">
-            <h3 class="text-base font-bold mb-4 text-dark">Get in Touch</h3>
-            <p class="text-gray-500 text-[0.9rem] leading-loose">
+          <div class="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-8">
+            <h3 class="text-base font-bold mb-4 text-dark dark:text-white">Get in Touch</h3>
+            <p class="text-gray-500 dark:text-gray-400 text-[0.9rem] leading-loose">
               <strong>Phone &amp; Fax</strong>
               <br />
               <a
@@ -44,8 +44,8 @@ export default component$(() => {
             </p>
           </div>
 
-          <div class="bg-white border border-gray-200 rounded-xl p-8">
-            <h3 class="text-base font-bold mb-4 text-dark">Store Hours</h3>
+          <div class="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-8">
+            <h3 class="text-base font-bold mb-4 text-dark dark:text-white">Store Hours</h3>
             <table class="w-full border-collapse">
               <tbody>
                 {[
@@ -58,17 +58,17 @@ export default component$(() => {
                   ["Sunday", "Closed"],
                 ].map(([day, hours]) => (
                   <tr key={day}>
-                    <td class="py-1.5 text-sm border-b border-gray-200 font-semibold text-[#1a1a1a]">
+                    <td class="py-1.5 text-sm border-b border-gray-200 dark:border-gray-700 font-semibold text-[#1a1a1a] dark:text-white">
                       {day}
                     </td>
-                    <td class="py-1.5 text-sm text-gray-500 border-b border-gray-200">
+                    <td class="py-1.5 text-sm text-gray-500 dark:text-gray-400 border-b border-gray-200 dark:border-gray-700">
                       {hours}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <p class="mt-4 text-[0.8rem] text-gray-500">
+            <p class="mt-4 text-[0.8rem] text-gray-500 dark:text-gray-400">
               Closed on long weekends.
               <br />
               December Sundays: 10:00 AM - 4:00 PM

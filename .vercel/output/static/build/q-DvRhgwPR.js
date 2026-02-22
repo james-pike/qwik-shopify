@@ -1,1 +1,0 @@
-import{v as i}from"./q-vaVJyAHe.js";import{x as c}from"./q-vaVJyAHe.js";const v=({track:t})=>{const[a,s]=i();if(t(()=>a.value),a.value){const o=a.value.variants.edges.map(e=>e.node).find(e=>e.availableForSale);o&&(s.value=o.id)}};export{c as _hW,v as s_bQlHx02Bo0w};

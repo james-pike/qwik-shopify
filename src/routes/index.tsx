@@ -98,7 +98,7 @@ export default component$(() => {
           <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
             Shop by Category
           </h2>
-          <p class="text-gray-500 text-base max-w-[480px] mx-auto">
+          <p class="text-gray-500 dark:text-gray-400 text-base max-w-[480px] mx-auto">
             From the job site to the classroom, we've got you covered.
           </p>
         </div>
@@ -123,7 +123,7 @@ export default component$(() => {
       </section>
 
       {/* Brands */}
-      <div class="bg-white border-y border-gray-200 py-12 px-8 text-center">
+      <div class="bg-white dark:bg-[#1e1e1e] border-y border-gray-200 dark:border-gray-700 py-12 px-8 text-center">
         <h2 class="text-xs uppercase tracking-[0.12em] text-gray-500 mb-6 font-semibold">
           Trusted Brands We Carry
         </h2>
@@ -131,7 +131,7 @@ export default component$(() => {
           {brands.map((brand) => (
             <span
               key={brand}
-              class="text-sm font-semibold text-gray-500 py-1.5 px-3 rounded transition-colors hover:text-dark"
+              class="text-sm font-semibold text-gray-500 dark:text-gray-400 py-1.5 px-3 rounded transition-colors hover:text-dark dark:hover:text-white"
             >
               {brand}
             </span>
@@ -145,20 +145,20 @@ export default component$(() => {
           <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
             Our Products
           </h2>
-          <p class="text-gray-500 text-base max-w-[480px] mx-auto">
+          <p class="text-gray-500 dark:text-gray-400 text-base max-w-[480px] mx-auto">
             Quality workwear, safety gear, and more.
           </p>
         </div>
 
         {products.value.length === 0 ? (
-          <p class="text-center text-gray-500">No products found.</p>
+          <p class="text-center text-gray-500 dark:text-gray-400">No products found.</p>
         ) : (
           <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
             {products.value.map((product) => (
               <Link
                 key={product.id}
                 href={`/product/${product.handle}/`}
-                class="bg-white rounded-xl overflow-hidden border border-gray-200 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col"
+                class="bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col"
               >
                 {product.featuredImage ? (
                   <img
@@ -166,10 +166,10 @@ export default component$(() => {
                     alt={product.featuredImage.altText || product.title}
                     width={400}
                     height={400}
-                    class="w-full h-[280px] object-cover bg-gray-100"
+                    class="w-full h-[280px] object-cover bg-gray-100 dark:bg-gray-800"
                   />
                 ) : (
-                  <div class="w-full h-[280px] bg-gray-100 flex items-center justify-center text-gray-400 text-sm">
+                  <div class="w-full h-[280px] bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-sm">
                     No image
                   </div>
                 )}
@@ -193,38 +193,38 @@ export default component$(() => {
           <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
             Why The Safety House?
           </h2>
-          <p class="text-gray-500 text-base max-w-[480px] mx-auto">
+          <p class="text-gray-500 dark:text-gray-400 text-base max-w-[480px] mx-auto">
             Decades of experience serving Eastern Ontario.
           </p>
         </div>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
-          <div class="bg-white border border-gray-200 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
+          <div class="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
             <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-4">
               &#9874;
             </div>
             <h3 class="text-base font-bold mb-2">Quality CSA Gear</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">
+            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
               We focus on the best quality CSA footwear and clothing on the
               market from brands like Timberland Pro, Red Wing, Blundstone, and
               more.
             </p>
           </div>
-          <div class="bg-white border border-gray-200 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
+          <div class="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
             <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-4">
               &#9997;
             </div>
             <h3 class="text-base font-bold mb-2">Decoration Done Right</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">
+            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
               In-house embroidery and transfer services. Timely, budget-conscious
               personalization for your team, school, or company.
             </p>
           </div>
-          <div class="bg-white border border-gray-200 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
+          <div class="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
             <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-4">
               &#9734;
             </div>
             <h3 class="text-base font-bold mb-2">Expert Service</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">
+            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
               Our management team brings years of successful apparel market
               experience with superior design, sourcing, and focused customer
               support.

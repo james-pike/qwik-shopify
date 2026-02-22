@@ -1,0 +1,1 @@
+const r={horizontal:{ltr:{ArrowRight:1,ArrowLeft:-1,ArrowDown:0,ArrowUp:0},rtl:{ArrowRight:-1,ArrowLeft:1,ArrowDown:0,ArrowUp:0}},vertical:{ltr:{ArrowDown:1,ArrowUp:-1,ArrowRight:0,ArrowLeft:0},rtl:{ArrowDown:-1,ArrowUp:1,ArrowRight:0,ArrowLeft:0}}};export{r as k};

@@ -13,8 +13,8 @@ export default component$(() => {
       </div>
 
       <div class="max-w-[800px] mx-auto py-12 px-8">
-        <h2 class="text-xl font-bold mb-3 text-dark">The Safety House</h2>
-        <p class="text-gray-500 mb-4 leading-loose text-[0.925rem]">
+        <h2 class="text-xl font-bold mb-3 text-dark dark:text-white">The Safety House</h2>
+        <p class="text-gray-500 dark:text-gray-400 mb-4 leading-loose text-[0.925rem]">
           The Safety House focuses on offering key products on time by employing
           the latest technologies, selecting reliable suppliers, and maintaining
           personable staff to address customer needs. We are your one stop shop
@@ -25,7 +25,7 @@ export default component$(() => {
         <h2 class="text-xl font-bold mb-3 mt-8 text-dark">
           What We Do For You
         </h2>
-        <p class="text-gray-500 mb-4 leading-loose text-[0.925rem]">
+        <p class="text-gray-500 dark:text-gray-400 mb-4 leading-loose text-[0.925rem]">
           The Safety House specializes in apparel supply and embroidery for
           construction workwear, medical apparel, school team sports wear, and
           promotional products. We offer quality footwear, protective clothing,
@@ -33,7 +33,7 @@ export default component$(() => {
         </p>
 
         <h2 class="text-xl font-bold mb-3 mt-8 text-dark">The Experts</h2>
-        <p class="text-gray-500 mb-4 leading-loose text-[0.925rem]">
+        <p class="text-gray-500 dark:text-gray-400 mb-4 leading-loose text-[0.925rem]">
           Our management team brings years of successful apparel market
           experience. We emphasize superior design, sourcing, integrated
           promotion, and focused customer support with the highest integrity in
@@ -41,7 +41,7 @@ export default component$(() => {
         </p>
 
         <h2 class="text-xl font-bold mb-3 mt-8 text-dark">Our Promise</h2>
-        <p class="text-gray-500 mb-4 leading-loose text-[0.925rem]">
+        <p class="text-gray-500 dark:text-gray-400 mb-4 leading-loose text-[0.925rem]">
           We are committed to delivering products that meet customer needs
           through quality, unquestionable reliability, and superior customer
           service. We listen to our customers and anticipate their needs to
@@ -49,7 +49,7 @@ export default component$(() => {
         </p>
 
         <h2 class="text-xl font-bold mb-3 mt-8 text-dark">Our Customers</h2>
-        <p class="text-gray-500 mb-4 leading-loose text-[0.925rem]">
+        <p class="text-gray-500 dark:text-gray-400 mb-4 leading-loose text-[0.925rem]">
           The Safety House maintains long-term relationships built on respect and
           fairness. We serve customers throughout Eastern Ontario via repeat
           business and referrals, and we're proud of the community we've built
