@@ -14,7 +14,7 @@ export default component$(() => {
       <header class="site-header">
         <div class="header-inner">
           <Link href="/" class="site-logo">
-            THE SAFETY<span class="logo-accent"> HOUSE</span>
+            <img src="/logo.png" alt="The Safety House" width="140" height="40" style={{ objectFit: "contain" }} />
           </Link>
           <nav class="site-nav">
             <Link href="/">Shop</Link>
