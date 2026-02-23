@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { routeLoader$, Link } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { getProducts, formatPrice } from "~/lib/shopify";
@@ -64,45 +64,121 @@ export default component$(() => {
     "Roots",
   ];
 
+  const currentSlide = useSignal(0);
+  const paused = useSignal(false);
+
+  // Auto-advance through all slides once, then stop on slide 0
+  useVisibleTask$(({ track, cleanup }) => {
+    track(() => paused.value);
+    const lastIndex = 2;
+    let done = false;
+    const id = setInterval(() => {
+      if (paused.value || done) return;
+      if (currentSlide.value < lastIndex) {
+        currentSlide.value++;
+      } else {
+        currentSlide.value = 0;
+        done = true;
+        clearInterval(id);
+      }
+    }, 6000);
+    cleanup(() => clearInterval(id));
+  });
+
+  const heroSlides = [
+    {
+      image: "/hero.jpg",
+      badge: "Eastern Ontario's Safety Experts",
+      title: <>Where Work &amp; Lifestyle<br />Apparel <em class="not-italic text-primary">Intersect</em></>,
+      description: "The Safety House is your one stop shop for quality specialized clothing, CSA safety footwear, and in-house embroidery services.",
+      primaryLink: { href: "/#products", label: "Shop Products" },
+      secondaryLink: { href: "/about/", label: "Our Story" },
+    },
+    {
+      image: "/footwear.jpg",
+      badge: "CSA Approved",
+      title: <>Safety Footwear<br />Built to <em class="not-italic text-primary">Protect</em></>,
+      description: "Browse our selection of CSA-approved boots and shoes from trusted brands like Timberland Pro, Red Wing, and Blundstone.",
+      primaryLink: { href: "/collections/safety-footwear/", label: "Shop Footwear" },
+      secondaryLink: { href: "/collections/work-wear/", label: "Work Wear" },
+    },
+    {
+      image: "/flame-resistant-clothing.jpg",
+      badge: "In-House Embroidery",
+      title: <>Custom Decoration<br />for Your <em class="not-italic text-primary">Team</em></>,
+      description: "Timely, budget-conscious embroidery and transfer services for your company, school, or organization.",
+      primaryLink: { href: "/contact/", label: "Get a Quote" },
+      secondaryLink: { href: "/#products", label: "Browse All" },
+    },
+  ];
+
   return (
     <>
-      {/* Hero */}
-      <section class="relative text-white py-28 md:py-36 px-8 text-center overflow-hidden">
-        <img
-          src="/hero.jpg"
-          alt=""
-          width={1400}
-          height={600}
-          class="absolute inset-0 w-full h-full object-cover"
-        />
-        <div class="absolute inset-0 bg-gradient-to-br from-dark/60 to-[#2d2d2d]/50" />
-        <div class="relative z-10 max-w-[720px] mx-auto">
-          <div class="inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-xs font-bold tracking-widest uppercase mb-5 border border-primary/30">
-            Eastern Ontario's Safety Experts
+      {/* Hero Carousel */}
+      <section
+        class="relative overflow-hidden"
+        onMouseEnter$={() => { paused.value = true; }}
+        onMouseLeave$={() => { paused.value = false; }}
+      >
+        {heroSlides.map((slide, i) => (
+          <div
+            key={i}
+            class={`text-white py-28 md:py-36 px-8 text-center overflow-hidden transition-opacity duration-700 ease-in-out ${
+              i === 0 ? "relative" : "absolute inset-0"
+            } ${currentSlide.value === i ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            aria-hidden={currentSlide.value !== i}
+          >
+            <img
+              src={slide.image}
+              alt=""
+              width={1400}
+              height={600}
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-br from-dark/60 to-[#2d2d2d]/50" />
+            <div class="relative z-10 max-w-[720px] mx-auto">
+              <div class="inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-xs font-bold tracking-widest uppercase mb-5 border border-primary/30">
+                {slide.badge}
+              </div>
+              <h2 class="text-[2rem] md:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4 [text-shadow:0_2px_12px_rgba(0,0,0,0.4)]">
+                {slide.title}
+              </h2>
+              <p class="text-lg text-white/70 max-w-[520px] mx-auto mb-8 leading-relaxed">
+                {slide.description}
+              </p>
+              <div class="flex gap-4 justify-center flex-wrap">
+                <Link
+                  href={slide.primaryLink.href}
+                  class="inline-flex items-center justify-center py-3 px-7 text-[0.9rem] font-semibold rounded-lg border-none transition-all duration-200 bg-primary text-white hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg"
+                >
+                  {slide.primaryLink.label}
+                </Link>
+                <Link
+                  href={slide.secondaryLink.href}
+                  class="inline-flex items-center justify-center py-3 px-7 text-[0.9rem] font-semibold rounded-lg transition-all duration-200 bg-transparent text-white border border-white/30 hover:bg-white/10 hover:border-white/50"
+                >
+                  {slide.secondaryLink.label}
+                </Link>
+              </div>
+            </div>
           </div>
-          <h1 class="text-[2rem] md:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4 [text-shadow:0_2px_12px_rgba(0,0,0,0.4)]">
-            Where Work &amp; Lifestyle
-            <br />
-            Apparel <em class="not-italic text-primary">Intersect</em>
-          </h1>
-          <p class="text-lg text-white/70 max-w-[520px] mx-auto mb-8 leading-relaxed">
-            The Safety House is your one stop shop for quality specialized
-            clothing, CSA safety footwear, and in-house embroidery services.
-          </p>
-          <div class="flex gap-4 justify-center flex-wrap">
-            <Link
-              href="/#products"
-              class="inline-flex items-center justify-center py-3 px-7 text-[0.9rem] font-semibold rounded-lg border-none transition-all duration-200 bg-primary text-white hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg"
-            >
-              Shop Products
-            </Link>
-            <Link
-              href="/about/"
-              class="inline-flex items-center justify-center py-3 px-7 text-[0.9rem] font-semibold rounded-lg transition-all duration-200 bg-transparent text-white border border-white/30 hover:bg-white/10 hover:border-white/50"
-            >
-              Our Story
-            </Link>
-          </div>
+        ))}
+
+        {/* Dot indicators */}
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Go to slide ${i + 1}`}
+              class={`w-2.5 h-2.5 rounded-full border-none cursor-pointer transition-all duration-300 ${
+                currentSlide.value === i
+                  ? "bg-white scale-110"
+                  : "bg-white/40 hover:bg-white/70"
+              }`}
+              onClick$={() => { currentSlide.value = i; }}
+            />
+          ))}
         </div>
       </section>
 

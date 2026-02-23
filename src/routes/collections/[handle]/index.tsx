@@ -4,32 +4,43 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import { getCollectionByHandle, formatPrice } from "~/lib/shopify";
 import type { ShopifyProduct } from "~/lib/shopify";
 
-const SORT_OPTIONS: { value: string; label: string; sortKey: string; reverse: boolean }[] = [
-  { value: "", label: "Default", sortKey: "COLLECTION_DEFAULT", reverse: false },
-  { value: "price-asc", label: "Price: Low to High", sortKey: "PRICE", reverse: false },
-  { value: "price-desc", label: "Price: High to Low", sortKey: "PRICE", reverse: true },
-  { value: "title-asc", label: "A–Z", sortKey: "TITLE", reverse: false },
-  { value: "title-desc", label: "Z–A", sortKey: "TITLE", reverse: true },
-  { value: "best-selling", label: "Best Selling", sortKey: "BEST_SELLING", reverse: false },
-  { value: "newest", label: "Newest", sortKey: "CREATED", reverse: true },
+const SORT_OPTIONS = [
+  { value: "", label: "Default" },
+  { value: "price-asc", label: "Price: Low to High" },
+  { value: "price-desc", label: "Price: High to Low" },
+  { value: "title-asc", label: "A\u2013Z" },
+  { value: "title-desc", label: "Z\u2013A" },
+  { value: "best-selling", label: "Best Selling" },
+  { value: "newest", label: "Newest" },
 ];
 
-function getSortConfig(param: string | null) {
-  const match = SORT_OPTIONS.find((o) => o.value === (param || ""));
-  return match || SORT_OPTIONS[0];
+function sortProducts(products: ShopifyProduct[], sortValue: string): ShopifyProduct[] {
+  if (!sortValue) return products;
+  const sorted = [...products];
+  switch (sortValue) {
+    case "price-asc":
+      return sorted.sort((a, b) =>
+        parseFloat(a.priceRange.minVariantPrice.amount) - parseFloat(b.priceRange.minVariantPrice.amount));
+    case "price-desc":
+      return sorted.sort((a, b) =>
+        parseFloat(b.priceRange.minVariantPrice.amount) - parseFloat(a.priceRange.minVariantPrice.amount));
+    case "title-asc":
+      return sorted.sort((a, b) => a.title.localeCompare(b.title));
+    case "title-desc":
+      return sorted.sort((a, b) => b.title.localeCompare(a.title));
+    case "newest":
+      return sorted.sort((a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+    case "best-selling":
+      return products; // collection default order from Shopify
+    default:
+      return products;
+  }
 }
 
 export const useCollection = routeLoader$(async (requestEvent) => {
   const handle = requestEvent.params.handle;
-  const sortParam = requestEvent.url.searchParams.get("sort");
-  const sortConfig = getSortConfig(sortParam);
-
-  const collection = await getCollectionByHandle(
-    handle,
-    50,
-    sortConfig.sortKey,
-    sortConfig.reverse,
-  );
+  const collection = await getCollectionByHandle(handle, 50);
 
   if (!collection) {
     requestEvent.status(404);
@@ -44,6 +55,7 @@ export default component$(() => {
   const location = useLocation();
   const brandFilterOpen = useSignal(false);
   const selectedBrands = useSignal<string[]>([]);
+  const currentSort = useSignal(location.url.searchParams.get("sort") || "");
 
   if (!collection.value) {
     return (
@@ -61,7 +73,6 @@ export default component$(() => {
 
   const c = collection.value;
   const allProducts = c.products.edges.map((e) => e.node);
-  const currentSort = location.url.searchParams.get("sort") || "";
 
   const brands = useComputed$(() => {
     const vendorSet = new Set<string>();
@@ -72,8 +83,9 @@ export default component$(() => {
   });
 
   const filteredProducts = useComputed$(() => {
-    if (selectedBrands.value.length === 0) return allProducts;
-    return allProducts.filter((p: ShopifyProduct) =>
+    const sorted = sortProducts(allProducts, currentSort.value);
+    if (selectedBrands.value.length === 0) return sorted;
+    return sorted.filter((p: ShopifyProduct) =>
       selectedBrands.value.includes(p.vendor),
     );
   });
@@ -131,20 +143,21 @@ export default component$(() => {
             <select
               id="sort-select"
               class="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50"
-              value={currentSort}
+              value={currentSort.value}
               onChange$={(_, el) => {
                 const val = el.value;
+                currentSort.value = val;
                 const url = new URL(window.location.href);
                 if (val) {
                   url.searchParams.set("sort", val);
                 } else {
                   url.searchParams.delete("sort");
                 }
-                window.location.href = url.toString();
+                history.replaceState(null, "", url.pathname + url.search);
               }}
             >
               {SORT_OPTIONS.map((opt) => (
-                <option key={opt.value} value={opt.value} selected={opt.value === currentSort}>
+                <option key={opt.value} value={opt.value} selected={opt.value === currentSort.value}>
                   {opt.label}
                 </option>
               ))}

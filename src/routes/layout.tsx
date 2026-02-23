@@ -2,7 +2,7 @@ import { component$, Slot, useSignal, useVisibleTask$, useTask$, $ } from "@buil
 import { isServer } from "@builder.io/qwik/build";
 import { Link } from "@builder.io/qwik-city";
 import { Modal } from "@qwik-ui/headless";
-import { getCart, formatPrice } from "~/lib/shopify";
+import { getCart, removeFromCart, formatPrice } from "~/lib/shopify";
 import type { ShopifyCart } from "~/lib/shopify";
 
 export default component$(() => {
@@ -49,6 +49,19 @@ export default component$(() => {
       console.error("Failed to load cart:", err);
     } finally {
       cartLoading.value = false;
+    }
+  });
+
+  const removeLineItem = $(async (lineId: string) => {
+    const cartId = localStorage.getItem("cart_id");
+    if (!cartId) return;
+    try {
+      const cart = await removeFromCart(cartId, [lineId]);
+      cartData.value = cart;
+      cartCount.value = cart.totalQuantity;
+      localStorage.setItem("cart_count", String(cart.totalQuantity));
+    } catch (err) {
+      console.error("Failed to remove item:", err);
     }
   });
 
@@ -178,9 +191,22 @@ export default component$(() => {
                               )}
                               <div class="flex items-center justify-between mt-1.5">
                                 <span class="text-xs text-gray-500 dark:text-gray-400">Qty: {line.quantity}</span>
-                                <span class="text-sm font-bold text-primary">
-                                  {formatPrice(line.merchandise.price)}
-                                </span>
+                                <div class="flex items-center gap-2">
+                                  <button
+                                    type="button"
+                                    class="text-gray-400 hover:text-red-500 transition-colors bg-transparent border-none p-0"
+                                    aria-label="Remove item"
+                                    onClick$={() => removeLineItem(line.id)}
+                                  >
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                      <polyline points="3 6 5 6 21 6" />
+                                      <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                    </svg>
+                                  </button>
+                                  <span class="text-sm font-bold text-primary">
+                                    {formatPrice(line.merchandise.price)}
+                                  </span>
+                                </div>
                               </div>
                             </div>
                           </div>

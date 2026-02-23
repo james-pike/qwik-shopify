@@ -45,7 +45,7 @@
     animation: sheetBackdropOut 0.2s ease forwards;
   }
   .mobile-sheet {
-    @apply fixed left-0 top-0 m-0 mr-auto h-dvh w-80 border-none bg-white p-0 dark:bg-[#1e1e1e];
+    @apply fixed left-0 top-0 m-0 mr-auto h-dvh w-80 border-none bg-white text-gray-900 p-0 dark:bg-[#1e1e1e] dark:text-white;
     animation: sheetSlideIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
   .mobile-sheet[data-closing] {
@@ -60,7 +60,7 @@
     animation: sheetBackdropOut 0.2s ease forwards;
   }
   .cart-sheet {
-    @apply fixed right-0 top-0 m-0 ml-auto h-dvh w-80 sm:w-96 border-none bg-white p-0 dark:bg-[#1e1e1e];
+    @apply fixed right-0 top-0 m-0 ml-auto h-dvh w-80 sm:w-96 border-none bg-white text-gray-900 p-0 dark:bg-[#1e1e1e] dark:text-white;
     animation: cartSlideIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
   .cart-sheet[open] {

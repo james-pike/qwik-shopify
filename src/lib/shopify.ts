@@ -37,6 +37,7 @@ export interface ShopifyProduct {
   availableForSale: boolean;
   vendor: string;
   productType: string;
+  createdAt: string;
   featuredImage: ShopifyImage | null;
   priceRange: {
     minVariantPrice: ShopifyPrice;
@@ -168,6 +169,7 @@ const COLLECTION_BY_HANDLE_QUERY = gql`
             description
             vendor
             productType
+            createdAt
             featuredImage {
               url
               altText
@@ -352,6 +354,21 @@ const ADD_TO_CART_MUTATION = gql`
   }
 `;
 
+const REMOVE_FROM_CART_MUTATION = gql`
+  ${CART_FRAGMENT}
+  mutation CartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+    cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+      cart {
+        ...CartFields
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+
 const GET_CART_QUERY = gql`
   ${CART_FRAGMENT}
   query GetCart($cartId: ID!) {
@@ -387,6 +404,17 @@ export async function addToCart(
   });
 
   return data.cartLinesAdd.cart;
+}
+
+export async function removeFromCart(
+  cartId: string,
+  lineIds: string[],
+): Promise<ShopifyCart> {
+  const data = await client.request<{
+    cartLinesRemove: { cart: ShopifyCart };
+  }>(REMOVE_FROM_CART_MUTATION, { cartId, lineIds });
+
+  return data.cartLinesRemove.cart;
 }
 
 export async function getCart(cartId: string): Promise<ShopifyCart | null> {
