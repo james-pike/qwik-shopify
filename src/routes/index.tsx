@@ -82,7 +82,7 @@ export default component$(() => {
       secondaryLink: { href: "/about/", label: "Our Story" },
     },
     {
-      image: "/footwear.jpg",
+      image: "/hero.jpg",
       badge: "CSA Approved",
       title: <>Safety Footwear<br />Built to <em class="not-italic text-primary">Protect</em></>,
       description: "Browse our selection of CSA-approved boots and shoes from trusted brands like Timberland Pro, Red Wing, and Blundstone.",
@@ -90,7 +90,7 @@ export default component$(() => {
       secondaryLink: { href: "/collections/work-wear/", label: "Work Wear" },
     },
     {
-      image: "/embroidery.jpg",
+      image: "/hero.jpg",
       badge: "In-House Embroidery",
       title: <>Custom Decoration<br />for Your <em class="not-italic text-primary">Team</em></>,
       description: "Timely, budget-conscious embroidery and transfer services for your company, school, or organization.",

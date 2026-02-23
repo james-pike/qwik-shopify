@@ -1,4 +1,4 @@
-import { component$, useSignal, useComputed$ } from "@builder.io/qwik";
+import { component$, useSignal, useComputed$, $, useOnDocument } from "@builder.io/qwik";
 import { routeLoader$, Link, useLocation } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { getCollectionByHandle, formatPrice } from "~/lib/shopify";
@@ -56,6 +56,17 @@ export default component$(() => {
   const brandFilterOpen = useSignal(false);
   const selectedBrands = useSignal<string[]>([]);
   const currentSort = useSignal(location.url.searchParams.get("sort") || "");
+
+  useOnDocument(
+    "click",
+    $((e: Event) => {
+      if (!brandFilterOpen.value) return;
+      const target = e.target as HTMLElement;
+      if (!target.closest("[data-brand-filter]")) {
+        brandFilterOpen.value = false;
+      }
+    }),
+  );
 
   if (!collection.value) {
     return (
@@ -172,7 +183,7 @@ export default component$(() => {
 
           {/* Brand filter - mobile */}
           {brands.value.length > 1 && (
-            <div class="relative">
+            <div class="relative" data-brand-filter>
               <button
                 type="button"
                 class="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer flex items-center gap-2 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
@@ -270,7 +281,7 @@ export default component$(() => {
 
           {/* Brand filter dropdown */}
           {brands.value.length > 1 && (
-            <div class="relative">
+            <div class="relative" data-brand-filter>
               <button
                 type="button"
                 class="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer flex items-center gap-2 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
