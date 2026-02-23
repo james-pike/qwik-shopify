@@ -1,4 +1,4 @@
-import{R as t,Q as e}from"./q-Jj5GwllU.js";import{R as r}from"./q-DlnUBqHg.js";import{A as n,I as l}from"./q-DeIzdHld.js";const s=()=>n(e,{children:[l("head",null,null,[l("meta",null,{charset:"utf-8"},null,3,null),l("script",null,{dangerouslySetInnerHTML:`
+import{R as t,Q as e}from"./q-BW39Ytfy.js";import{R as r}from"./q-DVibx7aJ.js";import{A as n,I as l}from"./q-DeIzdHld.js";const s=()=>n(e,{children:[l("head",null,null,[l("meta",null,{charset:"utf-8"},null,3,null),l("script",null,{dangerouslySetInnerHTML:`
             try {
               if (localStorage.getItem('darkMode') === 'true') {
                 document.documentElement.classList.add('dark');
