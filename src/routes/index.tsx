@@ -1,14 +1,8 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
-import { routeLoader$, Link } from "@builder.io/qwik-city";
+import { Link } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import { getProducts, formatPrice } from "~/lib/shopify";
-
-export const useProducts = routeLoader$(async () => {
-  return await getProducts(20);
-});
 
 export default component$(() => {
-  const products = useProducts();
 
   const categories = [
     {
@@ -30,42 +24,38 @@ export default component$(() => {
       img: "/flame-resistant-clothing.jpg",
     },
     {
-      name: "School Wear",
-      handle: "school-wear",
-      desc: "Sports and institutional apparel",
-      img: "/schoolwear.jpg",
-    },
-    {
       name: "Safety Supplies",
       handle: "safety-supplies",
       desc: "PPE and workplace safety essentials",
       img: "/safety-supplies.jpg",
     },
+    {
+      name: "School Wear",
+      handle: "school-wear",
+      desc: "Sports and institutional apparel",
+      img: "/schoolwear.jpg",
+    },
   ];
 
   const brands = [
-    "Carhartt",
-    "Timberland Pro",
-    "Red Wing",
-    "Blundstone",
-    "Blakl\u00e4der",
-    "Stormtech",
-    "Nike",
-    "Adidas",
-    "Royer",
-    "Terra",
-    "Keen",
-    "Pioneer",
-    "Viking",
-    "Big Bill",
-    "Dickies",
-    "New Era",
-    "Champion",
-    "Roots",
+    { name: "Carhartt", img: "/brands/carhart.png" },
+    { name: "Timberland Pro", img: "/brands/timberland-pro.png" },
+    { name: "Blakl\u00e4der", img: "/brands/blaklader.png" },
+    { name: "Stormtech", img: "/brands/stormtech-logo.jpg" },
+    { name: "Pioneer", img: "/brands/pioneer.png" },
+    { name: "Viking", img: "/brands/viking_work_wear.png" },
+    { name: "Big Bill", img: "/brands/big_bill_workwear.png" },
+    { name: "Dickies", img: "/brands/dickies_workwear_ottawa.png" },
+    { name: "Tough Duck", img: "/brands/TOUGHDUCK.png" },
+    { name: "CX2", img: "/brands/CX2-Workwear.jpg" },
+    { name: "Oberon", img: "/brands/oberon.jpg" },
+    { name: "Orange River", img: "/brands/orange_river_logo.jpg" },
+    { name: "Red Kap", img: "/brands/redkap.png" },
   ];
 
   const currentSlide = useSignal(0);
   const paused = useSignal(false);
+  const touchStartX = useSignal(0);
 
   // Auto-advance through all slides once, then stop on slide 0
   useVisibleTask$(({ cleanup }) => {
@@ -85,7 +75,7 @@ export default component$(() => {
   const heroSlides = [
     {
       image: "/hero.jpg",
-      badge: "Eastern Ontario's Safety Experts",
+      badge: "Canada's Safety Experts",
       title: <>Where Work &amp; Lifestyle<br />Apparel <em class="not-italic text-primary">Intersect</em></>,
       description: "The Safety House is your one stop shop for quality specialized clothing, CSA safety footwear, and in-house embroidery services.",
       primaryLink: { href: "/#products", label: "Shop Products" },
@@ -100,7 +90,7 @@ export default component$(() => {
       secondaryLink: { href: "/collections/work-wear/", label: "Work Wear" },
     },
     {
-      image: "/flame-resistant-clothing.jpg",
+      image: "/embroidery.jpg",
       badge: "In-House Embroidery",
       title: <>Custom Decoration<br />for Your <em class="not-italic text-primary">Team</em></>,
       description: "Timely, budget-conscious embroidery and transfer services for your company, school, or organization.",
@@ -116,6 +106,18 @@ export default component$(() => {
         class="relative overflow-hidden"
         onMouseEnter$={() => { paused.value = true; }}
         onMouseLeave$={() => { paused.value = false; }}
+        onTouchStart$={(e: TouchEvent) => { touchStartX.value = e.touches[0].clientX; }}
+        onTouchEnd$={(e: TouchEvent) => {
+          const diff = touchStartX.value - e.changedTouches[0].clientX;
+          if (Math.abs(diff) > 50) {
+            const last = heroSlides.length - 1;
+            if (diff > 0 && currentSlide.value < last) {
+              currentSlide.value++;
+            } else if (diff < 0 && currentSlide.value > 0) {
+              currentSlide.value--;
+            }
+          }
+        }}
       >
         {heroSlides.map((slide, i) => (
           <div
@@ -137,10 +139,10 @@ export default component$(() => {
               <div class="inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-xs font-bold tracking-widest uppercase mb-5 border border-primary/30">
                 {slide.badge}
               </div>
-              <h2 class="text-[2rem] md:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4 [text-shadow:0_2px_12px_rgba(0,0,0,0.4)]">
+              <h2 class="text-4xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-4 [text-shadow:0_2px_12px_rgba(0,0,0,0.4)]">
                 {slide.title}
               </h2>
-              <p class="text-lg text-white/70 max-w-[520px] mx-auto mb-8 leading-relaxed">
+              <p class="text-xl text-white/70 max-w-[520px] mx-auto mb-8 leading-relaxed">
                 {slide.description}
               </p>
               <div class="flex gap-4 justify-center flex-wrap">
@@ -217,69 +219,23 @@ export default component$(() => {
       </section>
 
       {/* Brands */}
-      <div class="bg-white dark:bg-[#1e1e1e] border-y border-gray-200 dark:border-gray-700 py-12 px-8 text-center">
-        <h2 class="text-xs uppercase tracking-[0.12em] text-gray-500 mb-6 font-semibold">
+      <div class="bg-white dark:bg-[#1e1e1e] border-y border-gray-200 dark:border-gray-700 py-12 px-4 md:px-8 text-center">
+        <h2 class="text-xs uppercase tracking-[0.12em] text-gray-500 mb-8 font-semibold">
           Trusted Brands We Carry
         </h2>
-        <div class="flex flex-wrap justify-center gap-3">
+        <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10">
           {brands.map((brand) => (
-            <span
-              key={brand}
-              class="text-sm font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-white/5 rounded-full px-4 py-2 transition-colors hover:text-dark hover:bg-gray-200 dark:hover:text-white dark:hover:bg-white/10"
-            >
-              {brand}
-            </span>
+            <img
+              key={brand.name}
+              src={brand.img}
+              alt={brand.name}
+              width={120}
+              height={48}
+              class="h-8 md:h-10 w-auto object-contain transition-all duration-200 dark:invert"
+            />
           ))}
         </div>
       </div>
-
-      {/* Products */}
-      <section class="px-4 md:px-8 py-16 md:py-20" id="products">
-        <div class="text-center mb-10">
-          <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
-            Our Products
-          </h2>
-          <p class="text-gray-500 dark:text-gray-400 text-base max-w-[480px] mx-auto">
-            Quality workwear, safety gear, and more.
-          </p>
-        </div>
-
-        {products.value.length === 0 ? (
-          <p class="text-center text-gray-500 dark:text-gray-400">No products found.</p>
-        ) : (
-          <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
-            {products.value.map((product) => (
-              <Link
-                key={product.id}
-                href={`/product/${product.handle}/`}
-                class="group bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col"
-              >
-                {product.featuredImage ? (
-                  <img
-                    src={product.featuredImage.url}
-                    alt={product.featuredImage.altText || product.title}
-                    width={400}
-                    height={400}
-                    class="w-full h-[280px] object-cover bg-gray-100 dark:bg-gray-800 transition-transform duration-300 group-hover:scale-105"
-                  />
-                ) : (
-                  <div class="w-full h-[280px] bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-sm">
-                    No image
-                  </div>
-                )}
-                <div class="p-4 px-5 flex-1 flex flex-col">
-                  <h3 class="text-[0.95rem] font-semibold mb-1 leading-snug">
-                    {product.title}
-                  </h3>
-                  <span class="text-base font-bold text-primary mt-auto pt-2">
-                    {formatPrice(product.priceRange.minVariantPrice)}
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
-      </section>
 
       {/* Why The Safety House */}
       <section class="px-4 md:px-8 py-16 md:py-20">

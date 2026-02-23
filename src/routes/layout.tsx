@@ -280,11 +280,23 @@ export default component$(() => {
                     School & Sports Wear
                   </Link>
                 </Modal.Close>
+                <div class="border-t border-gray-200 dark:border-gray-700 my-2" />
+                <Modal.Close class="bg-transparent border-none text-left">
+                  <Link href="/about/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                    About Us
+                  </Link>
+                </Modal.Close>
+                <Modal.Close class="bg-transparent border-none text-left">
+                  <Link href="/faq/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                    FAQ
+                  </Link>
+                </Modal.Close>
+                <Modal.Close class="bg-transparent border-none text-left">
+                  <Link href="/contact/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                    Contact
+                  </Link>
+                </Modal.Close>
               </nav>
-              <div class="mt-auto p-4 border-t border-gray-200 dark:border-gray-700">
-                <p class="text-xs text-gray-400">613-224-6804</p>
-                <p class="text-xs text-gray-400">info@safetyhouse.ca</p>
-              </div>
               </Modal.Panel>
             </Modal.Root>
           </div>
@@ -297,7 +309,7 @@ export default component$(() => {
       {/* Footer */}
       <footer class="bg-dark text-white/80 mt-16">
         <div class="pt-10 px-4 pb-6 md:pt-14 md:px-8 md:pb-8">
-          <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 md:gap-14 mb-10">
+          <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-8 md:gap-14 mb-10">
             <div>
               <img
                 src="/logo.png"
@@ -343,33 +355,42 @@ export default component$(() => {
                 </h4>
                 <Link href="/about/" class="block text-sm text-white/65 py-0.5 transition-colors hover:text-white">About Us</Link>
                 <Link href="/faq/" class="block text-sm text-white/65 py-0.5 transition-colors hover:text-white">FAQ</Link>
-                <Link href="/contact/" class="block text-sm text-white/65 py-0.5 transition-colors hover:text-white">Contact</Link>
+                <Link href="/embroidery/" class="block text-sm text-white/65 py-0.5 transition-colors hover:text-white">Embroidery</Link>
+                <Link href="/store-hours/" class="block text-sm text-white/65 py-0.5 transition-colors hover:text-white">Store Hours</Link>
               </div>
             </div>
-            <div>
-              <h4 class="text-[0.7rem] uppercase tracking-[0.12em] text-white/40 font-semibold mb-3">
-                Visit Us
-              </h4>
-              <p class="text-sm text-white/65 leading-relaxed">
-                595 West Hunt Club Rd
-                <br />
-                Nepean, ON K2G 5X6
-                <br />
-                <br />
-                613-224-6804
-                <br />
-                info@safetyhouse.ca
-              </p>
+            <div class="grid grid-cols-2 md:contents gap-8">
+              <div>
+                <h4 class="text-[0.7rem] uppercase tracking-[0.12em] text-white/40 font-semibold mb-3">
+                  Visit Us
+                </h4>
+                <p class="text-sm text-white/65 leading-relaxed">
+                  595 West Hunt Club Rd
+                  <br />
+                  Nepean, ON K2G 5X6
+                </p>
+              </div>
+              <div>
+                <h4 class="text-[0.7rem] uppercase tracking-[0.12em] text-white/40 font-semibold mb-3">
+                  Contact
+                </h4>
+                <a href="tel:613-224-6804" class="block text-sm text-white/65 py-0.5 transition-colors hover:text-white">613-224-6804</a>
+                <a href="mailto:info@safetyhouse.ca" class="block text-sm text-white/65 py-0.5 transition-colors hover:text-white">info@safetyhouse.ca</a>
+              </div>
             </div>
           </div>
           <div class="border-t border-white/10 pt-6 flex justify-between items-center text-xs text-white/35">
             <span>&copy; {new Date().getFullYear()} The Safety House. All rights reserved.</span>
             <button
               onClick$={toggleDarkMode}
-              class="text-white/50 hover:text-white transition-colors text-base bg-transparent border-none"
+              class="text-white/50 hover:text-white transition-colors bg-transparent border-none"
               aria-label="Toggle dark mode"
             >
-              {darkMode.value ? "\u2600\uFE0F" : "\uD83C\uDF19"}
+              {darkMode.value ? (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              ) : (
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              )}
             </button>
           </div>
         </div>
