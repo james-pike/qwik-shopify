@@ -1,1 +1,0 @@
-import{M as e,L as r,a as d,h,A as S,s as m}from"./q-D_4H-aWc.js";import{m as w}from"./q-DKSdaA7E.js";const p=o=>{const s=e(),{"bind:show":n,closeOnBackdropClick:t,onShow$:a,onClose$:c,alert:i}=o,l=r(!1);return d(w,{localId:s,showSig:n??l,closeOnBackdropClick:t,onShow$:a,onClose$:c,alert:i}),h("div",{...o,children:S(m,null,3,"0i_0")},null,0,"0i_1")};export{p as s_N396yMYpfBo};
