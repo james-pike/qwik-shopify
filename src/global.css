@@ -72,6 +72,15 @@
   }
 }
 
+@keyframes announcementScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.announcement-scroll {
+  animation: announcementScroll 20s linear infinite;
+}
+
 @keyframes sheetBackdropIn {
   from { background-color: rgba(0, 0, 0, 0); }
   to { background-color: rgba(0, 0, 0, 0.5); }

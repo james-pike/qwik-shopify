@@ -74,13 +74,25 @@ export default component$(() => {
   return (
     <div class="max-w-site mx-auto bg-white dark:bg-[#121212] shadow-xl">
       {/* Announcement Bar */}
-      <div class="bg-dark text-white py-2 px-4 md:px-8 text-[0.65rem] md:text-[0.8rem] font-medium tracking-wider whitespace-nowrap overflow-hidden text-ellipsis text-center md:text-left">
+      <div class="bg-dark text-white py-2 px-4 md:px-8 text-[0.65rem] md:text-[0.8rem] font-medium tracking-wider overflow-hidden">
         <div class="flex items-center justify-between">
-          <span>
-            <span class="text-primary font-bold">WE ARE OPEN</span> &mdash; 595
-            West Hunt Club Road, Nepean, ON &bull; Mon-Sat &bull; 613-224-6804
-          </span>
-          <nav class="hidden md:flex items-center gap-5">
+          <div class="overflow-hidden flex-1 mr-4">
+            <div class="announcement-scroll flex whitespace-nowrap">
+              <span class="inline-block px-8">
+                <span class="text-primary font-bold">WE ARE OPEN</span> &mdash; 595 West Hunt Club Road, Nepean, ON &bull; Mon-Sat &bull; 613-224-6804
+              </span>
+              <span class="inline-block px-8">
+                <span class="text-primary font-bold">FREE SHIPPING</span> &mdash; On all orders over $250
+              </span>
+              <span class="inline-block px-8">
+                <span class="text-primary font-bold">WE ARE OPEN</span> &mdash; 595 West Hunt Club Road, Nepean, ON &bull; Mon-Sat &bull; 613-224-6804
+              </span>
+              <span class="inline-block px-8">
+                <span class="text-primary font-bold">FREE SHIPPING</span> &mdash; On all orders over $250
+              </span>
+            </div>
+          </div>
+          <nav class="hidden md:flex items-center gap-5 flex-shrink-0">
             <Link href="/about/" class="text-[0.8rem] font-semibold text-white/60 hover:text-white transition-colors">ABOUT</Link>
             <Link href="/faq/" class="text-[0.8rem] font-semibold text-white/60 hover:text-white transition-colors">FAQ</Link>
             <Link href="/contact/" class="text-[0.8rem] font-semibold text-white/60 hover:text-white transition-colors">CONTACT</Link>

@@ -28,7 +28,17 @@ export const useProduct = routeLoader$(async (requestEvent) => {
     return null;
   }
 
-  const related = await getProductRecommendations(product.id);
+  let related = await getProductRecommendations(product.id);
+
+  // Fallback: if no recommendations, use products from same collection
+  if (related.length === 0 && collectionHandle) {
+    const col = await getCollectionByHandle(collectionHandle, 12);
+    if (col) {
+      related = col.products.edges
+        .map((e) => e.node)
+        .filter((p) => p.handle !== handle);
+    }
+  }
 
   return {
     ...product,

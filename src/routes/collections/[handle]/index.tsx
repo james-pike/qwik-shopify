@@ -1,4 +1,4 @@
-import { component$, useSignal, useComputed$, $, useOnDocument } from "@builder.io/qwik";
+import { component$, useSignal, useComputed$, $, useOnDocument, useVisibleTask$ } from "@builder.io/qwik";
 import { routeLoader$, Link, useLocation } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { getCollectionByHandle, formatPrice } from "~/lib/shopify";
@@ -102,30 +102,49 @@ export default component$(() => {
     );
   });
 
-  const heroData: Record<string, { img?: string; subtitle?: string }> = {
+  const heroData: Record<string, { subtitle?: string; img2?: string }> = {
+    "work-wear": { img2: "/workwear.jpg" },
     "safety-footwear": {
       subtitle: "Looking for Work Wear or Footwear? We've got you covered. The Safety House carries the best brands of men's and women's work clothing and footwear.",
+      img2: "/footwear.jpg",
     },
+    "flame-resistant": { img2: "/flame-resistant-clothing.jpg" },
+    "safety-supplies": { img2: "/safety-supplies.jpg" },
+    "school-wear": { img2: "/schoolwear.jpg" },
   };
   const hero = heroData[c.handle] || {};
-  const heroImg = hero.img || c.image?.url;
+  const heroImg = c.image?.url;
+  const heroImg2 = hero.img2 || null;
+  const heroImages = [heroImg, heroImg2].filter(Boolean) as string[];
+  const heroSlide = useSignal(0);
+
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(({ cleanup }) => {
+    if (heroImages.length < 2) return;
+    const id = setInterval(() => {
+      heroSlide.value = heroSlide.value === 0 ? 1 : 0;
+    }, 5000);
+    cleanup(() => clearInterval(id));
+  });
 
   return (
     <>
-      <div class="relative text-white h-[40vh] px-8 text-center overflow-hidden flex flex-col items-center justify-center">
-        {heroImg ? (
-          <>
+      <div class="relative text-white h-[40svh] px-8 text-center overflow-hidden flex flex-col items-center justify-center">
+        {heroImages.length > 0 ? (
+          heroImages.map((img, i) => (
             <img
-              src={heroImg}
+              key={i}
+              src={img}
               alt={c.image?.altText || ""}
               width={1400}
               height={600}
-              fetchPriority="high"
-              class="absolute inset-0 w-full h-full object-cover"
+              fetchPriority={i === 0 ? "high" : "auto"}
+              class={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${heroSlide.value === i ? "opacity-100" : "opacity-0"}`}
             />
-            <div class="absolute inset-0 bg-gradient-to-br from-dark/60 to-[#2d2d2d]/50" />
-          </>
-        ) : (
+          ))
+        ) : null}
+        <div class="absolute inset-0 bg-gradient-to-br from-dark/60 to-[#2d2d2d]/50" />
+        {heroImages.length === 0 && (
           <div class="absolute inset-0 bg-gradient-to-br from-dark to-[#2d2d2d]" />
         )}
         <h1 class="relative z-10 text-4xl md:text-5xl font-extrabold tracking-tight mb-3">{c.title}</h1>
@@ -136,7 +155,7 @@ export default component$(() => {
         )}
       </div>
 
-      <section class="px-4 md:px-8 py-3 md:py-5">
+      <div class="bg-white dark:bg-[#1a1a1a] border-b border-gray-200/60 dark:border-gray-700/40 px-4 md:px-8 py-3 md:py-4">
         <div class="flex items-center justify-between mb-2 md:hidden">
           <nav class="flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
             <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
@@ -158,10 +177,10 @@ export default component$(() => {
             <button
               type="button"
               aria-label="2 column grid"
-              class={`p-2 transition-colors ${gridCols.value === 2 ? "bg-gray-200 dark:bg-gray-700" : "bg-white dark:bg-[#1e1e1e] hover:bg-gray-50 dark:hover:bg-gray-800"}`}
+              class={`p-1.5 transition-colors ${gridCols.value === 2 ? "bg-gray-200 dark:bg-gray-700" : "bg-white dark:bg-[#1e1e1e] hover:bg-gray-50 dark:hover:bg-gray-800"}`}
               onClick$={() => { gridCols.value = 2; }}
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                 <rect x="1" y="1" width="6" height="6" rx="1" />
                 <rect x="9" y="1" width="6" height="6" rx="1" />
                 <rect x="1" y="9" width="6" height="6" rx="1" />
@@ -171,10 +190,10 @@ export default component$(() => {
             <button
               type="button"
               aria-label="1 column list"
-              class={`p-2 transition-colors ${gridCols.value === 1 ? "bg-gray-200 dark:bg-gray-700" : "bg-white dark:bg-[#1e1e1e] hover:bg-gray-50 dark:hover:bg-gray-800"}`}
+              class={`p-1.5 transition-colors ${gridCols.value === 1 ? "bg-gray-200 dark:bg-gray-700" : "bg-white dark:bg-[#1e1e1e] hover:bg-gray-50 dark:hover:bg-gray-800"}`}
               onClick$={() => { gridCols.value = 1; }}
             >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                 <rect x="1" y="1" width="14" height="6" rx="1" />
                 <rect x="1" y="9" width="14" height="6" rx="1" />
               </svg>
@@ -182,12 +201,10 @@ export default component$(() => {
           </div>
           {/* Sort dropdown - mobile */}
           <div class="flex items-center gap-2">
-            <label for="sort-select-mobile" class="text-sm font-medium text-gray-600 dark:text-gray-400">
-              Sort by:
-            </label>
             <select
               id="sort-select-mobile"
-              class="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50"
+              aria-label="Sort by"
+              class="text-xs border border-gray-300 dark:border-gray-600 rounded-lg px-2.5 py-1.5 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50"
               value={currentSort.value}
               onChange$={(_, el) => {
                 const val = el.value;
@@ -214,16 +231,16 @@ export default component$(() => {
             <div class="relative" data-brand-filter>
               <button
                 type="button"
-                class="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer flex items-center gap-2 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
+                class="text-xs border border-gray-300 dark:border-gray-600 rounded-lg px-2.5 py-1.5 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer flex items-center gap-1.5 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
                 onClick$={() => { brandFilterOpen.value = !brandFilterOpen.value; }}
               >
                 Brand
                 {selectedBrands.value.length > 0 && (
-                  <span class="bg-primary text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  <span class="bg-primary text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
                     {selectedBrands.value.length}
                   </span>
                 )}
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -373,6 +390,9 @@ export default component$(() => {
           </div>
         </div>
 
+      </div>
+
+      <section class="px-4 md:px-8 py-4 md:py-5">
         {filteredProducts.value.length === 0 ? (
           <p class="text-center text-gray-500 dark:text-gray-400 py-12">
             {allProducts.length === 0
