@@ -1,0 +1,1 @@
+import{S as a}from"./q-CqRTG9tb.js";import{d as e,h as o,R as n,A as l,s as r}from"./q-D_4H-aWc.js";const b=s=>{const i=e(a),d=`${i.localId}-description`;return o("div",{id:d,get"data-disabled"(){return i.isDisabledSig.value?"":void 0},...s,children:l(r,null,3,"Nx_0")},{"data-disabled":n(t=>t.isDisabledSig.value?"":void 0,[i])},0,"Nx_1")};export{b as s_ZbYQDvCWQWY};

@@ -1,0 +1,1 @@
+import{v as r}from"./q-D_4H-aWc.js";import{x as s}from"./q-D_4H-aWc.js";const c=()=>{const[o]=r(),t=localStorage.getItem("cart_count");t&&(o.value=parseInt(t,10))};export{s as _hW,c as s_Y0ijM95UbQE};

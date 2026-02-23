@@ -1,1 +1,0 @@
-import{H as s}from"./q-D16hlska.js";import{A as e,i as o,s as i}from"./q-DeIzdHld.js";const t=r=>e(s,{role:"region",...r,children:e(i,null,3,"eC_0"),[o]:{role:o}},0,"eC_1");export{t as s_jiYuXUZE0eU};
