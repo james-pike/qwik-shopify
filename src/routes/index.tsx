@@ -122,7 +122,7 @@ export default component$(() => {
         {heroSlides.map((slide, i) => (
           <div
             key={i}
-            class={`text-white py-28 md:py-36 px-8 text-center overflow-hidden transition-opacity duration-700 ease-in-out ${
+            class={`text-white py-36 md:py-36 px-8 text-center overflow-hidden transition-opacity duration-700 ease-in-out min-h-[70vh] md:min-h-0 flex items-center justify-center ${
               i === 0 ? "relative" : "absolute inset-0"
             } ${currentSlide.value === i ? "opacity-100 z-10" : "opacity-0 z-0"}`}
             aria-hidden={currentSlide.value !== i}

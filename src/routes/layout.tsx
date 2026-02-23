@@ -250,7 +250,7 @@ export default component$(() => {
                   <img src="/logo.png" alt="The Safety House" width="180" height="52" class="object-contain w-[180px] dark:invert" />
                   <img src="/flag.webp" alt="" width="32" height="32" class="w-8 h-8 object-contain" />
                 </div>
-                <Modal.Close class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-dark dark:hover:text-white bg-transparent border-none text-xl">
+                <Modal.Close class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-dark dark:hover:text-white bg-transparent border-none text-xl focus:outline-none">
                   &times;
                 </Modal.Close>
               </div>

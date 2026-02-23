@@ -140,6 +140,95 @@ export default component$(() => {
           </span>
         </div>
 
+        <div class="flex flex-wrap items-center justify-end gap-3 mb-4 md:hidden">
+          {/* Sort dropdown - mobile */}
+          <div class="flex items-center gap-2">
+            <label for="sort-select-mobile" class="text-sm font-medium text-gray-600 dark:text-gray-400">
+              Sort by:
+            </label>
+            <select
+              id="sort-select-mobile"
+              class="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50"
+              value={currentSort.value}
+              onChange$={(_, el) => {
+                const val = el.value;
+                currentSort.value = val;
+                const url = new URL(window.location.href);
+                if (val) {
+                  url.searchParams.set("sort", val);
+                } else {
+                  url.searchParams.delete("sort");
+                }
+                history.replaceState(null, "", url.pathname + url.search);
+              }}
+            >
+              {SORT_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value} selected={opt.value === currentSort.value}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Brand filter - mobile */}
+          {brands.value.length > 1 && (
+            <div class="relative">
+              <button
+                type="button"
+                class="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer flex items-center gap-2 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
+                onClick$={() => { brandFilterOpen.value = !brandFilterOpen.value; }}
+              >
+                Brand
+                {selectedBrands.value.length > 0 && (
+                  <span class="bg-primary text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    {selectedBrands.value.length}
+                  </span>
+                )}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {brandFilterOpen.value && (
+                <div class="absolute top-full right-0 mt-1 bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-20 min-w-[200px] py-2">
+                  {selectedBrands.value.length > 0 && (
+                    <button
+                      type="button"
+                      class="w-full text-left px-4 py-1.5 text-xs text-primary hover:bg-gray-50 dark:hover:bg-gray-800 font-medium"
+                      onClick$={() => { selectedBrands.value = []; }}
+                    >
+                      Clear all
+                    </button>
+                  )}
+                  {brands.value.map((brand) => (
+                    <label
+                      key={brand}
+                      class="flex items-center gap-2 px-4 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary/50"
+                        checked={selectedBrands.value.includes(brand)}
+                        onChange$={() => {
+                          const current = [...selectedBrands.value];
+                          const idx = current.indexOf(brand);
+                          if (idx >= 0) {
+                            current.splice(idx, 1);
+                          } else {
+                            current.push(brand);
+                          }
+                          selectedBrands.value = current;
+                        }}
+                      />
+                      {brand}
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
         <div class="hidden md:flex flex-wrap items-center justify-between gap-3 mb-6">
           <nav class="flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
             <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
