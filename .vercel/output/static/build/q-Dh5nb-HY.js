@@ -1,0 +1,1 @@
+import{v as s}from"./q-DeIzdHld.js";import{x as u}from"./q-DeIzdHld.js";const v=({cleanup:t})=>{const[e,a]=s(),l=2,r=setInterval(()=>{a.value||(e.value<l?e.value++:(e.value=0,clearInterval(r)))},6e3);t(()=>clearInterval(r))};export{u as _hW,v as s_hs55Cc65pvA};
