@@ -82,7 +82,7 @@ export default component$(() => {
       secondaryLink: { href: "/about/", label: "Our Story" },
     },
     {
-      image: "/hero.jpg",
+      image: "/footwear.jpg",
       badge: "CSA Approved",
       title: <>Safety Footwear<br />Built to <em class="not-italic text-primary">Protect</em></>,
       description: "Browse our selection of CSA-approved boots and shoes from trusted brands like Timberland Pro, Red Wing, and Blundstone.",
@@ -90,7 +90,7 @@ export default component$(() => {
       secondaryLink: { href: "/collections/work-wear/", label: "Work Wear" },
     },
     {
-      image: "/hero.jpg",
+      image: "/embroidery.jpg",
       badge: "In-House Embroidery",
       title: <>Custom Decoration<br />for Your <em class="not-italic text-primary">Team</em></>,
       description: "Timely, budget-conscious embroidery and transfer services for your company, school, or organization.",
@@ -123,7 +123,7 @@ export default component$(() => {
           <div
             key={i}
             class={`text-white py-36 md:py-36 px-8 text-center overflow-hidden transition-opacity duration-700 ease-in-out ${
-              i === 0 ? "relative" : "absolute inset-0"
+              i === 0 ? "relative" : "absolute top-0 left-0 w-full h-full"
             } ${currentSlide.value === i ? "opacity-100 z-10" : "opacity-0 z-0"}`}
             aria-hidden={currentSlide.value !== i}
           >
