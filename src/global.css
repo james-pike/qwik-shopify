@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    font-size: 17px;
+  }
+
   body {
     @apply font-sans text-[#1a1a1a] bg-gray-100 leading-relaxed antialiased dark:bg-[#0a0a0a] dark:text-white;
   }

@@ -155,8 +155,9 @@ export default component$(() => {
         )}
       </div>
 
-      <div class="bg-white dark:bg-[#1a1a1a] border-b border-gray-200/60 dark:border-gray-700/40 px-4 md:px-8 py-3 md:py-4">
-        <div class="flex items-center justify-between mb-2 md:hidden">
+      <div class="bg-white dark:bg-[#1a1a1a] border-y border-gray-200/60 dark:border-gray-700/40 px-4 md:px-8 py-4 md:py-5">
+        {/* Row 1: Breadcrumbs + product count (mobile) */}
+        <div class="flex items-center justify-between mb-3 md:hidden">
           <nav class="flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
             <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
               Collections
@@ -171,16 +172,17 @@ export default component$(() => {
           </span>
         </div>
 
-        <div class="flex flex-wrap items-center justify-end gap-2 mb-2 md:hidden">
+        {/* Row 2: Controls (mobile) */}
+        <div class="flex flex-wrap items-center justify-end gap-2.5 md:hidden">
           {/* Grid toggle - mobile */}
           <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden mr-auto">
             <button
               type="button"
               aria-label="2 column grid"
-              class={`p-1.5 transition-colors ${gridCols.value === 2 ? "bg-gray-200 dark:bg-gray-700" : "bg-white dark:bg-[#1e1e1e] hover:bg-gray-50 dark:hover:bg-gray-800"}`}
+              class={`p-2 transition-colors ${gridCols.value === 2 ? "bg-gray-200 dark:bg-gray-700" : "bg-white dark:bg-[#1e1e1e] hover:bg-gray-50 dark:hover:bg-gray-800"}`}
               onClick$={() => { gridCols.value = 2; }}
             >
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                 <rect x="1" y="1" width="6" height="6" rx="1" />
                 <rect x="9" y="1" width="6" height="6" rx="1" />
                 <rect x="1" y="9" width="6" height="6" rx="1" />
@@ -190,10 +192,10 @@ export default component$(() => {
             <button
               type="button"
               aria-label="1 column list"
-              class={`p-1.5 transition-colors ${gridCols.value === 1 ? "bg-gray-200 dark:bg-gray-700" : "bg-white dark:bg-[#1e1e1e] hover:bg-gray-50 dark:hover:bg-gray-800"}`}
+              class={`p-2 transition-colors ${gridCols.value === 1 ? "bg-gray-200 dark:bg-gray-700" : "bg-white dark:bg-[#1e1e1e] hover:bg-gray-50 dark:hover:bg-gray-800"}`}
               onClick$={() => { gridCols.value = 1; }}
             >
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                 <rect x="1" y="1" width="14" height="6" rx="1" />
                 <rect x="1" y="9" width="14" height="6" rx="1" />
               </svg>
@@ -204,7 +206,7 @@ export default component$(() => {
             <select
               id="sort-select-mobile"
               aria-label="Sort by"
-              class="text-xs border border-gray-300 dark:border-gray-600 rounded-lg px-2.5 py-1.5 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50"
+              class="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50"
               value={currentSort.value}
               onChange$={(_, el) => {
                 const val = el.value;
@@ -231,16 +233,16 @@ export default component$(() => {
             <div class="relative" data-brand-filter>
               <button
                 type="button"
-                class="text-xs border border-gray-300 dark:border-gray-600 rounded-lg px-2.5 py-1.5 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer flex items-center gap-1.5 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
+                class="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer flex items-center gap-2 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
                 onClick$={() => { brandFilterOpen.value = !brandFilterOpen.value; }}
               >
                 Brand
                 {selectedBrands.value.length > 0 && (
-                  <span class="bg-primary text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                  <span class="bg-primary text-white text-[11px] font-bold rounded-full w-5 h-5 flex items-center justify-center">
                     {selectedBrands.value.length}
                   </span>
                 )}
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -285,6 +287,7 @@ export default component$(() => {
           )}
         </div>
 
+        {/* Desktop: Row 1 breadcrumbs, Row 2 controls */}
         <div class="hidden md:flex flex-wrap items-center justify-between gap-3 mb-3">
           <nav class="flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
             <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
@@ -294,7 +297,14 @@ export default component$(() => {
             <span class="font-medium text-gray-900 dark:text-white">{c.title}</span>
           </nav>
 
-          <div class="flex flex-wrap items-center gap-3">
+          <span class="text-sm text-gray-500 dark:text-gray-400">
+            {selectedBrands.value.length > 0
+              ? `${filteredProducts.value.length} of ${allProducts.length} products`
+              : `${allProducts.length} products`}
+          </span>
+        </div>
+
+        <div class="hidden md:flex flex-wrap items-center gap-3">
           {/* Sort dropdown */}
           <div class="flex items-center gap-2">
             <label for="sort-select" class="text-sm font-medium text-gray-600 dark:text-gray-400">
@@ -381,18 +391,11 @@ export default component$(() => {
               )}
             </div>
           )}
-
-          <span class="text-sm text-gray-500 dark:text-gray-400">
-            {selectedBrands.value.length > 0
-              ? `${filteredProducts.value.length} of ${allProducts.length} products`
-              : `${allProducts.length} products`}
-          </span>
-          </div>
         </div>
 
       </div>
 
-      <section class="px-4 md:px-8 py-4 md:py-5">
+      <section class="px-4 md:px-8 py-5 md:py-6">
         {filteredProducts.value.length === 0 ? (
           <p class="text-center text-gray-500 dark:text-gray-400 py-12">
             {allProducts.length === 0
