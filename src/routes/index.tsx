@@ -68,17 +68,14 @@ export default component$(() => {
   const paused = useSignal(false);
 
   // Auto-advance through all slides once, then stop on slide 0
-  useVisibleTask$(({ track, cleanup }) => {
-    track(() => paused.value);
+  useVisibleTask$(({ cleanup }) => {
     const lastIndex = 2;
-    let done = false;
     const id = setInterval(() => {
-      if (paused.value || done) return;
+      if (paused.value) return;
       if (currentSlide.value < lastIndex) {
         currentSlide.value++;
       } else {
         currentSlide.value = 0;
-        done = true;
         clearInterval(id);
       }
     }, 6000);

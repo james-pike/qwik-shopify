@@ -119,23 +119,7 @@ export default component$(() => {
   const col = p._collection;
 
   return (
-    <div class="px-4 md:px-8 py-12 md:py-16">
-      <nav class="flex items-center gap-1.5 text-sm mb-6" aria-label="Breadcrumb">
-        <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
-          Home
-        </Link>
-        {col && (
-          <>
-            <span class="text-gray-400 dark:text-gray-500">/</span>
-            <Link href={`/collections/${col.handle}/`} class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
-              {col.title}
-            </Link>
-          </>
-        )}
-        <span class="text-gray-400 dark:text-gray-500">/</span>
-        <span class="font-medium text-gray-900 dark:text-white truncate max-w-[200px] md:max-w-none">{p.title}</span>
-      </nav>
-
+    <div class="px-4 md:px-8 py-8 md:py-16">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
         {/* Images */}
         <div>
@@ -173,6 +157,19 @@ export default component$(() => {
               No image
             </div>
           )}
+          <nav class="flex items-center gap-1.5 text-sm mt-4" aria-label="Breadcrumb">
+            <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
+              Home
+            </Link>
+            {col && (
+              <>
+                <span class="text-gray-400 dark:text-gray-500">/</span>
+                <Link href={`/collections/${col.handle}/`} class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
+                  {col.title}
+                </Link>
+              </>
+            )}
+          </nav>
         </div>
 
         {/* Product Info */}

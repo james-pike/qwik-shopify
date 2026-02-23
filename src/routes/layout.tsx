@@ -97,7 +97,7 @@ export default component$(() => {
               alt="The Safety House"
               width="210"
               height="60"
-              class="object-contain w-[190px] md:w-[240px] dark:invert"
+              class="object-contain w-[220px] md:w-[280px] dark:invert"
             />
             <img
               src="/flag.webp"
