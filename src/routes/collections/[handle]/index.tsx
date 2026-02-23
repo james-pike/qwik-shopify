@@ -112,7 +112,7 @@ export default component$(() => {
 
   return (
     <>
-      <div class="relative text-white py-20 md:py-28 px-8 text-center overflow-hidden">
+      <div class="relative text-white h-[40vh] px-8 text-center overflow-hidden flex flex-col items-center justify-center">
         {heroImg ? (
           <>
             <img
