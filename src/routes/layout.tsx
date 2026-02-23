@@ -90,7 +90,7 @@ export default component$(() => {
 
       {/* Header */}
       <header class="bg-white dark:bg-[#1e1e1e] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-[100] shadow-sm pl-3 pr-2 md:px-4">
-        <div class="py-0 md:py-2 flex items-center justify-between">
+        <div class="py-1 md:py-2 flex items-center justify-between">
           <Link href="/" class="text-xl font-extrabold tracking-tight flex items-center gap-2">
             <img
               src="/logo.png"
@@ -114,7 +114,7 @@ export default component$(() => {
             <Link href="/collections/safety-footwear/" class="nav-link">Safety Footwear</Link>
             <Link href="/collections/safety-supplies/" class="nav-link">Safety Supplies</Link>
             <Link href="/collections/flame-resistant/" class="nav-link">Flame Resistant</Link>
-            <Link href="/collections/school-wear/" class="nav-link">School Wear</Link>
+            <Link href="/collections/school-wear/" class="nav-link">School & Sports Wear</Link>
           </nav>
 
           <div class="flex items-center gap-1">
@@ -277,7 +277,7 @@ export default component$(() => {
                 </Modal.Close>
                 <Modal.Close class="bg-transparent border-none text-left">
                   <Link href="/collections/school-wear/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
-                    School Wear
+                    School & Sports Wear
                   </Link>
                 </Modal.Close>
               </nav>
@@ -296,8 +296,8 @@ export default component$(() => {
 
       {/* Footer */}
       <footer class="bg-dark text-white/80 mt-16">
-        <div class="pt-14 px-8 pb-8">
-          <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-12 md:gap-14 mb-10">
+        <div class="pt-10 px-4 pb-6 md:pt-14 md:px-8 md:pb-8">
+          <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-8 md:gap-14 mb-10">
             <div>
               <img
                 src="/logo.png"
@@ -351,7 +351,7 @@ export default component$(() => {
                 Visit Us
               </h4>
               <p class="text-sm text-white/65 leading-relaxed">
-                595 West Hunt Club Road
+                595 West Hunt Club Rd
                 <br />
                 Nepean, ON K2G 5X6
                 <br />

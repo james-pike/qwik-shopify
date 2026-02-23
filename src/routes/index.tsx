@@ -205,8 +205,8 @@ export default component$(() => {
               />
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
               <div class="relative z-10">
-                <h3 class="text-white text-lg font-bold">{cat.name}</h3>
-                <p class="text-white/60 text-xs mt-1">{cat.desc}</p>
+                <h3 class="text-white text-2xl font-bold">{cat.name}</h3>
+                <p class="text-white/60 text-base mt-1">{cat.desc}</p>
               </div>
               <span class="relative z-10 text-primary text-lg ml-auto transition-transform duration-200 group-hover:translate-x-1">
                 &rarr;
