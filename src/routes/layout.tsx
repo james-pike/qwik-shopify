@@ -308,7 +308,7 @@ export default component$(() => {
 
       {/* Footer */}
       <footer class="bg-dark text-white/80 mt-16">
-        <div class="pt-10 px-4 pb-6 md:pt-14 md:px-8 md:pb-8">
+        <div class="pt-12 px-6 pb-8 md:pt-16 md:px-10 md:pb-10">
           <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-8 md:gap-14 mb-10">
             <div>
               <img

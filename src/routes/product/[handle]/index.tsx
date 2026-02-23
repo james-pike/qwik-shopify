@@ -119,7 +119,7 @@ export default component$(() => {
   const col = p._collection;
 
   return (
-    <div class="px-4 md:px-8 py-8 md:py-16">
+    <div class="px-6 md:px-10 py-6 md:py-16">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
         {/* Images */}
         <div>
@@ -279,7 +279,7 @@ export default component$(() => {
           {/* Description */}
           {p.descriptionHtml && (
             <div
-              class="border-t border-gray-200 dark:border-gray-700 pt-6 text-[#444] dark:text-gray-300 leading-loose text-[0.925rem]"
+              class="border-t border-gray-200 dark:border-gray-700 pt-8 mt-2 text-[#444] dark:text-gray-300 leading-loose text-[0.925rem]"
               dangerouslySetInnerHTML={p.descriptionHtml}
             />
           )}

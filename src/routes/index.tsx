@@ -181,15 +181,31 @@ export default component$(() => {
         </div>
       </section>
 
+      {/* Brands */}
+      <div class="bg-white dark:bg-[#1e1e1e] border-y border-gray-200 dark:border-gray-700 py-12 px-4 md:px-8 text-center">
+        <h2 class="text-xs uppercase tracking-[0.12em] text-gray-500 mb-8 font-semibold">
+          Trusted Brands We Carry
+        </h2>
+        <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10">
+          {brands.map((brand) => (
+            <img
+              key={brand.name}
+              src={brand.img}
+              alt={brand.name}
+              width={120}
+              height={48}
+              class="h-8 md:h-10 w-auto object-contain transition-all duration-200"
+            />
+          ))}
+        </div>
+      </div>
+
       {/* Categories */}
       <section class="px-4 md:px-8 py-16 md:py-20">
         <div class="text-center mb-10">
           <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
             Explore Essentials
           </h2>
-          {/* <p class="text-gray-500 dark:text-gray-400 text-base max-w-[480px] mx-auto">
-            From the job site to the classroom, we've got you covered.
-          </p> */}
         </div>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
           {categories.map((cat) => (
@@ -217,25 +233,6 @@ export default component$(() => {
           ))}
         </div>
       </section>
-
-      {/* Brands */}
-      <div class="bg-white dark:bg-[#1e1e1e] border-y border-gray-200 dark:border-gray-700 py-12 px-4 md:px-8 text-center">
-        <h2 class="text-xs uppercase tracking-[0.12em] text-gray-500 mb-8 font-semibold">
-          Trusted Brands We Carry
-        </h2>
-        <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10">
-          {brands.map((brand) => (
-            <img
-              key={brand.name}
-              src={brand.img}
-              alt={brand.name}
-              width={120}
-              height={48}
-              class="h-8 md:h-10 w-auto object-contain transition-all duration-200"
-            />
-          ))}
-        </div>
-      </div>
 
       {/* Why The Safety House */}
       <section class="px-4 md:px-8 py-16 md:py-20">

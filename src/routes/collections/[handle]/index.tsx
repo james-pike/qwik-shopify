@@ -56,6 +56,7 @@ export default component$(() => {
   const brandFilterOpen = useSignal(false);
   const selectedBrands = useSignal<string[]>([]);
   const currentSort = useSignal(location.url.searchParams.get("sort") || "");
+  const gridCols = useSignal<1 | 2>(2);
 
   useOnDocument(
     "click",
@@ -135,11 +136,11 @@ export default component$(() => {
         )}
       </div>
 
-      <section class="px-4 md:px-8 py-8 md:py-16">
-        <div class="flex items-center justify-between mb-4 md:hidden">
+      <section class="px-4 md:px-8 py-4 md:py-8">
+        <div class="flex items-center justify-between mb-3 md:hidden">
           <nav class="flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
             <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
-              Home
+              Collections
             </Link>
             <span class="text-gray-400 dark:text-gray-500">/</span>
             <span class="font-medium text-gray-900 dark:text-white">{c.title}</span>
@@ -151,7 +152,34 @@ export default component$(() => {
           </span>
         </div>
 
-        <div class="flex flex-wrap items-center justify-end gap-3 mb-4 md:hidden">
+        <div class="flex flex-wrap items-center justify-end gap-2 mb-3 md:hidden">
+          {/* Grid toggle - mobile */}
+          <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden mr-auto">
+            <button
+              type="button"
+              aria-label="2 column grid"
+              class={`p-2 transition-colors ${gridCols.value === 2 ? "bg-gray-200 dark:bg-gray-700" : "bg-white dark:bg-[#1e1e1e] hover:bg-gray-50 dark:hover:bg-gray-800"}`}
+              onClick$={() => { gridCols.value = 2; }}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="1" y="1" width="6" height="6" rx="1" />
+                <rect x="9" y="1" width="6" height="6" rx="1" />
+                <rect x="1" y="9" width="6" height="6" rx="1" />
+                <rect x="9" y="9" width="6" height="6" rx="1" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              aria-label="1 column list"
+              class={`p-2 transition-colors ${gridCols.value === 1 ? "bg-gray-200 dark:bg-gray-700" : "bg-white dark:bg-[#1e1e1e] hover:bg-gray-50 dark:hover:bg-gray-800"}`}
+              onClick$={() => { gridCols.value = 1; }}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="1" y="1" width="14" height="6" rx="1" />
+                <rect x="1" y="9" width="14" height="6" rx="1" />
+              </svg>
+            </button>
+          </div>
           {/* Sort dropdown - mobile */}
           <div class="flex items-center gap-2">
             <label for="sort-select-mobile" class="text-sm font-medium text-gray-600 dark:text-gray-400">
@@ -240,10 +268,10 @@ export default component$(() => {
           )}
         </div>
 
-        <div class="hidden md:flex flex-wrap items-center justify-between gap-3 mb-6">
+        <div class="hidden md:flex flex-wrap items-center justify-between gap-3 mb-4">
           <nav class="flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
             <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
-              Home
+              Collections
             </Link>
             <span class="text-gray-400 dark:text-gray-500">/</span>
             <span class="font-medium text-gray-900 dark:text-white">{c.title}</span>
@@ -352,7 +380,7 @@ export default component$(() => {
               : "No products match the selected filters."}
           </p>
         ) : (
-          <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
+          <div class={`grid gap-3 md:gap-5 md:grid-cols-[repeat(auto-fill,minmax(260px,1fr))] ${gridCols.value === 1 ? "grid-cols-1" : "grid-cols-2"}`}>
             {filteredProducts.value.map((product: ShopifyProduct) => (
               <Link
                 key={product.id}
@@ -365,10 +393,10 @@ export default component$(() => {
                     alt={product.featuredImage.altText || product.title}
                     width={400}
                     height={400}
-                    class="w-full h-[280px] object-cover bg-gray-100 dark:bg-gray-800 transition-transform duration-300 group-hover:scale-105"
+                    class="w-full aspect-square md:h-[280px] md:aspect-auto object-cover bg-gray-100 dark:bg-gray-800 transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
-                  <div class="w-full h-[280px] bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-sm">
+                  <div class="w-full aspect-square md:h-[280px] md:aspect-auto bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-sm">
                     No image
                   </div>
                 )}
