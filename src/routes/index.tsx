@@ -139,7 +139,7 @@ export default component$(() => {
         {heroSlides.map((slide, i) => (
           <div
             key={i}
-            class={`text-white py-36 md:py-36 px-8 text-center overflow-hidden transition-opacity duration-700 ease-in-out ${
+            class={`text-white py-24 md:py-28 px-8 text-center overflow-hidden transition-opacity duration-700 ease-in-out ${
               i === 0 ? "relative" : "absolute top-0 left-0 w-full h-full"
             } ${currentSlide.value === i ? "opacity-100 z-10" : "opacity-0 z-0"}`}
             aria-hidden={currentSlide.value !== i}
@@ -211,7 +211,7 @@ export default component$(() => {
               alt={brand.name}
               width={120}
               height={48}
-              class="h-12 md:h-14 w-auto object-contain transition-all duration-200"
+              class="h-10 md:h-12 w-auto object-contain transition-all duration-200"
             />
           ))}
         </div>
