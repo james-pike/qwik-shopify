@@ -89,7 +89,7 @@ export default component$(() => {
       </div>
 
       {/* Header */}
-      <header class="bg-white dark:bg-[#1e1e1e] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-[100] shadow-sm px-2 md:px-4">
+      <header class="bg-white dark:bg-[#1e1e1e] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-[100] shadow-sm pl-3 pr-2 md:px-4">
         <div class="py-0 md:py-2 flex items-center justify-between">
           <Link href="/" class="text-xl font-extrabold tracking-tight flex items-center gap-2">
             <img
