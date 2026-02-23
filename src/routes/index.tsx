@@ -51,6 +51,23 @@ export default component$(() => {
     { name: "Oberon", img: "/brands/oberon.jpg" },
     { name: "Orange River", img: "/brands/orange_river_logo.jpg" },
     { name: "Red Kap", img: "/brands/redkap.png" },
+    { name: "Atlas", img: "/brands/atlas.png" },
+    { name: "Baffin", img: "/brands/baffin.jpg" },
+    { name: "Blundstone", img: "/brands/blunstone_logo.jpg" },
+    { name: "Canada West", img: "/brands/canada-west-boots-logo-1.jpg" },
+    { name: "Dunlop", img: "/brands/dunlop.png" },
+    { name: "Irish Setter", img: "/brands/irish-setter.png" },
+    { name: "JB Goodhue", img: "/brands/jb-goodhue.png" },
+    { name: "Keen", img: "/brands/keen.png" },
+    { name: "Mellow Walk", img: "/brands/mellow_wailk.jpg" },
+    { name: "Muck", img: "/brands/muck.png" },
+    { name: "Rasco", img: "/brands/rasco.png" },
+    { name: "Redback", img: "/brands/redback.jpg" },
+    { name: "Red Wing", img: "/brands/red-wing-shoes.jpg" },
+    { name: "Royer", img: "/brands/royer.jpg" },
+    { name: "STC", img: "/brands/stc.png" },
+    { name: "Terra", img: "/brands/terra.png" },
+    { name: "Vismo", img: "/brands/vismo-logo1-768x500.jpg" },
   ];
 
   const currentSlide = useSignal(0);
@@ -194,7 +211,7 @@ export default component$(() => {
               alt={brand.name}
               width={120}
               height={48}
-              class="h-8 md:h-10 w-auto object-contain transition-all duration-200"
+              class="h-12 md:h-14 w-auto object-contain transition-all duration-200"
             />
           ))}
         </div>
