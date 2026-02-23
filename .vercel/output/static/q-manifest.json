@@ -1,6 +1,6 @@
 {
 	"version": "1",
-	"manifestHash": "za2uj5",
+	"manifestHash": "ipkv1v",
 	"options": {
 		"target": "client",
 		"buildMode": "production",
@@ -10,41 +10,41 @@
 	},
 	"core": "q-rmeZrDEg.js",
 	"preloader": "q-BKZ00VYc.js",
-	"bundleGraphAsset": "assets/C9vr8sjS-bundle-graph.json",
+	"bundleGraphAsset": "assets/Cdgtyb9m-bundle-graph.json",
 	"injections": [
 		{
 			"tag": "link",
 			"location": "head",
 			"attributes": {
 				"rel": "stylesheet",
-				"href": "/assets/Bmp4HRd5-style.css"
+				"href": "/assets/W4m_2Hpq-style.css"
 			}
 		}
 	],
 	"mapping": {
-		"s_0dtRXRauDoI": "q-D7nlabbI.js",
-		"s_0q0bk40mJWQ": "q-CEeXO9hw.js",
-		"s_13jF279jjrs": "q-BVzm24sE.js",
+		"s_0dtRXRauDoI": "q-GNGCkZy8.js",
+		"s_0q0bk40mJWQ": "q-BFBSoavC.js",
+		"s_13jF279jjrs": "q-B-4eIxL9.js",
 		"s_8zIoh0WYfsc": "q-OBfxbotT.js",
-		"s_BAj7pIgjA84": "q-BVzm24sE.js",
-		"s_KG5vc6h1cT4": "q-BVzm24sE.js",
-		"s_M9sK0tN9hdI": "q-BVzm24sE.js",
+		"s_BAj7pIgjA84": "q-B-4eIxL9.js",
+		"s_KG5vc6h1cT4": "q-B-4eIxL9.js",
+		"s_M9sK0tN9hdI": "q-B-4eIxL9.js",
 		"s_W3ypTncjkl4": "q-C8hzXz1C.js",
-		"s_Wz5ZM1gqpH4": "q-BVzm24sE.js",
-		"s_c0KcyKFKFxc": "q-BVzm24sE.js",
+		"s_Wz5ZM1gqpH4": "q-B-4eIxL9.js",
+		"s_c0KcyKFKFxc": "q-B-4eIxL9.js",
 		"s_iLFkoOFYzak": "q-C8hzXz1C.js",
 		"s_px33Vnb0Heg": "q-C8hzXz1C.js",
-		"s_vdPvPmgSzZc": "q-CEeXO9hw.js",
-		"s_z3cj0LCcn0A": "q-Bf54qiD_.js",
+		"s_vdPvPmgSzZc": "q-BFBSoavC.js",
+		"s_z3cj0LCcn0A": "q-Cw7dsvPZ.js",
 		"s_zKBrYGfJ9Zg": "q-BAb5al4m.js",
-		"s_LMnJ0qWsGKE": "q-D7nlabbI.js",
-		"s_oBZ1mXnEhZE": "q-D7nlabbI.js",
-		"s_CJwjjKYzkJE": "q-D7nlabbI.js",
-		"s_DX4A9vQyR6s": "q-D7nlabbI.js",
-		"s_18ODPtQeK4M": "q-BVzm24sE.js",
-		"s_6Mts0aPtXeo": "q-BVzm24sE.js",
-		"s_8Kb0W8ylkfg": "q-BVzm24sE.js",
-		"s_dxWNSlrFc1g": "q-BVzm24sE.js",
+		"s_LMnJ0qWsGKE": "q-GNGCkZy8.js",
+		"s_oBZ1mXnEhZE": "q-GNGCkZy8.js",
+		"s_CJwjjKYzkJE": "q-GNGCkZy8.js",
+		"s_DX4A9vQyR6s": "q-GNGCkZy8.js",
+		"s_18ODPtQeK4M": "q-B-4eIxL9.js",
+		"s_6Mts0aPtXeo": "q-B-4eIxL9.js",
+		"s_8Kb0W8ylkfg": "q-B-4eIxL9.js",
+		"s_dxWNSlrFc1g": "q-B-4eIxL9.js",
 		"s_2XT02aE4yCc": "q-CuiyY4kf.js",
 		"s_f11KT0LpGsc": "q-BSWiRZBT.js",
 		"s_0XeIYqxZjlU": "q-EPeWZJiB.js",
@@ -56,86 +56,61 @@
 		"s_Xu7UfCRBWhI": "q-16obpgw5.js",
 		"s_uReY93e40Uw": "q-DF-xgOyn.js",
 		"s_06u6R08ZfbA": "q-DzK-4ChZ.js",
-		"s_0E0xHuYbeB4": "q-HwBnAua1.js",
+		"s_0E0xHuYbeB4": "q-BD5Sl78l.js",
 		"s_0QXTkyeo6t4": "q-OBfxbotT.js",
 		"s_0RNU1ySF9MA": "q-EPeWZJiB.js",
-		"s_0ziQmC3nc4I": "q-Cr81Uejr.js",
-		"s_1E7R1t0YR1A": "q-DAq1Ykj7.js",
-		"s_32KLFlOO5uE": "q-C2upQ77K.js",
-		"s_50gO42EfhTQ": "q-YyldzjFK.js",
-		"s_5WhXOrGHVNQ": "q-BAqaPLDV.js",
-		"s_6et0P2lVhsw": "q-DAq1Ykj7.js",
+		"s_32KLFlOO5uE": "q-Bd_7HgiD.js",
+		"s_50gO42EfhTQ": "q-YMCopps-.js",
 		"s_6vM3fM0I8v8": "q-C0vVMvqj.js",
-		"s_8Q3LwDP0Tvg": "q-Cr81Uejr.js",
-		"s_9zJeWrQPs6w": "q-DAq1Ykj7.js",
 		"s_A8u0vKP9CyM": "q-BmJg75dI.js",
 		"s_AbKC8Zz7U20": "q-CC1_NTwA.js",
 		"s_BfZAvcf0Bu8": "q-TPJ7_UNR.js",
-		"s_BiskTtujlWw": "q-DAq1Ykj7.js",
 		"s_C5MuXZ9uEV0": "q-C0vVMvqj.js",
 		"s_COU0LzeZAkw": "q-TPJ7_UNR.js",
-		"s_CWjmrGThkAw": "q-YyldzjFK.js",
-		"s_CfXDW74ntrk": "q-DAq1Ykj7.js",
-		"s_CqXrndLLBUk": "q-B7oWUFjL.js",
-		"s_DGjG81unLXc": "q-CbYvwi32.js",
+		"s_CWjmrGThkAw": "q-YMCopps-.js",
+		"s_DGjG81unLXc": "q-MkIVE5Cw.js",
 		"s_DiECWGqw1mM": "q-BAu9qN9u.js",
 		"s_EjD0YuG4Ub0": "q-Bit7wRu3.js",
-		"s_EqL3dnlHDCU": "q-BAqaPLDV.js",
-		"s_EwbIDEaI7VA": "q-DAq1Ykj7.js",
 		"s_F8JPnWDbGYY": "q-BiH6dY4m.js",
 		"s_FZ4E90ZOOVQ": "q-BAu9qN9u.js",
-		"s_GGYTAzvdyx8": "q-BAqaPLDV.js",
 		"s_I4LXJxeFk0M": "q-C0vVMvqj.js",
 		"s_J22Zj31kVcA": "q-BiH6dY4m.js",
 		"s_JsuUNDLDnFA": "q-CvgPLRmS.js",
 		"s_JxZxPP07PPQ": "q-B63w2O1O.js",
 		"s_L18xv0ZBI00": "q-C1qoYjwT.js",
-		"s_LnBIh07NrmI": "q-jCa1mOWS.js",
 		"s_NlitOI0uekA": "q-DXyiC4j3.js",
-		"s_OKMiN8mShgk": "q-BAqaPLDV.js",
 		"s_Pd1F2VpRkLo": "q-DyE2QTbE.js",
 		"s_PtOX1uYr13E": "q-Cr81Uejr.js",
 		"s_PyP24JreS6w": "q-C1qoYjwT.js",
-		"s_Q6ihAoDoUYo": "q-jCa1mOWS.js",
 		"s_QBY9HC9blY8": "q-oxaO93nl.js",
-		"s_QNqm4S2keOo": "q-CbYvwi32.js",
-		"s_QoWJwJHSWA4": "q-jCa1mOWS.js",
+		"s_QNqm4S2keOo": "q-MkIVE5Cw.js",
 		"s_RJJmpWH22vc": "q-oxaO93nl.js",
-		"s_RTHDiKB1RtA": "q-YyldzjFK.js",
-		"s_Rafw5CAcWjg": "q-BY2juPoZ.js",
+		"s_RTHDiKB1RtA": "q-YMCopps-.js",
 		"s_TlkMq0Q8bUA": "q-CB9Hqdox.js",
 		"s_U0hLaTo0uwQ": "q-CvgPLRmS.js",
-		"s_VTYvHoOlXwQ": "q-BAqaPLDV.js",
 		"s_Va9vzj2dkKY": "q-CJ4LaVXt.js",
 		"s_W6TzaPlQujE": "q-CC1_NTwA.js",
 		"s_WmVOV9MV2lY": "q-oxaO93nl.js",
-		"s_XZuCubOSODA": "q-CnSpIno_.js",
 		"s_YZfE019tUHE": "q-DOor4eGL.js",
 		"s_Yf0sE0KZeu8": "q-BpfuhLwN.js",
-		"s_Ysfvd0zsHZc": "q-pfkPON8R.js",
-		"s_ZzHxkO8NgXQ": "q-Bf54qiD_.js",
+		"s_Ysfvd0zsHZc": "q-CEC2IkpN.js",
+		"s_ZzHxkO8NgXQ": "q-Cw7dsvPZ.js",
 		"s_bC11zBSW4mY": "q-DOor4eGL.js",
-		"s_bEI4XCNaAzA": "q-DOor4eGL.js",
 		"s_crAcPhc0rE8": "q-BiH6dY4m.js",
 		"s_czxr0mKzVSs": "q-OBfxbotT.js",
 		"s_dOJzp0wtKC0": "q-BiH6dY4m.js",
-		"s_eXq38I5AEgA": "q-BX1tmiTn.js",
-		"s_gVnziLbfejw": "q-HwBnAua1.js",
+		"s_gVnziLbfejw": "q-BD5Sl78l.js",
 		"s_hHPXeTbPJ5k": "q-BiH6dY4m.js",
 		"s_idV6SRxBt4E": "q-BiH6dY4m.js",
 		"s_j2gwV4jMMis": "q-BpfuhLwN.js",
 		"s_jD3TdzgmP3A": "q-BAu9qN9u.js",
-		"s_jErqHQ0C3Fc": "q-BnhaM1Ob.js",
 		"s_je4NRuhZC9c": "q-BpfuhLwN.js",
 		"s_k0ZlR2Om0cc": "q-Bmon55du.js",
-		"s_kiIK7P7g0U0": "q-DnZegS06.js",
-		"s_lCVG1xjWbsM": "q-DnZegS06.js",
+		"s_kiIK7P7g0U0": "q-B0e1ShS8.js",
+		"s_lCVG1xjWbsM": "q-B0e1ShS8.js",
 		"s_oSVjzYD9nvs": "q-CvgPLRmS.js",
-		"s_pNW1jCLr05o": "q-Cr81Uejr.js",
-		"s_peaO8FqN72k": "q-DAq1Ykj7.js",
 		"s_u6ezyyNhhDo": "q-DyE2QTbE.js",
-		"s_xER7nqY3f3g": "q-BAqaPLDV.js",
-		"s_xY01hVk9OtI": "q-CFg2J4Cy.js",
+		"s_xY01hVk9OtI": "q-PoTbqtdF.js",
 		"s_zp1grP2a0fE": "q-CvgPLRmS.js",
 		"s_26Zk9LevwR4": "q-ZfL5XvXo.js",
 		"s_35YlVmV10xA": "q-CIZuadEy.js",
@@ -144,90 +119,77 @@
 		"s_egvqTrf0tIg": "q-CKfPTQWT.js",
 		"s_hs55Cc65pvA": "q-BhmsZ3Ro.js",
 		"s_02sKQWUCjK8": "q-CNKUN0Iq.js",
-		"s_0dZLmAWGvmM": "q-CnSpIno_.js",
 		"s_0h3ChnzNENM": "q-BtW6PyyK.js",
 		"s_0miDWHmgmRA": "q-DsbTYA0d.js",
 		"s_0sGIQ9xWLy0": "q-BmJg75dI.js",
-		"s_0vphQYqOdZI": "q-CccNq-q2.js",
+		"s_0vphQYqOdZI": "q-dSc0FHMd.js",
 		"s_1Oili3UnBug": "q-CcuOEjlI.js",
 		"s_1XTQo2a20Oc": "q-B63w2O1O.js",
-		"s_1raneLGffO8": "q-ibHhYc7S.js",
+		"s_1raneLGffO8": "q-BHIedqBs.js",
 		"s_1x4WVCr7r1M": "q-CgNmuZg2.js",
 		"s_22kvLbqUy0E": "q-BKT04LEH.js",
 		"s_2AbMG8rtboA": "q-CdJtV6M_.js",
 		"s_2Sd9PdKPhdg": "q-D01_cl4r.js",
 		"s_3brMbjOF9L8": "q-Cr81Uejr.js",
-		"s_3h6Tg7NQ89E": "q-DAq1Ykj7.js",
 		"s_4niufJ2F3Jw": "q-B6io0-he.js",
-		"s_50md6xzcry0": "q-BAqaPLDV.js",
-		"s_5xbqJXPyHbY": "q-CtOlStzO.js",
 		"s_7LkShZU94bk": "q-BbHuB5tI.js",
-		"s_7rD9qfbtBbE": "q-CXVKGEIy.js",
-		"s_8DDoFzWh50I": "q-jCa1mOWS.js",
+		"s_7rD9qfbtBbE": "q-lrixw4Q4.js",
 		"s_8oNhtptjVSw": "q-Dh_h9iZn.js",
 		"s_9WPn7SSRXkQ": "q-_45YN62n.js",
 		"s_9Xpt2co8Oeg": "q-qU9joZB8.js",
 		"s_A9fe3vpG3og": "q-CzobVeRg.js",
-		"s_B0lqk5IDDy4": "q-D7nlabbI.js",
+		"s_B0lqk5IDDy4": "q-GNGCkZy8.js",
 		"s_DEee8iqo9yI": "q-vg7qg5Tc.js",
 		"s_EJE9XJ6z90U": "q-ZRs8OBCX.js",
-		"s_FxQxwC0gwng": "q-CbYvwi32.js",
+		"s_FxQxwC0gwng": "q-MkIVE5Cw.js",
 		"s_HafofZnJX28": "q-TPJ7_UNR.js",
 		"s_HybVppo7Svw": "q-BMvXeylX.js",
-		"s_J6W4wB4uYWA": "q-DSmhq3SR.js",
 		"s_Jw1oFOAKqX8": "q-eyTnxh6L.js",
 		"s_K1IN9vnvibw": "q-Bmon55du.js",
 		"s_LFgG1iO2nGw": "q-9AGVw_QK.js",
-		"s_LMBuJAflRxw": "q-_ksiWj-n.js",
-		"s_LkP0hDwx92Q": "q-EPeWZJiB.js",
-		"s_M9XwPVlpYOk": "q-BVzm24sE.js",
-		"s_MiPVFWJLcMo": "q-C2upQ77K.js",
+		"s_M9XwPVlpYOk": "q-B-4eIxL9.js",
+		"s_MiPVFWJLcMo": "q-Bd_7HgiD.js",
 		"s_N396yMYpfBo": "q-CcVIFZxV.js",
 		"s_NyeTOCRy0KI": "q-CvhE510v.js",
 		"s_OgY3yWxH6fs": "q-Dnd2Zw9a.js",
-		"s_P0pQmU9ygTQ": "q-YyldzjFK.js",
+		"s_P0pQmU9ygTQ": "q-YMCopps-.js",
 		"s_PY0dAgOygRU": "q-BAu9qN9u.js",
 		"s_PgJQ3qjmqes": "q-C8xwsb4i.js",
 		"s_PzD79Rs45EA": "q-DyE2QTbE.js",
-		"s_QT86f3zxDfQ": "q-DnZegS06.js",
+		"s_QT86f3zxDfQ": "q-B0e1ShS8.js",
 		"s_QinPGtMq1nw": "q-oxaO93nl.js",
 		"s_R2yK4SieWsg": "q-CqK5zUic.js",
 		"s_RDDJsutzZAE": "q-C8hzXz1C.js",
 		"s_Rhwbwf3Pkwc": "q-DzK-4ChZ.js",
 		"s_RlhXZz9lIbo": "q-OBfxbotT.js",
-		"s_ScE8eseirUA": "q-L0Rm7m_o.js",
+		"s_ScE8eseirUA": "q-Bz5unK4S.js",
 		"s_U56auwQYvoE": "q-BZr3geCv.js",
 		"s_UvebA0a6j7E": "q-Bit7wRu3.js",
 		"s_V0USvL64f4U": "q-ax0Ypevk.js",
 		"s_VIc190W77sI": "q-DSg1-cKN.js",
-		"s_VKFlAWJuVm8": "q-Bf54qiD_.js",
+		"s_VKFlAWJuVm8": "q-Cw7dsvPZ.js",
 		"s_VMPhmZs01FY": "q-BgrxbZzA.js",
 		"s_WJxXJm4Lt0E": "q-DPf7XKjg.js",
 		"s_XWYLCwndkfg": "q-y0qXc9b6.js",
 		"s_YRqvwoY0iA0": "q-BkjU6A-g.js",
-		"s_YsnIAISWbYY": "q-LoW-fRby.js",
 		"s_Z9ILBTRkfS4": "q-uPaIBeYK.js",
 		"s_ZbYQDvCWQWY": "q-DrsMzL4T.js",
 		"s_ZfsFkrw7KJ8": "q-DSsCrB75.js",
 		"s_ZwTQSkL19k8": "q-CuiyY4kf.js",
 		"s_a5DN00qCn8c": "q-DEIpEiRs.js",
-		"s_b0lHLb1TJgo": "q-BY2juPoZ.js",
 		"s_bU4KjydW0YY": "q-DXyiC4j3.js",
-		"s_bmV0oH7tsks": "q-CWZbeFMd.js",
+		"s_bmV0oH7tsks": "q-B_CuOu3W.js",
 		"s_c8ruRxIE0hM": "q-Cc7seaYv.js",
 		"s_cXsPjLKuT7U": "q-DRz2rfuD.js",
-		"s_dAU5JRfCFM8": "q-BSWiRZBT.js",
 		"s_dLptYfIsFlo": "q-DTJwVAYT.js",
 		"s_dT0sDkUStYI": "q-C85Bc_xF.js",
 		"s_es1ksvFZR7E": "q-CC1_NTwA.js",
 		"s_etqpvb2vr0I": "q-BeT121bd.js",
 		"s_gLZ9izunwlk": "q-ChHE-WBe.js",
 		"s_gNihkBmb54s": "q-C1qoYjwT.js",
-		"s_gVEMkzdzzKg": "q-tiKoE8do.js",
+		"s_gVEMkzdzzKg": "q-Bf9QHeb0.js",
 		"s_i6xlyXdtjfI": "q-DaURq2bj.js",
-		"s_iKusoxB500Q": "q-B7oWUFjL.js",
 		"s_ivANOJsp5AM": "q-CyXjNJHy.js",
-		"s_ixpx1pOVkeE": "q-BnhaM1Ob.js",
 		"s_jAsSeRBB5y0": "q-BkZYy2v8.js",
 		"s_jczy8NWa6JM": "q-BAb5al4m.js",
 		"s_jiYuXUZE0eU": "q-n3QbNxkI.js",
@@ -242,52 +204,131 @@
 		"s_oC7tfaRtO98": "q-CB9Hqdox.js",
 		"s_oOE8152hMBM": "q-CLHYtRFB.js",
 		"s_oxvUZTlvGqQ": "q-CTg6OXig.js",
-		"s_p1yCGpFL1xE": "q-pfkPON8R.js",
-		"s_pWsmcogutG8": "q-8VodXKFA.js",
+		"s_p1yCGpFL1xE": "q-CEC2IkpN.js",
+		"s_pWsmcogutG8": "q-CGxiTLDu.js",
 		"s_pYto0KaYIV4": "q-BvH-Vcwi.js",
 		"s_qIFxQt4KTwU": "q-BpfuhLwN.js",
 		"s_rs09RukW09Q": "q-BijZNJbo.js",
-		"s_tntnak2DhJ8": "q-LCxdt-Wc.js",
+		"s_tntnak2DhJ8": "q-CwmV-FXT.js",
 		"s_tySZ00tiUmE": "q-Crg09dk1.js",
 		"s_u7yuTc0hnyI": "q-BXgwImig.js",
-		"s_uS0PI1UYSws": "q-CFg2J4Cy.js",
+		"s_uS0PI1UYSws": "q-PoTbqtdF.js",
 		"s_uVV0Ps16upI": "q-CdTTViCQ.js",
-		"s_uuEgN6isZgk": "q-BnR43HHD.js",
 		"s_veIDPAU4vck": "q-JSZYEdOv.js",
-		"s_w5oa20Ngxe8": "q-BX1tmiTn.js",
-		"s_w8zoodu230Y": "q-HwBnAua1.js",
+		"s_w8zoodu230Y": "q-BD5Sl78l.js",
 		"s_wMuRM49JrCE": "q-CJ4LaVXt.js",
 		"s_wN0GEPDdtPw": "q-CTkkTNMZ.js",
 		"s_xOuAAtQBKVE": "q-C2QPvBbf.js",
-		"s_ximn83p41iU": "q-CEeXO9hw.js",
+		"s_ximn83p41iU": "q-BFBSoavC.js",
 		"s_y2NY0olUNe0": "q-DOor4eGL.js",
 		"s_ypBIjA92jrM": "q-BiH6dY4m.js",
 		"s_ztmFI0PSh1Y": "q-CtYGvohd.js",
 		"s_80EAWwKQJck": "q-B63w2O1O.js",
 		"s_HafY1egmi7k": "q-CB9Hqdox.js",
-		"s_K4gvalEGCME": "q-pfkPON8R.js",
-		"s_TL6epcerqTM": "q-EPeWZJiB.js",
+		"s_K4gvalEGCME": "q-CEC2IkpN.js",
 		"s_c8OAgfH01rk": "q-OBfxbotT.js",
-		"s_hMtlRD4Gpfg": "q-YyldzjFK.js",
+		"s_hMtlRD4Gpfg": "q-YMCopps-.js",
+		"s_C2YQTvHxxjw": "q-C8xwsb4i.js",
+		"s_4ydADGYMm08": "q-CHgZ4b6E.js",
+		"s_9KRx0IOCHt8": "q-BihhsMc7.js",
+		"s_A5SCimyrjAE": "q-BUfJ_WYu.js",
+		"s_FyPGp06fZkk": "q-CHgZ4b6E.js",
+		"s_GteApAKo5EA": "q-CHgZ4b6E.js",
+		"s_N26RLdG0oBg": "q-CPPtoDo-.js",
+		"s_WfTOxT4IrdA": "q-DHiL_8O5.js",
+		"s_YQAPkEVrbNQ": "q-CHgZ4b6E.js",
+		"s_bCZHYGiS204": "q-CHgZ4b6E.js",
+		"s_qIwUmRq6UCE": "q-CHgZ4b6E.js",
+		"s_00i0RLgc9VQ": "q-PoTbqtdF.js",
+		"s_05v68pSbADA": "q-BKT04LEH.js",
+		"s_0CHydJFe0I0": "q-BD5Sl78l.js",
+		"s_0EkWQ0OZZ2Q": "q-B-4eIxL9.js",
+		"s_0HB1p804N00": "q-BHIedqBs.js",
+		"s_0L4mZ7WBiqI": "q-BpfuhLwN.js",
+		"s_0zRj42JDZV8": "q-CTkkTNMZ.js",
+		"s_0ziQmC3nc4I": "q-Cr81Uejr.js",
+		"s_1E7R1t0YR1A": "q-DAq1Ykj7.js",
+		"s_5WhXOrGHVNQ": "q-BAqaPLDV.js",
+		"s_6et0P2lVhsw": "q-DAq1Ykj7.js",
+		"s_8Q3LwDP0Tvg": "q-Cr81Uejr.js",
+		"s_9zJeWrQPs6w": "q-DAq1Ykj7.js",
+		"s_BiskTtujlWw": "q-DAq1Ykj7.js",
+		"s_CfXDW74ntrk": "q-DAq1Ykj7.js",
+		"s_CqXrndLLBUk": "q-B7oWUFjL.js",
+		"s_0DX0jr5a6Yc": "q-TPJ7_UNR.js",
+		"s_0khgxgvNLwU": "q-BpfuhLwN.js",
+		"s_110oHjF2oWE": "q-BbHuB5tI.js",
+		"s_14HTqSz0lNQ": "q-CTg6OXig.js",
+		"s_1rdZKscoZmo": "q-Bfpbjvvr.js",
+		"s_2skS10yt6s4": "q-Dnd2Zw9a.js",
+		"s_2tZ51WEF6V8": "q-PoTbqtdF.js",
+		"s_3NiJnvpvPeE": "q-BbHuB5tI.js",
+		"s_3RWdpaLAYsw": "q-LoW-fRby.js",
+		"s_4D4KWRX3Gvo": "q-BD5Sl78l.js",
+		"s_4o0g40SLS9c": "q-C1qoYjwT.js",
+		"s_5o0fOe2bh44": "q-Cw7dsvPZ.js",
+		"s_5uvV1Dmz6Mo": "q-BijZNJbo.js",
+		"s_6awZJG5cU3Q": "q-DXyiC4j3.js",
+		"s_74kvkuGdvug": "q-BHIedqBs.js",
+		"s_87faiQlKCEs": "q-BMvXeylX.js",
+		"s_9Q0xxfReMsw": "q-BiH6dY4m.js",
+		"s_Ag6rhNndDkg": "q-lrixw4Q4.js",
+		"s_AoSVvC21QAc": "q-BAu9qN9u.js",
+		"s_B0iHvKB9d5w": "q-Dnd2Zw9a.js",
+		"s_BeQn09w7y8I": "q-eyTnxh6L.js",
+		"s_Byd7Puy4oD0": "q-W4JyUUzV.js",
+		"s_C6lL0rW5k7Q": "q-B-4eIxL9.js",
+		"s_DDhByzXj9vI": "q-YMCopps-.js",
+		"s_DYzJqXnodaE": "q-DaURq2bj.js",
+		"s_DtfIatVBGvE": "q-BD5Sl78l.js",
+		"s_DyYtoEUy5Y4": "q-BD5Sl78l.js",
+		"s_E5bV6uEwmKE": "q-DyE2QTbE.js",
+		"s_EMRDSVlcvFQ": "q-OBfxbotT.js",
+		"s_Ejm4KkbfoyQ": "q-Cr81Uejr.js",
+		"s_EqL3dnlHDCU": "q-BAqaPLDV.js",
+		"s_EwbIDEaI7VA": "q-DAq1Ykj7.js",
+		"s_GGYTAzvdyx8": "q-BAqaPLDV.js",
+		"s_LnBIh07NrmI": "q-jCa1mOWS.js",
+		"s_OKMiN8mShgk": "q-BAqaPLDV.js",
+		"s_Q6ihAoDoUYo": "q-jCa1mOWS.js",
+		"s_QoWJwJHSWA4": "q-jCa1mOWS.js",
+		"s_Rafw5CAcWjg": "q-BY2juPoZ.js",
+		"s_VTYvHoOlXwQ": "q-BAqaPLDV.js",
+		"s_XZuCubOSODA": "q-CnSpIno_.js",
+		"s_bEI4XCNaAzA": "q-DOor4eGL.js",
+		"s_eXq38I5AEgA": "q-DC3Qj8wD.js",
+		"s_jErqHQ0C3Fc": "q-BnhaM1Ob.js",
+		"s_pNW1jCLr05o": "q-Cr81Uejr.js",
+		"s_peaO8FqN72k": "q-DAq1Ykj7.js",
+		"s_xER7nqY3f3g": "q-BAqaPLDV.js",
+		"s_0dZLmAWGvmM": "q-CnSpIno_.js",
+		"s_3h6Tg7NQ89E": "q-DAq1Ykj7.js",
+		"s_50md6xzcry0": "q-BAqaPLDV.js",
+		"s_5xbqJXPyHbY": "q-CtOlStzO.js",
+		"s_8DDoFzWh50I": "q-jCa1mOWS.js",
+		"s_J6W4wB4uYWA": "q-DSmhq3SR.js",
+		"s_LMBuJAflRxw": "q-_ksiWj-n.js",
+		"s_LkP0hDwx92Q": "q-EPeWZJiB.js",
+		"s_YsnIAISWbYY": "q-LoW-fRby.js",
+		"s_b0lHLb1TJgo": "q-BY2juPoZ.js",
+		"s_dAU5JRfCFM8": "q-BSWiRZBT.js",
+		"s_iKusoxB500Q": "q-B7oWUFjL.js",
+		"s_ixpx1pOVkeE": "q-BnhaM1Ob.js",
+		"s_uuEgN6isZgk": "q-BnR43HHD.js",
+		"s_w5oa20Ngxe8": "q-DC3Qj8wD.js",
+		"s_TL6epcerqTM": "q-EPeWZJiB.js",
 		"s_qf5DdYfHS5A": "q-BAqaPLDV.js",
 		"s_rMZ9CISZ5JE": "q-Cr81Uejr.js",
-		"s_C2YQTvHxxjw": "q-C8xwsb4i.js",
 		"s_2MY7kGuLZfI": "q-CP67DZk1.js",
 		"s_2yVWSw28T08": "q-DrwnBAz6.js",
 		"s_408Q7KTa9QE": "q-16obpgw5.js",
-		"s_4ydADGYMm08": "q-CHgZ4b6E.js",
 		"s_6LkTZ0YG4hI": "q-CxYdS51L.js",
 		"s_8O2PHwKRsA0": "q-DrwnBAz6.js",
 		"s_8aI9djgIlok": "q-DOl5vcyJ.js",
-		"s_9KRx0IOCHt8": "q-BihhsMc7.js",
-		"s_A5SCimyrjAE": "q-BUfJ_WYu.js",
 		"s_C9ZKDJYEj30": "q-CxYdS51L.js",
-		"s_FyPGp06fZkk": "q-CHgZ4b6E.js",
-		"s_GteApAKo5EA": "q-CHgZ4b6E.js",
 		"s_IAZMnbJQeFs": "q-DOl5vcyJ.js",
 		"s_IJU0sEyM69Q": "q-BCgqeaBg.js",
 		"s_J0TzCc02Vcs": "q-Dl3je39O.js",
-		"s_N26RLdG0oBg": "q-CPPtoDo-.js",
 		"s_Nj0ONZ2CVPE": "q-CFU3VxFH.js",
 		"s_Ok9XdAGIFqE": "q-CcB3Mdr9.js",
 		"s_OwWIGvD859E": "q-CFU3VxFH.js",
@@ -296,12 +337,9 @@
 		"s_RVAQZ02loKc": "q-Li3sTkLe.js",
 		"s_STItYJQ6D2k": "q-CcB3Mdr9.js",
 		"s_Ssqyi0GG9IQ": "q-CcB3Mdr9.js",
-		"s_WfTOxT4IrdA": "q-C1CNWhee.js",
 		"s_XVlaHWELpIQ": "q-DH98PXjW.js",
 		"s_YPC5DqVSJ0Q": "q-DrwnBAz6.js",
-		"s_YQAPkEVrbNQ": "q-CHgZ4b6E.js",
 		"s_a3ayOmjVQlc": "q-DDcRZHn3.js",
-		"s_bCZHYGiS204": "q-CHgZ4b6E.js",
 		"s_cfsa2nXpIck": "q-DDcRZHn3.js",
 		"s_eQPhKqsjYkU": "q-DF-xgOyn.js",
 		"s_fgU0PdqN0lg": "q-DDcRZHn3.js",
@@ -314,7 +352,6 @@
 		"s_lguTqZ3Z6W0": "q-BCgqeaBg.js",
 		"s_ogQQ3L0ke0M": "q-DrwnBAz6.js",
 		"s_pVjkJ16SM4g": "q-CozuzY-u.js",
-		"s_qIwUmRq6UCE": "q-CHgZ4b6E.js",
 		"s_qqeqT7qOIAw": "q-BCgqeaBg.js",
 		"s_r60e0Eb2BK4": "q-DDcRZHn3.js",
 		"s_rJ5Gup57xWo": "q-CcB3Mdr9.js",
@@ -326,52 +363,15 @@
 		"s_wubx81JSa04": "q-Li3sTkLe.js",
 		"s_xP4kAM0r0nQ": "q-BQQXVu4Y.js",
 		"s_zrSjkqo2iOw": "q-BQQXVu4Y.js",
-		"s_00i0RLgc9VQ": "q-CFg2J4Cy.js",
-		"s_05v68pSbADA": "q-BKT04LEH.js",
-		"s_0CHydJFe0I0": "q-HwBnAua1.js",
-		"s_0CyZrhGM1Ag": "q-BX1tmiTn.js",
-		"s_0DX0jr5a6Yc": "q-TPJ7_UNR.js",
-		"s_0EkWQ0OZZ2Q": "q-BVzm24sE.js",
-		"s_0HB1p804N00": "q-ibHhYc7S.js",
+		"s_0CyZrhGM1Ag": "q-DC3Qj8wD.js",
 		"s_0InFYw6DDU4": "q-DOor4eGL.js",
-		"s_0L4mZ7WBiqI": "q-BpfuhLwN.js",
-		"s_0khgxgvNLwU": "q-BpfuhLwN.js",
-		"s_0zRj42JDZV8": "q-CTkkTNMZ.js",
-		"s_110oHjF2oWE": "q-BbHuB5tI.js",
-		"s_14HTqSz0lNQ": "q-CTg6OXig.js",
 		"s_1ALRoRHXvrU": "q-EPeWZJiB.js",
-		"s_1rdZKscoZmo": "q-Bfpbjvvr.js",
-		"s_1wqD0aSkvsI": "q-BX1tmiTn.js",
-		"s_2skS10yt6s4": "q-Dnd2Zw9a.js",
-		"s_2tZ51WEF6V8": "q-CFg2J4Cy.js",
-		"s_3NiJnvpvPeE": "q-BbHuB5tI.js",
-		"s_3RWdpaLAYsw": "q-LoW-fRby.js",
-		"s_4D4KWRX3Gvo": "q-HwBnAua1.js",
+		"s_1wqD0aSkvsI": "q-DC3Qj8wD.js",
 		"s_4deK0OiK09M": "q-jCa1mOWS.js",
-		"s_4o0g40SLS9c": "q-C1qoYjwT.js",
-		"s_5o0fOe2bh44": "q-Bf54qiD_.js",
-		"s_5uvV1Dmz6Mo": "q-BijZNJbo.js",
-		"s_6awZJG5cU3Q": "q-DXyiC4j3.js",
-		"s_74kvkuGdvug": "q-ibHhYc7S.js",
 		"s_7CMN60KgD5k": "q-jCa1mOWS.js",
 		"s_7uNNMymJc0s": "q-EPeWZJiB.js",
-		"s_87faiQlKCEs": "q-BMvXeylX.js",
-		"s_9Q0xxfReMsw": "q-BiH6dY4m.js",
-		"s_9iBK30OA9CA": "q-BX1tmiTn.js",
-		"s_Ag6rhNndDkg": "q-CXVKGEIy.js",
-		"s_AoSVvC21QAc": "q-BAu9qN9u.js",
-		"s_B0iHvKB9d5w": "q-Dnd2Zw9a.js",
-		"s_BeQn09w7y8I": "q-eyTnxh6L.js",
+		"s_9iBK30OA9CA": "q-DC3Qj8wD.js",
 		"s_BxrxNWInXyM": "q-TPJ7_UNR.js",
-		"s_Byd7Puy4oD0": "q-W4JyUUzV.js",
-		"s_C6lL0rW5k7Q": "q-BVzm24sE.js",
-		"s_DDhByzXj9vI": "q-YyldzjFK.js",
-		"s_DYzJqXnodaE": "q-DaURq2bj.js",
-		"s_DtfIatVBGvE": "q-HwBnAua1.js",
-		"s_DyYtoEUy5Y4": "q-HwBnAua1.js",
-		"s_E5bV6uEwmKE": "q-DyE2QTbE.js",
-		"s_EMRDSVlcvFQ": "q-OBfxbotT.js",
-		"s_Ejm4KkbfoyQ": "q-Cr81Uejr.js",
 		"s_FvsvfGKw6ek": "q-BpfuhLwN.js",
 		"s_G24njCGVQPM": "q-eyTnxh6L.js",
 		"s_G4nf9zVjzhg": "q-CcuOEjlI.js",
@@ -381,87 +381,87 @@
 		"s_H3CUSn5MFwk": "q-CyXjNJHy.js",
 		"s_HMJJ1mcYNws": "q-Bmon55du.js",
 		"s_HVsNmjrxdg8": "q-CozuzY-u.js",
-		"s_HZOcHlWtQRU": "q-CbYvwi32.js",
-		"s_IER8Vh2bNuQ": "q-tiKoE8do.js",
+		"s_HZOcHlWtQRU": "q-MkIVE5Cw.js",
+		"s_IER8Vh2bNuQ": "q-Bf9QHeb0.js",
 		"s_JWO0GouZZlI": "q-CB9Hqdox.js",
-		"s_KbpPXJyjkgM": "q-DnZegS06.js",
-		"s_KiHp5jmuvgs": "q-YyldzjFK.js",
+		"s_KbpPXJyjkgM": "q-B0e1ShS8.js",
+		"s_KiHp5jmuvgs": "q-YMCopps-.js",
 		"s_L1bXUBL3Fps": "q-DXyiC4j3.js",
 		"s_L4I1eYQPXRI": "q-C1qoYjwT.js",
-		"s_LVofEm0xjiY": "q-CFg2J4Cy.js",
+		"s_LVofEm0xjiY": "q-PoTbqtdF.js",
 		"s_LbqcnqOZaIY": "q-BpfuhLwN.js",
 		"s_LmOJXDQEe64": "q-BmJg75dI.js",
 		"s_LyTUyOXTC98": "q-TPJ7_UNR.js",
 		"s_Mr16HpKd0MI": "q-BAqaPLDV.js",
 		"s_NKdt0thPZjY": "q-CdTTViCQ.js",
 		"s_NUXmcP4MWuA": "q-DOor4eGL.js",
-		"s_NWgIIymU6LU": "q-DnZegS06.js",
-		"s_Nl7offoE0A0": "q-CXVKGEIy.js",
-		"s_NmpYbZ8iXnE": "q-CFg2J4Cy.js",
+		"s_NWgIIymU6LU": "q-B0e1ShS8.js",
+		"s_Nl7offoE0A0": "q-lrixw4Q4.js",
+		"s_NmpYbZ8iXnE": "q-PoTbqtdF.js",
 		"s_OoHHUoeehog": "q-C1qoYjwT.js",
 		"s_P1gibHgf130": "q-DaURq2bj.js",
-		"s_PIVwa5HO7XA": "q-BX1tmiTn.js",
+		"s_PIVwa5HO7XA": "q-DC3Qj8wD.js",
 		"s_PYRGQvGxc9g": "q-BY2juPoZ.js",
-		"s_Paeuli20yKY": "q-tiKoE8do.js",
-		"s_PmWjL2RrvZM": "q-C2upQ77K.js",
+		"s_Paeuli20yKY": "q-Bf9QHeb0.js",
+		"s_PmWjL2RrvZM": "q-Bd_7HgiD.js",
 		"s_Q3i4UuB3j6o": "q-BZr3geCv.js",
 		"s_Q4Foyi5JEp0": "q-DXyiC4j3.js",
-		"s_Q8emVD0xdUw": "q-HwBnAua1.js",
-		"s_QaB0LMsgT4g": "q-CbYvwi32.js",
+		"s_Q8emVD0xdUw": "q-BD5Sl78l.js",
+		"s_QaB0LMsgT4g": "q-MkIVE5Cw.js",
 		"s_QiIyvac5jpM": "q-CJ4LaVXt.js",
-		"s_RLUxrplrOIc": "q-YyldzjFK.js",
+		"s_RLUxrplrOIc": "q-YMCopps-.js",
 		"s_RXzTpMMoCQc": "q-OBfxbotT.js",
-		"s_SIJdvtfJKlE": "q-DnZegS06.js",
+		"s_SIJdvtfJKlE": "q-B0e1ShS8.js",
 		"s_T0N4rPgG0p8": "q-BpfuhLwN.js",
-		"s_US0pTyQnOdc": "q-CWZbeFMd.js",
+		"s_US0pTyQnOdc": "q-B_CuOu3W.js",
 		"s_Ut6QMgrfwQ8": "q-BKT04LEH.js",
 		"s_V4EhvZKnL3Y": "q-BeT121bd.js",
 		"s_V7KJTkugdwE": "q-BAqaPLDV.js",
-		"s_VUefHJvN8LM": "q-BX1tmiTn.js",
+		"s_VUefHJvN8LM": "q-DC3Qj8wD.js",
 		"s_VX3hhF6uAeY": "q-BkZYy2v8.js",
-		"s_W5wCbHoGlvE": "q-CXVKGEIy.js",
-		"s_WgNxVbSylU8": "q-CbYvwi32.js",
-		"s_X1tdD0jljMk": "q-CEeXO9hw.js",
+		"s_W5wCbHoGlvE": "q-lrixw4Q4.js",
+		"s_WgNxVbSylU8": "q-MkIVE5Cw.js",
+		"s_X1tdD0jljMk": "q-BFBSoavC.js",
 		"s_XnluxqLBUGc": "q-BAb5al4m.js",
-		"s_YvsEBfJpGRU": "q-BX1tmiTn.js",
+		"s_YvsEBfJpGRU": "q-DC3Qj8wD.js",
 		"s_YxDheo3htfs": "q-BiH6dY4m.js",
 		"s_Zl3GPZyU2mY": "q-C1qoYjwT.js",
 		"s_a8BGQ8gaDlU": "q-BAqaPLDV.js",
-		"s_alT5muXU6HE": "q-BX1tmiTn.js",
-		"s_aww2BzpANGM": "q-pfkPON8R.js",
-		"s_bJHmZ2hi8tw": "q-CbYvwi32.js",
-		"s_byRepNU209c": "q-Bf54qiD_.js",
+		"s_alT5muXU6HE": "q-DC3Qj8wD.js",
+		"s_aww2BzpANGM": "q-CEC2IkpN.js",
+		"s_bJHmZ2hi8tw": "q-MkIVE5Cw.js",
+		"s_byRepNU209c": "q-Cw7dsvPZ.js",
 		"s_bzFpnfkOBUQ": "q-16obpgw5.js",
 		"s_e305pqqu6PE": "q-DaURq2bj.js",
-		"s_ejHwiViaPrI": "q-BVzm24sE.js",
+		"s_ejHwiViaPrI": "q-B-4eIxL9.js",
 		"s_ertIFjT0ucE": "q-CB9Hqdox.js",
 		"s_fnD5jpQ0dkU": "q-BpfuhLwN.js",
 		"s_fwhOep0I9EU": "q-BAqaPLDV.js",
 		"s_g3yFt0MgVZI": "q-BpfuhLwN.js",
 		"s_gGmxmKostOk": "q-DaURq2bj.js",
 		"s_gfHoGbJUZOc": "q-TPJ7_UNR.js",
-		"s_ghNuUsGMH5k": "q-YyldzjFK.js",
+		"s_ghNuUsGMH5k": "q-YMCopps-.js",
 		"s_goQjEPW5tBA": "q-ES8ceRAl.js",
 		"s_hRLzbw47lH4": "q-BZr3geCv.js",
 		"s_hy5miAzxKHU": "q-C1qoYjwT.js",
 		"s_i7NZXxbFHUo": "q-DzK-4ChZ.js",
-		"s_j4O0Kn1KvZA": "q-YyldzjFK.js",
+		"s_j4O0Kn1KvZA": "q-YMCopps-.js",
 		"s_jy9uW2W0eV8": "q-BiH6dY4m.js",
-		"s_kmWxV9cVRlU": "q-CXVKGEIy.js",
-		"s_l0BYyScCbfM": "q-BX1tmiTn.js",
+		"s_kmWxV9cVRlU": "q-lrixw4Q4.js",
+		"s_l0BYyScCbfM": "q-DC3Qj8wD.js",
 		"s_lAfEPaq3VZQ": "q-BZr3geCv.js",
 		"s_mK5dXnwnYxg": "q-Cr81Uejr.js",
 		"s_n2qYmFhfzCo": "q-DTJwVAYT.js",
-		"s_nNH3Z86OWLg": "q-HwBnAua1.js",
+		"s_nNH3Z86OWLg": "q-BD5Sl78l.js",
 		"s_njCq9K01Ei0": "q-BAu9qN9u.js",
 		"s_nvnWoKD4V4Y": "q-CvgPLRmS.js",
-		"s_o0K0khyuzgg": "q-BX1tmiTn.js",
-		"s_oyyEs4mrg30": "q-YyldzjFK.js",
+		"s_o0K0khyuzgg": "q-DC3Qj8wD.js",
+		"s_oyyEs4mrg30": "q-YMCopps-.js",
 		"s_p6quPsOZCAw": "q-eyTnxh6L.js",
 		"s_pE0F2Ff0cYo": "q-TPJ7_UNR.js",
 		"s_pxGUAODHpVk": "q-Cr81Uejr.js",
 		"s_qESKJFj7o5Y": "q-Cr81Uejr.js",
-		"s_qGVD1Sz413o": "q-pfkPON8R.js",
+		"s_qGVD1Sz413o": "q-CEC2IkpN.js",
 		"s_qZCnWvnNQFg": "q-EPeWZJiB.js",
 		"s_ql0W62W6Yy4": "q-BAqaPLDV.js",
 		"s_qxtGQiwXChI": "q-DXyiC4j3.js",
@@ -469,7 +469,7 @@
 		"s_rrDSabFu6eM": "q-CozuzY-u.js",
 		"s_rz8xn3D06Ug": "q-DaURq2bj.js",
 		"s_s01i0DFqlC0": "q-9AGVw_QK.js",
-		"s_s0gFhar98Ts": "q-YyldzjFK.js",
+		"s_s0gFhar98Ts": "q-YMCopps-.js",
 		"s_t4wHDVp0wWc": "q-DXyiC4j3.js",
 		"s_tBuyRurLrE0": "q-TPJ7_UNR.js",
 		"s_tNTV0OzvC04": "q-DTJwVAYT.js",
@@ -478,37 +478,23 @@
 		"s_ubJa4u9VCh4": "q-C1qoYjwT.js",
 		"s_uvdMCEle1HU": "q-BpfuhLwN.js",
 		"s_v4FyzkAfr0U": "q-BKT04LEH.js",
-		"s_vfQrcdlY4sA": "q-BX1tmiTn.js",
-		"s_vz7UzS9D20A": "q-CXVKGEIy.js",
+		"s_vfQrcdlY4sA": "q-DC3Qj8wD.js",
+		"s_vz7UzS9D20A": "q-lrixw4Q4.js",
 		"s_wADJ0GmO0YU": "q-C0vVMvqj.js",
-		"s_wmQdAMWexGs": "q-BX1tmiTn.js",
+		"s_wmQdAMWexGs": "q-DC3Qj8wD.js",
 		"s_wytbpr9LRAw": "q-DTJwVAYT.js",
-		"s_x1wP3LIJxOU": "q-BX1tmiTn.js",
-		"s_xe8duyQ5aaU": "q-8VodXKFA.js",
-		"s_xiNIPidrDXw": "q-BX1tmiTn.js",
-		"s_xquabQIhcog": "q-tiKoE8do.js",
+		"s_x1wP3LIJxOU": "q-DC3Qj8wD.js",
+		"s_xe8duyQ5aaU": "q-CGxiTLDu.js",
+		"s_xiNIPidrDXw": "q-DC3Qj8wD.js",
+		"s_xquabQIhcog": "q-Bf9QHeb0.js",
 		"s_ySuNr3ga2wg": "q-Cr81Uejr.js",
 		"s_yttOOn69d0A": "q-C0vVMvqj.js",
-		"s_zPJUEsxZLIA": "q-ibHhYc7S.js",
-		"s_zSCj7Qn1SCw": "q-DnZegS06.js",
-		"s_zpHcJzYZ88E": "q-8VodXKFA.js",
-		"s_zy5KpIpejwU": "q-HwBnAua1.js"
+		"s_zPJUEsxZLIA": "q-BHIedqBs.js",
+		"s_zSCj7Qn1SCw": "q-B0e1ShS8.js",
+		"s_zpHcJzYZ88E": "q-CGxiTLDu.js",
+		"s_zy5KpIpejwU": "q-BD5Sl78l.js"
 	},
 	"bundles": {
-		"q-0mEJS5K_.js": {
-			"size": 165,
-			"total": 53057,
-			"imports": [
-				"q-rmeZrDEg.js"
-			],
-			"dynamicImports": [
-				"q-CccNq-q2.js"
-			],
-			"origins": [
-				"src/components/router-head/router-head.tsx"
-			],
-			"interactivity": 0
-		},
 		"q-16obpgw5.js": {
 			"size": 1347,
 			"total": 54239,
@@ -584,25 +570,6 @@
 				"node_modules/@qwik-ui/headless/components/carousel/context.qwik.mjs"
 			],
 			"interactivity": 0
-		},
-		"q-8VodXKFA.js": {
-			"size": 1406,
-			"total": 115276,
-			"imports": [
-				"q-D14O3gbg.js",
-				"q-rmeZrDEg.js"
-			],
-			"origins": [
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_GetForm_component_form_onSubmit_1_xe8duyQ5aaU.js",
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_GetForm_component_form_onSubmit_zpHcJzYZ88E.js",
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_GetForm_component_pWsmcogutG8.js"
-			],
-			"symbols": [
-				"s_pWsmcogutG8",
-				"s_xe8duyQ5aaU",
-				"s_zpHcJzYZ88E"
-			],
-			"interactivity": 2
 		},
 		"q-9AGVw_QK.js": {
 			"size": 778,
@@ -689,6 +656,49 @@
 			],
 			"interactivity": 0
 		},
+		"q-B-4eIxL9.js": {
+			"size": 14413,
+			"total": 298955,
+			"imports": [
+				"q-Df5iq9dJ.js",
+				"q-fD7zrzcm.js",
+				"q-nf_CUDrf.js",
+				"q-rmeZrDEg.js"
+			],
+			"origins": [
+				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_button_onClick_1_M9sK0tN9hdI.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_button_onClick_2_KG5vc6h1cT4.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_button_onClick_c0KcyKFKFxc.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_div_button_onClick_1_13jF279jjrs.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_div_button_onClick_BAj7pIgjA84.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_div_div_button_onClick_Wz5ZM1gqpH4.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_div_div_label_input_onChange_dxWNSlrFc1g.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_div_label_input_onChange_8Kb0W8ylkfg.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_div_select_onChange_6Mts0aPtXeo.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_select_onChange_18ODPtQeK4M.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_M9XwPVlpYOk.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_brands_useComputed_0EkWQ0OZZ2Q.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_filteredProducts_useComputed_ejHwiViaPrI.js",
+				"src/routes/collections/[handle]/index.tsx_handle_component_useOnDocument_C6lL0rW5k7Q.js"
+			],
+			"symbols": [
+				"s_0EkWQ0OZZ2Q",
+				"s_13jF279jjrs",
+				"s_18ODPtQeK4M",
+				"s_6Mts0aPtXeo",
+				"s_8Kb0W8ylkfg",
+				"s_BAj7pIgjA84",
+				"s_c0KcyKFKFxc",
+				"s_C6lL0rW5k7Q",
+				"s_dxWNSlrFc1g",
+				"s_ejHwiViaPrI",
+				"s_KG5vc6h1cT4",
+				"s_M9sK0tN9hdI",
+				"s_M9XwPVlpYOk",
+				"s_Wz5ZM1gqpH4"
+			],
+			"interactivity": 5
+		},
 		"q-B-dxHD71.js": {
 			"size": 165,
 			"total": 53057,
@@ -718,33 +728,33 @@
 			],
 			"interactivity": 0
 		},
-		"q-B2TYvKcq.js": {
-			"size": 165,
-			"total": 53057,
+		"q-B0e1ShS8.js": {
+			"size": 3859,
+			"total": 163129,
 			"imports": [
-				"q-rmeZrDEg.js"
-			],
-			"dynamicImports": [
-				"q-Dd0H__tl.js"
+				"q-89tNZGe-.js",
+				"q-rmeZrDEg.js",
+				"q-RZfQUME2.js"
 			],
 			"origins": [
-				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs"
+				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_QT86f3zxDfQ.js",
+				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_handleClick_NWgIIymU6LU.js",
+				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_handleFocus_SIJdvtfJKlE.js",
+				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_handleKeyDown_KbpPXJyjkgM.js",
+				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_isActiveBulletSig_useComputed_zSCj7Qn1SCw.js",
+				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_useTask_1_kiIK7P7g0U0.js",
+				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_useTask_lCVG1xjWbsM.js"
 			],
-			"interactivity": 0
-		},
-		"q-B38aGM4T.js": {
-			"size": 171,
-			"total": 53063,
-			"imports": [
-				"q-rmeZrDEg.js"
+			"symbols": [
+				"s_KbpPXJyjkgM",
+				"s_kiIK7P7g0U0",
+				"s_lCVG1xjWbsM",
+				"s_NWgIIymU6LU",
+				"s_QT86f3zxDfQ",
+				"s_SIJdvtfJKlE",
+				"s_zSCj7Qn1SCw"
 			],
-			"dynamicImports": [
-				"q-Bf54qiD_.js"
-			],
-			"origins": [
-				"src/routes/layout.tsx"
-			],
-			"interactivity": 0
+			"interactivity": 3
 		},
 		"q-B63w2O1O.js": {
 			"size": 1062,
@@ -765,20 +775,6 @@
 				"s_JxZxPP07PPQ"
 			],
 			"interactivity": 3
-		},
-		"q-B6BlKCWK.js": {
-			"size": 438,
-			"total": 53330,
-			"imports": [
-				"q-rmeZrDEg.js"
-			],
-			"dynamicImports": [
-				"q-D7nlabbI.js"
-			],
-			"origins": [
-				"src/routes/index.tsx"
-			],
-			"interactivity": 0
 		},
 		"q-B6io0-he.js": {
 			"size": 181,
@@ -831,6 +827,22 @@
 			],
 			"interactivity": 0
 		},
+		"q-B_CuOu3W.js": {
+			"size": 542,
+			"total": 53434,
+			"imports": [
+				"q-rmeZrDEg.js"
+			],
+			"origins": [
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_ErrorBoundary_component_bmV0oH7tsks.js",
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_ErrorBoundary_component_useOnWindow_US0pTyQnOdc.js"
+			],
+			"symbols": [
+				"s_bmV0oH7tsks",
+				"s_US0pTyQnOdc"
+			],
+			"interactivity": 2
+		},
 		"q-B_VkPVTv.js": {
 			"size": 184,
 			"total": 53076,
@@ -862,21 +874,6 @@
 				"s_zKBrYGfJ9Zg"
 			],
 			"interactivity": 5
-		},
-		"q-BAjpHWq0.js": {
-			"size": 455,
-			"total": 114325,
-			"imports": [
-				"q-D14O3gbg.js",
-				"q-rmeZrDEg.js"
-			],
-			"dynamicImports": [
-				"q-CEeXO9hw.js"
-			],
-			"origins": [
-				"src/routes/product/[handle]/index.tsx"
-			],
-			"interactivity": 0
 		},
 		"q-BAqaPLDV.js": {
 			"size": 5584,
@@ -1011,6 +1008,60 @@
 			],
 			"interactivity": 1
 		},
+		"q-BD5Sl78l.js": {
+			"size": 6289,
+			"total": 272233,
+			"imports": [
+				"q-Bvx2tX-h.js",
+				"q-Cf7_nFhh.js",
+				"q-CSvqulJH.js",
+				"q-rmeZrDEg.js"
+			],
+			"origins": [
+				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_checkVisibility_Q8emVD0xdUw.js",
+				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_handleClick_0CHydJFe0I0.js",
+				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_handleKeyDown_DyYtoEUy5Y4.js",
+				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_handlePointerOver_nNH3Z86OWLg.js",
+				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_isHighlightedSig_useComputed_DtfIatVBGvE.js",
+				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_isSelectedSig_useComputed_zy5KpIpejwU.js",
+				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_useOnWindow_4D4KWRX3Gvo.js",
+				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_useTask_0E0xHuYbeB4.js",
+				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_useTask_1_gVnziLbfejw.js",
+				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_w8zoodu230Y.js"
+			],
+			"symbols": [
+				"s_0CHydJFe0I0",
+				"s_0E0xHuYbeB4",
+				"s_4D4KWRX3Gvo",
+				"s_DtfIatVBGvE",
+				"s_DyYtoEUy5Y4",
+				"s_gVnziLbfejw",
+				"s_nNH3Z86OWLg",
+				"s_Q8emVD0xdUw",
+				"s_w8zoodu230Y",
+				"s_zy5KpIpejwU"
+			],
+			"interactivity": 3
+		},
+		"q-Bd_7HgiD.js": {
+			"size": 1308,
+			"total": 115178,
+			"imports": [
+				"q-nf_CUDrf.js",
+				"q-rmeZrDEg.js"
+			],
+			"origins": [
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityMockProvider_component_MiPVFWJLcMo.js",
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityMockProvider_component_goto_PmWjL2RrvZM.js",
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityMockProvider_component_useTask_32KLFlOO5uE.js"
+			],
+			"symbols": [
+				"s_32KLFlOO5uE",
+				"s_MiPVFWJLcMo",
+				"s_PmWjL2RrvZM"
+			],
+			"interactivity": 3
+		},
 		"q-BDO1R9Ur.js": {
 			"size": 150,
 			"total": 53042,
@@ -1040,48 +1091,55 @@
 			],
 			"interactivity": 2
 		},
-		"q-Bf54qiD_.js": {
-			"size": 20296,
-			"total": 242472,
+		"q-Bf9QHeb0.js": {
+			"size": 1596,
+			"total": 107466,
 			"imports": [
-				"q-D14O3gbg.js",
-				"q-D8wHv7CY.js",
-				"q-DLGgCZ93.js",
+				"q-89tNZGe-.js",
 				"q-rmeZrDEg.js"
 			],
-			"dynamicImports": [
-				"q-CKfPTQWT.js"
-			],
 			"origins": [
-				"src/routes/layout.tsx_layout_component_VKFlAWJuVm8.js",
-				"src/routes/layout.tsx_layout_component_div_header_div_div_div_div_div_div_div_div_button_onClick_z3cj0LCcn0A.js",
-				"src/routes/layout.tsx_layout_component_removeLineItem_byRepNU209c.js",
-				"src/routes/layout.tsx_layout_component_toggleDarkMode_5o0fOe2bh44.js",
-				"src/routes/layout.tsx_layout_component_useTask_ZzHxkO8NgXQ.js"
+				"node_modules/@qwik-ui/headless/components/carousel/step.qwik.mjs_CarouselStep_component_gVEMkzdzzKg.js",
+				"node_modules/@qwik-ui/headless/components/carousel/step.qwik.mjs_CarouselStep_component_handleClick_Paeuli20yKY.js",
+				"node_modules/@qwik-ui/headless/components/carousel/step.qwik.mjs_CarouselStep_component_isCurrentSig_useComputed_xquabQIhcog.js",
+				"node_modules/@qwik-ui/headless/components/carousel/step.qwik.mjs_CarouselStep_component_localIndexSig_useComputed_IER8Vh2bNuQ.js"
 			],
 			"symbols": [
-				"s_5o0fOe2bh44",
-				"s_byRepNU209c",
-				"s_VKFlAWJuVm8",
-				"s_z3cj0LCcn0A",
-				"s_ZzHxkO8NgXQ"
+				"s_gVEMkzdzzKg",
+				"s_IER8Vh2bNuQ",
+				"s_Paeuli20yKY",
+				"s_xquabQIhcog"
 			],
-			"interactivity": 5
+			"interactivity": 3
 		},
-		"q-BFf6_0A_.js": {
-			"size": 171,
-			"total": 53063,
+		"q-BFBSoavC.js": {
+			"size": 9244,
+			"total": 453327,
 			"imports": [
+				"q-ByJu9-4a.js",
+				"q-D1_YTMD7.js",
+				"q-D39G6Uhg.js",
+				"q-Df5iq9dJ.js",
+				"q-nf_CUDrf.js",
 				"q-rmeZrDEg.js"
 			],
 			"dynamicImports": [
-				"q-LCxdt-Wc.js"
+				"q-2Nov8SMh.js",
+				"q-DAvHZEEx.js"
 			],
 			"origins": [
-				"src/global.css",
-				"src/root.tsx"
+				"src/routes/product/[handle]/index.tsx_handle_component_div_div_div_Fragment_div_button_onClick_vdPvPmgSzZc.js",
+				"src/routes/product/[handle]/index.tsx_handle_component_div_div_div_div_div_button_onClick_0q0bk40mJWQ.js",
+				"src/routes/product/[handle]/index.tsx_handle_component_handleAddToCart_X1tdD0jljMk.js",
+				"src/routes/product/[handle]/index.tsx_handle_component_ximn83p41iU.js"
 			],
-			"interactivity": 0
+			"symbols": [
+				"s_0q0bk40mJWQ",
+				"s_vdPvPmgSzZc",
+				"s_X1tdD0jljMk",
+				"s_ximn83p41iU"
+			],
+			"interactivity": 5
 		},
 		"q-Bfpbjvvr.js": {
 			"size": 905,
@@ -1123,6 +1181,30 @@
 			],
 			"symbols": [
 				"s_VMPhmZs01FY"
+			],
+			"interactivity": 2
+		},
+		"q-BHIedqBs.js": {
+			"size": 2146,
+			"total": 116016,
+			"imports": [
+				"q-nf_CUDrf.js",
+				"q-rmeZrDEg.js"
+			],
+			"dynamicImports": [
+				"q-CIZuadEy.js"
+			],
+			"origins": [
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_Link_component_1raneLGffO8.js",
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_Link_component_handleClientSideNavigation_0HB1p804N00.js",
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_Link_component_handlePrefetch_zPJUEsxZLIA.js",
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_Link_component_handlePreload_74kvkuGdvug.js"
+			],
+			"symbols": [
+				"s_0HB1p804N00",
+				"s_1raneLGffO8",
+				"s_74kvkuGdvug",
+				"s_zPJUEsxZLIA"
 			],
 			"interactivity": 2
 		},
@@ -1474,21 +1556,6 @@
 			],
 			"interactivity": 1
 		},
-		"q-BSRn-19_.js": {
-			"size": 1476,
-			"total": 115346,
-			"imports": [
-				"q-D14O3gbg.js",
-				"q-rmeZrDEg.js"
-			],
-			"dynamicImports": [
-				"q-BVzm24sE.js"
-			],
-			"origins": [
-				"src/routes/collections/[handle]/index.tsx"
-			],
-			"interactivity": 0
-		},
 		"q-BSWiRZBT.js": {
 			"size": 1471,
 			"total": 213538,
@@ -1603,94 +1670,6 @@
 			],
 			"interactivity": 0
 		},
-		"q-BVzm24sE.js": {
-			"size": 14417,
-			"total": 298656,
-			"imports": [
-				"q-BSRn-19_.js",
-				"q-D14O3gbg.js",
-				"q-D8wHv7CY.js",
-				"q-rmeZrDEg.js"
-			],
-			"origins": [
-				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_button_onClick_1_M9sK0tN9hdI.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_button_onClick_2_KG5vc6h1cT4.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_button_onClick_c0KcyKFKFxc.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_div_button_onClick_1_13jF279jjrs.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_div_button_onClick_BAj7pIgjA84.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_div_div_button_onClick_Wz5ZM1gqpH4.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_div_div_label_input_onChange_dxWNSlrFc1g.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_div_label_input_onChange_8Kb0W8ylkfg.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_div_select_onChange_6Mts0aPtXeo.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_Fragment_section_div_div_select_onChange_18ODPtQeK4M.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_M9XwPVlpYOk.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_brands_useComputed_0EkWQ0OZZ2Q.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_filteredProducts_useComputed_ejHwiViaPrI.js",
-				"src/routes/collections/[handle]/index.tsx_handle_component_useOnDocument_C6lL0rW5k7Q.js"
-			],
-			"symbols": [
-				"s_0EkWQ0OZZ2Q",
-				"s_13jF279jjrs",
-				"s_18ODPtQeK4M",
-				"s_6Mts0aPtXeo",
-				"s_8Kb0W8ylkfg",
-				"s_BAj7pIgjA84",
-				"s_c0KcyKFKFxc",
-				"s_C6lL0rW5k7Q",
-				"s_dxWNSlrFc1g",
-				"s_ejHwiViaPrI",
-				"s_KG5vc6h1cT4",
-				"s_M9sK0tN9hdI",
-				"s_M9XwPVlpYOk",
-				"s_Wz5ZM1gqpH4"
-			],
-			"interactivity": 5
-		},
-		"q-BX1tmiTn.js": {
-			"size": 5279,
-			"total": 217530,
-			"imports": [
-				"q-89tNZGe-.js",
-				"q-DozppY5j.js",
-				"q-rmeZrDEg.js",
-				"q-RZfQUME2.js"
-			],
-			"origins": [
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_alignSig_useComputed_0CyZrhGM1Ag.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_autoPlayIntervalMsSig_useComputed_1wqD0aSkvsI.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_gapSig_useComputed_alT5muXU6HE.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_isDraggableSig_useComputed_VUefHJvN8LM.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_isMouseWheelSig_useComputed_x1wP3LIJxOU.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_isRewindSig_useComputed_9iBK30OA9CA.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_maxSlideHeightSig_useComputed_wmQdAMWexGs.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_moveSig_useComputed_o0K0khyuzgg.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_numSlidesSig_useComputed_vfQrcdlY4sA.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_orientationSig_useComputed_PIVwa5HO7XA.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_sensitivitySig_useComputed_YvsEBfJpGRU.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_slidesPerViewSig_useComputed_l0BYyScCbfM.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_startIndexSig_useComputed_xiNIPidrDXw.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_useTask_eXq38I5AEgA.js",
-				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_w5oa20Ngxe8.js"
-			],
-			"symbols": [
-				"s_0CyZrhGM1Ag",
-				"s_1wqD0aSkvsI",
-				"s_9iBK30OA9CA",
-				"s_alT5muXU6HE",
-				"s_eXq38I5AEgA",
-				"s_l0BYyScCbfM",
-				"s_o0K0khyuzgg",
-				"s_PIVwa5HO7XA",
-				"s_vfQrcdlY4sA",
-				"s_VUefHJvN8LM",
-				"s_w5oa20Ngxe8",
-				"s_wmQdAMWexGs",
-				"s_x1wP3LIJxOU",
-				"s_xiNIPidrDXw",
-				"s_YvsEBfJpGRU"
-			],
-			"interactivity": 3
-		},
 		"q-BXgwImig.js": {
 			"size": 147,
 			"total": 53039,
@@ -1723,6 +1702,36 @@
 				"s_Rafw5CAcWjg"
 			],
 			"interactivity": 3
+		},
+		"q-ByJu9-4a.js": {
+			"size": 231,
+			"total": 53123,
+			"imports": [
+				"q-rmeZrDEg.js"
+			],
+			"dynamicImports": [
+				"q-Dd0H__tl.js",
+				"q-PoTbqtdF.js"
+			],
+			"origins": [
+				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs"
+			],
+			"interactivity": 0
+		},
+		"q-Bz5unK4S.js": {
+			"size": 958,
+			"total": 114828,
+			"imports": [
+				"q-nf_CUDrf.js",
+				"q-rmeZrDEg.js"
+			],
+			"origins": [
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_RouterOutlet_component_ScE8eseirUA.js"
+			],
+			"symbols": [
+				"s_ScE8eseirUA"
+			],
+			"interactivity": 2
 		},
 		"q-BZr3geCv.js": {
 			"size": 1452,
@@ -1772,21 +1781,6 @@
 			],
 			"interactivity": 3
 		},
-		"q-C1CNWhee.js": {
-			"size": 1310,
-			"total": 115180,
-			"imports": [
-				"q-D14O3gbg.js",
-				"q-rmeZrDEg.js"
-			],
-			"origins": [
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_serverQrl_rpc_WfTOxT4IrdA.js"
-			],
-			"symbols": [
-				"s_WfTOxT4IrdA"
-			],
-			"interactivity": 1
-		},
 		"q-C1qoYjwT.js": {
 			"size": 3341,
 			"total": 162175,
@@ -1819,6 +1813,23 @@
 			],
 			"interactivity": 3
 		},
+		"q-C2iEZgCJ.js": {
+			"size": 475,
+			"total": 475,
+			"dynamicImports": [
+				"q-B-11l-59.js",
+				"q-Cf--qPaX.js",
+				"q-D1_YTMD7.js",
+				"q-DKIzFJ0d.js",
+				"q-eWZr0fAr.js",
+				"q-fD7zrzcm.js",
+				"q-gx9pOZtq.js"
+			],
+			"origins": [
+				"@qwik-city-plan"
+			],
+			"interactivity": 0
+		},
 		"q-C2QPvBbf.js": {
 			"size": 1244,
 			"total": 267395,
@@ -1833,25 +1844,6 @@
 				"s_xOuAAtQBKVE"
 			],
 			"interactivity": 2
-		},
-		"q-C2upQ77K.js": {
-			"size": 1308,
-			"total": 115178,
-			"imports": [
-				"q-D14O3gbg.js",
-				"q-rmeZrDEg.js"
-			],
-			"origins": [
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityMockProvider_component_MiPVFWJLcMo.js",
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityMockProvider_component_goto_PmWjL2RrvZM.js",
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityMockProvider_component_useTask_32KLFlOO5uE.js"
-			],
-			"symbols": [
-				"s_32KLFlOO5uE",
-				"s_MiPVFWJLcMo",
-				"s_PmWjL2RrvZM"
-			],
-			"interactivity": 3
 		},
 		"q-C85Bc_xF.js": {
 			"size": 5743,
@@ -1904,23 +1896,6 @@
 			],
 			"interactivity": 2
 		},
-		"q-CAP6VAdT.js": {
-			"size": 475,
-			"total": 475,
-			"dynamicImports": [
-				"q-B-11l-59.js",
-				"q-B38aGM4T.js",
-				"q-B6BlKCWK.js",
-				"q-BAjpHWq0.js",
-				"q-BSRn-19_.js",
-				"q-DKIzFJ0d.js",
-				"q-eWZr0fAr.js"
-			],
-			"origins": [
-				"@qwik-city-plan"
-			],
-			"interactivity": 0
-		},
 		"q-CB9Hqdox.js": {
 			"size": 3297,
 			"total": 217035,
@@ -1943,34 +1918,6 @@
 				"s_JWO0GouZZlI",
 				"s_oC7tfaRtO98",
 				"s_TlkMq0Q8bUA"
-			],
-			"interactivity": 3
-		},
-		"q-CbYvwi32.js": {
-			"size": 2843,
-			"total": 162113,
-			"imports": [
-				"q-89tNZGe-.js",
-				"q-rmeZrDEg.js",
-				"q-RZfQUME2.js"
-			],
-			"origins": [
-				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_FxQxwC0gwng.js",
-				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_handleClick_HZOcHlWtQRU.js",
-				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_handleFocusPrev_WgNxVbSylU8.js",
-				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_handleKeyDown_QaB0LMsgT4g.js",
-				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_isLastScrollableIndexSig_useComputed_bJHmZ2hi8tw.js",
-				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_useTask_1_QNqm4S2keOo.js",
-				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_useTask_DGjG81unLXc.js"
-			],
-			"symbols": [
-				"s_bJHmZ2hi8tw",
-				"s_DGjG81unLXc",
-				"s_FxQxwC0gwng",
-				"s_HZOcHlWtQRU",
-				"s_QaB0LMsgT4g",
-				"s_QNqm4S2keOo",
-				"s_WgNxVbSylU8"
 			],
 			"interactivity": 3
 		},
@@ -2031,21 +1978,6 @@
 				"s_tX9mh6RULKM"
 			],
 			"interactivity": 3
-		},
-		"q-CccNq-q2.js": {
-			"size": 830,
-			"total": 114700,
-			"imports": [
-				"q-D14O3gbg.js",
-				"q-rmeZrDEg.js"
-			],
-			"origins": [
-				"src/components/router-head/router-head.tsx_RouterHead_component_0vphQYqOdZI.js"
-			],
-			"symbols": [
-				"s_0vphQYqOdZI"
-			],
-			"interactivity": 2
 		},
 		"q-CCP_ZbDY.js": {
 			"size": 165,
@@ -2126,32 +2058,43 @@
 			],
 			"interactivity": 2
 		},
-		"q-CEeXO9hw.js": {
-			"size": 6474,
-			"total": 289692,
+		"q-CEC2IkpN.js": {
+			"size": 6809,
+			"total": 121154,
 			"imports": [
-				"q-BAjpHWq0.js",
-				"q-D14O3gbg.js",
-				"q-D8wHv7CY.js",
+				"q-C2iEZgCJ.js",
+				"q-nf_CUDrf.js",
+				"q-rmeZrDEg.js"
+			],
+			"origins": [
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_goto_aww2BzpANGM.js",
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_p1yCGpFL1xE.js",
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_registerPreventNav_qGVD1Sz413o.js",
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_useStyles_K4gvalEGCME.js",
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_useTask_Ysfvd0zsHZc.js"
+			],
+			"symbols": [
+				"s_aww2BzpANGM",
+				"s_K4gvalEGCME",
+				"s_p1yCGpFL1xE",
+				"s_qGVD1Sz413o",
+				"s_Ysfvd0zsHZc"
+			],
+			"interactivity": 3
+		},
+		"q-Cf--qPaX.js": {
+			"size": 171,
+			"total": 53063,
+			"imports": [
 				"q-rmeZrDEg.js"
 			],
 			"dynamicImports": [
-				"q-2Nov8SMh.js",
-				"q-DAvHZEEx.js"
+				"q-Cw7dsvPZ.js"
 			],
 			"origins": [
-				"src/routes/product/[handle]/index.tsx_handle_component_div_div_div_Fragment_div_button_onClick_vdPvPmgSzZc.js",
-				"src/routes/product/[handle]/index.tsx_handle_component_div_div_div_div_div_button_onClick_0q0bk40mJWQ.js",
-				"src/routes/product/[handle]/index.tsx_handle_component_handleAddToCart_X1tdD0jljMk.js",
-				"src/routes/product/[handle]/index.tsx_handle_component_ximn83p41iU.js"
+				"src/routes/layout.tsx"
 			],
-			"symbols": [
-				"s_0q0bk40mJWQ",
-				"s_vdPvPmgSzZc",
-				"s_X1tdD0jljMk",
-				"s_ximn83p41iU"
-			],
-			"interactivity": 5
+			"interactivity": 0
 		},
 		"q-Cf7_nFhh.js": {
 			"size": 478,
@@ -2167,32 +2110,6 @@
 				"node_modules/@qwik-ui/headless/hooks/combined-refs.qwik.mjs"
 			],
 			"interactivity": 0
-		},
-		"q-CFg2J4Cy.js": {
-			"size": 3019,
-			"total": 161946,
-			"imports": [
-				"q-89tNZGe-.js",
-				"q-B2TYvKcq.js",
-				"q-rmeZrDEg.js"
-			],
-			"origins": [
-				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs_CarouselSlide_component_handleFocusIn_00i0RLgc9VQ.js",
-				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs_CarouselSlide_component_isActiveSig_useComputed_2tZ51WEF6V8.js",
-				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs_CarouselSlide_component_isInactiveSig_useComputed_LVofEm0xjiY.js",
-				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs_CarouselSlide_component_isVisibleSig_useComputed_NmpYbZ8iXnE.js",
-				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs_CarouselSlide_component_uS0PI1UYSws.js",
-				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs_CarouselSlide_component_useTask_xY01hVk9OtI.js"
-			],
-			"symbols": [
-				"s_00i0RLgc9VQ",
-				"s_2tZ51WEF6V8",
-				"s_LVofEm0xjiY",
-				"s_NmpYbZ8iXnE",
-				"s_uS0PI1UYSws",
-				"s_xY01hVk9OtI"
-			],
-			"interactivity": 3
 		},
 		"q-CFU3VxFH.js": {
 			"size": 597,
@@ -2223,6 +2140,25 @@
 			],
 			"symbols": [
 				"s_1x4WVCr7r1M"
+			],
+			"interactivity": 2
+		},
+		"q-CGxiTLDu.js": {
+			"size": 1406,
+			"total": 115276,
+			"imports": [
+				"q-nf_CUDrf.js",
+				"q-rmeZrDEg.js"
+			],
+			"origins": [
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_GetForm_component_form_onSubmit_1_xe8duyQ5aaU.js",
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_GetForm_component_form_onSubmit_zpHcJzYZ88E.js",
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_GetForm_component_pWsmcogutG8.js"
+			],
+			"symbols": [
+				"s_pWsmcogutG8",
+				"s_xe8duyQ5aaU",
+				"s_zpHcJzYZ88E"
 			],
 			"interactivity": 2
 		},
@@ -2701,47 +2637,49 @@
 			],
 			"interactivity": 3
 		},
-		"q-CWZbeFMd.js": {
-			"size": 542,
-			"total": 53434,
+		"q-Cw7dsvPZ.js": {
+			"size": 20827,
+			"total": 243328,
 			"imports": [
+				"q-Df5iq9dJ.js",
+				"q-DLGgCZ93.js",
+				"q-nf_CUDrf.js",
+				"q-rmeZrDEg.js"
+			],
+			"dynamicImports": [
+				"q-CKfPTQWT.js"
+			],
+			"origins": [
+				"src/routes/layout.tsx_layout_component_VKFlAWJuVm8.js",
+				"src/routes/layout.tsx_layout_component_div_header_div_div_div_div_div_div_div_div_button_onClick_z3cj0LCcn0A.js",
+				"src/routes/layout.tsx_layout_component_removeLineItem_byRepNU209c.js",
+				"src/routes/layout.tsx_layout_component_toggleDarkMode_5o0fOe2bh44.js",
+				"src/routes/layout.tsx_layout_component_useTask_ZzHxkO8NgXQ.js"
+			],
+			"symbols": [
+				"s_5o0fOe2bh44",
+				"s_byRepNU209c",
+				"s_VKFlAWJuVm8",
+				"s_z3cj0LCcn0A",
+				"s_ZzHxkO8NgXQ"
+			],
+			"interactivity": 5
+		},
+		"q-CwmV-FXT.js": {
+			"size": 661,
+			"total": 167588,
+			"imports": [
+				"q-FBjteDuF.js",
+				"q-nf_CUDrf.js",
 				"q-rmeZrDEg.js"
 			],
 			"origins": [
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_ErrorBoundary_component_bmV0oH7tsks.js",
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_ErrorBoundary_component_useOnWindow_US0pTyQnOdc.js"
+				"src/root.tsx_root_component_tntnak2DhJ8.js"
 			],
 			"symbols": [
-				"s_bmV0oH7tsks",
-				"s_US0pTyQnOdc"
+				"s_tntnak2DhJ8"
 			],
 			"interactivity": 2
-		},
-		"q-CXVKGEIy.js": {
-			"size": 2436,
-			"total": 161706,
-			"imports": [
-				"q-89tNZGe-.js",
-				"q-rmeZrDEg.js",
-				"q-RZfQUME2.js"
-			],
-			"origins": [
-				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs_CarouselPrevious_component_7rD9qfbtBbE.js",
-				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs_CarouselPrevious_component_handleClick_W5wCbHoGlvE.js",
-				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs_CarouselPrevious_component_handleFocusNext_vz7UzS9D20A.js",
-				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs_CarouselPrevious_component_handleKeyDown_kmWxV9cVRlU.js",
-				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs_CarouselPrevious_component_isFirstScrollableIndexSig_useComputed_Nl7offoE0A0.js",
-				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs_CarouselPrevious_component_isFirstSlideSig_useComputed_Ag6rhNndDkg.js"
-			],
-			"symbols": [
-				"s_7rD9qfbtBbE",
-				"s_Ag6rhNndDkg",
-				"s_kmWxV9cVRlU",
-				"s_Nl7offoE0A0",
-				"s_vz7UzS9D20A",
-				"s_W5wCbHoGlvE"
-			],
-			"interactivity": 3
 		},
 		"q-CxYdS51L.js": {
 			"size": 711,
@@ -2838,20 +2776,47 @@
 			],
 			"interactivity": 2
 		},
-		"q-D14O3gbg.js": {
-			"size": 8086,
-			"total": 60978,
+		"q-D1_YTMD7.js": {
+			"size": 455,
+			"total": 114325,
 			"imports": [
+				"q-nf_CUDrf.js",
 				"q-rmeZrDEg.js"
 			],
 			"dynamicImports": [
-				"q-BihhsMc7.js",
-				"q-ibHhYc7S.js",
-				"q-L0Rm7m_o.js",
-				"q-pfkPON8R.js"
+				"q-BFBSoavC.js"
 			],
 			"origins": [
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs"
+				"src/routes/product/[handle]/index.tsx"
+			],
+			"interactivity": 0
+		},
+		"q-D39G6Uhg.js": {
+			"size": 1402,
+			"total": 107417,
+			"imports": [
+				"q-ByJu9-4a.js",
+				"q-rmeZrDEg.js"
+			],
+			"dynamicImports": [
+				"q-B0e1ShS8.js",
+				"q-Bf9QHeb0.js",
+				"q-DC3Qj8wD.js",
+				"q-JSZYEdOv.js",
+				"q-lrixw4Q4.js",
+				"q-MkIVE5Cw.js",
+				"q-YMCopps-.js"
+			],
+			"origins": [
+				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs",
+				"node_modules/@qwik-ui/headless/components/carousel/inline.qwik.mjs",
+				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs",
+				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs",
+				"node_modules/@qwik-ui/headless/components/carousel/scroller.qwik.mjs",
+				"node_modules/@qwik-ui/headless/components/carousel/step.qwik.mjs",
+				"node_modules/@qwik-ui/headless/components/carousel/title.qwik.mjs",
+				"node_modules/@qwik-ui/headless/utils/inline-component.qwik.mjs"
 			],
 			"interactivity": 0
 		},
@@ -2868,75 +2833,6 @@
 			"total": 261,
 			"origins": [
 				"node_modules/@qwik-ui/headless/components/modal/modal.css.qwik.mjs"
-			],
-			"interactivity": 0
-		},
-		"q-D7nlabbI.js": {
-			"size": 11308,
-			"total": 125178,
-			"imports": [
-				"q-D14O3gbg.js",
-				"q-rmeZrDEg.js"
-			],
-			"dynamicImports": [
-				"q-BhmsZ3Ro.js"
-			],
-			"origins": [
-				"src/routes/index.tsx_routes_component_B0lqk5IDDy4.js",
-				"src/routes/index.tsx_routes_component_Fragment_section_div_button_onClick_0dtRXRauDoI.js",
-				"src/routes/index.tsx_routes_component_Fragment_section_onMouseEnter_CJwjjKYzkJE.js",
-				"src/routes/index.tsx_routes_component_Fragment_section_onMouseLeave_DX4A9vQyR6s.js",
-				"src/routes/index.tsx_routes_component_Fragment_section_onTouchEnd_oBZ1mXnEhZE.js",
-				"src/routes/index.tsx_routes_component_Fragment_section_onTouchStart_LMnJ0qWsGKE.js"
-			],
-			"symbols": [
-				"s_0dtRXRauDoI",
-				"s_B0lqk5IDDy4",
-				"s_CJwjjKYzkJE",
-				"s_DX4A9vQyR6s",
-				"s_LMnJ0qWsGKE",
-				"s_oBZ1mXnEhZE"
-			],
-			"interactivity": 5
-		},
-		"q-D8wHv7CY.js": {
-			"size": 55023,
-			"total": 55023,
-			"origins": [
-				"node_modules/graphql-request/build/legacy/classes/ClientError.js",
-				"node_modules/graphql-request/build/legacy/classes/GraphQLClient.js",
-				"node_modules/graphql-request/build/legacy/functions/batchRequests.js",
-				"node_modules/graphql-request/build/legacy/functions/gql.js",
-				"node_modules/graphql-request/build/legacy/functions/rawRequest.js",
-				"node_modules/graphql-request/build/legacy/functions/request.js",
-				"node_modules/graphql-request/build/legacy/helpers/analyzeDocument.js",
-				"node_modules/graphql-request/build/legacy/helpers/defaultJsonSerializer.js",
-				"node_modules/graphql-request/build/legacy/helpers/runRequest.js",
-				"node_modules/graphql-request/build/legacy/lib/graphql.js",
-				"node_modules/graphql-request/build/lib/http.js",
-				"node_modules/graphql-request/build/lib/prelude.js",
-				"node_modules/graphql/error/GraphQLError.mjs",
-				"node_modules/graphql/error/syntaxError.mjs",
-				"node_modules/graphql/jsutils/devAssert.mjs",
-				"node_modules/graphql/jsutils/inspect.mjs",
-				"node_modules/graphql/jsutils/instanceOf.mjs",
-				"node_modules/graphql/jsutils/invariant.mjs",
-				"node_modules/graphql/jsutils/isObjectLike.mjs",
-				"node_modules/graphql/language/ast.mjs",
-				"node_modules/graphql/language/blockString.mjs",
-				"node_modules/graphql/language/characterClasses.mjs",
-				"node_modules/graphql/language/directiveLocation.mjs",
-				"node_modules/graphql/language/kinds.mjs",
-				"node_modules/graphql/language/lexer.mjs",
-				"node_modules/graphql/language/location.mjs",
-				"node_modules/graphql/language/parser.mjs",
-				"node_modules/graphql/language/printLocation.mjs",
-				"node_modules/graphql/language/printString.mjs",
-				"node_modules/graphql/language/printer.mjs",
-				"node_modules/graphql/language/source.mjs",
-				"node_modules/graphql/language/tokenKind.mjs",
-				"node_modules/graphql/language/visitor.mjs",
-				"src/lib/shopify.ts"
 			],
 			"interactivity": 0
 		},
@@ -3043,6 +2939,51 @@
 			],
 			"interactivity": 3
 		},
+		"q-DC3Qj8wD.js": {
+			"size": 5398,
+			"total": 217649,
+			"imports": [
+				"q-89tNZGe-.js",
+				"q-DozppY5j.js",
+				"q-rmeZrDEg.js",
+				"q-RZfQUME2.js"
+			],
+			"origins": [
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_alignSig_useComputed_0CyZrhGM1Ag.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_autoPlayIntervalMsSig_useComputed_1wqD0aSkvsI.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_gapSig_useComputed_alT5muXU6HE.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_isDraggableSig_useComputed_VUefHJvN8LM.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_isMouseWheelSig_useComputed_x1wP3LIJxOU.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_isRewindSig_useComputed_9iBK30OA9CA.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_maxSlideHeightSig_useComputed_wmQdAMWexGs.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_moveSig_useComputed_o0K0khyuzgg.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_numSlidesSig_useComputed_vfQrcdlY4sA.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_orientationSig_useComputed_PIVwa5HO7XA.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_sensitivitySig_useComputed_YvsEBfJpGRU.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_slidesPerViewSig_useComputed_l0BYyScCbfM.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_startIndexSig_useComputed_xiNIPidrDXw.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_useTask_eXq38I5AEgA.js",
+				"node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs_CarouselBase_component_w5oa20Ngxe8.js"
+			],
+			"symbols": [
+				"s_0CyZrhGM1Ag",
+				"s_1wqD0aSkvsI",
+				"s_9iBK30OA9CA",
+				"s_alT5muXU6HE",
+				"s_eXq38I5AEgA",
+				"s_l0BYyScCbfM",
+				"s_o0K0khyuzgg",
+				"s_PIVwa5HO7XA",
+				"s_vfQrcdlY4sA",
+				"s_VUefHJvN8LM",
+				"s_w5oa20Ngxe8",
+				"s_wmQdAMWexGs",
+				"s_x1wP3LIJxOU",
+				"s_xiNIPidrDXw",
+				"s_YvsEBfJpGRU"
+			],
+			"interactivity": 3
+		},
 		"q-Dd0H__tl.js": {
 			"size": 525,
 			"total": 106395,
@@ -3133,6 +3074,47 @@
 				"s_uReY93e40Uw"
 			],
 			"interactivity": 3
+		},
+		"q-Df5iq9dJ.js": {
+			"size": 55348,
+			"total": 55348,
+			"origins": [
+				"node_modules/graphql-request/build/legacy/classes/ClientError.js",
+				"node_modules/graphql-request/build/legacy/classes/GraphQLClient.js",
+				"node_modules/graphql-request/build/legacy/functions/batchRequests.js",
+				"node_modules/graphql-request/build/legacy/functions/gql.js",
+				"node_modules/graphql-request/build/legacy/functions/rawRequest.js",
+				"node_modules/graphql-request/build/legacy/functions/request.js",
+				"node_modules/graphql-request/build/legacy/helpers/analyzeDocument.js",
+				"node_modules/graphql-request/build/legacy/helpers/defaultJsonSerializer.js",
+				"node_modules/graphql-request/build/legacy/helpers/runRequest.js",
+				"node_modules/graphql-request/build/legacy/lib/graphql.js",
+				"node_modules/graphql-request/build/lib/http.js",
+				"node_modules/graphql-request/build/lib/prelude.js",
+				"node_modules/graphql/error/GraphQLError.mjs",
+				"node_modules/graphql/error/syntaxError.mjs",
+				"node_modules/graphql/jsutils/devAssert.mjs",
+				"node_modules/graphql/jsutils/inspect.mjs",
+				"node_modules/graphql/jsutils/instanceOf.mjs",
+				"node_modules/graphql/jsutils/invariant.mjs",
+				"node_modules/graphql/jsutils/isObjectLike.mjs",
+				"node_modules/graphql/language/ast.mjs",
+				"node_modules/graphql/language/blockString.mjs",
+				"node_modules/graphql/language/characterClasses.mjs",
+				"node_modules/graphql/language/directiveLocation.mjs",
+				"node_modules/graphql/language/kinds.mjs",
+				"node_modules/graphql/language/lexer.mjs",
+				"node_modules/graphql/language/location.mjs",
+				"node_modules/graphql/language/parser.mjs",
+				"node_modules/graphql/language/printLocation.mjs",
+				"node_modules/graphql/language/printString.mjs",
+				"node_modules/graphql/language/printer.mjs",
+				"node_modules/graphql/language/source.mjs",
+				"node_modules/graphql/language/tokenKind.mjs",
+				"node_modules/graphql/language/visitor.mjs",
+				"src/lib/shopify.ts"
+			],
+			"interactivity": 0
 		},
 		"q-DFUPusiX.js": {
 			"size": 739,
@@ -3234,6 +3216,21 @@
 			],
 			"interactivity": 2
 		},
+		"q-DHiL_8O5.js": {
+			"size": 1310,
+			"total": 115180,
+			"imports": [
+				"q-nf_CUDrf.js",
+				"q-rmeZrDEg.js"
+			],
+			"origins": [
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_serverQrl_rpc_WfTOxT4IrdA.js"
+			],
+			"symbols": [
+				"s_WfTOxT4IrdA"
+			],
+			"interactivity": 1
+		},
 		"q-DJHIefjk.js": {
 			"size": 1029,
 			"total": 213259,
@@ -3318,6 +3315,21 @@
 			],
 			"interactivity": 0
 		},
+		"q-Dn84EcPi.js": {
+			"size": 171,
+			"total": 53063,
+			"imports": [
+				"q-rmeZrDEg.js"
+			],
+			"dynamicImports": [
+				"q-CwmV-FXT.js"
+			],
+			"origins": [
+				"src/global.css",
+				"src/root.tsx"
+			],
+			"interactivity": 0
+		},
 		"q-Dnd2Zw9a.js": {
 			"size": 1475,
 			"total": 160322,
@@ -3356,34 +3368,6 @@
 				"node_modules/@qwik-ui/headless/components/carousel/use-scroller.qwik.mjs"
 			],
 			"interactivity": 0
-		},
-		"q-DnZegS06.js": {
-			"size": 3743,
-			"total": 163013,
-			"imports": [
-				"q-89tNZGe-.js",
-				"q-rmeZrDEg.js",
-				"q-RZfQUME2.js"
-			],
-			"origins": [
-				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_QT86f3zxDfQ.js",
-				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_handleClick_NWgIIymU6LU.js",
-				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_handleFocus_SIJdvtfJKlE.js",
-				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_handleKeyDown_KbpPXJyjkgM.js",
-				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_isActiveBulletSig_useComputed_zSCj7Qn1SCw.js",
-				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_useTask_1_kiIK7P7g0U0.js",
-				"node_modules/@qwik-ui/headless/components/carousel/bullet.qwik.mjs_CarouselBullet_component_useTask_lCVG1xjWbsM.js"
-			],
-			"symbols": [
-				"s_KbpPXJyjkgM",
-				"s_kiIK7P7g0U0",
-				"s_lCVG1xjWbsM",
-				"s_NWgIIymU6LU",
-				"s_QT86f3zxDfQ",
-				"s_SIJdvtfJKlE",
-				"s_zSCj7Qn1SCw"
-			],
-			"interactivity": 3
 		},
 		"q-DOl5vcyJ.js": {
 			"size": 2469,
@@ -3531,6 +3515,21 @@
 			],
 			"symbols": [
 				"s_0miDWHmgmRA"
+			],
+			"interactivity": 2
+		},
+		"q-dSc0FHMd.js": {
+			"size": 830,
+			"total": 114700,
+			"imports": [
+				"q-nf_CUDrf.js",
+				"q-rmeZrDEg.js"
+			],
+			"origins": [
+				"src/components/router-head/router-head.tsx_RouterHead_component_0vphQYqOdZI.js"
+			],
+			"symbols": [
+				"s_0vphQYqOdZI"
 			],
 			"interactivity": 2
 		},
@@ -3805,11 +3804,82 @@
 			],
 			"interactivity": 3
 		},
+		"q-FBjteDuF.js": {
+			"size": 165,
+			"total": 53057,
+			"imports": [
+				"q-rmeZrDEg.js"
+			],
+			"dynamicImports": [
+				"q-dSc0FHMd.js"
+			],
+			"origins": [
+				"src/components/router-head/router-head.tsx"
+			],
+			"interactivity": 0
+		},
+		"q-fD7zrzcm.js": {
+			"size": 1454,
+			"total": 115324,
+			"imports": [
+				"q-nf_CUDrf.js",
+				"q-rmeZrDEg.js"
+			],
+			"dynamicImports": [
+				"q-B-4eIxL9.js"
+			],
+			"origins": [
+				"src/routes/collections/[handle]/index.tsx"
+			],
+			"interactivity": 0
+		},
 		"q-fzjVMaDy.js": {
 			"size": 850,
 			"total": 850,
 			"origins": [
 				"node_modules/@qwik-ui/headless/components/popover/popover.css.qwik.mjs"
+			],
+			"interactivity": 0
+		},
+		"q-GNGCkZy8.js": {
+			"size": 11308,
+			"total": 125178,
+			"imports": [
+				"q-nf_CUDrf.js",
+				"q-rmeZrDEg.js"
+			],
+			"dynamicImports": [
+				"q-BhmsZ3Ro.js"
+			],
+			"origins": [
+				"src/routes/index.tsx_routes_component_B0lqk5IDDy4.js",
+				"src/routes/index.tsx_routes_component_Fragment_section_div_button_onClick_0dtRXRauDoI.js",
+				"src/routes/index.tsx_routes_component_Fragment_section_onMouseEnter_CJwjjKYzkJE.js",
+				"src/routes/index.tsx_routes_component_Fragment_section_onMouseLeave_DX4A9vQyR6s.js",
+				"src/routes/index.tsx_routes_component_Fragment_section_onTouchEnd_oBZ1mXnEhZE.js",
+				"src/routes/index.tsx_routes_component_Fragment_section_onTouchStart_LMnJ0qWsGKE.js"
+			],
+			"symbols": [
+				"s_0dtRXRauDoI",
+				"s_B0lqk5IDDy4",
+				"s_CJwjjKYzkJE",
+				"s_DX4A9vQyR6s",
+				"s_LMnJ0qWsGKE",
+				"s_oBZ1mXnEhZE"
+			],
+			"interactivity": 5
+		},
+		"q-gx9pOZtq.js": {
+			"size": 438,
+			"total": 53330,
+			"imports": [
+				"q-rmeZrDEg.js"
+			],
+			"dynamicImports": [
+				"q-GNGCkZy8.js"
+			],
+			"origins": [
+				"src/routes/index.tsx"
 			],
 			"interactivity": 0
 		},
@@ -3820,65 +3890,6 @@
 				"node_modules/@qwik-ui/headless/components/tabs/get-enabled-tab.qwik.mjs"
 			],
 			"interactivity": 0
-		},
-		"q-HwBnAua1.js": {
-			"size": 6289,
-			"total": 272233,
-			"imports": [
-				"q-Bvx2tX-h.js",
-				"q-Cf7_nFhh.js",
-				"q-CSvqulJH.js",
-				"q-rmeZrDEg.js"
-			],
-			"origins": [
-				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_checkVisibility_Q8emVD0xdUw.js",
-				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_handleClick_0CHydJFe0I0.js",
-				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_handleKeyDown_DyYtoEUy5Y4.js",
-				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_handlePointerOver_nNH3Z86OWLg.js",
-				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_isHighlightedSig_useComputed_DtfIatVBGvE.js",
-				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_isSelectedSig_useComputed_zy5KpIpejwU.js",
-				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_useOnWindow_4D4KWRX3Gvo.js",
-				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_useTask_0E0xHuYbeB4.js",
-				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_useTask_1_gVnziLbfejw.js",
-				"node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs_HSelectItem_component_w8zoodu230Y.js"
-			],
-			"symbols": [
-				"s_0CHydJFe0I0",
-				"s_0E0xHuYbeB4",
-				"s_4D4KWRX3Gvo",
-				"s_DtfIatVBGvE",
-				"s_DyYtoEUy5Y4",
-				"s_gVnziLbfejw",
-				"s_nNH3Z86OWLg",
-				"s_Q8emVD0xdUw",
-				"s_w8zoodu230Y",
-				"s_zy5KpIpejwU"
-			],
-			"interactivity": 3
-		},
-		"q-ibHhYc7S.js": {
-			"size": 2146,
-			"total": 116016,
-			"imports": [
-				"q-D14O3gbg.js",
-				"q-rmeZrDEg.js"
-			],
-			"dynamicImports": [
-				"q-CIZuadEy.js"
-			],
-			"origins": [
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_Link_component_1raneLGffO8.js",
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_Link_component_handleClientSideNavigation_0HB1p804N00.js",
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_Link_component_handlePrefetch_zPJUEsxZLIA.js",
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_Link_component_handlePreload_74kvkuGdvug.js"
-			],
-			"symbols": [
-				"s_0HB1p804N00",
-				"s_1raneLGffO8",
-				"s_74kvkuGdvug",
-				"s_zPJUEsxZLIA"
-			],
-			"interactivity": 2
 		},
 		"q-jCa1mOWS.js": {
 			"size": 2584,
@@ -3920,37 +3931,6 @@
 			],
 			"interactivity": 2
 		},
-		"q-L0Rm7m_o.js": {
-			"size": 958,
-			"total": 114828,
-			"imports": [
-				"q-D14O3gbg.js",
-				"q-rmeZrDEg.js"
-			],
-			"origins": [
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_RouterOutlet_component_ScE8eseirUA.js"
-			],
-			"symbols": [
-				"s_ScE8eseirUA"
-			],
-			"interactivity": 2
-		},
-		"q-LCxdt-Wc.js": {
-			"size": 661,
-			"total": 167588,
-			"imports": [
-				"q-0mEJS5K_.js",
-				"q-D14O3gbg.js",
-				"q-rmeZrDEg.js"
-			],
-			"origins": [
-				"src/root.tsx_root_component_tntnak2DhJ8.js"
-			],
-			"symbols": [
-				"s_tntnak2DhJ8"
-			],
-			"interactivity": 2
-		},
 		"q-Li3sTkLe.js": {
 			"size": 673,
 			"total": 53565,
@@ -3985,6 +3965,60 @@
 			],
 			"interactivity": 2
 		},
+		"q-lrixw4Q4.js": {
+			"size": 2552,
+			"total": 161822,
+			"imports": [
+				"q-89tNZGe-.js",
+				"q-rmeZrDEg.js",
+				"q-RZfQUME2.js"
+			],
+			"origins": [
+				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs_CarouselPrevious_component_7rD9qfbtBbE.js",
+				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs_CarouselPrevious_component_handleClick_W5wCbHoGlvE.js",
+				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs_CarouselPrevious_component_handleFocusNext_vz7UzS9D20A.js",
+				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs_CarouselPrevious_component_handleKeyDown_kmWxV9cVRlU.js",
+				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs_CarouselPrevious_component_isFirstScrollableIndexSig_useComputed_Nl7offoE0A0.js",
+				"node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs_CarouselPrevious_component_isFirstSlideSig_useComputed_Ag6rhNndDkg.js"
+			],
+			"symbols": [
+				"s_7rD9qfbtBbE",
+				"s_Ag6rhNndDkg",
+				"s_kmWxV9cVRlU",
+				"s_Nl7offoE0A0",
+				"s_vz7UzS9D20A",
+				"s_W5wCbHoGlvE"
+			],
+			"interactivity": 3
+		},
+		"q-MkIVE5Cw.js": {
+			"size": 2959,
+			"total": 162229,
+			"imports": [
+				"q-89tNZGe-.js",
+				"q-rmeZrDEg.js",
+				"q-RZfQUME2.js"
+			],
+			"origins": [
+				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_FxQxwC0gwng.js",
+				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_handleClick_HZOcHlWtQRU.js",
+				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_handleFocusPrev_WgNxVbSylU8.js",
+				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_handleKeyDown_QaB0LMsgT4g.js",
+				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_isLastScrollableIndexSig_useComputed_bJHmZ2hi8tw.js",
+				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_useTask_1_QNqm4S2keOo.js",
+				"node_modules/@qwik-ui/headless/components/carousel/next.qwik.mjs_CarouselNext_component_useTask_DGjG81unLXc.js"
+			],
+			"symbols": [
+				"s_bJHmZ2hi8tw",
+				"s_DGjG81unLXc",
+				"s_FxQxwC0gwng",
+				"s_HZOcHlWtQRU",
+				"s_QaB0LMsgT4g",
+				"s_QNqm4S2keOo",
+				"s_WgNxVbSylU8"
+			],
+			"interactivity": 3
+		},
 		"q-n3QbNxkI.js": {
 			"size": 201,
 			"total": 106150,
@@ -4005,6 +4039,23 @@
 			"total": 3100,
 			"origins": [
 				"node_modules/@builder.io/qwik/dist/qwikloader.js"
+			],
+			"interactivity": 0
+		},
+		"q-nf_CUDrf.js": {
+			"size": 8086,
+			"total": 60978,
+			"imports": [
+				"q-rmeZrDEg.js"
+			],
+			"dynamicImports": [
+				"q-BHIedqBs.js",
+				"q-BihhsMc7.js",
+				"q-Bz5unK4S.js",
+				"q-CEC2IkpN.js"
+			],
+			"origins": [
+				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs"
 			],
 			"interactivity": 0
 		},
@@ -4060,30 +4111,6 @@
 			],
 			"interactivity": 3
 		},
-		"q-pfkPON8R.js": {
-			"size": 6809,
-			"total": 121154,
-			"imports": [
-				"q-CAP6VAdT.js",
-				"q-D14O3gbg.js",
-				"q-rmeZrDEg.js"
-			],
-			"origins": [
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_goto_aww2BzpANGM.js",
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_p1yCGpFL1xE.js",
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_registerPreventNav_qGVD1Sz413o.js",
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_useStyles_K4gvalEGCME.js",
-				"node_modules/@builder.io/qwik-city/lib/index.qwik.mjs_QwikCityProvider_component_useTask_Ysfvd0zsHZc.js"
-			],
-			"symbols": [
-				"s_aww2BzpANGM",
-				"s_K4gvalEGCME",
-				"s_p1yCGpFL1xE",
-				"s_qGVD1Sz413o",
-				"s_Ysfvd0zsHZc"
-			],
-			"interactivity": 3
-		},
 		"q-pmnEF8eX.js": {
 			"size": 112,
 			"total": 53004,
@@ -4094,6 +4121,32 @@
 				"node_modules/@qwik-ui/headless/components/accordion/accordion-context.qwik.mjs"
 			],
 			"interactivity": 0
+		},
+		"q-PoTbqtdF.js": {
+			"size": 3019,
+			"total": 162012,
+			"imports": [
+				"q-89tNZGe-.js",
+				"q-ByJu9-4a.js",
+				"q-rmeZrDEg.js"
+			],
+			"origins": [
+				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs_CarouselSlide_component_handleFocusIn_00i0RLgc9VQ.js",
+				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs_CarouselSlide_component_isActiveSig_useComputed_2tZ51WEF6V8.js",
+				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs_CarouselSlide_component_isInactiveSig_useComputed_LVofEm0xjiY.js",
+				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs_CarouselSlide_component_isVisibleSig_useComputed_NmpYbZ8iXnE.js",
+				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs_CarouselSlide_component_uS0PI1UYSws.js",
+				"node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs_CarouselSlide_component_useTask_xY01hVk9OtI.js"
+			],
+			"symbols": [
+				"s_00i0RLgc9VQ",
+				"s_2tZ51WEF6V8",
+				"s_LVofEm0xjiY",
+				"s_NmpYbZ8iXnE",
+				"s_uS0PI1UYSws",
+				"s_xY01hVk9OtI"
+			],
+			"interactivity": 3
 		},
 		"q-qU9joZB8.js": {
 			"size": 240,
@@ -4142,27 +4195,6 @@
 				"node_modules/@qwik-ui/headless/components/carousel/use-carousel.qwik.mjs"
 			],
 			"interactivity": 0
-		},
-		"q-tiKoE8do.js": {
-			"size": 1475,
-			"total": 107345,
-			"imports": [
-				"q-89tNZGe-.js",
-				"q-rmeZrDEg.js"
-			],
-			"origins": [
-				"node_modules/@qwik-ui/headless/components/carousel/step.qwik.mjs_CarouselStep_component_gVEMkzdzzKg.js",
-				"node_modules/@qwik-ui/headless/components/carousel/step.qwik.mjs_CarouselStep_component_handleClick_Paeuli20yKY.js",
-				"node_modules/@qwik-ui/headless/components/carousel/step.qwik.mjs_CarouselStep_component_isCurrentSig_useComputed_xquabQIhcog.js",
-				"node_modules/@qwik-ui/headless/components/carousel/step.qwik.mjs_CarouselStep_component_localIndexSig_useComputed_IER8Vh2bNuQ.js"
-			],
-			"symbols": [
-				"s_gVEMkzdzzKg",
-				"s_IER8Vh2bNuQ",
-				"s_Paeuli20yKY",
-				"s_xquabQIhcog"
-			],
-			"interactivity": 3
 		},
 		"q-TPJ7_UNR.js": {
 			"size": 5946,
@@ -4334,9 +4366,9 @@
 			],
 			"interactivity": 2
 		},
-		"q-YyldzjFK.js": {
-			"size": 8616,
-			"total": 277820,
+		"q-YMCopps-.js": {
+			"size": 8735,
+			"total": 277939,
 			"imports": [
 				"q-89tNZGe-.js",
 				"q-DNqNVbVl.js",
@@ -4406,13 +4438,13 @@
 		}
 	},
 	"assets": {
-		"assets/Bmp4HRd5-style.css": {
+		"assets/W4m_2Hpq-style.css": {
 			"name": "style.css",
-			"size": 30316
+			"size": 31524
 		},
-		"assets/C9vr8sjS-bundle-graph.json": {
+		"assets/Cdgtyb9m-bundle-graph.json": {
 			"name": "bundle-graph.json",
-			"size": 2041
+			"size": 2055
 		}
 	},
 	"symbols": {
@@ -4440,8 +4472,8 @@
 			"parent": "s_ximn83p41iU",
 			"origin": "routes/product/[handle]/index.tsx",
 			"loc": [
-				7592,
-				7699
+				7766,
+				7873
 			]
 		},
 		"s_13jF279jjrs": {
@@ -4454,8 +4486,8 @@
 			"parent": "s_M9XwPVlpYOk",
 			"origin": "routes/collections/[handle]/index.tsx",
 			"loc": [
-				13944,
-				14001
+				13928,
+				13985
 			]
 		},
 		"s_8zIoh0WYfsc": {
@@ -4482,8 +4514,8 @@
 			"parent": "s_M9XwPVlpYOk",
 			"origin": "routes/collections/[handle]/index.tsx",
 			"loc": [
-				10300,
-				10336
+				10284,
+				10320
 			]
 		},
 		"s_KG5vc6h1cT4": {
@@ -4496,8 +4528,8 @@
 			"parent": "s_M9XwPVlpYOk",
 			"origin": "routes/collections/[handle]/index.tsx",
 			"loc": [
-				9174,
-				9231
+				9158,
+				9215
 			]
 		},
 		"s_M9sK0tN9hdI": {
@@ -4510,8 +4542,8 @@
 			"parent": "s_M9XwPVlpYOk",
 			"origin": "routes/collections/[handle]/index.tsx",
 			"loc": [
-				7071,
-				7100
+				7055,
+				7084
 			]
 		},
 		"s_W3ypTncjkl4": {
@@ -4538,8 +4570,8 @@
 			"parent": "s_M9XwPVlpYOk",
 			"origin": "routes/collections/[handle]/index.tsx",
 			"loc": [
-				15069,
-				15105
+				15053,
+				15089
 			]
 		},
 		"s_c0KcyKFKFxc": {
@@ -4552,8 +4584,8 @@
 			"parent": "s_M9XwPVlpYOk",
 			"origin": "routes/collections/[handle]/index.tsx",
 			"loc": [
-				6320,
-				6349
+				6304,
+				6333
 			]
 		},
 		"s_iLFkoOFYzak": {
@@ -4594,8 +4626,8 @@
 			"parent": "s_ximn83p41iU",
 			"origin": "routes/product/[handle]/index.tsx",
 			"loc": [
-				4323,
-				4354
+				4497,
+				4528
 			]
 		},
 		"s_z3cj0LCcn0A": {
@@ -4692,8 +4724,8 @@
 			"parent": "s_M9XwPVlpYOk",
 			"origin": "routes/collections/[handle]/index.tsx",
 			"loc": [
-				8010,
-				8425
+				7994,
+				8409
 			]
 		},
 		"s_6Mts0aPtXeo": {
@@ -4706,8 +4738,8 @@
 			"parent": "s_M9XwPVlpYOk",
 			"origin": "routes/collections/[handle]/index.tsx",
 			"loc": [
-				12780,
-				13195
+				12764,
+				13179
 			]
 		},
 		"s_8Kb0W8ylkfg": {
@@ -4720,8 +4752,8 @@
 			"parent": "s_M9XwPVlpYOk",
 			"origin": "routes/collections/[handle]/index.tsx",
 			"loc": [
-				11024,
-				11452
+				11008,
+				11436
 			]
 		},
 		"s_dxWNSlrFc1g": {
@@ -4734,8 +4766,8 @@
 			"parent": "s_M9XwPVlpYOk",
 			"origin": "routes/collections/[handle]/index.tsx",
 			"loc": [
-				15793,
-				16221
+				15777,
+				16205
 			]
 		},
 		"s_2XT02aE4yCc": {
@@ -4927,34 +4959,6 @@
 				2385
 			]
 		},
-		"s_0ziQmC3nc4I": {
-			"displayName": "dropdown-popover.qwik.mjs_HDropdownPopover_component_HPopoverRoot_HPopoverPanel_onMouseMove",
-			"hash": "0ziQmC3nc4I",
-			"ctxKind": "jSXProp",
-			"ctxName": "onMouseMove$",
-			"captures": true,
-			"canonicalFilename": "dropdown-popover.qwik.mjs_HDropdownPopover_component_HPopoverRoot_HPopoverPanel_onMouseMove_0ziQmC3nc4I",
-			"parent": "s_3brMbjOF9L8",
-			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-popover.qwik.mjs",
-			"loc": [
-				2974,
-				3078
-			]
-		},
-		"s_1E7R1t0YR1A": {
-			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask_2",
-			"hash": "1E7R1t0YR1A",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_2_1E7R1t0YR1A",
-			"parent": "s_3h6Tg7NQ89E",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
-			"loc": [
-				2726,
-				2952
-			]
-		},
 		"s_32KLFlOO5uE": {
 			"displayName": "index.qwik.mjs_QwikCityMockProvider_component_useTask",
 			"hash": "32KLFlOO5uE",
@@ -4983,34 +4987,6 @@
 				6780
 			]
 		},
-		"s_5WhXOrGHVNQ": {
-			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_5",
-			"hash": "5WhXOrGHVNQ",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_5_5WhXOrGHVNQ",
-			"parent": "s_50md6xzcry0",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
-			"loc": [
-				5106,
-				5151
-			]
-		},
-		"s_6et0P2lVhsw": {
-			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask_1",
-			"hash": "6et0P2lVhsw",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_1_6et0P2lVhsw",
-			"parent": "s_3h6Tg7NQ89E",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
-			"loc": [
-				2217,
-				2712
-			]
-		},
 		"s_6vM3fM0I8v8": {
 			"displayName": "toggle-group-item.qwik.mjs_HToggleGroupItem_component_useTask_2",
 			"hash": "6vM3fM0I8v8",
@@ -5023,34 +4999,6 @@
 			"loc": [
 				2452,
 				3380
-			]
-		},
-		"s_8Q3LwDP0Tvg": {
-			"displayName": "dropdown-popover.qwik.mjs_HDropdownPopover_component_useTask",
-			"hash": "8Q3LwDP0Tvg",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "dropdown-popover.qwik.mjs_HDropdownPopover_component_useTask_8Q3LwDP0Tvg",
-			"parent": "s_3brMbjOF9L8",
-			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-popover.qwik.mjs",
-			"loc": [
-				885,
-				1136
-			]
-		},
-		"s_9zJeWrQPs6w": {
-			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask_3",
-			"hash": "9zJeWrQPs6w",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_3_9zJeWrQPs6w",
-			"parent": "s_3h6Tg7NQ89E",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
-			"loc": [
-				2966,
-				3135
 			]
 		},
 		"s_A8u0vKP9CyM": {
@@ -5095,20 +5043,6 @@
 				5493
 			]
 		},
-		"s_BiskTtujlWw": {
-			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask",
-			"hash": "BiskTtujlWw",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_BiskTtujlWw",
-			"parent": "s_3h6Tg7NQ89E",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
-			"loc": [
-				1624,
-				1706
-			]
-		},
 		"s_C5MuXZ9uEV0": {
 			"displayName": "toggle-group-item.qwik.mjs_HToggleGroupItem_component_useTask",
 			"hash": "C5MuXZ9uEV0",
@@ -5149,34 +5083,6 @@
 			"loc": [
 				3589,
 				4305
-			]
-		},
-		"s_CfXDW74ntrk": {
-			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask_4",
-			"hash": "CfXDW74ntrk",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_4_CfXDW74ntrk",
-			"parent": "s_3h6Tg7NQ89E",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
-			"loc": [
-				3149,
-				4388
-			]
-		},
-		"s_CqXrndLLBUk": {
-			"displayName": "hidden-select-option.qwik.mjs_HiddenSelectOption_component_useTask",
-			"hash": "CqXrndLLBUk",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "hidden-select-option.qwik.mjs_HiddenSelectOption_component_useTask_CqXrndLLBUk",
-			"parent": "s_iKusoxB500Q",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/hidden-select-option.qwik.mjs",
-			"loc": [
-				434,
-				816
 			]
 		},
 		"s_DGjG81unLXc": {
@@ -5221,34 +5127,6 @@
 				1134
 			]
 		},
-		"s_EqL3dnlHDCU": {
-			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_2",
-			"hash": "EqL3dnlHDCU",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_2_EqL3dnlHDCU",
-			"parent": "s_50md6xzcry0",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
-			"loc": [
-				3828,
-				4009
-			]
-		},
-		"s_EwbIDEaI7VA": {
-			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask_6",
-			"hash": "EwbIDEaI7VA",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_6_EwbIDEaI7VA",
-			"parent": "s_3h6Tg7NQ89E",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
-			"loc": [
-				4461,
-				4539
-			]
-		},
 		"s_F8JPnWDbGYY": {
 			"displayName": "tabs.qwik.mjs_TabsImpl_component_useTask",
 			"hash": "F8JPnWDbGYY",
@@ -5275,20 +5153,6 @@
 			"loc": [
 				2044,
 				2351
-			]
-		},
-		"s_GGYTAzvdyx8": {
-			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask",
-			"hash": "GGYTAzvdyx8",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_GGYTAzvdyx8",
-			"parent": "s_50md6xzcry0",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
-			"loc": [
-				2319,
-				2564
 			]
 		},
 		"s_I4LXJxeFk0M": {
@@ -5361,20 +5225,6 @@
 				731
 			]
 		},
-		"s_LnBIh07NrmI": {
-			"displayName": "dropdown-root.qwik.mjs_HDropdownImpl_component_useTask",
-			"hash": "LnBIh07NrmI",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "dropdown-root.qwik.mjs_HDropdownImpl_component_useTask_LnBIh07NrmI",
-			"parent": "s_8DDoFzWh50I",
-			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-root.qwik.mjs",
-			"loc": [
-				1313,
-				1525
-			]
-		},
 		"s_NlitOI0uekA": {
 			"displayName": "tooltip-trigger.qwik.mjs_HTooltipTrigger_component_useTask",
 			"hash": "NlitOI0uekA",
@@ -5387,20 +5237,6 @@
 			"loc": [
 				1641,
 				2144
-			]
-		},
-		"s_OKMiN8mShgk": {
-			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_4",
-			"hash": "OKMiN8mShgk",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_4_OKMiN8mShgk",
-			"parent": "s_50md6xzcry0",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
-			"loc": [
-				4218,
-				5092
 			]
 		},
 		"s_Pd1F2VpRkLo": {
@@ -5445,20 +5281,6 @@
 				1614
 			]
 		},
-		"s_Q6ihAoDoUYo": {
-			"displayName": "dropdown-root.qwik.mjs_HDropdownImpl_component_useTask_2",
-			"hash": "Q6ihAoDoUYo",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "dropdown-root.qwik.mjs_HDropdownImpl_component_useTask_2_Q6ihAoDoUYo",
-			"parent": "s_8DDoFzWh50I",
-			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-root.qwik.mjs",
-			"loc": [
-				2132,
-				2177
-			]
-		},
 		"s_QBY9HC9blY8": {
 			"displayName": "checklist-item.qwik.mjs_ChecklistItem_component_useTask_1",
 			"hash": "QBY9HC9blY8",
@@ -5485,20 +5307,6 @@
 			"loc": [
 				1650,
 				1695
-			]
-		},
-		"s_QoWJwJHSWA4": {
-			"displayName": "dropdown-root.qwik.mjs_HDropdownImpl_component_useTask_1",
-			"hash": "QoWJwJHSWA4",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "dropdown-root.qwik.mjs_HDropdownImpl_component_useTask_1_QoWJwJHSWA4",
-			"parent": "s_8DDoFzWh50I",
-			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-root.qwik.mjs",
-			"loc": [
-				1539,
-				1694
 			]
 		},
 		"s_RJJmpWH22vc": {
@@ -5529,20 +5337,6 @@
 				6172
 			]
 		},
-		"s_Rafw5CAcWjg": {
-			"displayName": "accordion-root.qwik.mjs_HAccordionRootImpl_component_useTask",
-			"hash": "Rafw5CAcWjg",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "accordion-root.qwik.mjs_HAccordionRootImpl_component_useTask_Rafw5CAcWjg",
-			"parent": "s_b0lHLb1TJgo",
-			"origin": "../node_modules/@qwik-ui/headless/components/accordion/accordion-root.qwik.mjs",
-			"loc": [
-				944,
-				1010
-			]
-		},
 		"s_TlkMq0Q8bUA": {
 			"displayName": "toggle-group-root.qwik.mjs_HToggleGroupRoot_component_useTask",
 			"hash": "TlkMq0Q8bUA",
@@ -5569,20 +5363,6 @@
 			"loc": [
 				1307,
 				1628
-			]
-		},
-		"s_VTYvHoOlXwQ": {
-			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_1",
-			"hash": "VTYvHoOlXwQ",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_1_VTYvHoOlXwQ",
-			"parent": "s_50md6xzcry0",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
-			"loc": [
-				2730,
-				2943
 			]
 		},
 		"s_Va9vzj2dkKY": {
@@ -5625,20 +5405,6 @@
 			"loc": [
 				599,
 				838
-			]
-		},
-		"s_XZuCubOSODA": {
-			"displayName": "combobox-hidden-option.qwik.mjs_ComboboxHiddenSelectOption_component_useTask",
-			"hash": "XZuCubOSODA",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "combobox-hidden-option.qwik.mjs_ComboboxHiddenSelectOption_component_useTask_XZuCubOSODA",
-			"parent": "s_0dZLmAWGvmM",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-hidden-option.qwik.mjs",
-			"loc": [
-				452,
-				1122
 			]
 		},
 		"s_YZfE019tUHE": {
@@ -5711,20 +5477,6 @@
 				2291
 			]
 		},
-		"s_bEI4XCNaAzA": {
-			"displayName": "combobox-popover.qwik.mjs_HComboboxPopover_component_useTask",
-			"hash": "bEI4XCNaAzA",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "combobox-popover.qwik.mjs_HComboboxPopover_component_useTask_bEI4XCNaAzA",
-			"parent": "s_y2NY0olUNe0",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-popover.qwik.mjs",
-			"loc": [
-				945,
-				1198
-			]
-		},
 		"s_crAcPhc0rE8": {
 			"displayName": "tabs.qwik.mjs_TabsImpl_component_useTask_3",
 			"hash": "crAcPhc0rE8",
@@ -5765,20 +5517,6 @@
 			"loc": [
 				4815,
 				5071
-			]
-		},
-		"s_eXq38I5AEgA": {
-			"displayName": "root.qwik.mjs_CarouselBase_component_useTask",
-			"hash": "eXq38I5AEgA",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "root.qwik.mjs_CarouselBase_component_useTask_eXq38I5AEgA",
-			"parent": "s_w5oa20Ngxe8",
-			"origin": "../node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs",
-			"loc": [
-				3076,
-				3372
 			]
 		},
 		"s_gVnziLbfejw": {
@@ -5851,20 +5589,6 @@
 				2410
 			]
 		},
-		"s_jErqHQ0C3Fc": {
-			"displayName": "floating.qwik.mjs_FloatingPopover_component_useTask",
-			"hash": "jErqHQ0C3Fc",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "floating.qwik.mjs_FloatingPopover_component_useTask_jErqHQ0C3Fc",
-			"parent": "s_ixpx1pOVkeE",
-			"origin": "../node_modules/@qwik-ui/headless/components/popover/floating.qwik.mjs",
-			"loc": [
-				512,
-				2827
-			]
-		},
 		"s_je4NRuhZC9c": {
 			"displayName": "combobox-item.qwik.mjs_HComboboxItem_component_useTask_2",
 			"hash": "je4NRuhZC9c",
@@ -5935,34 +5659,6 @@
 				1956
 			]
 		},
-		"s_pNW1jCLr05o": {
-			"displayName": "dropdown-popover.qwik.mjs_HDropdownPopover_component_useTask_1",
-			"hash": "pNW1jCLr05o",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "dropdown-popover.qwik.mjs_HDropdownPopover_component_useTask_1_pNW1jCLr05o",
-			"parent": "s_3brMbjOF9L8",
-			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-popover.qwik.mjs",
-			"loc": [
-				1925,
-				2218
-			]
-		},
-		"s_peaO8FqN72k": {
-			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask_5",
-			"hash": "peaO8FqN72k",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_5_peaO8FqN72k",
-			"parent": "s_3h6Tg7NQ89E",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
-			"loc": [
-				4402,
-				4447
-			]
-		},
 		"s_u6ezyyNhhDo": {
 			"displayName": "dropdown-checkbox-item.qwik.mjs_HDropdownCheckboxItem_component_useTask_1",
 			"hash": "u6ezyyNhhDo",
@@ -5975,20 +5671,6 @@
 			"loc": [
 				726,
 				834
-			]
-		},
-		"s_xER7nqY3f3g": {
-			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_3",
-			"hash": "xER7nqY3f3g",
-			"ctxKind": "function",
-			"ctxName": "useTask$",
-			"captures": true,
-			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_3_xER7nqY3f3g",
-			"parent": "s_50md6xzcry0",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
-			"loc": [
-				4023,
-				4204
 			]
 		},
 		"s_xY01hVk9OtI": {
@@ -6056,8 +5738,8 @@
 			"parent": "s_ximn83p41iU",
 			"origin": "routes/product/[handle]/index.tsx",
 			"loc": [
-				1284,
-				1403
+				1459,
+				1578
 			]
 		},
 		"s_bQlHx02Bo0w": {
@@ -6070,8 +5752,8 @@
 			"parent": "s_ximn83p41iU",
 			"origin": "routes/product/[handle]/index.tsx",
 			"loc": [
-				1459,
-				1759
+				1634,
+				1934
 			]
 		},
 		"s_egvqTrf0tIg": {
@@ -6113,19 +5795,6 @@
 			"loc": [
 				223,
 				461
-			]
-		},
-		"s_0dZLmAWGvmM": {
-			"displayName": "combobox-hidden-option.qwik.mjs_ComboboxHiddenSelectOption_component",
-			"hash": "0dZLmAWGvmM",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "combobox-hidden-option.qwik.mjs_ComboboxHiddenSelectOption_component_0dZLmAWGvmM",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-hidden-option.qwik.mjs",
-			"loc": [
-				295,
-				1244
 			]
 		},
 		"s_0h3ChnzNENM": {
@@ -6284,19 +5953,6 @@
 				3289
 			]
 		},
-		"s_3h6Tg7NQ89E": {
-			"displayName": "select-root.qwik.mjs_HSelectImpl_component",
-			"hash": "3h6Tg7NQ89E",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_3h6Tg7NQ89E",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
-			"loc": [
-				376,
-				5012
-			]
-		},
 		"s_4niufJ2F3Jw": {
 			"displayName": "polymorphic.qwik.mjs_Polymorphic_component",
 			"hash": "4niufJ2F3Jw",
@@ -6308,32 +5964,6 @@
 			"loc": [
 				137,
 				289
-			]
-		},
-		"s_50md6xzcry0": {
-			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component",
-			"hash": "50md6xzcry0",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_50md6xzcry0",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
-			"loc": [
-				465,
-				5606
-			]
-		},
-		"s_5xbqJXPyHbY": {
-			"displayName": "combobox-inline.qwik.mjs_ComboboxInline_component",
-			"hash": "5xbqJXPyHbY",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "combobox-inline.qwik.mjs_ComboboxInline_component_5xbqJXPyHbY",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-inline.qwik.mjs",
-			"loc": [
-				217,
-				469
 			]
 		},
 		"s_7LkShZU94bk": {
@@ -6360,19 +5990,6 @@
 			"loc": [
 				293,
 				2336
-			]
-		},
-		"s_8DDoFzWh50I": {
-			"displayName": "dropdown-root.qwik.mjs_HDropdownImpl_component",
-			"hash": "8DDoFzWh50I",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "dropdown-root.qwik.mjs_HDropdownImpl_component_8DDoFzWh50I",
-			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-root.qwik.mjs",
-			"loc": [
-				266,
-				2633
 			]
 		},
 		"s_8oNhtptjVSw": {
@@ -6505,19 +6122,6 @@
 				885
 			]
 		},
-		"s_J6W4wB4uYWA": {
-			"displayName": "popover-panel-impl.qwik.mjs_EnsuredContext_component",
-			"hash": "J6W4wB4uYWA",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "popover-panel-impl.qwik.mjs_EnsuredContext_component_J6W4wB4uYWA",
-			"origin": "../node_modules/@qwik-ui/headless/components/popover/popover-panel-impl.qwik.mjs",
-			"loc": [
-				513,
-				574
-			]
-		},
 		"s_Jw1oFOAKqX8": {
 			"displayName": "select-trigger.qwik.mjs_HSelectTrigger_component",
 			"hash": "Jw1oFOAKqX8",
@@ -6557,32 +6161,6 @@
 				645
 			]
 		},
-		"s_LMBuJAflRxw": {
-			"displayName": "combobox-empty.qwik.mjs_HComboboxEmpty_component",
-			"hash": "LMBuJAflRxw",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "combobox-empty.qwik.mjs_HComboboxEmpty_component_LMBuJAflRxw",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-empty.qwik.mjs",
-			"loc": [
-				217,
-				479
-			]
-		},
-		"s_LkP0hDwx92Q": {
-			"displayName": "popover-panel-impl.qwik.mjs_HPopoverPanelImpl_component",
-			"hash": "LkP0hDwx92Q",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "popover-panel-impl.qwik.mjs_HPopoverPanelImpl_component_LkP0hDwx92Q",
-			"origin": "../node_modules/@qwik-ui/headless/components/popover/popover-panel-impl.qwik.mjs",
-			"loc": [
-				614,
-				3838
-			]
-		},
 		"s_M9XwPVlpYOk": {
 			"displayName": "index.tsx_handle_component",
 			"hash": "M9XwPVlpYOk",
@@ -6592,8 +6170,8 @@
 			"canonicalFilename": "index.tsx_handle_component_M9XwPVlpYOk",
 			"origin": "routes/collections/[handle]/index.tsx",
 			"loc": [
-				1955,
-				19026
+				1943,
+				19010
 			]
 		},
 		"s_MiPVFWJLcMo": {
@@ -6853,7 +6431,7 @@
 			"origin": "routes/layout.tsx",
 			"loc": [
 				382,
-				24025
+				24642
 			]
 		},
 		"s_VMPhmZs01FY": {
@@ -6906,19 +6484,6 @@
 			"loc": [
 				138,
 				257
-			]
-		},
-		"s_YsnIAISWbYY": {
-			"displayName": "combobox-trigger.qwik.mjs_HComboboxTrigger_component",
-			"hash": "YsnIAISWbYY",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "combobox-trigger.qwik.mjs_HComboboxTrigger_component_YsnIAISWbYY",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-trigger.qwik.mjs",
-			"loc": [
-				291,
-				1156
 			]
 		},
 		"s_Z9ILBTRkfS4": {
@@ -6986,19 +6551,6 @@
 				357
 			]
 		},
-		"s_b0lHLb1TJgo": {
-			"displayName": "accordion-root.qwik.mjs_HAccordionRootImpl_component",
-			"hash": "b0lHLb1TJgo",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "accordion-root.qwik.mjs_HAccordionRootImpl_component_b0lHLb1TJgo",
-			"origin": "../node_modules/@qwik-ui/headless/components/accordion/accordion-root.qwik.mjs",
-			"loc": [
-				266,
-				1194
-			]
-		},
 		"s_bU4KjydW0YY": {
 			"displayName": "tooltip-trigger.qwik.mjs_HTooltipTrigger_component",
 			"hash": "bU4KjydW0YY",
@@ -7049,19 +6601,6 @@
 			"loc": [
 				224,
 				493
-			]
-		},
-		"s_dAU5JRfCFM8": {
-			"displayName": "combobox-hidden-select.qwik.mjs_HiddenNativeSelect_component",
-			"hash": "dAU5JRfCFM8",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "combobox-hidden-select.qwik.mjs_HiddenNativeSelect_component_dAU5JRfCFM8",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-hidden-select.qwik.mjs",
-			"loc": [
-				383,
-				1843
 			]
 		},
 		"s_dLptYfIsFlo": {
@@ -7168,19 +6707,6 @@
 				2320
 			]
 		},
-		"s_iKusoxB500Q": {
-			"displayName": "hidden-select-option.qwik.mjs_HiddenSelectOption_component",
-			"hash": "iKusoxB500Q",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "hidden-select-option.qwik.mjs_HiddenSelectOption_component_iKusoxB500Q",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/hidden-select-option.qwik.mjs",
-			"loc": [
-				279,
-				938
-			]
-		},
 		"s_ivANOJsp5AM": {
 			"displayName": "select-display-value.qwik.mjs_HSelectDisplayValue_component",
 			"hash": "ivANOJsp5AM",
@@ -7192,19 +6718,6 @@
 			"loc": [
 				228,
 				992
-			]
-		},
-		"s_ixpx1pOVkeE": {
-			"displayName": "floating.qwik.mjs_FloatingPopover_component",
-			"hash": "ixpx1pOVkeE",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "floating.qwik.mjs_FloatingPopover_component_ixpx1pOVkeE",
-			"origin": "../node_modules/@qwik-ui/headless/components/popover/floating.qwik.mjs",
-			"loc": [
-				440,
-				2963
 			]
 		},
 		"s_jAsSeRBB5y0": {
@@ -7519,19 +7032,6 @@
 				836
 			]
 		},
-		"s_uuEgN6isZgk": {
-			"displayName": "dropdown-group-label.qwik.mjs_HDropdownGroupLabel_component",
-			"hash": "uuEgN6isZgk",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "dropdown-group-label.qwik.mjs_HDropdownGroupLabel_component_uuEgN6isZgk",
-			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-group-label.qwik.mjs",
-			"loc": [
-				227,
-				438
-			]
-		},
 		"s_veIDPAU4vck": {
 			"displayName": "title.qwik.mjs_CarouselTitle_component",
 			"hash": "veIDPAU4vck",
@@ -7543,19 +7043,6 @@
 			"loc": [
 				207,
 				416
-			]
-		},
-		"s_w5oa20Ngxe8": {
-			"displayName": "root.qwik.mjs_CarouselBase_component",
-			"hash": "w5oa20Ngxe8",
-			"ctxKind": "function",
-			"ctxName": "component$",
-			"captures": false,
-			"canonicalFilename": "root.qwik.mjs_CarouselBase_component_w5oa20Ngxe8",
-			"origin": "../node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs",
-			"loc": [
-				379,
-				4024
 			]
 		},
 		"s_w8zoodu230Y": {
@@ -7619,8 +7106,8 @@
 			"canonicalFilename": "index.tsx_handle_component_ximn83p41iU",
 			"origin": "routes/product/[handle]/index.tsx",
 			"loc": [
-				993,
-				10281
+				1168,
+				13857
 			]
 		},
 		"s_y2NY0olUNe0": {
@@ -7704,20 +7191,6 @@
 				23913
 			]
 		},
-		"s_TL6epcerqTM": {
-			"displayName": "popover-panel-impl.qwik.mjs_HPopoverPanelImpl_component_useStyles",
-			"hash": "TL6epcerqTM",
-			"ctxKind": "function",
-			"ctxName": "useStyles$",
-			"captures": false,
-			"canonicalFilename": "popover-panel-impl.qwik.mjs_HPopoverPanelImpl_component_useStyles_TL6epcerqTM",
-			"parent": "s_LkP0hDwx92Q",
-			"origin": "../node_modules/@qwik-ui/headless/components/popover/popover-panel-impl.qwik.mjs",
-			"loc": [
-				878,
-				891
-			]
-		},
 		"s_c8OAgfH01rk": {
 			"displayName": "modal-panel.qwik.mjs_HModalPanel_component_useStyles",
 			"hash": "c8OAgfH01rk",
@@ -7746,6 +7219,1227 @@
 				572
 			]
 		},
+		"s_C2YQTvHxxjw": {
+			"displayName": "visually-hidden.qwik.mjs_VisuallyHidden_component_useStylesScoped",
+			"hash": "C2YQTvHxxjw",
+			"ctxKind": "function",
+			"ctxName": "useStylesScoped$",
+			"captures": false,
+			"canonicalFilename": "visually-hidden.qwik.mjs_VisuallyHidden_component_useStylesScoped_C2YQTvHxxjw",
+			"parent": "s_PgJQ3qjmqes",
+			"origin": "../node_modules/@qwik-ui/headless/utils/visually-hidden.qwik.mjs",
+			"loc": [
+				190,
+				377
+			]
+		},
+		"s_4ydADGYMm08": {
+			"displayName": "use-popover.qwik.mjs_usePopover_initPopover",
+			"hash": "4ydADGYMm08",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "use-popover.qwik.mjs_usePopover_initPopover_4ydADGYMm08",
+			"origin": "../node_modules/@qwik-ui/headless/components/popover/use-popover.qwik.mjs",
+			"loc": [
+				586,
+				1114
+			]
+		},
+		"s_9KRx0IOCHt8": {
+			"displayName": "index.qwik.mjs_spaInit_event",
+			"hash": "9KRx0IOCHt8",
+			"ctxKind": "function",
+			"ctxName": "event$",
+			"captures": false,
+			"canonicalFilename": "index.qwik.mjs_spaInit_event_9KRx0IOCHt8",
+			"origin": "../node_modules/@builder.io/qwik-city/lib/index.qwik.mjs",
+			"loc": [
+				1324,
+				6990
+			]
+		},
+		"s_A5SCimyrjAE": {
+			"displayName": "index.qwik.mjs_Form_form_onSubmit",
+			"hash": "A5SCimyrjAE",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "index.qwik.mjs_Form_form_onSubmit_A5SCimyrjAE",
+			"origin": "../node_modules/@builder.io/qwik-city/lib/index.qwik.mjs",
+			"loc": [
+				59514,
+				59628
+			]
+		},
+		"s_FyPGp06fZkk": {
+			"displayName": "use-popover.qwik.mjs_usePopover_loadPolyfill",
+			"hash": "FyPGp06fZkk",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": false,
+			"canonicalFilename": "use-popover.qwik.mjs_usePopover_loadPolyfill_FyPGp06fZkk",
+			"origin": "../node_modules/@qwik-ui/headless/components/popover/use-popover.qwik.mjs",
+			"loc": [
+				400,
+				477
+			]
+		},
+		"s_GteApAKo5EA": {
+			"displayName": "use-popover.qwik.mjs_usePopover_useOnDocument",
+			"hash": "GteApAKo5EA",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "use-popover.qwik.mjs_usePopover_useOnDocument_GteApAKo5EA",
+			"origin": "../node_modules/@qwik-ui/headless/components/popover/use-popover.qwik.mjs",
+			"loc": [
+				1154,
+				1296
+			]
+		},
+		"s_N26RLdG0oBg": {
+			"displayName": "index.qwik.mjs_routeActionQrl_action_submit",
+			"hash": "N26RLdG0oBg",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "index.qwik.mjs_routeActionQrl_action_submit_N26RLdG0oBg",
+			"origin": "../node_modules/@builder.io/qwik-city/lib/index.qwik.mjs",
+			"loc": [
+				46053,
+				47698
+			]
+		},
+		"s_WfTOxT4IrdA": {
+			"displayName": "index.qwik.mjs_serverQrl_rpc",
+			"hash": "WfTOxT4IrdA",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "index.qwik.mjs_serverQrl_rpc_WfTOxT4IrdA",
+			"origin": "../node_modules/@builder.io/qwik-city/lib/index.qwik.mjs",
+			"loc": [
+				54165,
+				57239
+			]
+		},
+		"s_YQAPkEVrbNQ": {
+			"displayName": "use-popover.qwik.mjs_usePopover_showPopover",
+			"hash": "YQAPkEVrbNQ",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "use-popover.qwik.mjs_usePopover_showPopover_YQAPkEVrbNQ",
+			"origin": "../node_modules/@qwik-ui/headless/components/popover/use-popover.qwik.mjs",
+			"loc": [
+				1324,
+				1565
+			]
+		},
+		"s_bCZHYGiS204": {
+			"displayName": "use-popover.qwik.mjs_usePopover_hidePopover",
+			"hash": "bCZHYGiS204",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "use-popover.qwik.mjs_usePopover_hidePopover_bCZHYGiS204",
+			"origin": "../node_modules/@qwik-ui/headless/components/popover/use-popover.qwik.mjs",
+			"loc": [
+				1864,
+				2105
+			]
+		},
+		"s_qIwUmRq6UCE": {
+			"displayName": "use-popover.qwik.mjs_usePopover_togglePopover",
+			"hash": "qIwUmRq6UCE",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "use-popover.qwik.mjs_usePopover_togglePopover_qIwUmRq6UCE",
+			"origin": "../node_modules/@qwik-ui/headless/components/popover/use-popover.qwik.mjs",
+			"loc": [
+				1594,
+				1837
+			]
+		},
+		"s_00i0RLgc9VQ": {
+			"displayName": "slide.qwik.mjs_CarouselSlide_component_handleFocusIn",
+			"hash": "00i0RLgc9VQ",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "slide.qwik.mjs_CarouselSlide_component_handleFocusIn_00i0RLgc9VQ",
+			"parent": "s_uS0PI1UYSws",
+			"origin": "../node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs",
+			"loc": [
+				1116,
+				1168
+			]
+		},
+		"s_05v68pSbADA": {
+			"displayName": "popover-trigger.qwik.mjs_HPopoverTrigger_component_handlePointerOut",
+			"hash": "05v68pSbADA",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "popover-trigger.qwik.mjs_HPopoverTrigger_component_handlePointerOut_05v68pSbADA",
+			"parent": "s_22kvLbqUy0E",
+			"origin": "../node_modules/@qwik-ui/headless/components/popover/popover-trigger.qwik.mjs",
+			"loc": [
+				1195,
+				1269
+			]
+		},
+		"s_0CHydJFe0I0": {
+			"displayName": "select-item.qwik.mjs_HSelectItem_component_handleClick",
+			"hash": "0CHydJFe0I0",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "select-item.qwik.mjs_HSelectItem_component_handleClick_0CHydJFe0I0",
+			"parent": "s_w8zoodu230Y",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs",
+			"loc": [
+				3316,
+				3646
+			]
+		},
+		"s_0EkWQ0OZZ2Q": {
+			"displayName": "index.tsx_handle_component_brands_useComputed",
+			"hash": "0EkWQ0OZZ2Q",
+			"ctxKind": "function",
+			"ctxName": "useComputed$",
+			"captures": true,
+			"canonicalFilename": "index.tsx_handle_component_brands_useComputed_0EkWQ0OZZ2Q",
+			"parent": "s_M9XwPVlpYOk",
+			"origin": "routes/collections/[handle]/index.tsx",
+			"loc": [
+				3099,
+				3271
+			]
+		},
+		"s_0HB1p804N00": {
+			"displayName": "index.qwik.mjs_Link_component_handleClientSideNavigation",
+			"hash": "0HB1p804N00",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "index.qwik.mjs_Link_component_handleClientSideNavigation_0HB1p804N00",
+			"parent": "s_1raneLGffO8",
+			"origin": "../node_modules/@builder.io/qwik-city/lib/index.qwik.mjs",
+			"loc": [
+				41851,
+				42277
+			]
+		},
+		"s_0L4mZ7WBiqI": {
+			"displayName": "combobox-item.qwik.mjs_HComboboxItem_component_isSelectedSig_useComputed",
+			"hash": "0L4mZ7WBiqI",
+			"ctxKind": "function",
+			"ctxName": "useComputed$",
+			"captures": true,
+			"canonicalFilename": "combobox-item.qwik.mjs_HComboboxItem_component_isSelectedSig_useComputed_0L4mZ7WBiqI",
+			"parent": "s_qIFxQt4KTwU",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-item.qwik.mjs",
+			"loc": [
+				1091,
+				1484
+			]
+		},
+		"s_0zRj42JDZV8": {
+			"displayName": "tab-panel.qwik.mjs_HTabPanel_component_isSelectedSig_useComputed",
+			"hash": "0zRj42JDZV8",
+			"ctxKind": "function",
+			"ctxName": "useComputed$",
+			"captures": true,
+			"canonicalFilename": "tab-panel.qwik.mjs_HTabPanel_component_isSelectedSig_useComputed_0zRj42JDZV8",
+			"parent": "s_wN0GEPDdtPw",
+			"origin": "../node_modules/@qwik-ui/headless/components/tabs/tab-panel.qwik.mjs",
+			"loc": [
+				689,
+				765
+			]
+		},
+		"s_0ziQmC3nc4I": {
+			"displayName": "dropdown-popover.qwik.mjs_HDropdownPopover_component_HPopoverRoot_HPopoverPanel_onMouseMove",
+			"hash": "0ziQmC3nc4I",
+			"ctxKind": "jSXProp",
+			"ctxName": "onMouseMove$",
+			"captures": true,
+			"canonicalFilename": "dropdown-popover.qwik.mjs_HDropdownPopover_component_HPopoverRoot_HPopoverPanel_onMouseMove_0ziQmC3nc4I",
+			"parent": "s_3brMbjOF9L8",
+			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-popover.qwik.mjs",
+			"loc": [
+				2974,
+				3078
+			]
+		},
+		"s_1E7R1t0YR1A": {
+			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask_2",
+			"hash": "1E7R1t0YR1A",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_2_1E7R1t0YR1A",
+			"parent": "s_3h6Tg7NQ89E",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
+			"loc": [
+				2726,
+				2952
+			]
+		},
+		"s_5WhXOrGHVNQ": {
+			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_5",
+			"hash": "5WhXOrGHVNQ",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_5_5WhXOrGHVNQ",
+			"parent": "s_50md6xzcry0",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
+			"loc": [
+				5106,
+				5151
+			]
+		},
+		"s_6et0P2lVhsw": {
+			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask_1",
+			"hash": "6et0P2lVhsw",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_1_6et0P2lVhsw",
+			"parent": "s_3h6Tg7NQ89E",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
+			"loc": [
+				2217,
+				2712
+			]
+		},
+		"s_8Q3LwDP0Tvg": {
+			"displayName": "dropdown-popover.qwik.mjs_HDropdownPopover_component_useTask",
+			"hash": "8Q3LwDP0Tvg",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "dropdown-popover.qwik.mjs_HDropdownPopover_component_useTask_8Q3LwDP0Tvg",
+			"parent": "s_3brMbjOF9L8",
+			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-popover.qwik.mjs",
+			"loc": [
+				885,
+				1136
+			]
+		},
+		"s_9zJeWrQPs6w": {
+			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask_3",
+			"hash": "9zJeWrQPs6w",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_3_9zJeWrQPs6w",
+			"parent": "s_3h6Tg7NQ89E",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
+			"loc": [
+				2966,
+				3135
+			]
+		},
+		"s_BiskTtujlWw": {
+			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask",
+			"hash": "BiskTtujlWw",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_BiskTtujlWw",
+			"parent": "s_3h6Tg7NQ89E",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
+			"loc": [
+				1624,
+				1706
+			]
+		},
+		"s_CfXDW74ntrk": {
+			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask_4",
+			"hash": "CfXDW74ntrk",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_4_CfXDW74ntrk",
+			"parent": "s_3h6Tg7NQ89E",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
+			"loc": [
+				3149,
+				4388
+			]
+		},
+		"s_CqXrndLLBUk": {
+			"displayName": "hidden-select-option.qwik.mjs_HiddenSelectOption_component_useTask",
+			"hash": "CqXrndLLBUk",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "hidden-select-option.qwik.mjs_HiddenSelectOption_component_useTask_CqXrndLLBUk",
+			"parent": "s_iKusoxB500Q",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/hidden-select-option.qwik.mjs",
+			"loc": [
+				434,
+				816
+			]
+		},
+		"s_0DX0jr5a6Yc": {
+			"displayName": "combobox-input.qwik.mjs_HComboboxInput_component_activeDescendantSig_useComputed",
+			"hash": "0DX0jr5a6Yc",
+			"ctxKind": "function",
+			"ctxName": "useComputed$",
+			"captures": true,
+			"canonicalFilename": "combobox-input.qwik.mjs_HComboboxInput_component_activeDescendantSig_useComputed_0DX0jr5a6Yc",
+			"parent": "s_HafofZnJX28",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-input.qwik.mjs",
+			"loc": [
+				1213,
+				1680
+			]
+		},
+		"s_0khgxgvNLwU": {
+			"displayName": "combobox-item.qwik.mjs_HComboboxItem_component_checkVisibility",
+			"hash": "0khgxgvNLwU",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "combobox-item.qwik.mjs_HComboboxItem_component_checkVisibility_0khgxgvNLwU",
+			"parent": "s_qIFxQt4KTwU",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-item.qwik.mjs",
+			"loc": [
+				1734,
+				2316
+			]
+		},
+		"s_110oHjF2oWE": {
+			"displayName": "dropdown-trigger.qwik.mjs_HDropdownTrigger_component_handleKeyDown",
+			"hash": "110oHjF2oWE",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "dropdown-trigger.qwik.mjs_HDropdownTrigger_component_handleKeyDown_110oHjF2oWE",
+			"parent": "s_7LkShZU94bk",
+			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-trigger.qwik.mjs",
+			"loc": [
+				931,
+				1677
+			]
+		},
+		"s_14HTqSz0lNQ": {
+			"displayName": "modal-close.qwik.mjs_HModalClose_component_handleClick",
+			"hash": "14HTqSz0lNQ",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "modal-close.qwik.mjs_HModalClose_component_handleClick_14HTqSz0lNQ",
+			"parent": "s_oxvUZTlvGqQ",
+			"origin": "../node_modules/@qwik-ui/headless/components/modal/modal-close.qwik.mjs",
+			"loc": [
+				295,
+				341
+			]
+		},
+		"s_1rdZKscoZmo": {
+			"displayName": "modal-trigger.qwik.mjs_HModalTrigger_component_handleClick",
+			"hash": "1rdZKscoZmo",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "modal-trigger.qwik.mjs_HModalTrigger_component_handleClick_1rdZKscoZmo",
+			"parent": "s_k6VXQGcAfT4",
+			"origin": "../node_modules/@qwik-ui/headless/components/modal/modal-trigger.qwik.mjs",
+			"loc": [
+				297,
+				360
+			]
+		},
+		"s_2skS10yt6s4": {
+			"displayName": "checkbox-root.qwik.mjs_CheckboxRoot_component_handleKeyDown",
+			"hash": "2skS10yt6s4",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "checkbox-root.qwik.mjs_CheckboxRoot_component_handleKeyDown_2skS10yt6s4",
+			"parent": "s_OgY3yWxH6fs",
+			"origin": "../node_modules/@qwik-ui/headless/components/checkbox/checkbox-root.qwik.mjs",
+			"loc": [
+				776,
+				869
+			]
+		},
+		"s_2tZ51WEF6V8": {
+			"displayName": "slide.qwik.mjs_CarouselSlide_component_isActiveSig_useComputed",
+			"hash": "2tZ51WEF6V8",
+			"ctxKind": "function",
+			"ctxName": "useComputed$",
+			"captures": true,
+			"canonicalFilename": "slide.qwik.mjs_CarouselSlide_component_isActiveSig_useComputed_2tZ51WEF6V8",
+			"parent": "s_uS0PI1UYSws",
+			"origin": "../node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs",
+			"loc": [
+				681,
+				745
+			]
+		},
+		"s_3NiJnvpvPeE": {
+			"displayName": "dropdown-trigger.qwik.mjs_HDropdownTrigger_component_handleClick",
+			"hash": "3NiJnvpvPeE",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "dropdown-trigger.qwik.mjs_HDropdownTrigger_component_handleClick_3NiJnvpvPeE",
+			"parent": "s_7LkShZU94bk",
+			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-trigger.qwik.mjs",
+			"loc": [
+				533,
+				600
+			]
+		},
+		"s_3RWdpaLAYsw": {
+			"displayName": "combobox-trigger.qwik.mjs_HComboboxTrigger_component_handleClick",
+			"hash": "3RWdpaLAYsw",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "combobox-trigger.qwik.mjs_HComboboxTrigger_component_handleClick_3RWdpaLAYsw",
+			"parent": "s_YsnIAISWbYY",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-trigger.qwik.mjs",
+			"loc": [
+				527,
+				645
+			]
+		},
+		"s_4D4KWRX3Gvo": {
+			"displayName": "select-item.qwik.mjs_HSelectItem_component_useOnWindow",
+			"hash": "4D4KWRX3Gvo",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "select-item.qwik.mjs_HSelectItem_component_useOnWindow_4D4KWRX3Gvo",
+			"parent": "s_w8zoodu230Y",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs",
+			"loc": [
+				930,
+				979
+			]
+		},
+		"s_4o0g40SLS9c": {
+			"displayName": "progress-root.qwik.mjs_ProgressRoot_component_valueLabelSig_useComputed",
+			"hash": "4o0g40SLS9c",
+			"ctxKind": "function",
+			"ctxName": "useComputed$",
+			"captures": true,
+			"canonicalFilename": "progress-root.qwik.mjs_ProgressRoot_component_valueLabelSig_useComputed_4o0g40SLS9c",
+			"parent": "s_gNihkBmb54s",
+			"origin": "../node_modules/@qwik-ui/headless/components/progress/progress-root.qwik.mjs",
+			"loc": [
+				1090,
+				1357
+			]
+		},
+		"s_5o0fOe2bh44": {
+			"displayName": "layout.tsx_layout_component_toggleDarkMode",
+			"hash": "5o0fOe2bh44",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "layout.tsx_layout_component_toggleDarkMode_5o0fOe2bh44",
+			"parent": "s_VKFlAWJuVm8",
+			"origin": "routes/layout.tsx",
+			"loc": [
+				2347,
+				2511
+			]
+		},
+		"s_5uvV1Dmz6Mo": {
+			"displayName": "select-label.qwik.mjs_HSelectLabel_component_handleClick",
+			"hash": "5uvV1Dmz6Mo",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "select-label.qwik.mjs_HSelectLabel_component_handleClick_5uvV1Dmz6Mo",
+			"parent": "s_rs09RukW09Q",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-label.qwik.mjs",
+			"loc": [
+				562,
+				657
+			]
+		},
+		"s_6awZJG5cU3Q": {
+			"displayName": "tooltip-trigger.qwik.mjs_HTooltipTrigger_component_setTooltipState",
+			"hash": "6awZJG5cU3Q",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "tooltip-trigger.qwik.mjs_HTooltipTrigger_component_setTooltipState_6awZJG5cU3Q",
+			"parent": "s_bU4KjydW0YY",
+			"origin": "../node_modules/@qwik-ui/headless/components/tooltip/tooltip-trigger.qwik.mjs",
+			"loc": [
+				757,
+				1074
+			]
+		},
+		"s_74kvkuGdvug": {
+			"displayName": "index.qwik.mjs_Link_component_handlePreload",
+			"hash": "74kvkuGdvug",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": false,
+			"canonicalFilename": "index.qwik.mjs_Link_component_handlePreload_74kvkuGdvug",
+			"parent": "s_1raneLGffO8",
+			"origin": "../node_modules/@builder.io/qwik-city/lib/index.qwik.mjs",
+			"loc": [
+				42315,
+				42409
+			]
+		},
+		"s_87faiQlKCEs": {
+			"displayName": "progress-indicator.qwik.mjs_ProgressIndicator_component_translateXSig_useComputed",
+			"hash": "87faiQlKCEs",
+			"ctxKind": "function",
+			"ctxName": "useComputed$",
+			"captures": true,
+			"canonicalFilename": "progress-indicator.qwik.mjs_ProgressIndicator_component_translateXSig_useComputed_87faiQlKCEs",
+			"parent": "s_HybVppo7Svw",
+			"origin": "../node_modules/@qwik-ui/headless/components/progress/progress-indicator.qwik.mjs",
+			"loc": [
+				362,
+				685
+			]
+		},
+		"s_9Q0xxfReMsw": {
+			"displayName": "tabs.qwik.mjs_TabsImpl_component_selectIfAutomatic",
+			"hash": "9Q0xxfReMsw",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "tabs.qwik.mjs_TabsImpl_component_selectIfAutomatic_9Q0xxfReMsw",
+			"parent": "s_ypBIjA92jrM",
+			"origin": "../node_modules/@qwik-ui/headless/components/tabs/tabs.qwik.mjs",
+			"loc": [
+				6690,
+				6773
+			]
+		},
+		"s_Ag6rhNndDkg": {
+			"displayName": "previous.qwik.mjs_CarouselPrevious_component_isFirstSlideSig_useComputed",
+			"hash": "Ag6rhNndDkg",
+			"ctxKind": "function",
+			"ctxName": "useComputed$",
+			"captures": true,
+			"canonicalFilename": "previous.qwik.mjs_CarouselPrevious_component_isFirstSlideSig_useComputed_Ag6rhNndDkg",
+			"parent": "s_7rD9qfbtBbE",
+			"origin": "../node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs",
+			"loc": [
+				1693,
+				1782
+			]
+		},
+		"s_AoSVvC21QAc": {
+			"displayName": "select-popover.qwik.mjs_HSelectPopover_component_handleMouseEnter",
+			"hash": "AoSVvC21QAc",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "select-popover.qwik.mjs_HSelectPopover_component_handleMouseEnter_AoSVvC21QAc",
+			"parent": "s_PY0dAgOygRU",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-popover.qwik.mjs",
+			"loc": [
+				2443,
+				2546
+			]
+		},
+		"s_B0iHvKB9d5w": {
+			"displayName": "checkbox-root.qwik.mjs_CheckboxRoot_component_handleClick",
+			"hash": "B0iHvKB9d5w",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "checkbox-root.qwik.mjs_CheckboxRoot_component_handleClick_B0iHvKB9d5w",
+			"parent": "s_OgY3yWxH6fs",
+			"origin": "../node_modules/@qwik-ui/headless/components/checkbox/checkbox-root.qwik.mjs",
+			"loc": [
+				687,
+				746
+			]
+		},
+		"s_BeQn09w7y8I": {
+			"displayName": "select-trigger.qwik.mjs_HSelectTrigger_component_handleKeyDown",
+			"hash": "BeQn09w7y8I",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "select-trigger.qwik.mjs_HSelectTrigger_component_handleKeyDown_BeQn09w7y8I",
+			"parent": "s_Jw1oFOAKqX8",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-trigger.qwik.mjs",
+			"loc": [
+				1690,
+				3654
+			]
+		},
+		"s_Byd7Puy4oD0": {
+			"displayName": "collapsible-trigger.qwik.mjs_HCollapsibleTrigger_component_handleClick",
+			"hash": "Byd7Puy4oD0",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "collapsible-trigger.qwik.mjs_HCollapsibleTrigger_component_handleClick_Byd7Puy4oD0",
+			"parent": "s_k16NVIjvQSo",
+			"origin": "../node_modules/@qwik-ui/headless/components/collapsible/collapsible-trigger.qwik.mjs",
+			"loc": [
+				449,
+				596
+			]
+		},
+		"s_C6lL0rW5k7Q": {
+			"displayName": "index.tsx_handle_component_useOnDocument",
+			"hash": "C6lL0rW5k7Q",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "index.tsx_handle_component_useOnDocument_C6lL0rW5k7Q",
+			"parent": "s_M9XwPVlpYOk",
+			"origin": "routes/collections/[handle]/index.tsx",
+			"loc": [
+				2272,
+				2480
+			]
+		},
+		"s_DDhByzXj9vI": {
+			"displayName": "scroller.qwik.mjs_CarouselScroller_component_handleDragSnap",
+			"hash": "DDhByzXj9vI",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "scroller.qwik.mjs_CarouselScroller_component_handleDragSnap_DDhByzXj9vI",
+			"parent": "s_P0pQmU9ygTQ",
+			"origin": "../node_modules/@qwik-ui/headless/components/carousel/scroller.qwik.mjs",
+			"loc": [
+				1998,
+				2998
+			]
+		},
+		"s_DYzJqXnodaE": {
+			"displayName": "tab.qwik.mjs_HTab_component_button_onClick",
+			"hash": "DYzJqXnodaE",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "tab.qwik.mjs_HTab_component_button_onClick_DYzJqXnodaE",
+			"parent": "s_i6xlyXdtjfI",
+			"origin": "../node_modules/@qwik-ui/headless/components/tabs/tab.qwik.mjs",
+			"loc": [
+				1743,
+				1781
+			]
+		},
+		"s_DtfIatVBGvE": {
+			"displayName": "select-item.qwik.mjs_HSelectItem_component_isHighlightedSig_useComputed",
+			"hash": "DtfIatVBGvE",
+			"ctxKind": "function",
+			"ctxName": "useComputed$",
+			"captures": true,
+			"canonicalFilename": "select-item.qwik.mjs_HSelectItem_component_isHighlightedSig_useComputed_DtfIatVBGvE",
+			"parent": "s_w8zoodu230Y",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs",
+			"loc": [
+				1178,
+				1433
+			]
+		},
+		"s_DyYtoEUy5Y4": {
+			"displayName": "select-item.qwik.mjs_HSelectItem_component_handleKeyDown",
+			"hash": "DyYtoEUy5Y4",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "select-item.qwik.mjs_HSelectItem_component_handleKeyDown_DyYtoEUy5Y4",
+			"parent": "s_w8zoodu230Y",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs",
+			"loc": [
+				4206,
+				6380
+			]
+		},
+		"s_E5bV6uEwmKE": {
+			"displayName": "dropdown-checkbox-item.qwik.mjs_HDropdownCheckboxItem_component_toggleChecked",
+			"hash": "E5bV6uEwmKE",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "dropdown-checkbox-item.qwik.mjs_HDropdownCheckboxItem_component_toggleChecked_E5bV6uEwmKE",
+			"parent": "s_PzD79Rs45EA",
+			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-checkbox-item.qwik.mjs",
+			"loc": [
+				864,
+				917
+			]
+		},
+		"s_EMRDSVlcvFQ": {
+			"displayName": "modal-panel.qwik.mjs_HModalPanel_component_handleKeyDown",
+			"hash": "EMRDSVlcvFQ",
+			"ctxKind": "function",
+			"ctxName": "$",
+			"captures": true,
+			"canonicalFilename": "modal-panel.qwik.mjs_HModalPanel_component_handleKeyDown_EMRDSVlcvFQ",
+			"parent": "s_RlhXZz9lIbo",
+			"origin": "../node_modules/@qwik-ui/headless/components/modal/modal-panel.qwik.mjs",
+			"loc": [
+				2239,
+				2351
+			]
+		},
+		"s_Ejm4KkbfoyQ": {
+			"displayName": "dropdown-popover.qwik.mjs_HDropdownPopover_component_HPopoverRoot_HPopoverPanel_onMouseOut",
+			"hash": "Ejm4KkbfoyQ",
+			"ctxKind": "jSXProp",
+			"ctxName": "onMouseOut$",
+			"captures": true,
+			"canonicalFilename": "dropdown-popover.qwik.mjs_HDropdownPopover_component_HPopoverRoot_HPopoverPanel_onMouseOut_Ejm4KkbfoyQ",
+			"parent": "s_3brMbjOF9L8",
+			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-popover.qwik.mjs",
+			"loc": [
+				3099,
+				3146
+			]
+		},
+		"s_EqL3dnlHDCU": {
+			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_2",
+			"hash": "EqL3dnlHDCU",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_2_EqL3dnlHDCU",
+			"parent": "s_50md6xzcry0",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
+			"loc": [
+				3828,
+				4009
+			]
+		},
+		"s_EwbIDEaI7VA": {
+			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask_6",
+			"hash": "EwbIDEaI7VA",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_6_EwbIDEaI7VA",
+			"parent": "s_3h6Tg7NQ89E",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
+			"loc": [
+				4461,
+				4539
+			]
+		},
+		"s_GGYTAzvdyx8": {
+			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask",
+			"hash": "GGYTAzvdyx8",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_GGYTAzvdyx8",
+			"parent": "s_50md6xzcry0",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
+			"loc": [
+				2319,
+				2564
+			]
+		},
+		"s_LnBIh07NrmI": {
+			"displayName": "dropdown-root.qwik.mjs_HDropdownImpl_component_useTask",
+			"hash": "LnBIh07NrmI",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "dropdown-root.qwik.mjs_HDropdownImpl_component_useTask_LnBIh07NrmI",
+			"parent": "s_8DDoFzWh50I",
+			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-root.qwik.mjs",
+			"loc": [
+				1313,
+				1525
+			]
+		},
+		"s_OKMiN8mShgk": {
+			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_4",
+			"hash": "OKMiN8mShgk",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_4_OKMiN8mShgk",
+			"parent": "s_50md6xzcry0",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
+			"loc": [
+				4218,
+				5092
+			]
+		},
+		"s_Q6ihAoDoUYo": {
+			"displayName": "dropdown-root.qwik.mjs_HDropdownImpl_component_useTask_2",
+			"hash": "Q6ihAoDoUYo",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "dropdown-root.qwik.mjs_HDropdownImpl_component_useTask_2_Q6ihAoDoUYo",
+			"parent": "s_8DDoFzWh50I",
+			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-root.qwik.mjs",
+			"loc": [
+				2132,
+				2177
+			]
+		},
+		"s_QoWJwJHSWA4": {
+			"displayName": "dropdown-root.qwik.mjs_HDropdownImpl_component_useTask_1",
+			"hash": "QoWJwJHSWA4",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "dropdown-root.qwik.mjs_HDropdownImpl_component_useTask_1_QoWJwJHSWA4",
+			"parent": "s_8DDoFzWh50I",
+			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-root.qwik.mjs",
+			"loc": [
+				1539,
+				1694
+			]
+		},
+		"s_Rafw5CAcWjg": {
+			"displayName": "accordion-root.qwik.mjs_HAccordionRootImpl_component_useTask",
+			"hash": "Rafw5CAcWjg",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "accordion-root.qwik.mjs_HAccordionRootImpl_component_useTask_Rafw5CAcWjg",
+			"parent": "s_b0lHLb1TJgo",
+			"origin": "../node_modules/@qwik-ui/headless/components/accordion/accordion-root.qwik.mjs",
+			"loc": [
+				944,
+				1010
+			]
+		},
+		"s_VTYvHoOlXwQ": {
+			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_1",
+			"hash": "VTYvHoOlXwQ",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_1_VTYvHoOlXwQ",
+			"parent": "s_50md6xzcry0",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
+			"loc": [
+				2730,
+				2943
+			]
+		},
+		"s_XZuCubOSODA": {
+			"displayName": "combobox-hidden-option.qwik.mjs_ComboboxHiddenSelectOption_component_useTask",
+			"hash": "XZuCubOSODA",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "combobox-hidden-option.qwik.mjs_ComboboxHiddenSelectOption_component_useTask_XZuCubOSODA",
+			"parent": "s_0dZLmAWGvmM",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-hidden-option.qwik.mjs",
+			"loc": [
+				452,
+				1122
+			]
+		},
+		"s_bEI4XCNaAzA": {
+			"displayName": "combobox-popover.qwik.mjs_HComboboxPopover_component_useTask",
+			"hash": "bEI4XCNaAzA",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "combobox-popover.qwik.mjs_HComboboxPopover_component_useTask_bEI4XCNaAzA",
+			"parent": "s_y2NY0olUNe0",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-popover.qwik.mjs",
+			"loc": [
+				945,
+				1198
+			]
+		},
+		"s_eXq38I5AEgA": {
+			"displayName": "root.qwik.mjs_CarouselBase_component_useTask",
+			"hash": "eXq38I5AEgA",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "root.qwik.mjs_CarouselBase_component_useTask_eXq38I5AEgA",
+			"parent": "s_w5oa20Ngxe8",
+			"origin": "../node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs",
+			"loc": [
+				3076,
+				3372
+			]
+		},
+		"s_jErqHQ0C3Fc": {
+			"displayName": "floating.qwik.mjs_FloatingPopover_component_useTask",
+			"hash": "jErqHQ0C3Fc",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "floating.qwik.mjs_FloatingPopover_component_useTask_jErqHQ0C3Fc",
+			"parent": "s_ixpx1pOVkeE",
+			"origin": "../node_modules/@qwik-ui/headless/components/popover/floating.qwik.mjs",
+			"loc": [
+				512,
+				2827
+			]
+		},
+		"s_pNW1jCLr05o": {
+			"displayName": "dropdown-popover.qwik.mjs_HDropdownPopover_component_useTask_1",
+			"hash": "pNW1jCLr05o",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "dropdown-popover.qwik.mjs_HDropdownPopover_component_useTask_1_pNW1jCLr05o",
+			"parent": "s_3brMbjOF9L8",
+			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-popover.qwik.mjs",
+			"loc": [
+				1925,
+				2218
+			]
+		},
+		"s_peaO8FqN72k": {
+			"displayName": "select-root.qwik.mjs_HSelectImpl_component_useTask_5",
+			"hash": "peaO8FqN72k",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_useTask_5_peaO8FqN72k",
+			"parent": "s_3h6Tg7NQ89E",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
+			"loc": [
+				4402,
+				4447
+			]
+		},
+		"s_xER7nqY3f3g": {
+			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_3",
+			"hash": "xER7nqY3f3g",
+			"ctxKind": "function",
+			"ctxName": "useTask$",
+			"captures": true,
+			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useTask_3_xER7nqY3f3g",
+			"parent": "s_50md6xzcry0",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
+			"loc": [
+				4023,
+				4204
+			]
+		},
+		"s_0dZLmAWGvmM": {
+			"displayName": "combobox-hidden-option.qwik.mjs_ComboboxHiddenSelectOption_component",
+			"hash": "0dZLmAWGvmM",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "combobox-hidden-option.qwik.mjs_ComboboxHiddenSelectOption_component_0dZLmAWGvmM",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-hidden-option.qwik.mjs",
+			"loc": [
+				295,
+				1244
+			]
+		},
+		"s_3h6Tg7NQ89E": {
+			"displayName": "select-root.qwik.mjs_HSelectImpl_component",
+			"hash": "3h6Tg7NQ89E",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "select-root.qwik.mjs_HSelectImpl_component_3h6Tg7NQ89E",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/select-root.qwik.mjs",
+			"loc": [
+				376,
+				5012
+			]
+		},
+		"s_50md6xzcry0": {
+			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component",
+			"hash": "50md6xzcry0",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "combobox-root.qwik.mjs_HComboboxRootImpl_component_50md6xzcry0",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-root.qwik.mjs",
+			"loc": [
+				465,
+				5606
+			]
+		},
+		"s_5xbqJXPyHbY": {
+			"displayName": "combobox-inline.qwik.mjs_ComboboxInline_component",
+			"hash": "5xbqJXPyHbY",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "combobox-inline.qwik.mjs_ComboboxInline_component_5xbqJXPyHbY",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-inline.qwik.mjs",
+			"loc": [
+				217,
+				469
+			]
+		},
+		"s_8DDoFzWh50I": {
+			"displayName": "dropdown-root.qwik.mjs_HDropdownImpl_component",
+			"hash": "8DDoFzWh50I",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "dropdown-root.qwik.mjs_HDropdownImpl_component_8DDoFzWh50I",
+			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-root.qwik.mjs",
+			"loc": [
+				266,
+				2633
+			]
+		},
+		"s_J6W4wB4uYWA": {
+			"displayName": "popover-panel-impl.qwik.mjs_EnsuredContext_component",
+			"hash": "J6W4wB4uYWA",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "popover-panel-impl.qwik.mjs_EnsuredContext_component_J6W4wB4uYWA",
+			"origin": "../node_modules/@qwik-ui/headless/components/popover/popover-panel-impl.qwik.mjs",
+			"loc": [
+				513,
+				574
+			]
+		},
+		"s_LMBuJAflRxw": {
+			"displayName": "combobox-empty.qwik.mjs_HComboboxEmpty_component",
+			"hash": "LMBuJAflRxw",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "combobox-empty.qwik.mjs_HComboboxEmpty_component_LMBuJAflRxw",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-empty.qwik.mjs",
+			"loc": [
+				217,
+				479
+			]
+		},
+		"s_LkP0hDwx92Q": {
+			"displayName": "popover-panel-impl.qwik.mjs_HPopoverPanelImpl_component",
+			"hash": "LkP0hDwx92Q",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "popover-panel-impl.qwik.mjs_HPopoverPanelImpl_component_LkP0hDwx92Q",
+			"origin": "../node_modules/@qwik-ui/headless/components/popover/popover-panel-impl.qwik.mjs",
+			"loc": [
+				614,
+				3838
+			]
+		},
+		"s_YsnIAISWbYY": {
+			"displayName": "combobox-trigger.qwik.mjs_HComboboxTrigger_component",
+			"hash": "YsnIAISWbYY",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "combobox-trigger.qwik.mjs_HComboboxTrigger_component_YsnIAISWbYY",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-trigger.qwik.mjs",
+			"loc": [
+				291,
+				1156
+			]
+		},
+		"s_b0lHLb1TJgo": {
+			"displayName": "accordion-root.qwik.mjs_HAccordionRootImpl_component",
+			"hash": "b0lHLb1TJgo",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "accordion-root.qwik.mjs_HAccordionRootImpl_component_b0lHLb1TJgo",
+			"origin": "../node_modules/@qwik-ui/headless/components/accordion/accordion-root.qwik.mjs",
+			"loc": [
+				266,
+				1194
+			]
+		},
+		"s_dAU5JRfCFM8": {
+			"displayName": "combobox-hidden-select.qwik.mjs_HiddenNativeSelect_component",
+			"hash": "dAU5JRfCFM8",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "combobox-hidden-select.qwik.mjs_HiddenNativeSelect_component_dAU5JRfCFM8",
+			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-hidden-select.qwik.mjs",
+			"loc": [
+				383,
+				1843
+			]
+		},
+		"s_iKusoxB500Q": {
+			"displayName": "hidden-select-option.qwik.mjs_HiddenSelectOption_component",
+			"hash": "iKusoxB500Q",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "hidden-select-option.qwik.mjs_HiddenSelectOption_component_iKusoxB500Q",
+			"origin": "../node_modules/@qwik-ui/headless/components/select/hidden-select-option.qwik.mjs",
+			"loc": [
+				279,
+				938
+			]
+		},
+		"s_ixpx1pOVkeE": {
+			"displayName": "floating.qwik.mjs_FloatingPopover_component",
+			"hash": "ixpx1pOVkeE",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "floating.qwik.mjs_FloatingPopover_component_ixpx1pOVkeE",
+			"origin": "../node_modules/@qwik-ui/headless/components/popover/floating.qwik.mjs",
+			"loc": [
+				440,
+				2963
+			]
+		},
+		"s_uuEgN6isZgk": {
+			"displayName": "dropdown-group-label.qwik.mjs_HDropdownGroupLabel_component",
+			"hash": "uuEgN6isZgk",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "dropdown-group-label.qwik.mjs_HDropdownGroupLabel_component_uuEgN6isZgk",
+			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-group-label.qwik.mjs",
+			"loc": [
+				227,
+				438
+			]
+		},
+		"s_w5oa20Ngxe8": {
+			"displayName": "root.qwik.mjs_CarouselBase_component",
+			"hash": "w5oa20Ngxe8",
+			"ctxKind": "function",
+			"ctxName": "component$",
+			"captures": false,
+			"canonicalFilename": "root.qwik.mjs_CarouselBase_component_w5oa20Ngxe8",
+			"origin": "../node_modules/@qwik-ui/headless/components/carousel/root.qwik.mjs",
+			"loc": [
+				379,
+				4024
+			]
+		},
+		"s_TL6epcerqTM": {
+			"displayName": "popover-panel-impl.qwik.mjs_HPopoverPanelImpl_component_useStyles",
+			"hash": "TL6epcerqTM",
+			"ctxKind": "function",
+			"ctxName": "useStyles$",
+			"captures": false,
+			"canonicalFilename": "popover-panel-impl.qwik.mjs_HPopoverPanelImpl_component_useStyles_TL6epcerqTM",
+			"parent": "s_LkP0hDwx92Q",
+			"origin": "../node_modules/@qwik-ui/headless/components/popover/popover-panel-impl.qwik.mjs",
+			"loc": [
+				878,
+				891
+			]
+		},
 		"s_qf5DdYfHS5A": {
 			"displayName": "combobox-root.qwik.mjs_HComboboxRootImpl_component_useStyles",
 			"hash": "qf5DdYfHS5A",
@@ -7772,20 +8466,6 @@
 			"loc": [
 				639,
 				645
-			]
-		},
-		"s_C2YQTvHxxjw": {
-			"displayName": "visually-hidden.qwik.mjs_VisuallyHidden_component_useStylesScoped",
-			"hash": "C2YQTvHxxjw",
-			"ctxKind": "function",
-			"ctxName": "useStylesScoped$",
-			"captures": false,
-			"canonicalFilename": "visually-hidden.qwik.mjs_VisuallyHidden_component_useStylesScoped_C2YQTvHxxjw",
-			"parent": "s_PgJQ3qjmqes",
-			"origin": "../node_modules/@qwik-ui/headless/utils/visually-hidden.qwik.mjs",
-			"loc": [
-				190,
-				377
 			]
 		},
 		"s_2MY7kGuLZfI": {
@@ -7827,19 +8507,6 @@
 				1051
 			]
 		},
-		"s_4ydADGYMm08": {
-			"displayName": "use-popover.qwik.mjs_usePopover_initPopover",
-			"hash": "4ydADGYMm08",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "use-popover.qwik.mjs_usePopover_initPopover_4ydADGYMm08",
-			"origin": "../node_modules/@qwik-ui/headless/components/popover/use-popover.qwik.mjs",
-			"loc": [
-				586,
-				1114
-			]
-		},
 		"s_6LkTZ0YG4hI": {
 			"displayName": "use-toggle.qwik.mjs_useRootItemsRepo_getAndSetTabIndexItem",
 			"hash": "6LkTZ0YG4hI",
@@ -7879,32 +8546,6 @@
 				4874
 			]
 		},
-		"s_9KRx0IOCHt8": {
-			"displayName": "index.qwik.mjs_spaInit_event",
-			"hash": "9KRx0IOCHt8",
-			"ctxKind": "function",
-			"ctxName": "event$",
-			"captures": false,
-			"canonicalFilename": "index.qwik.mjs_spaInit_event_9KRx0IOCHt8",
-			"origin": "../node_modules/@builder.io/qwik-city/lib/index.qwik.mjs",
-			"loc": [
-				1324,
-				6990
-			]
-		},
-		"s_A5SCimyrjAE": {
-			"displayName": "index.qwik.mjs_Form_form_onSubmit",
-			"hash": "A5SCimyrjAE",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "index.qwik.mjs_Form_form_onSubmit_A5SCimyrjAE",
-			"origin": "../node_modules/@builder.io/qwik-city/lib/index.qwik.mjs",
-			"loc": [
-				59514,
-				59628
-			]
-		},
 		"s_C9ZKDJYEj30": {
 			"displayName": "use-toggle.qwik.mjs_useRootItemsRepo_registerItem",
 			"hash": "C9ZKDJYEj30",
@@ -7916,32 +8557,6 @@
 			"loc": [
 				295,
 				373
-			]
-		},
-		"s_FyPGp06fZkk": {
-			"displayName": "use-popover.qwik.mjs_usePopover_loadPolyfill",
-			"hash": "FyPGp06fZkk",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": false,
-			"canonicalFilename": "use-popover.qwik.mjs_usePopover_loadPolyfill_FyPGp06fZkk",
-			"origin": "../node_modules/@qwik-ui/headless/components/popover/use-popover.qwik.mjs",
-			"loc": [
-				400,
-				477
-			]
-		},
-		"s_GteApAKo5EA": {
-			"displayName": "use-popover.qwik.mjs_usePopover_useOnDocument",
-			"hash": "GteApAKo5EA",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "use-popover.qwik.mjs_usePopover_useOnDocument_GteApAKo5EA",
-			"origin": "../node_modules/@qwik-ui/headless/components/popover/use-popover.qwik.mjs",
-			"loc": [
-				1154,
-				1296
 			]
 		},
 		"s_IAZMnbJQeFs": {
@@ -7981,19 +8596,6 @@
 			"loc": [
 				95,
 				468
-			]
-		},
-		"s_N26RLdG0oBg": {
-			"displayName": "index.qwik.mjs_routeActionQrl_action_submit",
-			"hash": "N26RLdG0oBg",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "index.qwik.mjs_routeActionQrl_action_submit_N26RLdG0oBg",
-			"origin": "../node_modules/@builder.io/qwik-city/lib/index.qwik.mjs",
-			"loc": [
-				46053,
-				47698
 			]
 		},
 		"s_Nj0ONZ2CVPE": {
@@ -8100,19 +8702,6 @@
 				3041
 			]
 		},
-		"s_WfTOxT4IrdA": {
-			"displayName": "index.qwik.mjs_serverQrl_rpc",
-			"hash": "WfTOxT4IrdA",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "index.qwik.mjs_serverQrl_rpc_WfTOxT4IrdA",
-			"origin": "../node_modules/@builder.io/qwik-city/lib/index.qwik.mjs",
-			"loc": [
-				54165,
-				57239
-			]
-		},
 		"s_XVlaHWELpIQ": {
 			"displayName": "use-dropdown.qwik.mjs_useDropdown_getNextEnabledItemIndex",
 			"hash": "XVlaHWELpIQ",
@@ -8139,19 +8728,6 @@
 				1625
 			]
 		},
-		"s_YQAPkEVrbNQ": {
-			"displayName": "use-popover.qwik.mjs_usePopover_showPopover",
-			"hash": "YQAPkEVrbNQ",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "use-popover.qwik.mjs_usePopover_showPopover_YQAPkEVrbNQ",
-			"origin": "../node_modules/@qwik-ui/headless/components/popover/use-popover.qwik.mjs",
-			"loc": [
-				1324,
-				1565
-			]
-		},
 		"s_a3ayOmjVQlc": {
 			"displayName": "use-modal.qwik.mjs_useModal_wasModalBackdropClicked",
 			"hash": "a3ayOmjVQlc",
@@ -8163,19 +8739,6 @@
 			"loc": [
 				2003,
 				2359
-			]
-		},
-		"s_bCZHYGiS204": {
-			"displayName": "use-popover.qwik.mjs_usePopover_hidePopover",
-			"hash": "bCZHYGiS204",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "use-popover.qwik.mjs_usePopover_hidePopover_bCZHYGiS204",
-			"origin": "../node_modules/@qwik-ui/headless/components/popover/use-popover.qwik.mjs",
-			"loc": [
-				1864,
-				2105
 			]
 		},
 		"s_cfsa2nXpIck": {
@@ -8334,19 +8897,6 @@
 				2732
 			]
 		},
-		"s_qIwUmRq6UCE": {
-			"displayName": "use-popover.qwik.mjs_usePopover_togglePopover",
-			"hash": "qIwUmRq6UCE",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "use-popover.qwik.mjs_usePopover_togglePopover_qIwUmRq6UCE",
-			"origin": "../node_modules/@qwik-ui/headless/components/popover/use-popover.qwik.mjs",
-			"loc": [
-				1594,
-				1837
-			]
-		},
 		"s_qqeqT7qOIAw": {
 			"displayName": "use-select.qwik.mjs_useSelect_selectionManager",
 			"hash": "qqeqT7qOIAw",
@@ -8490,48 +9040,6 @@
 				2288
 			]
 		},
-		"s_00i0RLgc9VQ": {
-			"displayName": "slide.qwik.mjs_CarouselSlide_component_handleFocusIn",
-			"hash": "00i0RLgc9VQ",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "slide.qwik.mjs_CarouselSlide_component_handleFocusIn_00i0RLgc9VQ",
-			"parent": "s_uS0PI1UYSws",
-			"origin": "../node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs",
-			"loc": [
-				1116,
-				1168
-			]
-		},
-		"s_05v68pSbADA": {
-			"displayName": "popover-trigger.qwik.mjs_HPopoverTrigger_component_handlePointerOut",
-			"hash": "05v68pSbADA",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "popover-trigger.qwik.mjs_HPopoverTrigger_component_handlePointerOut_05v68pSbADA",
-			"parent": "s_22kvLbqUy0E",
-			"origin": "../node_modules/@qwik-ui/headless/components/popover/popover-trigger.qwik.mjs",
-			"loc": [
-				1195,
-				1269
-			]
-		},
-		"s_0CHydJFe0I0": {
-			"displayName": "select-item.qwik.mjs_HSelectItem_component_handleClick",
-			"hash": "0CHydJFe0I0",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "select-item.qwik.mjs_HSelectItem_component_handleClick_0CHydJFe0I0",
-			"parent": "s_w8zoodu230Y",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs",
-			"loc": [
-				3316,
-				3646
-			]
-		},
 		"s_0CyZrhGM1Ag": {
 			"displayName": "root.qwik.mjs_CarouselBase_component_alignSig_useComputed",
 			"hash": "0CyZrhGM1Ag",
@@ -8544,48 +9052,6 @@
 			"loc": [
 				1668,
 				1696
-			]
-		},
-		"s_0DX0jr5a6Yc": {
-			"displayName": "combobox-input.qwik.mjs_HComboboxInput_component_activeDescendantSig_useComputed",
-			"hash": "0DX0jr5a6Yc",
-			"ctxKind": "function",
-			"ctxName": "useComputed$",
-			"captures": true,
-			"canonicalFilename": "combobox-input.qwik.mjs_HComboboxInput_component_activeDescendantSig_useComputed_0DX0jr5a6Yc",
-			"parent": "s_HafofZnJX28",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-input.qwik.mjs",
-			"loc": [
-				1213,
-				1680
-			]
-		},
-		"s_0EkWQ0OZZ2Q": {
-			"displayName": "index.tsx_handle_component_brands_useComputed",
-			"hash": "0EkWQ0OZZ2Q",
-			"ctxKind": "function",
-			"ctxName": "useComputed$",
-			"captures": true,
-			"canonicalFilename": "index.tsx_handle_component_brands_useComputed_0EkWQ0OZZ2Q",
-			"parent": "s_M9XwPVlpYOk",
-			"origin": "routes/collections/[handle]/index.tsx",
-			"loc": [
-				3111,
-				3283
-			]
-		},
-		"s_0HB1p804N00": {
-			"displayName": "index.qwik.mjs_Link_component_handleClientSideNavigation",
-			"hash": "0HB1p804N00",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "index.qwik.mjs_Link_component_handleClientSideNavigation_0HB1p804N00",
-			"parent": "s_1raneLGffO8",
-			"origin": "../node_modules/@builder.io/qwik-city/lib/index.qwik.mjs",
-			"loc": [
-				41851,
-				42277
 			]
 		},
 		"s_0InFYw6DDU4": {
@@ -8602,76 +9068,6 @@
 				2486
 			]
 		},
-		"s_0L4mZ7WBiqI": {
-			"displayName": "combobox-item.qwik.mjs_HComboboxItem_component_isSelectedSig_useComputed",
-			"hash": "0L4mZ7WBiqI",
-			"ctxKind": "function",
-			"ctxName": "useComputed$",
-			"captures": true,
-			"canonicalFilename": "combobox-item.qwik.mjs_HComboboxItem_component_isSelectedSig_useComputed_0L4mZ7WBiqI",
-			"parent": "s_qIFxQt4KTwU",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-item.qwik.mjs",
-			"loc": [
-				1091,
-				1484
-			]
-		},
-		"s_0khgxgvNLwU": {
-			"displayName": "combobox-item.qwik.mjs_HComboboxItem_component_checkVisibility",
-			"hash": "0khgxgvNLwU",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "combobox-item.qwik.mjs_HComboboxItem_component_checkVisibility_0khgxgvNLwU",
-			"parent": "s_qIFxQt4KTwU",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-item.qwik.mjs",
-			"loc": [
-				1734,
-				2316
-			]
-		},
-		"s_0zRj42JDZV8": {
-			"displayName": "tab-panel.qwik.mjs_HTabPanel_component_isSelectedSig_useComputed",
-			"hash": "0zRj42JDZV8",
-			"ctxKind": "function",
-			"ctxName": "useComputed$",
-			"captures": true,
-			"canonicalFilename": "tab-panel.qwik.mjs_HTabPanel_component_isSelectedSig_useComputed_0zRj42JDZV8",
-			"parent": "s_wN0GEPDdtPw",
-			"origin": "../node_modules/@qwik-ui/headless/components/tabs/tab-panel.qwik.mjs",
-			"loc": [
-				689,
-				765
-			]
-		},
-		"s_110oHjF2oWE": {
-			"displayName": "dropdown-trigger.qwik.mjs_HDropdownTrigger_component_handleKeyDown",
-			"hash": "110oHjF2oWE",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "dropdown-trigger.qwik.mjs_HDropdownTrigger_component_handleKeyDown_110oHjF2oWE",
-			"parent": "s_7LkShZU94bk",
-			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-trigger.qwik.mjs",
-			"loc": [
-				931,
-				1677
-			]
-		},
-		"s_14HTqSz0lNQ": {
-			"displayName": "modal-close.qwik.mjs_HModalClose_component_handleClick",
-			"hash": "14HTqSz0lNQ",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "modal-close.qwik.mjs_HModalClose_component_handleClick_14HTqSz0lNQ",
-			"parent": "s_oxvUZTlvGqQ",
-			"origin": "../node_modules/@qwik-ui/headless/components/modal/modal-close.qwik.mjs",
-			"loc": [
-				295,
-				341
-			]
-		},
 		"s_1ALRoRHXvrU": {
 			"displayName": "popover-panel-impl.qwik.mjs_HPopoverPanelImpl_component_div_onToggle",
 			"hash": "1ALRoRHXvrU",
@@ -8684,20 +9080,6 @@
 			"loc": [
 				3030,
 				3496
-			]
-		},
-		"s_1rdZKscoZmo": {
-			"displayName": "modal-trigger.qwik.mjs_HModalTrigger_component_handleClick",
-			"hash": "1rdZKscoZmo",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "modal-trigger.qwik.mjs_HModalTrigger_component_handleClick_1rdZKscoZmo",
-			"parent": "s_k6VXQGcAfT4",
-			"origin": "../node_modules/@qwik-ui/headless/components/modal/modal-trigger.qwik.mjs",
-			"loc": [
-				297,
-				360
 			]
 		},
 		"s_1wqD0aSkvsI": {
@@ -8714,76 +9096,6 @@
 				1844
 			]
 		},
-		"s_2skS10yt6s4": {
-			"displayName": "checkbox-root.qwik.mjs_CheckboxRoot_component_handleKeyDown",
-			"hash": "2skS10yt6s4",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "checkbox-root.qwik.mjs_CheckboxRoot_component_handleKeyDown_2skS10yt6s4",
-			"parent": "s_OgY3yWxH6fs",
-			"origin": "../node_modules/@qwik-ui/headless/components/checkbox/checkbox-root.qwik.mjs",
-			"loc": [
-				776,
-				869
-			]
-		},
-		"s_2tZ51WEF6V8": {
-			"displayName": "slide.qwik.mjs_CarouselSlide_component_isActiveSig_useComputed",
-			"hash": "2tZ51WEF6V8",
-			"ctxKind": "function",
-			"ctxName": "useComputed$",
-			"captures": true,
-			"canonicalFilename": "slide.qwik.mjs_CarouselSlide_component_isActiveSig_useComputed_2tZ51WEF6V8",
-			"parent": "s_uS0PI1UYSws",
-			"origin": "../node_modules/@qwik-ui/headless/components/carousel/slide.qwik.mjs",
-			"loc": [
-				681,
-				745
-			]
-		},
-		"s_3NiJnvpvPeE": {
-			"displayName": "dropdown-trigger.qwik.mjs_HDropdownTrigger_component_handleClick",
-			"hash": "3NiJnvpvPeE",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "dropdown-trigger.qwik.mjs_HDropdownTrigger_component_handleClick_3NiJnvpvPeE",
-			"parent": "s_7LkShZU94bk",
-			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-trigger.qwik.mjs",
-			"loc": [
-				533,
-				600
-			]
-		},
-		"s_3RWdpaLAYsw": {
-			"displayName": "combobox-trigger.qwik.mjs_HComboboxTrigger_component_handleClick",
-			"hash": "3RWdpaLAYsw",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "combobox-trigger.qwik.mjs_HComboboxTrigger_component_handleClick_3RWdpaLAYsw",
-			"parent": "s_YsnIAISWbYY",
-			"origin": "../node_modules/@qwik-ui/headless/components/combobox/combobox-trigger.qwik.mjs",
-			"loc": [
-				527,
-				645
-			]
-		},
-		"s_4D4KWRX3Gvo": {
-			"displayName": "select-item.qwik.mjs_HSelectItem_component_useOnWindow",
-			"hash": "4D4KWRX3Gvo",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "select-item.qwik.mjs_HSelectItem_component_useOnWindow_4D4KWRX3Gvo",
-			"parent": "s_w8zoodu230Y",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs",
-			"loc": [
-				930,
-				979
-			]
-		},
 		"s_4deK0OiK09M": {
 			"displayName": "dropdown-root.qwik.mjs_HDropdownImpl_component_activeDescendantSig_useComputed",
 			"hash": "4deK0OiK09M",
@@ -8796,76 +9108,6 @@
 			"loc": [
 				1740,
 				2118
-			]
-		},
-		"s_4o0g40SLS9c": {
-			"displayName": "progress-root.qwik.mjs_ProgressRoot_component_valueLabelSig_useComputed",
-			"hash": "4o0g40SLS9c",
-			"ctxKind": "function",
-			"ctxName": "useComputed$",
-			"captures": true,
-			"canonicalFilename": "progress-root.qwik.mjs_ProgressRoot_component_valueLabelSig_useComputed_4o0g40SLS9c",
-			"parent": "s_gNihkBmb54s",
-			"origin": "../node_modules/@qwik-ui/headless/components/progress/progress-root.qwik.mjs",
-			"loc": [
-				1090,
-				1357
-			]
-		},
-		"s_5o0fOe2bh44": {
-			"displayName": "layout.tsx_layout_component_toggleDarkMode",
-			"hash": "5o0fOe2bh44",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "layout.tsx_layout_component_toggleDarkMode_5o0fOe2bh44",
-			"parent": "s_VKFlAWJuVm8",
-			"origin": "routes/layout.tsx",
-			"loc": [
-				2347,
-				2511
-			]
-		},
-		"s_5uvV1Dmz6Mo": {
-			"displayName": "select-label.qwik.mjs_HSelectLabel_component_handleClick",
-			"hash": "5uvV1Dmz6Mo",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "select-label.qwik.mjs_HSelectLabel_component_handleClick_5uvV1Dmz6Mo",
-			"parent": "s_rs09RukW09Q",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-label.qwik.mjs",
-			"loc": [
-				562,
-				657
-			]
-		},
-		"s_6awZJG5cU3Q": {
-			"displayName": "tooltip-trigger.qwik.mjs_HTooltipTrigger_component_setTooltipState",
-			"hash": "6awZJG5cU3Q",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "tooltip-trigger.qwik.mjs_HTooltipTrigger_component_setTooltipState_6awZJG5cU3Q",
-			"parent": "s_bU4KjydW0YY",
-			"origin": "../node_modules/@qwik-ui/headless/components/tooltip/tooltip-trigger.qwik.mjs",
-			"loc": [
-				757,
-				1074
-			]
-		},
-		"s_74kvkuGdvug": {
-			"displayName": "index.qwik.mjs_Link_component_handlePreload",
-			"hash": "74kvkuGdvug",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": false,
-			"canonicalFilename": "index.qwik.mjs_Link_component_handlePreload_74kvkuGdvug",
-			"parent": "s_1raneLGffO8",
-			"origin": "../node_modules/@builder.io/qwik-city/lib/index.qwik.mjs",
-			"loc": [
-				42315,
-				42409
 			]
 		},
 		"s_7CMN60KgD5k": {
@@ -8896,34 +9138,6 @@
 				2967
 			]
 		},
-		"s_87faiQlKCEs": {
-			"displayName": "progress-indicator.qwik.mjs_ProgressIndicator_component_translateXSig_useComputed",
-			"hash": "87faiQlKCEs",
-			"ctxKind": "function",
-			"ctxName": "useComputed$",
-			"captures": true,
-			"canonicalFilename": "progress-indicator.qwik.mjs_ProgressIndicator_component_translateXSig_useComputed_87faiQlKCEs",
-			"parent": "s_HybVppo7Svw",
-			"origin": "../node_modules/@qwik-ui/headless/components/progress/progress-indicator.qwik.mjs",
-			"loc": [
-				362,
-				685
-			]
-		},
-		"s_9Q0xxfReMsw": {
-			"displayName": "tabs.qwik.mjs_TabsImpl_component_selectIfAutomatic",
-			"hash": "9Q0xxfReMsw",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "tabs.qwik.mjs_TabsImpl_component_selectIfAutomatic_9Q0xxfReMsw",
-			"parent": "s_ypBIjA92jrM",
-			"origin": "../node_modules/@qwik-ui/headless/components/tabs/tabs.qwik.mjs",
-			"loc": [
-				6690,
-				6773
-			]
-		},
 		"s_9iBK30OA9CA": {
 			"displayName": "root.qwik.mjs_CarouselBase_component_isRewindSig_useComputed",
 			"hash": "9iBK30OA9CA",
@@ -8938,62 +9152,6 @@
 				1761
 			]
 		},
-		"s_Ag6rhNndDkg": {
-			"displayName": "previous.qwik.mjs_CarouselPrevious_component_isFirstSlideSig_useComputed",
-			"hash": "Ag6rhNndDkg",
-			"ctxKind": "function",
-			"ctxName": "useComputed$",
-			"captures": true,
-			"canonicalFilename": "previous.qwik.mjs_CarouselPrevious_component_isFirstSlideSig_useComputed_Ag6rhNndDkg",
-			"parent": "s_7rD9qfbtBbE",
-			"origin": "../node_modules/@qwik-ui/headless/components/carousel/previous.qwik.mjs",
-			"loc": [
-				1693,
-				1782
-			]
-		},
-		"s_AoSVvC21QAc": {
-			"displayName": "select-popover.qwik.mjs_HSelectPopover_component_handleMouseEnter",
-			"hash": "AoSVvC21QAc",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "select-popover.qwik.mjs_HSelectPopover_component_handleMouseEnter_AoSVvC21QAc",
-			"parent": "s_PY0dAgOygRU",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-popover.qwik.mjs",
-			"loc": [
-				2443,
-				2546
-			]
-		},
-		"s_B0iHvKB9d5w": {
-			"displayName": "checkbox-root.qwik.mjs_CheckboxRoot_component_handleClick",
-			"hash": "B0iHvKB9d5w",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "checkbox-root.qwik.mjs_CheckboxRoot_component_handleClick_B0iHvKB9d5w",
-			"parent": "s_OgY3yWxH6fs",
-			"origin": "../node_modules/@qwik-ui/headless/components/checkbox/checkbox-root.qwik.mjs",
-			"loc": [
-				687,
-				746
-			]
-		},
-		"s_BeQn09w7y8I": {
-			"displayName": "select-trigger.qwik.mjs_HSelectTrigger_component_handleKeyDown",
-			"hash": "BeQn09w7y8I",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "select-trigger.qwik.mjs_HSelectTrigger_component_handleKeyDown_BeQn09w7y8I",
-			"parent": "s_Jw1oFOAKqX8",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-trigger.qwik.mjs",
-			"loc": [
-				1690,
-				3654
-			]
-		},
 		"s_BxrxNWInXyM": {
 			"displayName": "combobox-input.qwik.mjs_HComboboxInput_component_inputValueSig_useComputed",
 			"hash": "BxrxNWInXyM",
@@ -9006,132 +9164,6 @@
 			"loc": [
 				6183,
 				6245
-			]
-		},
-		"s_Byd7Puy4oD0": {
-			"displayName": "collapsible-trigger.qwik.mjs_HCollapsibleTrigger_component_handleClick",
-			"hash": "Byd7Puy4oD0",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "collapsible-trigger.qwik.mjs_HCollapsibleTrigger_component_handleClick_Byd7Puy4oD0",
-			"parent": "s_k16NVIjvQSo",
-			"origin": "../node_modules/@qwik-ui/headless/components/collapsible/collapsible-trigger.qwik.mjs",
-			"loc": [
-				449,
-				596
-			]
-		},
-		"s_C6lL0rW5k7Q": {
-			"displayName": "index.tsx_handle_component_useOnDocument",
-			"hash": "C6lL0rW5k7Q",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "index.tsx_handle_component_useOnDocument_C6lL0rW5k7Q",
-			"parent": "s_M9XwPVlpYOk",
-			"origin": "routes/collections/[handle]/index.tsx",
-			"loc": [
-				2284,
-				2492
-			]
-		},
-		"s_DDhByzXj9vI": {
-			"displayName": "scroller.qwik.mjs_CarouselScroller_component_handleDragSnap",
-			"hash": "DDhByzXj9vI",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "scroller.qwik.mjs_CarouselScroller_component_handleDragSnap_DDhByzXj9vI",
-			"parent": "s_P0pQmU9ygTQ",
-			"origin": "../node_modules/@qwik-ui/headless/components/carousel/scroller.qwik.mjs",
-			"loc": [
-				1998,
-				2998
-			]
-		},
-		"s_DYzJqXnodaE": {
-			"displayName": "tab.qwik.mjs_HTab_component_button_onClick",
-			"hash": "DYzJqXnodaE",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "tab.qwik.mjs_HTab_component_button_onClick_DYzJqXnodaE",
-			"parent": "s_i6xlyXdtjfI",
-			"origin": "../node_modules/@qwik-ui/headless/components/tabs/tab.qwik.mjs",
-			"loc": [
-				1743,
-				1781
-			]
-		},
-		"s_DtfIatVBGvE": {
-			"displayName": "select-item.qwik.mjs_HSelectItem_component_isHighlightedSig_useComputed",
-			"hash": "DtfIatVBGvE",
-			"ctxKind": "function",
-			"ctxName": "useComputed$",
-			"captures": true,
-			"canonicalFilename": "select-item.qwik.mjs_HSelectItem_component_isHighlightedSig_useComputed_DtfIatVBGvE",
-			"parent": "s_w8zoodu230Y",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs",
-			"loc": [
-				1178,
-				1433
-			]
-		},
-		"s_DyYtoEUy5Y4": {
-			"displayName": "select-item.qwik.mjs_HSelectItem_component_handleKeyDown",
-			"hash": "DyYtoEUy5Y4",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "select-item.qwik.mjs_HSelectItem_component_handleKeyDown_DyYtoEUy5Y4",
-			"parent": "s_w8zoodu230Y",
-			"origin": "../node_modules/@qwik-ui/headless/components/select/select-item.qwik.mjs",
-			"loc": [
-				4206,
-				6380
-			]
-		},
-		"s_E5bV6uEwmKE": {
-			"displayName": "dropdown-checkbox-item.qwik.mjs_HDropdownCheckboxItem_component_toggleChecked",
-			"hash": "E5bV6uEwmKE",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "dropdown-checkbox-item.qwik.mjs_HDropdownCheckboxItem_component_toggleChecked_E5bV6uEwmKE",
-			"parent": "s_PzD79Rs45EA",
-			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-checkbox-item.qwik.mjs",
-			"loc": [
-				864,
-				917
-			]
-		},
-		"s_EMRDSVlcvFQ": {
-			"displayName": "modal-panel.qwik.mjs_HModalPanel_component_handleKeyDown",
-			"hash": "EMRDSVlcvFQ",
-			"ctxKind": "function",
-			"ctxName": "$",
-			"captures": true,
-			"canonicalFilename": "modal-panel.qwik.mjs_HModalPanel_component_handleKeyDown_EMRDSVlcvFQ",
-			"parent": "s_RlhXZz9lIbo",
-			"origin": "../node_modules/@qwik-ui/headless/components/modal/modal-panel.qwik.mjs",
-			"loc": [
-				2239,
-				2351
-			]
-		},
-		"s_Ejm4KkbfoyQ": {
-			"displayName": "dropdown-popover.qwik.mjs_HDropdownPopover_component_HPopoverRoot_HPopoverPanel_onMouseOut",
-			"hash": "Ejm4KkbfoyQ",
-			"ctxKind": "jSXProp",
-			"ctxName": "onMouseOut$",
-			"captures": true,
-			"canonicalFilename": "dropdown-popover.qwik.mjs_HDropdownPopover_component_HPopoverRoot_HPopoverPanel_onMouseOut_Ejm4KkbfoyQ",
-			"parent": "s_3brMbjOF9L8",
-			"origin": "../node_modules/@qwik-ui/headless/components/dropdown/dropdown-popover.qwik.mjs",
-			"loc": [
-				3099,
-				3146
 			]
 		},
 		"s_FvsvfGKw6ek": {
@@ -9830,8 +9862,8 @@
 			"parent": "s_ximn83p41iU",
 			"origin": "routes/product/[handle]/index.tsx",
 			"loc": [
-				1791,
-				2600
+				1966,
+				2775
 			]
 		},
 		"s_XnluxqLBUGc": {
@@ -9998,8 +10030,8 @@
 			"parent": "s_M9XwPVlpYOk",
 			"origin": "routes/collections/[handle]/index.tsx",
 			"loc": [
-				3327,
-				3563
+				3315,
+				3551
 			]
 		},
 		"s_ertIFjT0ucE": {

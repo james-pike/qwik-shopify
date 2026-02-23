@@ -1,0 +1,294 @@
+class _ extends Error{response;request;constructor(t,n){const s=`${_.extractMessage(t)}: ${JSON.stringify({response:t,request:n})}`;super(s),Object.setPrototypeOf(this,_.prototype),this.response=t,this.request=n,typeof Error.captureStackTrace=="function"&&Error.captureStackTrace(this,_)}static extractMessage(t){return t.errors?.[0]?.message??`GraphQL Error (Code: ${String(t.status)})`}}const ae=e=>e.toUpperCase(),G=e=>typeof e=="function"?e():e,ye=(e,t)=>e.map((n,s)=>[n,t[s]]),S=e=>{let t={};return e instanceof Headers?t=be(e):Array.isArray(e)?e.forEach(([n,s])=>{n&&s!==void 0&&(t[n]=s)}):e&&(t=e),t},be=e=>{const t={};return e.forEach((n,s)=>{t[s]=n}),t},Le=e=>{try{const t=e();return we(t)?t.catch(n=>ce(n)):t}catch(t){return ce(t)}},ce=e=>e instanceof Error?e:new Error(String(e)),we=e=>typeof e=="object"&&e!==null&&"then"in e&&typeof e.then=="function"&&"catch"in e&&typeof e.catch=="function"&&"finally"in e&&typeof e.finally=="function",ee=e=>{throw new Error(`Unhandled case: ${String(e)}`)},F=e=>typeof e=="object"&&e!==null&&!Array.isArray(e),Fe=(e,t)=>e.documents?e:{documents:e,requestHeaders:t,signal:void 0},Pe=(e,t,n)=>e.query?e:{query:e,variables:t,requestHeaders:n,signal:void 0};function P(e,t){if(!!!e)throw new Error(t)}function Me(e){return typeof e=="object"&&e!==null}function qe(e,t){if(!!!e)throw new Error("Unexpected invariant triggered.")}const Be=/\r\n|[\n\r]/g;function Q(e,t){let n=0,s=1;for(const i of e.body.matchAll(Be)){if(typeof i.index=="number"||qe(!1),i.index>=t)break;n=i.index+i[0].length,s+=1}return{line:s,column:t+1-n}}function Ue(e){return Ie(e.source,Q(e.source,e.start))}function Ie(e,t){const n=e.locationOffset.column-1,s="".padStart(n)+e.body,i=t.line-1,r=e.locationOffset.line-1,a=t.line+r,l=t.line===1?n:0,p=t.column+l,d=`${e.name}:${a}:${p}
+`,f=s.split(/\r\n|[\n\r]/g),m=f[i];if(m.length>120){const E=Math.floor(p/80),x=p%80,T=[];for(let N=0;N<m.length;N+=80)T.push(m.slice(N,N+80));return d+ue([[`${a} |`,T[0]],...T.slice(1,E+1).map(N=>["|",N]),["|","^".padStart(x)],["|",T[E+1]]])}return d+ue([[`${a-1} |`,f[i-1]],[`${a} |`,m],["|","^".padStart(p)],[`${a+1} |`,f[i+1]]])}function ue(e){const t=e.filter(([s,i])=>i!==void 0),n=Math.max(...t.map(([s])=>s.length));return t.map(([s,i])=>s.padStart(n)+(i?" "+i:"")).join(`
+`)}function Ve(e){const t=e[0];return t==null||"kind"in t||"length"in t?{nodes:t,source:e[1],positions:e[2],path:e[3],originalError:e[4],extensions:e[5]}:t}class te extends Error{constructor(t,...n){var s,i,r;const{nodes:a,source:l,positions:p,path:d,originalError:f,extensions:m}=Ve(n);super(t),this.name="GraphQLError",this.path=d??void 0,this.originalError=f??void 0,this.nodes=le(Array.isArray(a)?a:a?[a]:void 0);const E=le((s=this.nodes)===null||s===void 0?void 0:s.map(T=>T.loc).filter(T=>T!=null));this.source=l??(E==null||(i=E[0])===null||i===void 0?void 0:i.source),this.positions=p??E?.map(T=>T.start),this.locations=p&&l?p.map(T=>Q(l,T)):E?.map(T=>Q(T.source,T.start));const x=Me(f?.extensions)?f?.extensions:void 0;this.extensions=(r=m??x)!==null&&r!==void 0?r:Object.create(null),Object.defineProperties(this,{message:{writable:!0,enumerable:!0},name:{enumerable:!1},nodes:{enumerable:!1},source:{enumerable:!1},positions:{enumerable:!1},originalError:{enumerable:!1}}),f!=null&&f.stack?Object.defineProperty(this,"stack",{value:f.stack,writable:!0,configurable:!0}):Error.captureStackTrace?Error.captureStackTrace(this,te):Object.defineProperty(this,"stack",{value:Error().stack,writable:!0,configurable:!0})}get[Symbol.toStringTag](){return"GraphQLError"}toString(){let t=this.message;if(this.nodes)for(const n of this.nodes)n.loc&&(t+=`
+
+`+Ue(n.loc));else if(this.source&&this.locations)for(const n of this.locations)t+=`
+
+`+Ie(this.source,n);return t}toJSON(){const t={message:this.message};return this.locations!=null&&(t.locations=this.locations),this.path!=null&&(t.path=this.path),this.extensions!=null&&Object.keys(this.extensions).length>0&&(t.extensions=this.extensions),t}}function le(e){return e===void 0||e.length===0?void 0:e}function I(e,t,n){return new te(`Syntax Error: ${n}`,{source:e,positions:[t]})}class $e{constructor(t,n,s){this.start=t.start,this.end=n.end,this.startToken=t,this.endToken=n,this.source=s}get[Symbol.toStringTag](){return"Location"}toJSON(){return{start:this.start,end:this.end}}}class xe{constructor(t,n,s,i,r,a){this.kind=t,this.start=n,this.end=s,this.line=i,this.column=r,this.value=a,this.prev=null,this.next=null}get[Symbol.toStringTag](){return"Token"}toJSON(){return{kind:this.kind,value:this.value,line:this.line,column:this.column}}}const ge={Name:[],Document:["definitions"],OperationDefinition:["description","name","variableDefinitions","directives","selectionSet"],VariableDefinition:["description","variable","type","defaultValue","directives"],Variable:["name"],SelectionSet:["selections"],Field:["alias","name","arguments","directives","selectionSet"],Argument:["name","value"],FragmentSpread:["name","directives"],InlineFragment:["typeCondition","directives","selectionSet"],FragmentDefinition:["description","name","variableDefinitions","typeCondition","directives","selectionSet"],IntValue:[],FloatValue:[],StringValue:[],BooleanValue:[],NullValue:[],EnumValue:[],ListValue:["values"],ObjectValue:["fields"],ObjectField:["name","value"],Directive:["name","arguments"],NamedType:["name"],ListType:["type"],NonNullType:["type"],SchemaDefinition:["description","directives","operationTypes"],OperationTypeDefinition:["type"],ScalarTypeDefinition:["description","name","directives"],ObjectTypeDefinition:["description","name","interfaces","directives","fields"],FieldDefinition:["description","name","arguments","type","directives"],InputValueDefinition:["description","name","type","defaultValue","directives"],InterfaceTypeDefinition:["description","name","interfaces","directives","fields"],UnionTypeDefinition:["description","name","directives","types"],EnumTypeDefinition:["description","name","directives","values"],EnumValueDefinition:["description","name","directives"],InputObjectTypeDefinition:["description","name","directives","fields"],DirectiveDefinition:["description","name","arguments","locations"],SchemaExtension:["directives","operationTypes"],ScalarTypeExtension:["name","directives"],ObjectTypeExtension:["name","interfaces","directives","fields"],InterfaceTypeExtension:["name","interfaces","directives","fields"],UnionTypeExtension:["name","directives","types"],EnumTypeExtension:["name","directives","values"],InputObjectTypeExtension:["name","directives","fields"],TypeCoordinate:["name"],MemberCoordinate:["name","memberName"],ArgumentCoordinate:["name","fieldName","argumentName"],DirectiveCoordinate:["name"],DirectiveArgumentCoordinate:["name","argumentName"]},je=new Set(Object.keys(ge));function de(e){const t=e?.kind;return typeof t=="string"&&je.has(t)}var R;(function(e){e.QUERY="query",e.MUTATION="mutation",e.SUBSCRIPTION="subscription"})(R||(R={}));var X;(function(e){e.QUERY="QUERY",e.MUTATION="MUTATION",e.SUBSCRIPTION="SUBSCRIPTION",e.FIELD="FIELD",e.FRAGMENT_DEFINITION="FRAGMENT_DEFINITION",e.FRAGMENT_SPREAD="FRAGMENT_SPREAD",e.INLINE_FRAGMENT="INLINE_FRAGMENT",e.VARIABLE_DEFINITION="VARIABLE_DEFINITION",e.SCHEMA="SCHEMA",e.SCALAR="SCALAR",e.OBJECT="OBJECT",e.FIELD_DEFINITION="FIELD_DEFINITION",e.ARGUMENT_DEFINITION="ARGUMENT_DEFINITION",e.INTERFACE="INTERFACE",e.UNION="UNION",e.ENUM="ENUM",e.ENUM_VALUE="ENUM_VALUE",e.INPUT_OBJECT="INPUT_OBJECT",e.INPUT_FIELD_DEFINITION="INPUT_FIELD_DEFINITION"})(X||(X={}));var u;(function(e){e.NAME="Name",e.DOCUMENT="Document",e.OPERATION_DEFINITION="OperationDefinition",e.VARIABLE_DEFINITION="VariableDefinition",e.SELECTION_SET="SelectionSet",e.FIELD="Field",e.ARGUMENT="Argument",e.FRAGMENT_SPREAD="FragmentSpread",e.INLINE_FRAGMENT="InlineFragment",e.FRAGMENT_DEFINITION="FragmentDefinition",e.VARIABLE="Variable",e.INT="IntValue",e.FLOAT="FloatValue",e.STRING="StringValue",e.BOOLEAN="BooleanValue",e.NULL="NullValue",e.ENUM="EnumValue",e.LIST="ListValue",e.OBJECT="ObjectValue",e.OBJECT_FIELD="ObjectField",e.DIRECTIVE="Directive",e.NAMED_TYPE="NamedType",e.LIST_TYPE="ListType",e.NON_NULL_TYPE="NonNullType",e.SCHEMA_DEFINITION="SchemaDefinition",e.OPERATION_TYPE_DEFINITION="OperationTypeDefinition",e.SCALAR_TYPE_DEFINITION="ScalarTypeDefinition",e.OBJECT_TYPE_DEFINITION="ObjectTypeDefinition",e.FIELD_DEFINITION="FieldDefinition",e.INPUT_VALUE_DEFINITION="InputValueDefinition",e.INTERFACE_TYPE_DEFINITION="InterfaceTypeDefinition",e.UNION_TYPE_DEFINITION="UnionTypeDefinition",e.ENUM_TYPE_DEFINITION="EnumTypeDefinition",e.ENUM_VALUE_DEFINITION="EnumValueDefinition",e.INPUT_OBJECT_TYPE_DEFINITION="InputObjectTypeDefinition",e.DIRECTIVE_DEFINITION="DirectiveDefinition",e.SCHEMA_EXTENSION="SchemaExtension",e.SCALAR_TYPE_EXTENSION="ScalarTypeExtension",e.OBJECT_TYPE_EXTENSION="ObjectTypeExtension",e.INTERFACE_TYPE_EXTENSION="InterfaceTypeExtension",e.UNION_TYPE_EXTENSION="UnionTypeExtension",e.ENUM_TYPE_EXTENSION="EnumTypeExtension",e.INPUT_OBJECT_TYPE_EXTENSION="InputObjectTypeExtension",e.TYPE_COORDINATE="TypeCoordinate",e.MEMBER_COORDINATE="MemberCoordinate",e.ARGUMENT_COORDINATE="ArgumentCoordinate",e.DIRECTIVE_COORDINATE="DirectiveCoordinate",e.DIRECTIVE_ARGUMENT_COORDINATE="DirectiveArgumentCoordinate"})(u||(u={}));function W(e){return e===9||e===32}function L(e){return e>=48&&e<=57}function Oe(e){return e>=97&&e<=122||e>=65&&e<=90}function Ae(e){return Oe(e)||e===95}function Ge(e){return Oe(e)||L(e)||e===95}function Ye(e){var t;let n=Number.MAX_SAFE_INTEGER,s=null,i=-1;for(let a=0;a<e.length;++a){var r;const l=e[a],p=He(l);p!==l.length&&(s=(r=s)!==null&&r!==void 0?r:a,i=a,a!==0&&p<n&&(n=p))}return e.map((a,l)=>l===0?a:a.slice(n)).slice((t=s)!==null&&t!==void 0?t:0,i+1)}function He(e){let t=0;for(;t<e.length&&W(e.charCodeAt(t));)++t;return t}function ze(e,t){const n=e.replace(/"""/g,'\\"""'),s=n.split(/\r\n|[\n\r]/g),i=s.length===1,r=s.length>1&&s.slice(1).every(x=>x.length===0||W(x.charCodeAt(0))),a=n.endsWith('\\"""'),l=e.endsWith('"')&&!a,p=e.endsWith("\\"),d=l||p,f=!i||e.length>70||d||r||a;let m="";const E=i&&W(e.charCodeAt(0));return(f&&!E||r)&&(m+=`
+`),m+=n,(f||d)&&(m+=`
+`),'"""'+m+'"""'}var o;(function(e){e.SOF="<SOF>",e.EOF="<EOF>",e.BANG="!",e.DOLLAR="$",e.AMP="&",e.PAREN_L="(",e.PAREN_R=")",e.DOT=".",e.SPREAD="...",e.COLON=":",e.EQUALS="=",e.AT="@",e.BRACKET_L="[",e.BRACKET_R="]",e.BRACE_L="{",e.PIPE="|",e.BRACE_R="}",e.NAME="Name",e.INT="Int",e.FLOAT="Float",e.STRING="String",e.BLOCK_STRING="BlockString",e.COMMENT="Comment"})(o||(o={}));class Je{constructor(t){const n=new xe(o.SOF,0,0,0,0);this.source=t,this.lastToken=n,this.token=n,this.line=1,this.lineStart=0}get[Symbol.toStringTag](){return"Lexer"}advance(){return this.lastToken=this.token,this.token=this.lookahead()}lookahead(){let t=this.token;if(t.kind!==o.EOF)do if(t.next)t=t.next;else{const n=Xe(this,t.end);t.next=n,n.prev=t,t=n}while(t.kind===o.COMMENT);return t}}function Qe(e){return e===o.BANG||e===o.DOLLAR||e===o.AMP||e===o.PAREN_L||e===o.PAREN_R||e===o.DOT||e===o.SPREAD||e===o.COLON||e===o.EQUALS||e===o.AT||e===o.BRACKET_L||e===o.BRACKET_R||e===o.BRACE_L||e===o.PIPE||e===o.BRACE_R}function k(e){return e>=0&&e<=55295||e>=57344&&e<=1114111}function q(e,t){return ve(e.charCodeAt(t))&&Ce(e.charCodeAt(t+1))}function ve(e){return e>=55296&&e<=56319}function Ce(e){return e>=56320&&e<=57343}function D(e,t){const n=e.source.body.codePointAt(t);if(n===void 0)return o.EOF;if(n>=32&&n<=126){const s=String.fromCodePoint(n);return s==='"'?`'"'`:`"${s}"`}return"U+"+n.toString(16).toUpperCase().padStart(4,"0")}function y(e,t,n,s,i){const r=e.line,a=1+n-e.lineStart;return new xe(t,n,s,r,a,i)}function Xe(e,t){const n=e.source.body,s=n.length;let i=t;for(;i<s;){const r=n.charCodeAt(i);switch(r){case 65279:case 9:case 32:case 44:++i;continue;case 10:++i,++e.line,e.lineStart=i;continue;case 13:n.charCodeAt(i+1)===10?i+=2:++i,++e.line,e.lineStart=i;continue;case 35:return We(e,i);case 33:return y(e,o.BANG,i,i+1);case 36:return y(e,o.DOLLAR,i,i+1);case 38:return y(e,o.AMP,i,i+1);case 40:return y(e,o.PAREN_L,i,i+1);case 41:return y(e,o.PAREN_R,i,i+1);case 46:if(n.charCodeAt(i+1)===46&&n.charCodeAt(i+2)===46)return y(e,o.SPREAD,i,i+3);break;case 58:return y(e,o.COLON,i,i+1);case 61:return y(e,o.EQUALS,i,i+1);case 64:return y(e,o.AT,i,i+1);case 91:return y(e,o.BRACKET_L,i,i+1);case 93:return y(e,o.BRACKET_R,i,i+1);case 123:return y(e,o.BRACE_L,i,i+1);case 124:return y(e,o.PIPE,i,i+1);case 125:return y(e,o.BRACE_R,i,i+1);case 34:return n.charCodeAt(i+1)===34&&n.charCodeAt(i+2)===34?it(e,i):Ke(e,i)}if(L(r)||r===45)return Ze(e,i,r);if(Ae(r))return st(e,i);throw I(e.source,i,r===39?`Unexpected single quote character ('), did you mean to use a double quote (")?`:k(r)||q(n,i)?`Unexpected character: ${D(e,i)}.`:`Invalid character: ${D(e,i)}.`)}return y(e,o.EOF,s,s)}function We(e,t){const n=e.source.body,s=n.length;let i=t+1;for(;i<s;){const r=n.charCodeAt(i);if(r===10||r===13)break;if(k(r))++i;else if(q(n,i))i+=2;else break}return y(e,o.COMMENT,t,i,n.slice(t+1,i))}function Ze(e,t,n){const s=e.source.body;let i=t,r=n,a=!1;if(r===45&&(r=s.charCodeAt(++i)),r===48){if(r=s.charCodeAt(++i),L(r))throw I(e.source,i,`Invalid number, unexpected digit after 0: ${D(e,i)}.`)}else i=Y(e,i,r),r=s.charCodeAt(i);if(r===46&&(a=!0,r=s.charCodeAt(++i),i=Y(e,i,r),r=s.charCodeAt(i)),(r===69||r===101)&&(a=!0,r=s.charCodeAt(++i),(r===43||r===45)&&(r=s.charCodeAt(++i)),i=Y(e,i,r),r=s.charCodeAt(i)),r===46||Ae(r))throw I(e.source,i,`Invalid number, expected digit but got: ${D(e,i)}.`);return y(e,a?o.FLOAT:o.INT,t,i,s.slice(t,i))}function Y(e,t,n){if(!L(n))throw I(e.source,t,`Invalid number, expected digit but got: ${D(e,t)}.`);const s=e.source.body;let i=t+1;for(;L(s.charCodeAt(i));)++i;return i}function Ke(e,t){const n=e.source.body,s=n.length;let i=t+1,r=i,a="";for(;i<s;){const l=n.charCodeAt(i);if(l===34)return a+=n.slice(r,i),y(e,o.STRING,t,i+1,a);if(l===92){a+=n.slice(r,i);const p=n.charCodeAt(i+1)===117?n.charCodeAt(i+2)===123?et(e,i):tt(e,i):nt(e,i);a+=p.value,i+=p.size,r=i;continue}if(l===10||l===13)break;if(k(l))++i;else if(q(n,i))i+=2;else throw I(e.source,i,`Invalid character within String: ${D(e,i)}.`)}throw I(e.source,i,"Unterminated string.")}function et(e,t){const n=e.source.body;let s=0,i=3;for(;i<12;){const r=n.charCodeAt(t+i++);if(r===125){if(i<5||!k(s))break;return{value:String.fromCodePoint(s),size:i}}if(s=s<<4|b(r),s<0)break}throw I(e.source,t,`Invalid Unicode escape sequence: "${n.slice(t,t+i)}".`)}function tt(e,t){const n=e.source.body,s=he(n,t+2);if(k(s))return{value:String.fromCodePoint(s),size:6};if(ve(s)&&n.charCodeAt(t+6)===92&&n.charCodeAt(t+7)===117){const i=he(n,t+8);if(Ce(i))return{value:String.fromCodePoint(s,i),size:12}}throw I(e.source,t,`Invalid Unicode escape sequence: "${n.slice(t,t+6)}".`)}function he(e,t){return b(e.charCodeAt(t))<<12|b(e.charCodeAt(t+1))<<8|b(e.charCodeAt(t+2))<<4|b(e.charCodeAt(t+3))}function b(e){return e>=48&&e<=57?e-48:e>=65&&e<=70?e-55:e>=97&&e<=102?e-87:-1}function nt(e,t){const n=e.source.body;switch(n.charCodeAt(t+1)){case 34:return{value:'"',size:2};case 92:return{value:"\\",size:2};case 47:return{value:"/",size:2};case 98:return{value:"\b",size:2};case 102:return{value:"\f",size:2};case 110:return{value:`
+`,size:2};case 114:return{value:"\r",size:2};case 116:return{value:"	",size:2}}throw I(e.source,t,`Invalid character escape sequence: "${n.slice(t,t+2)}".`)}function it(e,t){const n=e.source.body,s=n.length;let i=e.lineStart,r=t+3,a=r,l="";const p=[];for(;r<s;){const d=n.charCodeAt(r);if(d===34&&n.charCodeAt(r+1)===34&&n.charCodeAt(r+2)===34){l+=n.slice(a,r),p.push(l);const f=y(e,o.BLOCK_STRING,t,r+3,Ye(p).join(`
+`));return e.line+=p.length-1,e.lineStart=i,f}if(d===92&&n.charCodeAt(r+1)===34&&n.charCodeAt(r+2)===34&&n.charCodeAt(r+3)===34){l+=n.slice(a,r),a=r+1,r+=4;continue}if(d===10||d===13){l+=n.slice(a,r),p.push(l),d===13&&n.charCodeAt(r+1)===10?r+=2:++r,l="",a=r,i=r;continue}if(k(d))++r;else if(q(n,r))r+=2;else throw I(e.source,r,`Invalid character within String: ${D(e,r)}.`)}throw I(e.source,r,"Unterminated string.")}function st(e,t){const n=e.source.body,s=n.length;let i=t+1;for(;i<s;){const r=n.charCodeAt(i);if(Ge(r))++i;else break}return y(e,o.NAME,t,i,n.slice(t,i))}const rt=10,_e=2;function ne(e){return B(e,[])}function B(e,t){switch(typeof e){case"string":return JSON.stringify(e);case"function":return e.name?`[function ${e.name}]`:"[function]";case"object":return ot(e,t);default:return String(e)}}function ot(e,t){if(e===null)return"null";if(t.includes(e))return"[Circular]";const n=[...t,e];if(at(e)){const s=e.toJSON();if(s!==e)return typeof s=="string"?s:B(s,n)}else if(Array.isArray(e))return ut(e,n);return ct(e,n)}function at(e){return typeof e.toJSON=="function"}function ct(e,t){const n=Object.entries(e);return n.length===0?"{}":t.length>_e?"["+lt(e)+"]":"{ "+n.map(([i,r])=>i+": "+B(r,t)).join(", ")+" }"}function ut(e,t){if(e.length===0)return"[]";if(t.length>_e)return"[Array]";const n=Math.min(rt,e.length),s=e.length-n,i=[];for(let r=0;r<n;++r)i.push(B(e[r],t));return s===1?i.push("... 1 more item"):s>1&&i.push(`... ${s} more items`),"["+i.join(", ")+"]"}function lt(e){const t=Object.prototype.toString.call(e).replace(/^\[object /,"").replace(/]$/,"");if(t==="Object"&&typeof e.constructor=="function"){const n=e.constructor.name;if(typeof n=="string"&&n!=="")return n}return t}const dt=globalThis.process&&!0,ht=dt?function(t,n){return t instanceof n}:function(t,n){if(t instanceof n)return!0;if(typeof t=="object"&&t!==null){var s;const i=n.prototype[Symbol.toStringTag],r=Symbol.toStringTag in t?t[Symbol.toStringTag]:(s=t.constructor)===null||s===void 0?void 0:s.name;if(i===r){const a=ne(t);throw new Error(`Cannot use ${i} "${a}" from another module or realm.
+
+Ensure that there is only one instance of "graphql" in the node_modules
+directory. If different versions of "graphql" are the dependencies of other
+relied on modules, use "resolutions" to ensure only one version is installed.
+
+https://yarnpkg.com/en/docs/selective-version-resolutions
+
+Duplicate "graphql" modules cannot be used at the same time since different
+versions may have different capabilities and behavior. The data from one
+version used in the function from another could produce confusing and
+spurious results.`)}}return!1};class De{constructor(t,n="GraphQL request",s={line:1,column:1}){typeof t=="string"||P(!1,`Body must be a string. Received: ${ne(t)}.`),this.body=t,this.name=n,this.locationOffset=s,this.locationOffset.line>0||P(!1,"line in locationOffset is 1-indexed and must be positive."),this.locationOffset.column>0||P(!1,"column in locationOffset is 1-indexed and must be positive.")}get[Symbol.toStringTag](){return"Source"}}function pt(e){return ht(e,De)}function ft(e,t){const n=new Et(e,t),s=n.parseDocument();return Object.defineProperty(s,"tokenCount",{enumerable:!1,value:n.tokenCount}),s}class Et{constructor(t,n={}){const{lexer:s,...i}=n;if(s)this._lexer=s;else{const r=pt(t)?t:new De(t);this._lexer=new Je(r)}this._options=i,this._tokenCounter=0}get tokenCount(){return this._tokenCounter}parseName(){const t=this.expectToken(o.NAME);return this.node(t,{kind:u.NAME,value:t.value})}parseDocument(){return this.node(this._lexer.token,{kind:u.DOCUMENT,definitions:this.many(o.SOF,this.parseDefinition,o.EOF)})}parseDefinition(){if(this.peek(o.BRACE_L))return this.parseOperationDefinition();const t=this.peekDescription(),n=t?this._lexer.lookahead():this._lexer.token;if(t&&n.kind===o.BRACE_L)throw I(this._lexer.source,this._lexer.token.start,"Unexpected description, descriptions are not supported on shorthand queries.");if(n.kind===o.NAME){switch(n.value){case"schema":return this.parseSchemaDefinition();case"scalar":return this.parseScalarTypeDefinition();case"type":return this.parseObjectTypeDefinition();case"interface":return this.parseInterfaceTypeDefinition();case"union":return this.parseUnionTypeDefinition();case"enum":return this.parseEnumTypeDefinition();case"input":return this.parseInputObjectTypeDefinition();case"directive":return this.parseDirectiveDefinition()}switch(n.value){case"query":case"mutation":case"subscription":return this.parseOperationDefinition();case"fragment":return this.parseFragmentDefinition()}if(t)throw I(this._lexer.source,this._lexer.token.start,"Unexpected description, only GraphQL definitions support descriptions.");if(n.value==="extend")return this.parseTypeSystemExtension()}throw this.unexpected(n)}parseOperationDefinition(){const t=this._lexer.token;if(this.peek(o.BRACE_L))return this.node(t,{kind:u.OPERATION_DEFINITION,operation:R.QUERY,description:void 0,name:void 0,variableDefinitions:[],directives:[],selectionSet:this.parseSelectionSet()});const n=this.parseDescription(),s=this.parseOperationType();let i;return this.peek(o.NAME)&&(i=this.parseName()),this.node(t,{kind:u.OPERATION_DEFINITION,operation:s,description:n,name:i,variableDefinitions:this.parseVariableDefinitions(),directives:this.parseDirectives(!1),selectionSet:this.parseSelectionSet()})}parseOperationType(){const t=this.expectToken(o.NAME);switch(t.value){case"query":return R.QUERY;case"mutation":return R.MUTATION;case"subscription":return R.SUBSCRIPTION}throw this.unexpected(t)}parseVariableDefinitions(){return this.optionalMany(o.PAREN_L,this.parseVariableDefinition,o.PAREN_R)}parseVariableDefinition(){return this.node(this._lexer.token,{kind:u.VARIABLE_DEFINITION,description:this.parseDescription(),variable:this.parseVariable(),type:(this.expectToken(o.COLON),this.parseTypeReference()),defaultValue:this.expectOptionalToken(o.EQUALS)?this.parseConstValueLiteral():void 0,directives:this.parseConstDirectives()})}parseVariable(){const t=this._lexer.token;return this.expectToken(o.DOLLAR),this.node(t,{kind:u.VARIABLE,name:this.parseName()})}parseSelectionSet(){return this.node(this._lexer.token,{kind:u.SELECTION_SET,selections:this.many(o.BRACE_L,this.parseSelection,o.BRACE_R)})}parseSelection(){return this.peek(o.SPREAD)?this.parseFragment():this.parseField()}parseField(){const t=this._lexer.token,n=this.parseName();let s,i;return this.expectOptionalToken(o.COLON)?(s=n,i=this.parseName()):i=n,this.node(t,{kind:u.FIELD,alias:s,name:i,arguments:this.parseArguments(!1),directives:this.parseDirectives(!1),selectionSet:this.peek(o.BRACE_L)?this.parseSelectionSet():void 0})}parseArguments(t){const n=t?this.parseConstArgument:this.parseArgument;return this.optionalMany(o.PAREN_L,n,o.PAREN_R)}parseArgument(t=!1){const n=this._lexer.token,s=this.parseName();return this.expectToken(o.COLON),this.node(n,{kind:u.ARGUMENT,name:s,value:this.parseValueLiteral(t)})}parseConstArgument(){return this.parseArgument(!0)}parseFragment(){const t=this._lexer.token;this.expectToken(o.SPREAD);const n=this.expectOptionalKeyword("on");return!n&&this.peek(o.NAME)?this.node(t,{kind:u.FRAGMENT_SPREAD,name:this.parseFragmentName(),directives:this.parseDirectives(!1)}):this.node(t,{kind:u.INLINE_FRAGMENT,typeCondition:n?this.parseNamedType():void 0,directives:this.parseDirectives(!1),selectionSet:this.parseSelectionSet()})}parseFragmentDefinition(){const t=this._lexer.token,n=this.parseDescription();return this.expectKeyword("fragment"),this._options.allowLegacyFragmentVariables===!0?this.node(t,{kind:u.FRAGMENT_DEFINITION,description:n,name:this.parseFragmentName(),variableDefinitions:this.parseVariableDefinitions(),typeCondition:(this.expectKeyword("on"),this.parseNamedType()),directives:this.parseDirectives(!1),selectionSet:this.parseSelectionSet()}):this.node(t,{kind:u.FRAGMENT_DEFINITION,description:n,name:this.parseFragmentName(),typeCondition:(this.expectKeyword("on"),this.parseNamedType()),directives:this.parseDirectives(!1),selectionSet:this.parseSelectionSet()})}parseFragmentName(){if(this._lexer.token.value==="on")throw this.unexpected();return this.parseName()}parseValueLiteral(t){const n=this._lexer.token;switch(n.kind){case o.BRACKET_L:return this.parseList(t);case o.BRACE_L:return this.parseObject(t);case o.INT:return this.advanceLexer(),this.node(n,{kind:u.INT,value:n.value});case o.FLOAT:return this.advanceLexer(),this.node(n,{kind:u.FLOAT,value:n.value});case o.STRING:case o.BLOCK_STRING:return this.parseStringLiteral();case o.NAME:switch(this.advanceLexer(),n.value){case"true":return this.node(n,{kind:u.BOOLEAN,value:!0});case"false":return this.node(n,{kind:u.BOOLEAN,value:!1});case"null":return this.node(n,{kind:u.NULL});default:return this.node(n,{kind:u.ENUM,value:n.value})}case o.DOLLAR:if(t)if(this.expectToken(o.DOLLAR),this._lexer.token.kind===o.NAME){const s=this._lexer.token.value;throw I(this._lexer.source,n.start,`Unexpected variable "$${s}" in constant value.`)}else throw this.unexpected(n);return this.parseVariable();default:throw this.unexpected()}}parseConstValueLiteral(){return this.parseValueLiteral(!0)}parseStringLiteral(){const t=this._lexer.token;return this.advanceLexer(),this.node(t,{kind:u.STRING,value:t.value,block:t.kind===o.BLOCK_STRING})}parseList(t){const n=()=>this.parseValueLiteral(t);return this.node(this._lexer.token,{kind:u.LIST,values:this.any(o.BRACKET_L,n,o.BRACKET_R)})}parseObject(t){const n=()=>this.parseObjectField(t);return this.node(this._lexer.token,{kind:u.OBJECT,fields:this.any(o.BRACE_L,n,o.BRACE_R)})}parseObjectField(t){const n=this._lexer.token,s=this.parseName();return this.expectToken(o.COLON),this.node(n,{kind:u.OBJECT_FIELD,name:s,value:this.parseValueLiteral(t)})}parseDirectives(t){const n=[];for(;this.peek(o.AT);)n.push(this.parseDirective(t));return n}parseConstDirectives(){return this.parseDirectives(!0)}parseDirective(t){const n=this._lexer.token;return this.expectToken(o.AT),this.node(n,{kind:u.DIRECTIVE,name:this.parseName(),arguments:this.parseArguments(t)})}parseTypeReference(){const t=this._lexer.token;let n;if(this.expectOptionalToken(o.BRACKET_L)){const s=this.parseTypeReference();this.expectToken(o.BRACKET_R),n=this.node(t,{kind:u.LIST_TYPE,type:s})}else n=this.parseNamedType();return this.expectOptionalToken(o.BANG)?this.node(t,{kind:u.NON_NULL_TYPE,type:n}):n}parseNamedType(){return this.node(this._lexer.token,{kind:u.NAMED_TYPE,name:this.parseName()})}peekDescription(){return this.peek(o.STRING)||this.peek(o.BLOCK_STRING)}parseDescription(){if(this.peekDescription())return this.parseStringLiteral()}parseSchemaDefinition(){const t=this._lexer.token,n=this.parseDescription();this.expectKeyword("schema");const s=this.parseConstDirectives(),i=this.many(o.BRACE_L,this.parseOperationTypeDefinition,o.BRACE_R);return this.node(t,{kind:u.SCHEMA_DEFINITION,description:n,directives:s,operationTypes:i})}parseOperationTypeDefinition(){const t=this._lexer.token,n=this.parseOperationType();this.expectToken(o.COLON);const s=this.parseNamedType();return this.node(t,{kind:u.OPERATION_TYPE_DEFINITION,operation:n,type:s})}parseScalarTypeDefinition(){const t=this._lexer.token,n=this.parseDescription();this.expectKeyword("scalar");const s=this.parseName(),i=this.parseConstDirectives();return this.node(t,{kind:u.SCALAR_TYPE_DEFINITION,description:n,name:s,directives:i})}parseObjectTypeDefinition(){const t=this._lexer.token,n=this.parseDescription();this.expectKeyword("type");const s=this.parseName(),i=this.parseImplementsInterfaces(),r=this.parseConstDirectives(),a=this.parseFieldsDefinition();return this.node(t,{kind:u.OBJECT_TYPE_DEFINITION,description:n,name:s,interfaces:i,directives:r,fields:a})}parseImplementsInterfaces(){return this.expectOptionalKeyword("implements")?this.delimitedMany(o.AMP,this.parseNamedType):[]}parseFieldsDefinition(){return this.optionalMany(o.BRACE_L,this.parseFieldDefinition,o.BRACE_R)}parseFieldDefinition(){const t=this._lexer.token,n=this.parseDescription(),s=this.parseName(),i=this.parseArgumentDefs();this.expectToken(o.COLON);const r=this.parseTypeReference(),a=this.parseConstDirectives();return this.node(t,{kind:u.FIELD_DEFINITION,description:n,name:s,arguments:i,type:r,directives:a})}parseArgumentDefs(){return this.optionalMany(o.PAREN_L,this.parseInputValueDef,o.PAREN_R)}parseInputValueDef(){const t=this._lexer.token,n=this.parseDescription(),s=this.parseName();this.expectToken(o.COLON);const i=this.parseTypeReference();let r;this.expectOptionalToken(o.EQUALS)&&(r=this.parseConstValueLiteral());const a=this.parseConstDirectives();return this.node(t,{kind:u.INPUT_VALUE_DEFINITION,description:n,name:s,type:i,defaultValue:r,directives:a})}parseInterfaceTypeDefinition(){const t=this._lexer.token,n=this.parseDescription();this.expectKeyword("interface");const s=this.parseName(),i=this.parseImplementsInterfaces(),r=this.parseConstDirectives(),a=this.parseFieldsDefinition();return this.node(t,{kind:u.INTERFACE_TYPE_DEFINITION,description:n,name:s,interfaces:i,directives:r,fields:a})}parseUnionTypeDefinition(){const t=this._lexer.token,n=this.parseDescription();this.expectKeyword("union");const s=this.parseName(),i=this.parseConstDirectives(),r=this.parseUnionMemberTypes();return this.node(t,{kind:u.UNION_TYPE_DEFINITION,description:n,name:s,directives:i,types:r})}parseUnionMemberTypes(){return this.expectOptionalToken(o.EQUALS)?this.delimitedMany(o.PIPE,this.parseNamedType):[]}parseEnumTypeDefinition(){const t=this._lexer.token,n=this.parseDescription();this.expectKeyword("enum");const s=this.parseName(),i=this.parseConstDirectives(),r=this.parseEnumValuesDefinition();return this.node(t,{kind:u.ENUM_TYPE_DEFINITION,description:n,name:s,directives:i,values:r})}parseEnumValuesDefinition(){return this.optionalMany(o.BRACE_L,this.parseEnumValueDefinition,o.BRACE_R)}parseEnumValueDefinition(){const t=this._lexer.token,n=this.parseDescription(),s=this.parseEnumValueName(),i=this.parseConstDirectives();return this.node(t,{kind:u.ENUM_VALUE_DEFINITION,description:n,name:s,directives:i})}parseEnumValueName(){if(this._lexer.token.value==="true"||this._lexer.token.value==="false"||this._lexer.token.value==="null")throw I(this._lexer.source,this._lexer.token.start,`${w(this._lexer.token)} is reserved and cannot be used for an enum value.`);return this.parseName()}parseInputObjectTypeDefinition(){const t=this._lexer.token,n=this.parseDescription();this.expectKeyword("input");const s=this.parseName(),i=this.parseConstDirectives(),r=this.parseInputFieldsDefinition();return this.node(t,{kind:u.INPUT_OBJECT_TYPE_DEFINITION,description:n,name:s,directives:i,fields:r})}parseInputFieldsDefinition(){return this.optionalMany(o.BRACE_L,this.parseInputValueDef,o.BRACE_R)}parseTypeSystemExtension(){const t=this._lexer.lookahead();if(t.kind===o.NAME)switch(t.value){case"schema":return this.parseSchemaExtension();case"scalar":return this.parseScalarTypeExtension();case"type":return this.parseObjectTypeExtension();case"interface":return this.parseInterfaceTypeExtension();case"union":return this.parseUnionTypeExtension();case"enum":return this.parseEnumTypeExtension();case"input":return this.parseInputObjectTypeExtension()}throw this.unexpected(t)}parseSchemaExtension(){const t=this._lexer.token;this.expectKeyword("extend"),this.expectKeyword("schema");const n=this.parseConstDirectives(),s=this.optionalMany(o.BRACE_L,this.parseOperationTypeDefinition,o.BRACE_R);if(n.length===0&&s.length===0)throw this.unexpected();return this.node(t,{kind:u.SCHEMA_EXTENSION,directives:n,operationTypes:s})}parseScalarTypeExtension(){const t=this._lexer.token;this.expectKeyword("extend"),this.expectKeyword("scalar");const n=this.parseName(),s=this.parseConstDirectives();if(s.length===0)throw this.unexpected();return this.node(t,{kind:u.SCALAR_TYPE_EXTENSION,name:n,directives:s})}parseObjectTypeExtension(){const t=this._lexer.token;this.expectKeyword("extend"),this.expectKeyword("type");const n=this.parseName(),s=this.parseImplementsInterfaces(),i=this.parseConstDirectives(),r=this.parseFieldsDefinition();if(s.length===0&&i.length===0&&r.length===0)throw this.unexpected();return this.node(t,{kind:u.OBJECT_TYPE_EXTENSION,name:n,interfaces:s,directives:i,fields:r})}parseInterfaceTypeExtension(){const t=this._lexer.token;this.expectKeyword("extend"),this.expectKeyword("interface");const n=this.parseName(),s=this.parseImplementsInterfaces(),i=this.parseConstDirectives(),r=this.parseFieldsDefinition();if(s.length===0&&i.length===0&&r.length===0)throw this.unexpected();return this.node(t,{kind:u.INTERFACE_TYPE_EXTENSION,name:n,interfaces:s,directives:i,fields:r})}parseUnionTypeExtension(){const t=this._lexer.token;this.expectKeyword("extend"),this.expectKeyword("union");const n=this.parseName(),s=this.parseConstDirectives(),i=this.parseUnionMemberTypes();if(s.length===0&&i.length===0)throw this.unexpected();return this.node(t,{kind:u.UNION_TYPE_EXTENSION,name:n,directives:s,types:i})}parseEnumTypeExtension(){const t=this._lexer.token;this.expectKeyword("extend"),this.expectKeyword("enum");const n=this.parseName(),s=this.parseConstDirectives(),i=this.parseEnumValuesDefinition();if(s.length===0&&i.length===0)throw this.unexpected();return this.node(t,{kind:u.ENUM_TYPE_EXTENSION,name:n,directives:s,values:i})}parseInputObjectTypeExtension(){const t=this._lexer.token;this.expectKeyword("extend"),this.expectKeyword("input");const n=this.parseName(),s=this.parseConstDirectives(),i=this.parseInputFieldsDefinition();if(s.length===0&&i.length===0)throw this.unexpected();return this.node(t,{kind:u.INPUT_OBJECT_TYPE_EXTENSION,name:n,directives:s,fields:i})}parseDirectiveDefinition(){const t=this._lexer.token,n=this.parseDescription();this.expectKeyword("directive"),this.expectToken(o.AT);const s=this.parseName(),i=this.parseArgumentDefs(),r=this.expectOptionalKeyword("repeatable");this.expectKeyword("on");const a=this.parseDirectiveLocations();return this.node(t,{kind:u.DIRECTIVE_DEFINITION,description:n,name:s,arguments:i,repeatable:r,locations:a})}parseDirectiveLocations(){return this.delimitedMany(o.PIPE,this.parseDirectiveLocation)}parseDirectiveLocation(){const t=this._lexer.token,n=this.parseName();if(Object.prototype.hasOwnProperty.call(X,n.value))return n;throw this.unexpected(t)}parseSchemaCoordinate(){const t=this._lexer.token,n=this.expectOptionalToken(o.AT),s=this.parseName();let i;!n&&this.expectOptionalToken(o.DOT)&&(i=this.parseName());let r;return(n||i)&&this.expectOptionalToken(o.PAREN_L)&&(r=this.parseName(),this.expectToken(o.COLON),this.expectToken(o.PAREN_R)),n?r?this.node(t,{kind:u.DIRECTIVE_ARGUMENT_COORDINATE,name:s,argumentName:r}):this.node(t,{kind:u.DIRECTIVE_COORDINATE,name:s}):i?r?this.node(t,{kind:u.ARGUMENT_COORDINATE,name:s,fieldName:i,argumentName:r}):this.node(t,{kind:u.MEMBER_COORDINATE,name:s,memberName:i}):this.node(t,{kind:u.TYPE_COORDINATE,name:s})}node(t,n){return this._options.noLocation!==!0&&(n.loc=new $e(t,this._lexer.lastToken,this._lexer.source)),n}peek(t){return this._lexer.token.kind===t}expectToken(t){const n=this._lexer.token;if(n.kind===t)return this.advanceLexer(),n;throw I(this._lexer.source,n.start,`Expected ${Se(t)}, found ${w(n)}.`)}expectOptionalToken(t){return this._lexer.token.kind===t?(this.advanceLexer(),!0):!1}expectKeyword(t){const n=this._lexer.token;if(n.kind===o.NAME&&n.value===t)this.advanceLexer();else throw I(this._lexer.source,n.start,`Expected "${t}", found ${w(n)}.`)}expectOptionalKeyword(t){const n=this._lexer.token;return n.kind===o.NAME&&n.value===t?(this.advanceLexer(),!0):!1}unexpected(t){const n=t??this._lexer.token;return I(this._lexer.source,n.start,`Unexpected ${w(n)}.`)}any(t,n,s){this.expectToken(t);const i=[];for(;!this.expectOptionalToken(s);)i.push(n.call(this));return i}optionalMany(t,n,s){if(this.expectOptionalToken(t)){const i=[];do i.push(n.call(this));while(!this.expectOptionalToken(s));return i}return[]}many(t,n,s){this.expectToken(t);const i=[];do i.push(n.call(this));while(!this.expectOptionalToken(s));return i}delimitedMany(t,n){this.expectOptionalToken(t);const s=[];do s.push(n.call(this));while(this.expectOptionalToken(t));return s}advanceLexer(){const{maxTokens:t}=this._options,n=this._lexer.advance();if(n.kind!==o.EOF&&(++this._tokenCounter,t!==void 0&&this._tokenCounter>t))throw I(this._lexer.source,n.start,`Document contains more that ${t} tokens. Parsing aborted.`)}}function w(e){const t=e.value;return Se(e.kind)+(t!=null?` "${t}"`:"")}function Se(e){return Qe(e)?`"${e}"`:e}function mt(e){return`"${e.replace(Tt,Nt)}"`}const Tt=/[\x00-\x1f\x22\x5c\x7f-\x9f]/g;function Nt(e){return yt[e.charCodeAt(0)]}const yt=["\\u0000","\\u0001","\\u0002","\\u0003","\\u0004","\\u0005","\\u0006","\\u0007","\\b","\\t","\\n","\\u000B","\\f","\\r","\\u000E","\\u000F","\\u0010","\\u0011","\\u0012","\\u0013","\\u0014","\\u0015","\\u0016","\\u0017","\\u0018","\\u0019","\\u001A","\\u001B","\\u001C","\\u001D","\\u001E","\\u001F","","",'\\"',"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","\\\\","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","\\u007F","\\u0080","\\u0081","\\u0082","\\u0083","\\u0084","\\u0085","\\u0086","\\u0087","\\u0088","\\u0089","\\u008A","\\u008B","\\u008C","\\u008D","\\u008E","\\u008F","\\u0090","\\u0091","\\u0092","\\u0093","\\u0094","\\u0095","\\u0096","\\u0097","\\u0098","\\u0099","\\u009A","\\u009B","\\u009C","\\u009D","\\u009E","\\u009F"],It=Object.freeze({});function xt(e,t,n=ge){const s=new Map;for(const A of Object.values(u))s.set(A,gt(t,A));let i,r=Array.isArray(e),a=[e],l=-1,p=[],d=e,f,m;const E=[],x=[];do{l++;const A=l===a.length,se=A&&p.length!==0;if(A){if(f=x.length===0?void 0:E[E.length-1],d=m,m=x.pop(),se)if(r){d=d.slice();let C=0;for(const[j,re]of p){const oe=j-C;re===null?(d.splice(oe,1),C++):d[oe]=re}}else{d={...d};for(const[C,j]of p)d[C]=j}l=i.index,a=i.keys,p=i.edits,r=i.inArray,i=i.prev}else if(m){if(f=r?l:a[l],d=m[f],d==null)continue;E.push(f)}let v;if(!Array.isArray(d)){var T,N;de(d)||P(!1,`Invalid AST Node: ${ne(d)}.`);const C=A?(T=s.get(d.kind))===null||T===void 0?void 0:T.leave:(N=s.get(d.kind))===null||N===void 0?void 0:N.enter;if(v=C?.call(t,d,f,m,E,x),v===It)break;if(v===!1){if(!A){E.pop();continue}}else if(v!==void 0&&(p.push([f,v]),!A))if(de(v))d=v;else{E.pop();continue}}if(v===void 0&&se&&p.push([f,d]),A)E.pop();else{var $;i={inArray:r,index:l,keys:a,edits:p,prev:i},r=Array.isArray(d),a=r?d:($=n[d.kind])!==null&&$!==void 0?$:[],l=-1,p=[],m&&x.push(m),m=d}}while(i!==void 0);return p.length!==0?p[p.length-1][1]:e}function gt(e,t){const n=e[t];return typeof n=="object"?n:typeof n=="function"?{enter:n,leave:void 0}:{enter:e.enter,leave:e.leave}}function Ot(e){return xt(e,vt)}const At=80,vt={Name:{leave:e=>e.value},Variable:{leave:e=>"$"+e.name},Document:{leave:e=>c(e.definitions,`
+
+`)},OperationDefinition:{leave(e){const t=H(e.variableDefinitions)?h(`(
+`,c(e.variableDefinitions,`
+`),`
+)`):h("(",c(e.variableDefinitions,", "),")"),n=h("",e.description,`
+`)+c([e.operation,c([e.name,t]),c(e.directives," ")]," ");return(n==="query"?"":n+" ")+e.selectionSet}},VariableDefinition:{leave:({variable:e,type:t,defaultValue:n,directives:s,description:i})=>h("",i,`
+`)+e+": "+t+h(" = ",n)+h(" ",c(s," "))},SelectionSet:{leave:({selections:e})=>g(e)},Field:{leave({alias:e,name:t,arguments:n,directives:s,selectionSet:i}){const r=h("",e,": ")+t;let a=r+h("(",c(n,", "),")");return a.length>At&&(a=r+h(`(
+`,M(c(n,`
+`)),`
+)`)),c([a,c(s," "),i]," ")}},Argument:{leave:({name:e,value:t})=>e+": "+t},FragmentSpread:{leave:({name:e,directives:t})=>"..."+e+h(" ",c(t," "))},InlineFragment:{leave:({typeCondition:e,directives:t,selectionSet:n})=>c(["...",h("on ",e),c(t," "),n]," ")},FragmentDefinition:{leave:({name:e,typeCondition:t,variableDefinitions:n,directives:s,selectionSet:i,description:r})=>h("",r,`
+`)+`fragment ${e}${h("(",c(n,", "),")")} on ${t} ${h("",c(s," ")," ")}`+i},IntValue:{leave:({value:e})=>e},FloatValue:{leave:({value:e})=>e},StringValue:{leave:({value:e,block:t})=>t?ze(e):mt(e)},BooleanValue:{leave:({value:e})=>e?"true":"false"},NullValue:{leave:()=>"null"},EnumValue:{leave:({value:e})=>e},ListValue:{leave:({values:e})=>"["+c(e,", ")+"]"},ObjectValue:{leave:({fields:e})=>"{"+c(e,", ")+"}"},ObjectField:{leave:({name:e,value:t})=>e+": "+t},Directive:{leave:({name:e,arguments:t})=>"@"+e+h("(",c(t,", "),")")},NamedType:{leave:({name:e})=>e},ListType:{leave:({type:e})=>"["+e+"]"},NonNullType:{leave:({type:e})=>e+"!"},SchemaDefinition:{leave:({description:e,directives:t,operationTypes:n})=>h("",e,`
+`)+c(["schema",c(t," "),g(n)]," ")},OperationTypeDefinition:{leave:({operation:e,type:t})=>e+": "+t},ScalarTypeDefinition:{leave:({description:e,name:t,directives:n})=>h("",e,`
+`)+c(["scalar",t,c(n," ")]," ")},ObjectTypeDefinition:{leave:({description:e,name:t,interfaces:n,directives:s,fields:i})=>h("",e,`
+`)+c(["type",t,h("implements ",c(n," & ")),c(s," "),g(i)]," ")},FieldDefinition:{leave:({description:e,name:t,arguments:n,type:s,directives:i})=>h("",e,`
+`)+t+(H(n)?h(`(
+`,M(c(n,`
+`)),`
+)`):h("(",c(n,", "),")"))+": "+s+h(" ",c(i," "))},InputValueDefinition:{leave:({description:e,name:t,type:n,defaultValue:s,directives:i})=>h("",e,`
+`)+c([t+": "+n,h("= ",s),c(i," ")]," ")},InterfaceTypeDefinition:{leave:({description:e,name:t,interfaces:n,directives:s,fields:i})=>h("",e,`
+`)+c(["interface",t,h("implements ",c(n," & ")),c(s," "),g(i)]," ")},UnionTypeDefinition:{leave:({description:e,name:t,directives:n,types:s})=>h("",e,`
+`)+c(["union",t,c(n," "),h("= ",c(s," | "))]," ")},EnumTypeDefinition:{leave:({description:e,name:t,directives:n,values:s})=>h("",e,`
+`)+c(["enum",t,c(n," "),g(s)]," ")},EnumValueDefinition:{leave:({description:e,name:t,directives:n})=>h("",e,`
+`)+c([t,c(n," ")]," ")},InputObjectTypeDefinition:{leave:({description:e,name:t,directives:n,fields:s})=>h("",e,`
+`)+c(["input",t,c(n," "),g(s)]," ")},DirectiveDefinition:{leave:({description:e,name:t,arguments:n,repeatable:s,locations:i})=>h("",e,`
+`)+"directive @"+t+(H(n)?h(`(
+`,M(c(n,`
+`)),`
+)`):h("(",c(n,", "),")"))+(s?" repeatable":"")+" on "+c(i," | ")},SchemaExtension:{leave:({directives:e,operationTypes:t})=>c(["extend schema",c(e," "),g(t)]," ")},ScalarTypeExtension:{leave:({name:e,directives:t})=>c(["extend scalar",e,c(t," ")]," ")},ObjectTypeExtension:{leave:({name:e,interfaces:t,directives:n,fields:s})=>c(["extend type",e,h("implements ",c(t," & ")),c(n," "),g(s)]," ")},InterfaceTypeExtension:{leave:({name:e,interfaces:t,directives:n,fields:s})=>c(["extend interface",e,h("implements ",c(t," & ")),c(n," "),g(s)]," ")},UnionTypeExtension:{leave:({name:e,directives:t,types:n})=>c(["extend union",e,c(t," "),h("= ",c(n," | "))]," ")},EnumTypeExtension:{leave:({name:e,directives:t,values:n})=>c(["extend enum",e,c(t," "),g(n)]," ")},InputObjectTypeExtension:{leave:({name:e,directives:t,fields:n})=>c(["extend input",e,c(t," "),g(n)]," ")},TypeCoordinate:{leave:({name:e})=>e},MemberCoordinate:{leave:({name:e,memberName:t})=>c([e,h(".",t)])},ArgumentCoordinate:{leave:({name:e,fieldName:t,argumentName:n})=>c([e,h(".",t),h("(",n,":)")])},DirectiveCoordinate:{leave:({name:e})=>c(["@",e])},DirectiveArgumentCoordinate:{leave:({name:e,argumentName:t})=>c(["@",e,h("(",t,":)")])}};function c(e,t=""){var n;return(n=e?.filter(s=>s).join(t))!==null&&n!==void 0?n:""}function g(e){return h(`{
+`,M(c(e,`
+`)),`
+}`)}function h(e,t,n=""){return t!=null&&t!==""?e+t+n:""}function M(e){return h("  ",e.replace(/\n/g,`
+  `))}function H(e){var t;return(t=e?.some(n=>n.includes(`
+`)))!==null&&t!==void 0?t:!1}const pe="Accept",Z="Content-Type",K="application/json",Re="application/graphql-response+json",fe=e=>e.replace(/([\s,]|#[^\n\r]+)+/g," ").trim(),Ct=e=>{const t=e.toLowerCase();return t.includes(Re)||t.includes(K)},Ee=e=>{try{if(Array.isArray(e))return{_tag:"Batch",executionResults:e.map(me)};if(F(e))return{_tag:"Single",executionResult:me(e)};throw new Error(`Invalid execution result: result is not object or array. 
+Got:
+${String(e)}`)}catch(t){return t}},me=e=>{if(typeof e!="object"||e===null)throw new Error("Invalid execution result: result is not object");let t,n,s;if("errors"in e){if(!F(e.errors)&&!Array.isArray(e.errors))throw new Error("Invalid execution result: errors is not plain object OR array");t=e.errors}if("data"in e){if(!F(e.data)&&e.data!==null)throw new Error("Invalid execution result: data is not plain object");n=e.data}if("extensions"in e){if(!F(e.extensions))throw new Error("Invalid execution result: extensions is not plain object");s=e.extensions}return{data:n,errors:t,extensions:s}},_t=e=>e._tag==="Batch"?e.executionResults.some(Te):Te(e.executionResult),Te=e=>Array.isArray(e.errors)?e.errors.length>0:!!e.errors,ke=e=>typeof e=="object"&&e!==null&&"kind"in e&&e.kind===u.OPERATION_DEFINITION,Dt=e=>{let t;const n=e.definitions.filter(ke);return n.length===1&&(t=n[0].name?.value),t},St=e=>{let t=!1;const n=e.definitions.filter(ke);return n.length===1&&(t=n[0].operation==="mutation"),t},z=(e,t)=>{const n=typeof e=="string"||"kind"in e?e:String(e),s=typeof n=="string"?n:Ot(n);let i=!1,r;if(t)return{expression:s,isMutation:i,operationName:r};const a=Le(()=>typeof n=="string"?ft(n):n);return a instanceof Error?{expression:s,isMutation:i,operationName:r}:(r=Dt(a),i=St(a),{expression:s,operationName:r,isMutation:i})},ie=JSON,J=async e=>{const t={...e,method:e.request._tag==="Single"?e.request.document.isMutation?"POST":ae(e.method??"post"):e.request.hasMutations?"POST":ae(e.method??"post"),fetchOptions:{...e.fetchOptions,errorPolicy:e.fetchOptions.errorPolicy??"none"}},s=await kt(t.method)(t),i=await s.text();let r;try{r=Rt(i,s.headers.get(Z),e.fetchOptions.jsonSerializer??ie)}catch(l){r=l}const a={status:s.status,headers:s.headers,body:i};if(!s.ok){if(r instanceof Error)return new _({...a},{query:e.request._tag==="Single"?e.request.document.expression:e.request.query,variables:e.request.variables});const l=r._tag==="Batch"?{...r.executionResults,...a}:{...r.executionResult,...a};return new _(l,{query:e.request._tag==="Single"?e.request.document.expression:e.request.query,variables:e.request.variables})}if(r instanceof Error)throw r;if(_t(r)&&t.fetchOptions.errorPolicy==="none"){const l=r._tag==="Batch"?{...r.executionResults,...a}:{...r.executionResult,...a};return new _(l,{query:e.request._tag==="Single"?e.request.document.expression:e.request.query,variables:e.request.variables})}switch(r._tag){case"Single":return{...a,...Ne(t)(r.executionResult)};case"Batch":return{...a,data:r.executionResults.map(Ne(t))};default:ee(r)}},Ne=e=>t=>({extensions:t.extensions,data:t.data,errors:e.fetchOptions.errorPolicy==="all"?t.errors:void 0}),Rt=(e,t,n)=>t&&Ct(t)?Ee(n.parse(e)):Ee(e),kt=e=>async t=>{const n=new Headers(t.headers);let s=null,i;n.has(pe)||n.set(pe,[Re,K].join(", ")),e==="POST"?(i=(t.fetchOptions.jsonSerializer??ie).stringify(bt(t)),typeof i=="string"&&!n.has(Z)&&n.set(Z,K)):s=Lt(t);const r={method:e,headers:n,body:i,...t.fetchOptions};let a=new URL(t.url),l=r;if(t.middleware){const d=await Promise.resolve(t.middleware({...r,url:t.url,operationName:t.request._tag==="Single"?t.request.document.operationName:void 0,variables:t.request.variables})),{url:f,...m}=d;a=new URL(f),l=m}return s&&s.forEach((d,f)=>{a.searchParams.append(f,d)}),await(t.fetch??fetch)(a,l)},bt=e=>{switch(e.request._tag){case"Single":return{query:e.request.document.expression,variables:e.request.variables,operationName:e.request.document.operationName};case"Batch":return ye(e.request.query,e.request.variables??[]).map(([t,n])=>({query:t,variables:n}));default:throw ee(e.request)}},Lt=e=>{const t=e.fetchOptions.jsonSerializer??ie,n=new URLSearchParams;switch(e.request._tag){case"Single":return n.append("query",fe(e.request.document.expression)),e.request.variables&&n.append("variables",t.stringify(e.request.variables)),e.request.document.operationName&&n.append("operationName",e.request.document.operationName),n;case"Batch":{const s=e.request.variables?.map(a=>t.stringify(a))??[],i=e.request.query.map(fe),r=ye(i,s).map(([a,l])=>({query:a,variables:l}));return n.append("query",t.stringify(r)),n}default:throw ee(e.request)}};class wt{url;requestConfig;constructor(t,n={}){this.url=t,this.requestConfig=n}rawRequest=async(...t)=>{const[n,s,i]=t,r=Pe(n,s,i),{headers:a,fetch:l=globalThis.fetch,method:p="POST",requestMiddleware:d,responseMiddleware:f,excludeOperationName:m,...E}=this.requestConfig,{url:x}=this;r.signal!==void 0&&(E.signal=r.signal);const T=z(r.query,m),N=await J({url:x,request:{_tag:"Single",document:T,variables:r.variables},headers:{...S(G(a)),...S(r.requestHeaders)},fetch:l,method:p,fetchOptions:E,middleware:d});if(f&&await f(N,{operationName:T.operationName,variables:s,url:this.url}),N instanceof Error)throw N;return N};async request(t,...n){const[s,i]=n,r=Ft(t,s,i),{headers:a,fetch:l=globalThis.fetch,method:p="POST",requestMiddleware:d,responseMiddleware:f,excludeOperationName:m,...E}=this.requestConfig,{url:x}=this;r.signal!==void 0&&(E.signal=r.signal);const T=z(r.document,m),N=await J({url:x,request:{_tag:"Single",document:T,variables:r.variables},headers:{...S(G(a)),...S(r.requestHeaders)},fetch:l,method:p,fetchOptions:E,middleware:d});if(f&&await f(N,{operationName:T.operationName,variables:r.variables,url:this.url}),N instanceof Error)throw N;return N.data}async batchRequests(t,n){const s=Fe(t,n),{headers:i,excludeOperationName:r,...a}=this.requestConfig;s.signal!==void 0&&(a.signal=s.signal);const l=s.documents.map(({document:E})=>z(E,r)),p=l.map(({expression:E})=>E),d=l.some(({isMutation:E})=>E),f=s.documents.map(({variables:E})=>E),m=await J({url:this.url,request:{_tag:"Batch",operationName:void 0,query:p,hasMutations:d,variables:f},headers:{...S(G(i)),...S(s.requestHeaders)},fetch:this.requestConfig.fetch??globalThis.fetch,method:this.requestConfig.method||"POST",fetchOptions:a,middleware:this.requestConfig.requestMiddleware});if(this.requestConfig.responseMiddleware&&await this.requestConfig.responseMiddleware(m,{operationName:void 0,variables:f,url:this.url}),m instanceof Error)throw m;return m.data}setHeaders(t){return this.requestConfig.headers=t,this}setHeader(t,n){const{headers:s}=this.requestConfig;return s?s[t]=n:this.requestConfig.headers={[t]:n},this}setEndpoint(t){return this.url=t,this}}const Ft=(e,t,n)=>e.document?e:{document:e,variables:t,requestHeaders:n,signal:void 0},O=(e,...t)=>e.reduce((n,s,i)=>`${n}${s}${i in t?String(t[i]):""}`,""),Pt="qwiktest.myshopify.com",Mt="cd983c9a3f96195ceb05ca572cf33e71",qt=`https://${Pt}/api/2024-10/graphql.json`,U=new wt(qt,{headers:{"X-Shopify-Storefront-Access-Token":Mt,"Content-Type":"application/json"}});O`
+  query Products($first: Int!) {
+    products(first: $first) {
+      edges {
+        node {
+          id
+          title
+          handle
+          description
+          featuredImage {
+            url
+            altText
+          }
+          priceRange {
+            minVariantPrice {
+              amount
+              currencyCode
+            }
+            maxVariantPrice {
+              amount
+              currencyCode
+            }
+          }
+        }
+      }
+    }
+  }
+`;O`
+  query ProductByHandle($handle: String!) {
+    productByHandle(handle: $handle) {
+      id
+      title
+      handle
+      description
+      descriptionHtml
+      availableForSale
+      featuredImage {
+        url
+        altText
+      }
+      priceRange {
+        minVariantPrice {
+          amount
+          currencyCode
+        }
+        maxVariantPrice {
+          amount
+          currencyCode
+        }
+      }
+      images(first: 10) {
+        edges {
+          node {
+            url
+            altText
+          }
+        }
+      }
+      variants(first: 25) {
+        edges {
+          node {
+            id
+            title
+            availableForSale
+            price {
+              amount
+              currencyCode
+            }
+          }
+        }
+      }
+    }
+  }
+`;O`
+  query CollectionByHandle($handle: String!, $first: Int!, $sortKey: ProductCollectionSortKeys, $reverse: Boolean) {
+    collectionByHandle(handle: $handle) {
+      id
+      title
+      handle
+      description
+      image {
+        url
+        altText
+      }
+      products(first: $first, sortKey: $sortKey, reverse: $reverse) {
+        edges {
+          node {
+            id
+            title
+            handle
+            description
+            vendor
+            productType
+            createdAt
+            featuredImage {
+              url
+              altText
+            }
+            priceRange {
+              minVariantPrice {
+                amount
+                currencyCode
+              }
+              maxVariantPrice {
+                amount
+                currencyCode
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;O`
+  query Collections($first: Int!) {
+    collections(first: $first) {
+      edges {
+        node {
+          id
+          title
+          handle
+          description
+          image {
+            url
+            altText
+          }
+        }
+      }
+    }
+  }
+`;O`
+  query ProductRecommendations($productId: ID!) {
+    productRecommendations(productId: $productId) {
+      id
+      title
+      handle
+      vendor
+      featuredImage {
+        url
+        altText
+      }
+      priceRange {
+        minVariantPrice {
+          amount
+          currencyCode
+        }
+      }
+    }
+  }
+`;function jt(e){return new Intl.NumberFormat("en-US",{style:"currency",currency:e.currencyCode}).format(parseFloat(e.amount))}const V=O`
+  fragment CartFields on Cart {
+    id
+    checkoutUrl
+    totalQuantity
+    lines(first: 100) {
+      edges {
+        node {
+          id
+          quantity
+          merchandise {
+            ... on ProductVariant {
+              id
+              title
+              product {
+                title
+                handle
+                featuredImage {
+                  url
+                  altText
+                }
+              }
+              price {
+                amount
+                currencyCode
+              }
+            }
+          }
+        }
+      }
+    }
+    cost {
+      totalAmount {
+        amount
+        currencyCode
+      }
+      subtotalAmount {
+        amount
+        currencyCode
+      }
+    }
+  }
+`,Bt=O`
+  ${V}
+  mutation CartCreate($lines: [CartLineInput!]!) {
+    cartCreate(input: { lines: $lines }) {
+      cart {
+        ...CartFields
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`,Ut=O`
+  ${V}
+  mutation CartLinesAdd($cartId: ID!, $lines: [CartLineInput!]!) {
+    cartLinesAdd(cartId: $cartId, lines: $lines) {
+      cart {
+        ...CartFields
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`,Vt=O`
+  ${V}
+  mutation CartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+    cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+      cart {
+        ...CartFields
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`,$t=O`
+  ${V}
+  query GetCart($cartId: ID!) {
+    cart(id: $cartId) {
+      ...CartFields
+    }
+  }
+`;async function Gt(e,t=1){return(await U.request(Bt,{lines:[{merchandiseId:e,quantity:t}]})).cartCreate.cart}async function Yt(e,t,n=1){return(await U.request(Ut,{cartId:e,lines:[{merchandiseId:t,quantity:n}]})).cartLinesAdd.cart}async function Ht(e,t){return(await U.request(Vt,{cartId:e,lineIds:t})).cartLinesRemove.cart}async function zt(e){return(await U.request($t,{cartId:e})).cart}export{Yt as a,Gt as c,jt as f,zt as g,Ht as r};

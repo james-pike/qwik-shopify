@@ -243,6 +243,37 @@ export async function getProductByHandle(
   return data.productByHandle;
 }
 
+const PRODUCT_RECOMMENDATIONS_QUERY = gql`
+  query ProductRecommendations($productId: ID!) {
+    productRecommendations(productId: $productId) {
+      id
+      title
+      handle
+      vendor
+      featuredImage {
+        url
+        altText
+      }
+      priceRange {
+        minVariantPrice {
+          amount
+          currencyCode
+        }
+      }
+    }
+  }
+`;
+
+export async function getProductRecommendations(
+  productId: string,
+): Promise<ShopifyProduct[]> {
+  const data = await client.request<{
+    productRecommendations: ShopifyProduct[];
+  }>(PRODUCT_RECOMMENDATIONS_QUERY, { productId });
+
+  return data.productRecommendations || [];
+}
+
 export function formatPrice(price: ShopifyPrice): string {
   return new Intl.NumberFormat("en-US", {
     style: "currency",

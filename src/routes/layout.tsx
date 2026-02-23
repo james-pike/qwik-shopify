@@ -256,6 +256,22 @@ export default component$(() => {
               </div>
               <nav class="flex flex-col p-4 gap-1 overflow-y-auto">
                 <Modal.Close class="bg-transparent border-none text-left">
+                  <Link href="/about/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                    About Us
+                  </Link>
+                </Modal.Close>
+                <Modal.Close class="bg-transparent border-none text-left">
+                  <Link href="/faq/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                    FAQ
+                  </Link>
+                </Modal.Close>
+                <Modal.Close class="bg-transparent border-none text-left">
+                  <Link href="/contact/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
+                    Contact
+                  </Link>
+                </Modal.Close>
+                <div class="border-t border-gray-200 dark:border-gray-700 my-2" />
+                <Modal.Close class="bg-transparent border-none text-left">
                   <Link href="/collections/work-wear/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
                     Work Wear
                   </Link>
@@ -280,23 +296,15 @@ export default component$(() => {
                     School & Sports Wear
                   </Link>
                 </Modal.Close>
-                <div class="border-t border-gray-200 dark:border-gray-700 my-2" />
-                <Modal.Close class="bg-transparent border-none text-left">
-                  <Link href="/about/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
-                    About Us
-                  </Link>
-                </Modal.Close>
-                <Modal.Close class="bg-transparent border-none text-left">
-                  <Link href="/faq/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
-                    FAQ
-                  </Link>
-                </Modal.Close>
-                <Modal.Close class="bg-transparent border-none text-left">
-                  <Link href="/contact/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
-                    Contact
-                  </Link>
-                </Modal.Close>
               </nav>
+              {/* Promotional Banner — connect to API later */}
+              <div class="mt-auto p-4">
+                <div class="rounded-xl overflow-hidden bg-gradient-to-br from-primary to-primary-dark text-white p-5 text-center">
+                  <p class="text-xs uppercase tracking-widest font-semibold opacity-80 mb-1">Limited Time</p>
+                  <p class="text-lg font-bold leading-snug mb-2">Free Shipping on Orders Over $150</p>
+                  <p class="text-sm opacity-70">Use code <span class="font-bold opacity-100">SAFESHIP</span> at checkout</p>
+                </div>
+              </div>
               </Modal.Panel>
             </Modal.Root>
           </div>
@@ -308,7 +316,7 @@ export default component$(() => {
 
       {/* Footer */}
       <footer class="bg-dark text-white/80 mt-16">
-        <div class="pt-12 px-6 pb-8 md:pt-16 md:px-10 md:pb-10">
+        <div class="pt-10 px-5 pb-7 md:pt-14 md:px-8 md:pb-8">
           <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-8 md:gap-14 mb-10">
             <div>
               <img

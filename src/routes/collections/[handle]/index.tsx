@@ -6,8 +6,8 @@ import type { ShopifyProduct } from "~/lib/shopify";
 
 const SORT_OPTIONS = [
   { value: "", label: "Default" },
-  { value: "price-asc", label: "Price: Low to High" },
-  { value: "price-desc", label: "Price: High to Low" },
+  { value: "price-asc", label: "Price \u2191" },
+  { value: "price-desc", label: "Price \u2193" },
   { value: "title-asc", label: "A\u2013Z" },
   { value: "title-desc", label: "Z\u2013A" },
   { value: "best-selling", label: "Best Selling" },
@@ -130,14 +130,14 @@ export default component$(() => {
         )}
         <h1 class="relative z-10 text-4xl md:text-5xl font-extrabold tracking-tight mb-3">{c.title}</h1>
         {hero.subtitle ? (
-          <p class="relative z-10 text-white/60 text-base max-w-[560px] mx-auto leading-relaxed">{hero.subtitle}</p>
+          <p class="relative z-10 text-white/60 text-lg max-w-[560px] mx-auto leading-relaxed">{hero.subtitle}</p>
         ) : (
-          c.description && <p class="relative z-10 text-white/60 text-base max-w-[560px] mx-auto leading-relaxed">{c.description}</p>
+          c.description && <p class="relative z-10 text-white/60 text-lg max-w-[560px] mx-auto leading-relaxed">{c.description}</p>
         )}
       </div>
 
-      <section class="px-4 md:px-8 py-4 md:py-8">
-        <div class="flex items-center justify-between mb-3 md:hidden">
+      <section class="px-4 md:px-8 py-3 md:py-5">
+        <div class="flex items-center justify-between mb-2 md:hidden">
           <nav class="flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
             <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
               Collections
@@ -152,7 +152,7 @@ export default component$(() => {
           </span>
         </div>
 
-        <div class="flex flex-wrap items-center justify-end gap-2 mb-3 md:hidden">
+        <div class="flex flex-wrap items-center justify-end gap-2 mb-2 md:hidden">
           {/* Grid toggle - mobile */}
           <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden mr-auto">
             <button
@@ -268,7 +268,7 @@ export default component$(() => {
           )}
         </div>
 
-        <div class="hidden md:flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div class="hidden md:flex flex-wrap items-center justify-between gap-3 mb-3">
           <nav class="flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
             <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
               Collections
