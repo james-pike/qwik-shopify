@@ -136,7 +136,7 @@ export default component$(() => {
             />
             <div class="absolute inset-0 bg-gradient-to-br from-dark/60 to-[#2d2d2d]/50" />
             <div class="relative z-10 max-w-[720px] mx-auto">
-              <div class="inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-xs font-bold tracking-widest uppercase mb-5 border border-primary/30">
+              <div class="hidden md:inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-xs font-bold tracking-widest uppercase mb-5 border border-primary/30">
                 {slide.badge}
               </div>
               <h2 class="text-4xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-4 [text-shadow:0_2px_12px_rgba(0,0,0,0.4)]">
@@ -244,7 +244,7 @@ export default component$(() => {
             Why The Safety House?
           </h2>
           <p class="text-gray-500 dark:text-gray-400 text-base max-w-[480px] mx-auto">
-            Decades of experience serving Eastern Ontario.
+            Decades of experience serving Canada.
           </p>
         </div>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">

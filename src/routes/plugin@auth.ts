@@ -18,11 +18,15 @@ export const onRequest: RequestHandler = async ({ request, send }) => {
   }
 
   send(
-    new Response("Unauthorized", {
-      status: 401,
-      headers: {
-        "WWW-Authenticate": 'Basic realm="The Safety House"',
+    new Response(
+      '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Login Required</title><style>body{margin:0;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;background:#121212;color:#fff;text-align:center}h1{font-size:1.5rem;font-weight:700}p{color:rgba(255,255,255,0.5);font-size:0.9rem}</style></head><body><div><h1>The Safety House</h1><p>Please log in to continue.</p></div></body></html>',
+      {
+        status: 401,
+        headers: {
+          "Content-Type": "text/html; charset=utf-8",
+          "WWW-Authenticate": 'Basic realm="The Safety House"',
+        },
       },
-    }),
+    ),
   );
 };

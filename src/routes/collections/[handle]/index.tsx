@@ -125,7 +125,22 @@ export default component$(() => {
       </div>
 
       <section class="px-4 md:px-8 py-8 md:py-16">
-        <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+        <div class="flex items-center justify-between mb-4 md:hidden">
+          <nav class="flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
+            <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
+              Home
+            </Link>
+            <span class="text-gray-400 dark:text-gray-500">/</span>
+            <span class="font-medium text-gray-900 dark:text-white">{c.title}</span>
+          </nav>
+          <span class="text-sm text-gray-500 dark:text-gray-400">
+            {selectedBrands.value.length > 0
+              ? `${filteredProducts.value.length} of ${allProducts.length} products`
+              : `${allProducts.length} products`}
+          </span>
+        </div>
+
+        <div class="hidden md:flex flex-wrap items-center justify-between gap-3 mb-6">
           <nav class="flex items-center gap-1.5 text-sm" aria-label="Breadcrumb">
             <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
               Home

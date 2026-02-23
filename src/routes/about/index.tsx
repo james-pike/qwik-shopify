@@ -9,7 +9,7 @@ export default component$(() => {
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">About Us</h1>
         <p class="text-white/60 text-base max-w-[520px] mx-auto leading-relaxed">
           Where work and lifestyle apparel intersect. Decades of experience
-          serving Eastern Ontario with quality and care.
+          serving Canada with quality and care.
         </p>
       </div>
 
@@ -135,7 +135,7 @@ export default component$(() => {
             </p>
             <p class="text-gray-500 dark:text-gray-400 leading-relaxed text-[0.95rem]">
               The Safety House maintains long-term relationships built on respect
-              and fairness. We serve customers throughout Eastern Ontario via
+              and fairness. We serve customers throughout Canada via
               repeat business and referrals, and we're proud of the community
               we've built over the years.
             </p>
