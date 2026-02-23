@@ -35,6 +35,8 @@ export interface ShopifyProduct {
   description: string;
   descriptionHtml: string;
   availableForSale: boolean;
+  vendor: string;
+  productType: string;
   featuredImage: ShopifyImage | null;
   priceRange: {
     minVariantPrice: ShopifyPrice;
@@ -147,7 +149,7 @@ export interface ShopifyCollection {
 }
 
 const COLLECTION_BY_HANDLE_QUERY = gql`
-  query CollectionByHandle($handle: String!, $first: Int!) {
+  query CollectionByHandle($handle: String!, $first: Int!, $sortKey: ProductCollectionSortKeys, $reverse: Boolean) {
     collectionByHandle(handle: $handle) {
       id
       title
@@ -157,13 +159,15 @@ const COLLECTION_BY_HANDLE_QUERY = gql`
         url
         altText
       }
-      products(first: $first) {
+      products(first: $first, sortKey: $sortKey, reverse: $reverse) {
         edges {
           node {
             id
             title
             handle
             description
+            vendor
+            productType
             featuredImage {
               url
               altText
@@ -217,10 +221,12 @@ export async function getCollections(
 export async function getCollectionByHandle(
   handle: string,
   first = 50,
+  sortKey?: string,
+  reverse?: boolean,
 ): Promise<ShopifyCollection | null> {
   const data = await client.request<{
     collectionByHandle: ShopifyCollection | null;
-  }>(COLLECTION_BY_HANDLE_QUERY, { handle, first });
+  }>(COLLECTION_BY_HANDLE_QUERY, { handle, first, sortKey, reverse });
 
   return data.collectionByHandle;
 }

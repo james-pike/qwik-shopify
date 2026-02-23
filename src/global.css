@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply font-sans text-[#1a1a1a] bg-gray-200 leading-relaxed antialiased dark:bg-[#0a0a0a] dark:text-white;
+    @apply font-sans text-[#1a1a1a] bg-gray-100 leading-relaxed antialiased dark:bg-[#0a0a0a] dark:text-white;
   }
 
   a {
@@ -51,6 +51,25 @@
   .mobile-sheet[data-closing] {
     animation: sheetSlideOut 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
+
+  /* Cart drawer sheet (slides from right) */
+  .cart-sheet::backdrop {
+    animation: sheetBackdropIn 0.3s ease forwards;
+  }
+  .cart-sheet[data-closing]::backdrop {
+    animation: sheetBackdropOut 0.2s ease forwards;
+  }
+  .cart-sheet {
+    @apply fixed right-0 top-0 m-0 ml-auto h-dvh w-80 sm:w-96 border-none bg-white p-0 dark:bg-[#1e1e1e];
+    animation: cartSlideIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .cart-sheet[open] {
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-sheet[data-closing] {
+    animation: cartSlideOut 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
 }
 
 @keyframes sheetBackdropIn {
@@ -68,4 +87,12 @@
 @keyframes sheetSlideOut {
   from { transform: translateX(0); }
   to { transform: translateX(-100%); }
+}
+@keyframes cartSlideIn {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes cartSlideOut {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
 }

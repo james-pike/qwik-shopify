@@ -1,11 +1,35 @@
-import { component$ } from "@builder.io/qwik";
-import { routeLoader$, Link } from "@builder.io/qwik-city";
+import { component$, useSignal, useComputed$ } from "@builder.io/qwik";
+import { routeLoader$, Link, useLocation } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { getCollectionByHandle, formatPrice } from "~/lib/shopify";
+import type { ShopifyProduct } from "~/lib/shopify";
+
+const SORT_OPTIONS: { value: string; label: string; sortKey: string; reverse: boolean }[] = [
+  { value: "", label: "Default", sortKey: "COLLECTION_DEFAULT", reverse: false },
+  { value: "price-asc", label: "Price: Low to High", sortKey: "PRICE", reverse: false },
+  { value: "price-desc", label: "Price: High to Low", sortKey: "PRICE", reverse: true },
+  { value: "title-asc", label: "A–Z", sortKey: "TITLE", reverse: false },
+  { value: "title-desc", label: "Z–A", sortKey: "TITLE", reverse: true },
+  { value: "best-selling", label: "Best Selling", sortKey: "BEST_SELLING", reverse: false },
+  { value: "newest", label: "Newest", sortKey: "CREATED", reverse: true },
+];
+
+function getSortConfig(param: string | null) {
+  const match = SORT_OPTIONS.find((o) => o.value === (param || ""));
+  return match || SORT_OPTIONS[0];
+}
 
 export const useCollection = routeLoader$(async (requestEvent) => {
   const handle = requestEvent.params.handle;
-  const collection = await getCollectionByHandle(handle);
+  const sortParam = requestEvent.url.searchParams.get("sort");
+  const sortConfig = getSortConfig(sortParam);
+
+  const collection = await getCollectionByHandle(
+    handle,
+    50,
+    sortConfig.sortKey,
+    sortConfig.reverse,
+  );
 
   if (!collection) {
     requestEvent.status(404);
@@ -17,6 +41,9 @@ export const useCollection = routeLoader$(async (requestEvent) => {
 
 export default component$(() => {
   const collection = useCollection();
+  const location = useLocation();
+  const brandFilterOpen = useSignal(false);
+  const selectedBrands = useSignal<string[]>([]);
 
   if (!collection.value) {
     return (
@@ -33,7 +60,23 @@ export default component$(() => {
   }
 
   const c = collection.value;
-  const products = c.products.edges.map((e) => e.node);
+  const allProducts = c.products.edges.map((e) => e.node);
+  const currentSort = location.url.searchParams.get("sort") || "";
+
+  const brands = useComputed$(() => {
+    const vendorSet = new Set<string>();
+    for (const p of allProducts) {
+      if (p.vendor) vendorSet.add(p.vendor);
+    }
+    return [...vendorSet].sort();
+  });
+
+  const filteredProducts = useComputed$(() => {
+    if (selectedBrands.value.length === 0) return allProducts;
+    return allProducts.filter((p: ShopifyProduct) =>
+      selectedBrands.value.includes(p.vendor),
+    );
+  });
 
   const heroData: Record<string, { img?: string; subtitle?: string }> = {
     "safety-footwear": {
@@ -53,6 +96,7 @@ export default component$(() => {
               alt={c.image?.altText || ""}
               width={1400}
               height={600}
+              fetchPriority="high"
               class="absolute inset-0 w-full h-full object-cover"
             />
             <div class="absolute inset-0 bg-gradient-to-br from-dark/60 to-[#2d2d2d]/50" />
@@ -69,24 +113,123 @@ export default component$(() => {
       </div>
 
       <section class="px-4 md:px-8 py-8 md:py-16">
-        <Link
-          href="/"
-          class="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm font-medium mb-6 transition-colors hover:text-dark dark:hover:text-white"
-        >
-          &larr; Back to shop
-        </Link>
+        <nav class="flex items-center gap-1.5 text-sm mb-6" aria-label="Breadcrumb">
+          <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
+            Home
+          </Link>
+          <span class="text-gray-400 dark:text-gray-500">/</span>
+          <span class="font-medium text-gray-900 dark:text-white">{c.title}</span>
+        </nav>
 
-        {products.length === 0 ? (
+        {/* Sort & Filter Toolbar */}
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          {/* Sort dropdown */}
+          <div class="flex items-center gap-2">
+            <label for="sort-select" class="text-sm font-medium text-gray-600 dark:text-gray-400">
+              Sort by:
+            </label>
+            <select
+              id="sort-select"
+              class="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50"
+              value={currentSort}
+              onChange$={(_, el) => {
+                const val = el.value;
+                const url = new URL(window.location.href);
+                if (val) {
+                  url.searchParams.set("sort", val);
+                } else {
+                  url.searchParams.delete("sort");
+                }
+                window.location.href = url.toString();
+              }}
+            >
+              {SORT_OPTIONS.map((opt) => (
+                <option key={opt.value} value={opt.value} selected={opt.value === currentSort}>
+                  {opt.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Brand filter dropdown */}
+          {brands.value.length > 1 && (
+            <div class="relative">
+              <button
+                type="button"
+                class="text-sm border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 cursor-pointer flex items-center gap-2 hover:border-gray-400 dark:hover:border-gray-500 transition-colors"
+                onClick$={() => { brandFilterOpen.value = !brandFilterOpen.value; }}
+              >
+                Brand
+                {selectedBrands.value.length > 0 && (
+                  <span class="bg-primary text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    {selectedBrands.value.length}
+                  </span>
+                )}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {brandFilterOpen.value && (
+                <div class="absolute top-full left-0 mt-1 bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-20 min-w-[200px] py-2">
+                  {selectedBrands.value.length > 0 && (
+                    <button
+                      type="button"
+                      class="w-full text-left px-4 py-1.5 text-xs text-primary hover:bg-gray-50 dark:hover:bg-gray-800 font-medium"
+                      onClick$={() => { selectedBrands.value = []; }}
+                    >
+                      Clear all
+                    </button>
+                  )}
+                  {brands.value.map((brand) => (
+                    <label
+                      key={brand}
+                      class="flex items-center gap-2 px-4 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary/50"
+                        checked={selectedBrands.value.includes(brand)}
+                        onChange$={() => {
+                          const current = [...selectedBrands.value];
+                          const idx = current.indexOf(brand);
+                          if (idx >= 0) {
+                            current.splice(idx, 1);
+                          } else {
+                            current.push(brand);
+                          }
+                          selectedBrands.value = current;
+                        }}
+                      />
+                      {brand}
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Product count */}
+          <span class="text-sm text-gray-500 dark:text-gray-400 ml-auto">
+            {selectedBrands.value.length > 0
+              ? `${filteredProducts.value.length} of ${allProducts.length} products`
+              : `${allProducts.length} products`}
+          </span>
+        </div>
+
+        {filteredProducts.value.length === 0 ? (
           <p class="text-center text-gray-500 dark:text-gray-400 py-12">
-            No products in this collection yet.
+            {allProducts.length === 0
+              ? "No products in this collection yet."
+              : "No products match the selected filters."}
           </p>
         ) : (
           <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
-            {products.map((product) => (
+            {filteredProducts.value.map((product: ShopifyProduct) => (
               <Link
                 key={product.id}
-                href={`/product/${product.handle}/`}
-                class="bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col"
+                href={`/product/${product.handle}/?collection=${c.handle}`}
+                class="group bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col"
               >
                 {product.featuredImage ? (
                   <img
@@ -94,7 +237,7 @@ export default component$(() => {
                     alt={product.featuredImage.altText || product.title}
                     width={400}
                     height={400}
-                    class="w-full h-[280px] object-cover bg-gray-100 dark:bg-gray-800"
+                    class="w-full h-[280px] object-cover bg-gray-100 dark:bg-gray-800 transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
                   <div class="w-full h-[280px] bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-sm">
@@ -102,6 +245,11 @@ export default component$(() => {
                   </div>
                 )}
                 <div class="p-4 px-5 flex-1 flex flex-col">
+                  {product.vendor && (
+                    <span class="text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1">
+                      {product.vendor}
+                    </span>
+                  )}
                   <h3 class="text-[0.95rem] font-semibold mb-1 leading-snug">
                     {product.title}
                   </h3>
@@ -120,6 +268,7 @@ export default component$(() => {
 
 export const head: DocumentHead = ({ resolveValue }) => {
   const collection = resolveValue(useCollection);
+  const heroImg = collection?.image?.url;
   return {
     title: collection
       ? `${collection.title} | The Safety House`
@@ -130,5 +279,8 @@ export const head: DocumentHead = ({ resolveValue }) => {
         content: collection?.description || "Browse our collection",
       },
     ],
+    links: heroImg
+      ? [{ rel: "preload", as: "image", href: heroImg }]
+      : [],
   };
 };

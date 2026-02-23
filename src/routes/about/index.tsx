@@ -66,12 +66,14 @@ export default component$(() => {
               with personalization services all in one location.
             </p>
           </div>
-          <div class="order-1 md:order-2 rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-dark to-[#2d2d2d] flex items-center justify-center p-10">
-            <div class="text-center">
-              <div class="text-5xl mb-4">&#9997;</div>
-              <p class="text-white font-bold text-lg">Decoration Done Right</p>
-              <p class="text-white/50 text-sm mt-1">In-house embroidery &amp; transfers</p>
-            </div>
+          <div class="order-1 md:order-2 rounded-2xl overflow-hidden aspect-[4/3]">
+            <img
+              src="/TheSafetyHouse-March2023-37.jpg"
+              alt="In-house embroidery services at The Safety House"
+              width={600}
+              height={450}
+              class="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>
@@ -84,12 +86,14 @@ export default component$(() => {
       {/* Section 3 — Visual left, text right */}
       <section class="px-4 md:px-8 py-16 md:py-24">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-          <div class="rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-primary/90 to-primary-dark flex items-center justify-center p-10">
-            <div class="text-center">
-              <div class="text-5xl mb-4">&#9734;</div>
-              <p class="text-white font-bold text-lg">Years of Experience</p>
-              <p class="text-white/70 text-sm mt-1">Superior design, sourcing &amp; support</p>
-            </div>
+          <div class="rounded-2xl overflow-hidden aspect-[4/3]">
+            <img
+              src="/TheSafetyHouse-March2023-38.jpg"
+              alt="The Safety House team and store"
+              width={600}
+              height={450}
+              class="w-full h-full object-cover"
+            />
           </div>
           <div>
             <p class="text-xs uppercase tracking-[0.15em] text-primary font-bold mb-3">Our Team</p>
@@ -136,12 +140,14 @@ export default component$(() => {
               we've built over the years.
             </p>
           </div>
-          <div class="order-1 md:order-2 rounded-2xl overflow-hidden aspect-[4/3] bg-gradient-to-br from-[#1a2a1a] to-[#2e5a3a] flex items-center justify-center p-10">
-            <div class="text-center">
-              <div class="text-5xl mb-4">&#9874;</div>
-              <p class="text-white font-bold text-lg">Eastern Ontario's Choice</p>
-              <p class="text-white/60 text-sm mt-1">Built on trust, respect &amp; quality</p>
-            </div>
+          <div class="order-1 md:order-2 rounded-2xl overflow-hidden aspect-[4/3]">
+            <img
+              src="/TheSafetyHouse-March2023-37.jpg"
+              alt="The Safety House storefront"
+              width={600}
+              height={450}
+              class="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>

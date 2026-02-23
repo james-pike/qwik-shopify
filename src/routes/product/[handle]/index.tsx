@@ -3,6 +3,7 @@ import { routeLoader$, Link } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import {
   getProductByHandle,
+  getCollectionByHandle,
   formatPrice,
   createCart,
   addToCart,
@@ -11,14 +12,26 @@ import type { ShopifyVariant } from "~/lib/shopify";
 
 export const useProduct = routeLoader$(async (requestEvent) => {
   const handle = requestEvent.params.handle;
-  const product = await getProductByHandle(handle);
+  const collectionHandle = requestEvent.url.searchParams.get("collection");
+
+  const [product, collection] = await Promise.all([
+    getProductByHandle(handle),
+    collectionHandle
+      ? getCollectionByHandle(collectionHandle, 1)
+      : Promise.resolve(null),
+  ]);
 
   if (!product) {
     requestEvent.status(404);
     return null;
   }
 
-  return product;
+  return {
+    ...product,
+    _collection: collection
+      ? { handle: collection.handle, title: collection.title }
+      : null,
+  };
 });
 
 export default component$(() => {
@@ -103,14 +116,25 @@ export default component$(() => {
   // Find the currently selected variant for stock display
   const activeVariant = variants.find((v) => v.id === selectedVariantId.value);
 
+  const col = p._collection;
+
   return (
     <div class="px-4 md:px-8 py-12 md:py-16">
-      <Link
-        href="/"
-        class="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400 text-sm font-medium mb-6 transition-colors hover:text-dark dark:hover:text-white"
-      >
-        &larr; Back to products
-      </Link>
+      <nav class="flex items-center gap-1.5 text-sm mb-6" aria-label="Breadcrumb">
+        <Link href="/" class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
+          Home
+        </Link>
+        {col && (
+          <>
+            <span class="text-gray-400 dark:text-gray-500">/</span>
+            <Link href={`/collections/${col.handle}/`} class="text-gray-500 dark:text-gray-400 hover:text-dark dark:hover:text-white transition-colors">
+              {col.title}
+            </Link>
+          </>
+        )}
+        <span class="text-gray-400 dark:text-gray-500">/</span>
+        <span class="font-medium text-gray-900 dark:text-white truncate max-w-[200px] md:max-w-none">{p.title}</span>
+      </nav>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
         {/* Images */}

@@ -35,6 +35,12 @@ export default component$(() => {
       desc: "Sports and institutional apparel",
       img: "/schoolwear.jpg",
     },
+    {
+      name: "Safety Supplies",
+      handle: "safety-supplies",
+      desc: "PPE and workplace safety essentials",
+      img: "/safety-supplies.jpg",
+    },
   ];
 
   const brands = [
@@ -61,7 +67,7 @@ export default component$(() => {
   return (
     <>
       {/* Hero */}
-      <section class="relative text-white py-20 px-8 text-center overflow-hidden">
+      <section class="relative text-white py-28 md:py-36 px-8 text-center overflow-hidden">
         <img
           src="/hero.jpg"
           alt=""
@@ -74,7 +80,7 @@ export default component$(() => {
           <div class="inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-xs font-bold tracking-widest uppercase mb-5 border border-primary/30">
             Eastern Ontario's Safety Experts
           </div>
-          <h1 class="text-[2rem] md:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4">
+          <h1 class="text-[2rem] md:text-5xl font-extrabold leading-[1.1] tracking-tight mb-4 [text-shadow:0_2px_12px_rgba(0,0,0,0.4)]">
             Where Work &amp; Lifestyle
             <br />
             Apparel <em class="not-italic text-primary">Intersect</em>
@@ -101,14 +107,14 @@ export default component$(() => {
       </section>
 
       {/* Categories */}
-      <section class="px-4 md:px-8 py-12 md:py-16">
+      <section class="px-4 md:px-8 py-16 md:py-20">
         <div class="text-center mb-10">
           <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
-            Shop by Category
+            Explore Essentials
           </h2>
-          <p class="text-gray-500 dark:text-gray-400 text-base max-w-[480px] mx-auto">
+          {/* <p class="text-gray-500 dark:text-gray-400 text-base max-w-[480px] mx-auto">
             From the job site to the classroom, we've got you covered.
-          </p>
+          </p> */}
         </div>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
           {categories.map((cat) => (
@@ -142,11 +148,11 @@ export default component$(() => {
         <h2 class="text-xs uppercase tracking-[0.12em] text-gray-500 mb-6 font-semibold">
           Trusted Brands We Carry
         </h2>
-        <div class="flex flex-wrap justify-center gap-x-10 gap-y-6">
+        <div class="flex flex-wrap justify-center gap-3">
           {brands.map((brand) => (
             <span
               key={brand}
-              class="text-sm font-semibold text-gray-500 dark:text-gray-400 py-1.5 px-3 rounded transition-colors hover:text-dark dark:hover:text-white"
+              class="text-sm font-semibold text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-white/5 rounded-full px-4 py-2 transition-colors hover:text-dark hover:bg-gray-200 dark:hover:text-white dark:hover:bg-white/10"
             >
               {brand}
             </span>
@@ -155,7 +161,7 @@ export default component$(() => {
       </div>
 
       {/* Products */}
-      <section class="px-4 md:px-8 py-12 md:py-16" id="products">
+      <section class="px-4 md:px-8 py-16 md:py-20" id="products">
         <div class="text-center mb-10">
           <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
             Our Products
@@ -173,7 +179,7 @@ export default component$(() => {
               <Link
                 key={product.id}
                 href={`/product/${product.handle}/`}
-                class="bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col"
+                class="group bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col"
               >
                 {product.featuredImage ? (
                   <img
@@ -181,7 +187,7 @@ export default component$(() => {
                     alt={product.featuredImage.altText || product.title}
                     width={400}
                     height={400}
-                    class="w-full h-[280px] object-cover bg-gray-100 dark:bg-gray-800"
+                    class="w-full h-[280px] object-cover bg-gray-100 dark:bg-gray-800 transition-transform duration-300 group-hover:scale-105"
                   />
                 ) : (
                   <div class="w-full h-[280px] bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-sm">
@@ -203,7 +209,7 @@ export default component$(() => {
       </section>
 
       {/* Why The Safety House */}
-      <section class="px-4 md:px-8 py-12 md:py-16">
+      <section class="px-4 md:px-8 py-16 md:py-20">
         <div class="text-center mb-10">
           <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
             Why The Safety House?
@@ -214,8 +220,8 @@ export default component$(() => {
         </div>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
           <div class="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
-            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-4">
-              &#9874;
+            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <h3 class="text-base font-bold mb-2">Quality CSA Gear</h3>
             <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
@@ -225,8 +231,8 @@ export default component$(() => {
             </p>
           </div>
           <div class="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
-            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-4">
-              &#9997;
+            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
             </div>
             <h3 class="text-base font-bold mb-2">Decoration Done Right</h3>
             <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
@@ -235,8 +241,8 @@ export default component$(() => {
             </p>
           </div>
           <div class="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
-            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center text-xl mb-4">
-              &#9734;
+            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
             </div>
             <h3 class="text-base font-bold mb-2">Expert Service</h3>
             <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
