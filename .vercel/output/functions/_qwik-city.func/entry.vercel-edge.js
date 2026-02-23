@@ -1,4 +1,4 @@
-import{getNotFound as Oe}from"./@qwik-city-not-found-paths.js";import{isStaticPath as Y}from"./@qwik-city-static-paths.js";import{v as Pe,_ as Le,a as Ne}from"./q-5aZEPOR7.js";import{s as ve,m as We,r as $e}from"./q-NS6qQDj7.js";import Ie from"./@qwik-city-plan.js";function z(e,t){let n="Server Error";return t!=null&&(typeof t.message=="string"?n=t.message:n=String(t)),"<html>"+Ue(e,n)+"</html>"}function Ue(e,t){typeof e!="number"&&(e=500),typeof t=="string"?t=je(t):t="";const n=typeof t=="string"?"600px":"300px",r=e>=500?ze:Qe;return`
+import{getNotFound as Oe}from"./@qwik-city-not-found-paths.js";import{isStaticPath as Y}from"./@qwik-city-static-paths.js";import{v as Pe,_ as Le,a as Ne}from"./q-5aZEPOR7.js";import{s as ve,m as We,r as $e}from"./q-DQu0SGH_.js";import Ie from"./@qwik-city-plan.js";function z(e,t){let n="Server Error";return t!=null&&(typeof t.message=="string"?n=t.message:n=String(t)),"<html>"+Ue(e,n)+"</html>"}function Ue(e,t){typeof e!="number"&&(e=500),typeof t=="string"?t=je(t):t="";const n=typeof t=="string"?"600px":"300px",r=e>=500?ze:Qe;return`
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Status" content="${e}">
