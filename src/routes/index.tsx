@@ -41,33 +41,33 @@ export default component$(() => {
     { name: "Carhartt", img: "/brands/carhart.png" },
     { name: "Timberland Pro", img: "/brands/timberland-pro.png" },
     { name: "Blakl\u00e4der", img: "/brands/blaklader.png" },
-    { name: "Stormtech", img: "/brands/stormtech-logo.jpg" },
+    { name: "Stormtech", img: "/brands/stormtech-logo.png" },
     { name: "Pioneer", img: "/brands/pioneer.png" },
     { name: "Viking", img: "/brands/viking_work_wear.png" },
     { name: "Big Bill", img: "/brands/big_bill_workwear.png" },
     { name: "Dickies", img: "/brands/dickies_workwear_ottawa.png" },
     { name: "Tough Duck", img: "/brands/TOUGHDUCK.png" },
-    { name: "CX2", img: "/brands/CX2-Workwear.jpg" },
-    { name: "Oberon", img: "/brands/oberon.jpg" },
-    { name: "Orange River", img: "/brands/orange_river_logo.jpg" },
+    { name: "CX2", img: "/brands/CX2-Workwear.png" },
+    { name: "Oberon", img: "/brands/oberon.png" },
+    { name: "Orange River", img: "/brands/orange_river_logo.png" },
     { name: "Red Kap", img: "/brands/redkap.png" },
     { name: "Atlas", img: "/brands/atlas.png" },
-    { name: "Baffin", img: "/brands/baffin.jpg" },
-    { name: "Blundstone", img: "/brands/blunstone_logo.jpg" },
-    { name: "Canada West", img: "/brands/canada-west-boots-logo-1.jpg" },
+    { name: "Baffin", img: "/brands/baffin.png" },
+    { name: "Blundstone", img: "/brands/blunstone_logo.png" },
+    { name: "Canada West", img: "/brands/canada-west-boots-logo-1.png" },
     { name: "Dunlop", img: "/brands/dunlop.png" },
     { name: "Irish Setter", img: "/brands/irish-setter.png" },
     { name: "JB Goodhue", img: "/brands/jb-goodhue.png" },
     { name: "Keen", img: "/brands/keen.png" },
-    { name: "Mellow Walk", img: "/brands/mellow_wailk.jpg" },
+    { name: "Mellow Walk", img: "/brands/mellow_wailk.png" },
     { name: "Muck", img: "/brands/muck.png" },
     { name: "Rasco", img: "/brands/rasco.png" },
-    { name: "Redback", img: "/brands/redback.jpg" },
-    { name: "Red Wing", img: "/brands/red-wing-shoes.jpg" },
-    { name: "Royer", img: "/brands/royer.jpg" },
+    { name: "Redback", img: "/brands/redback.png" },
+    { name: "Red Wing", img: "/brands/red-wing-shoes.png" },
+    { name: "Royer", img: "/brands/royer.png" },
     { name: "STC", img: "/brands/stc.png" },
     { name: "Terra", img: "/brands/terra.png" },
-    { name: "Vismo", img: "/brands/vismo-logo1-768x500.jpg" },
+    { name: "Vismo", img: "/brands/vismo-logo1-768x500.png" },
   ];
 
   const currentSlide = useSignal(0);
@@ -231,11 +231,8 @@ export default component$(() => {
       </section>
 
       {/* Brands */}
-      <div class="bg-white dark:bg-[#1e1e1e] border-y border-gray-200 dark:border-gray-700 py-12 px-4 md:px-8 text-center">
-        <h2 class="text-xs uppercase tracking-[0.12em] text-gray-500 mb-8 font-semibold">
-          Trusted Brands We Carry
-        </h2>
-        <div class="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+      <div class="bg-white dark:bg-[#1e1e1e] border-y border-gray-200 dark:border-gray-700 py-10 px-4 md:px-8 text-center">
+        <div class="flex flex-wrap justify-center items-center gap-2.5">
           {brands.map((brand) => (
             <img
               key={brand.name}
@@ -247,6 +244,9 @@ export default component$(() => {
             />
           ))}
         </div>
+        <p class="text-xs uppercase tracking-[0.12em] text-gray-500 mt-6 font-semibold">
+          Trusted Brands We Carry
+        </p>
       </div>
 
       {/* Value Props */}
