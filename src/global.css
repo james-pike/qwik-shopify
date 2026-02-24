@@ -76,6 +76,12 @@
   }
 }
 
+@media (min-width: 768px) {
+  .related-carousel {
+    --slides-per-view: 4 !important;
+  }
+}
+
 @keyframes announcementScroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }

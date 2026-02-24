@@ -305,7 +305,7 @@ export default component$(() => {
       {p._related && p._related.length > 0 && (
         <div class="mt-12 border-t border-gray-200 dark:border-gray-700 pt-8">
           <h2 class="text-xl font-bold mb-5">You May Also Like</h2>
-          <Carousel.Root class="relative" slidesPerView={2} gap={12} draggable>
+          <Carousel.Root class="relative related-carousel" slidesPerView={2} gap={12} draggable>
             <Carousel.Scroller class="flex">
               {p._related.map((item) => (
                 <Carousel.Slide key={item.id} class="min-w-0">

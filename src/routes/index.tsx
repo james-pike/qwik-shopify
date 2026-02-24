@@ -139,7 +139,7 @@ export default component$(() => {
         {heroSlides.map((slide, i) => (
           <div
             key={i}
-            class={`text-white py-24 md:py-28 px-8 text-center overflow-hidden transition-opacity duration-700 ease-in-out ${
+            class={`text-white py-24 md:py-20 px-8 text-center overflow-hidden transition-opacity duration-700 ease-in-out ${
               i === 0 ? "relative" : "absolute top-0 left-0 w-full h-full"
             } ${currentSlide.value === i ? "opacity-100 z-10" : "opacity-0 z-0"}`}
             aria-hidden={currentSlide.value !== i}
@@ -199,18 +199,13 @@ export default component$(() => {
       </section>
 
       {/* Categories */}
-      <section class="px-4 md:px-8 py-16 md:py-20">
-        <div class="text-center mb-10">
-          <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
-            Explore Collections
-          </h2>
-        </div>
-        <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
+      <section class="px-0 pt-2.5 pb-2.5">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-2.5">
           {categories.map((cat) => (
             <Link
               key={cat.name}
               href={`/collections/${cat.handle}/`}
-              class="group relative rounded-xl overflow-hidden aspect-[4/3] md:aspect-square flex items-end p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+              class="group relative rounded overflow-hidden aspect-[4/3] md:aspect-square flex items-end p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
             >
               <img
                 src={cat.img}
@@ -219,7 +214,10 @@ export default component$(() => {
                 height={390}
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
+              {/* Bottom text gradient */}
               <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              {/* Edge vignette — fades card edges into the page background */}
+              <div class="absolute inset-0 shadow-[inset_0_0_50px_15px_rgba(0,0,0,0.5)] dark:shadow-[inset_0_0_50px_15px_rgba(0,0,0,0.8)] pointer-events-none" />
               <div class="relative z-10">
                 <h3 class="text-white text-2xl font-bold">{cat.name}</h3>
                 <p class="text-white/60 text-base mt-1">{cat.desc}</p>
@@ -245,55 +243,72 @@ export default component$(() => {
               alt={brand.name}
               width={120}
               height={48}
-              class="h-10 md:h-12 w-auto object-contain transition-all duration-200"
+              class="h-10 md:h-14 w-auto object-contain transition-all duration-200"
             />
           ))}
         </div>
       </div>
 
-      {/* Why The Safety House */}
-      <section class="px-4 md:px-8 py-16 md:py-20">
-        <div class="text-center mb-10">
-          <h2 class="text-[1.75rem] font-extrabold tracking-tight mb-2">
-            Why The Safety House?
-          </h2>
-          <p class="text-gray-500 dark:text-gray-400 text-base max-w-[480px] mx-auto">
-            Decades of experience serving Canada.
-          </p>
-        </div>
-        <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6">
-          <div class="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
-            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      {/* Value Props */}
+      <section class="px-0 pb-2.5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+          {[
+            {
+              img: "/footwear.jpg",
+              title: "CSA Certified Quality",
+              desc: "Premium CSA-approved footwear and workwear from Canada's most trusted brands.",
+              icon: (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+              ),
+            },
+            {
+              img: "/embroidery.jpg",
+              title: "Custom Embroidery",
+              desc: "In-house embroidery and transfer services. Budget-conscious personalization for your team.",
+              icon: (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                  <path d="M8 7h8M8 11h6"/>
+                </svg>
+              ),
+            },
+            {
+              img: "/hero.jpg",
+              title: "Decades of Expertise",
+              desc: "Years of successful apparel market experience with superior sourcing across Canada.",
+              icon: (
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  <path d="M21 21v-2a4 4 0 0 0-3-3.87"/>
+                </svg>
+              ),
+            },
+          ].map((card) => (
+            <div key={card.title} class="relative overflow-hidden rounded aspect-[4/3] md:aspect-[3/2] flex items-center justify-center text-center">
+              <img
+                src={card.img}
+                alt=""
+                width={600}
+                height={400}
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+              <div class="absolute inset-0 bg-black/60" />
+              <div class="absolute inset-0 shadow-[inset_0_0_50px_15px_rgba(0,0,0,0.5)] dark:shadow-[inset_0_0_50px_15px_rgba(0,0,0,0.8)] pointer-events-none" />
+              <div class="relative z-10 px-6 flex flex-col items-center">
+                <div class="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm text-primary flex items-center justify-center mb-4 border border-white/20">
+                  {card.icon}
+                </div>
+                <h3 class="text-white text-xl font-bold mb-2 tracking-tight">{card.title}</h3>
+                <p class="text-white/60 text-sm leading-relaxed max-w-[280px]">{card.desc}</p>
+              </div>
             </div>
-            <h3 class="text-base font-bold mb-2">Quality CSA Gear</h3>
-            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-              We focus on the best quality CSA footwear and clothing on the
-              market from brands like Timberland Pro, Red Wing, Blundstone, and
-              more.
-            </p>
-          </div>
-          <div class="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
-            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-            </div>
-            <h3 class="text-base font-bold mb-2">Decoration Done Right</h3>
-            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-              In-house embroidery and transfer services. Timely, budget-conscious
-              personalization for your team, school, or company.
-            </p>
-          </div>
-          <div class="bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-xl p-8 transition-shadow duration-200 hover:shadow">
-            <div class="w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center mb-4">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            </div>
-            <h3 class="text-base font-bold mb-2">Expert Service</h3>
-            <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-              Our management team brings years of successful apparel market
-              experience with superior design, sourcing, and focused customer
-              support.
-            </p>
-          </div>
+          ))}
         </div>
       </section>
     </>
