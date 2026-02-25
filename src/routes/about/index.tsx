@@ -5,7 +5,7 @@ export default component$(() => {
   return (
     <>
       {/* Hero */}
-      <div class="bg-gradient-to-br from-dark to-[#2d2d2d] text-white py-24 md:py-32 px-8 text-center">
+      <div class="bg-gradient-to-br from-dark to-[#2d2d2d] text-white aspect-video px-8 text-center flex flex-col items-center justify-center">
         <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">About Us</h1>
         <p class="text-white/60 text-base max-w-[520px] mx-auto leading-relaxed">
           Where work and lifestyle apparel intersect. Decades of experience

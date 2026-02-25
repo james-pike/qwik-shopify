@@ -23,13 +23,7 @@ export default component$(() => {
       desc: "Specialized protective garments",
       img: "/flame-resistant-clothing.jpg",
     },
-    {
-      name: "Safety Supplies",
-      handle: "safety-supplies",
-      desc: "PPE and workplace safety essentials",
-      img: "/safety-supplies.jpg",
-    },
-    {
+{
       name: "School Wear",
       handle: "school-wear",
       desc: "Sports and institutional apparel",
@@ -66,8 +60,6 @@ export default component$(() => {
     { name: "Red Wing", img: "/brands/red-wing-shoes.png" },
     { name: "Royer", img: "/brands/royer.png" },
     { name: "STC", img: "/brands/stc.png" },
-    { name: "Terra", img: "/brands/terra.png" },
-    { name: "Vismo", img: "/brands/vismo-logo1-768x500.png" },
   ];
 
   const currentSlide = useSignal(0);
@@ -139,8 +131,8 @@ export default component$(() => {
         {heroSlides.map((slide, i) => (
           <div
             key={i}
-            class={`text-white py-24 md:py-20 px-8 text-center overflow-hidden transition-opacity duration-700 ease-in-out ${
-              i === 0 ? "relative" : "absolute top-0 left-0 w-full h-full"
+            class={`text-white px-8 text-center overflow-hidden transition-opacity duration-700 ease-in-out flex items-center justify-center ${
+              i === 0 ? "relative h-[45vh] md:h-[54vh] md:max-h-[630px]" : "absolute top-0 left-0 w-full h-full"
             } ${currentSlide.value === i ? "opacity-100 z-10" : "opacity-0 z-0"}`}
             aria-hidden={currentSlide.value !== i}
           >
@@ -153,13 +145,13 @@ export default component$(() => {
             />
             <div class="absolute inset-0 bg-gradient-to-br from-dark/60 to-[#2d2d2d]/50" />
             <div class="relative z-10 max-w-[720px] mx-auto">
-              <div class="hidden md:inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-xs font-bold tracking-widest uppercase mb-5 border border-primary/30">
+              <div class="hidden md:inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-[clamp(0.65rem,0.8vw,0.75rem)] font-bold tracking-widest uppercase mb-[1.5vh] border border-primary/30">
                 {slide.badge}
               </div>
-              <h2 class="text-4xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-4 [text-shadow:0_2px_12px_rgba(0,0,0,0.4)]">
+              <h2 class="text-[clamp(2rem,5vw,3.75rem)] font-extrabold leading-[1.1] tracking-tight mb-[1.5vh] [text-shadow:0_2px_12px_rgba(0,0,0,0.4)]">
                 {slide.title}
               </h2>
-              <p class="text-xl text-white/70 max-w-[520px] mx-auto mb-8 leading-relaxed">
+              <p class="text-[clamp(0.9rem,1.5vw,1.25rem)] text-white/70 max-w-[520px] mx-auto mb-[2vh] leading-relaxed">
                 {slide.description}
               </p>
               <div class="flex gap-4 justify-center flex-wrap">
@@ -199,13 +191,13 @@ export default component$(() => {
       </section>
 
       {/* Categories */}
-      <section class="px-0 pt-2.5 pb-2.5">
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-2.5">
+      <section id="products" class="px-0 pt-2.5 pb-2.5">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-2.5">
           {categories.map((cat) => (
             <Link
               key={cat.name}
               href={`/collections/${cat.handle}/`}
-              class="group relative rounded overflow-hidden aspect-[4/3] md:aspect-square flex items-end p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+              class="group relative rounded overflow-hidden aspect-[4/3] md:aspect-[4/3] flex items-center justify-center p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
             >
               <img
                 src={cat.img}
@@ -214,24 +206,23 @@ export default component$(() => {
                 height={390}
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              {/* Bottom text gradient */}
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div class="absolute inset-0 bg-black/40" />
               {/* Edge vignette — fades card edges into the page background */}
               <div class="absolute inset-0 shadow-[inset_0_0_50px_15px_rgba(0,0,0,0.5)] dark:shadow-[inset_0_0_50px_15px_rgba(0,0,0,0.8)] pointer-events-none" />
-              <div class="relative z-10">
+              <div class="relative z-10 text-center">
                 <h3 class="text-white text-2xl font-bold">{cat.name}</h3>
                 <p class="text-white/60 text-base mt-1">{cat.desc}</p>
+                <span class="inline-block text-primary text-lg mt-2 transition-transform duration-200 group-hover:translate-x-1">
+                  &rarr;
+                </span>
               </div>
-              <span class="relative z-10 text-primary text-lg ml-auto transition-transform duration-200 group-hover:translate-x-1">
-                &rarr;
-              </span>
             </Link>
           ))}
         </div>
       </section>
 
       {/* Brands */}
-      <div class="bg-white dark:bg-[#1e1e1e] border-y border-gray-200 dark:border-gray-700 py-10 px-4 md:px-8 text-center">
+      <div class="bg-white dark:bg-[#1e1e1e] border-y border-gray-200 dark:border-gray-700 py-[4vh] px-4 md:px-8 text-center">
         <div class="flex flex-wrap justify-center items-center gap-2.5">
           {brands.map((brand) => (
             <img

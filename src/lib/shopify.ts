@@ -38,6 +38,7 @@ export interface ShopifyProduct {
   vendor: string;
   productType: string;
   createdAt: string;
+  options: { name: string; values: string[] }[];
   featuredImage: ShopifyImage | null;
   priceRange: {
     minVariantPrice: ShopifyPrice;
@@ -138,6 +139,16 @@ export async function getProducts(first = 20): Promise<ShopifyProduct[]> {
   return data.products.edges.map((edge) => edge.node);
 }
 
+export interface PageInfo {
+  hasNextPage: boolean;
+  endCursor: string | null;
+}
+
+export interface PaginatedProducts {
+  products: ShopifyProduct[];
+  pageInfo: PageInfo;
+}
+
 export interface ShopifyCollection {
   id: string;
   title: string;
@@ -146,11 +157,12 @@ export interface ShopifyCollection {
   image: ShopifyImage | null;
   products: {
     edges: { node: ShopifyProduct }[];
+    pageInfo: PageInfo;
   };
 }
 
 const COLLECTION_BY_HANDLE_QUERY = gql`
-  query CollectionByHandle($handle: String!, $first: Int!, $sortKey: ProductCollectionSortKeys, $reverse: Boolean) {
+  query CollectionByHandle($handle: String!, $first: Int!, $after: String, $sortKey: ProductCollectionSortKeys, $reverse: Boolean) {
     collectionByHandle(handle: $handle) {
       id
       title
@@ -160,7 +172,7 @@ const COLLECTION_BY_HANDLE_QUERY = gql`
         url
         altText
       }
-      products(first: $first, sortKey: $sortKey, reverse: $reverse) {
+      products(first: $first, after: $after, sortKey: $sortKey, reverse: $reverse) {
         edges {
           node {
             id
@@ -170,6 +182,11 @@ const COLLECTION_BY_HANDLE_QUERY = gql`
             vendor
             productType
             createdAt
+            availableForSale
+            options {
+              name
+              values
+            }
             featuredImage {
               url
               altText
@@ -185,6 +202,10 @@ const COLLECTION_BY_HANDLE_QUERY = gql`
               }
             }
           }
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
         }
       }
     }
@@ -222,15 +243,31 @@ export async function getCollections(
 
 export async function getCollectionByHandle(
   handle: string,
-  first = 50,
+  first = 20,
   sortKey?: string,
   reverse?: boolean,
+  after?: string,
 ): Promise<ShopifyCollection | null> {
   const data = await client.request<{
     collectionByHandle: ShopifyCollection | null;
-  }>(COLLECTION_BY_HANDLE_QUERY, { handle, first, sortKey, reverse });
+  }>(COLLECTION_BY_HANDLE_QUERY, { handle, first, sortKey, reverse, after });
 
   return data.collectionByHandle;
+}
+
+export async function getCollectionProducts(
+  handle: string,
+  first = 20,
+  after?: string,
+  sortKey?: string,
+  reverse?: boolean,
+): Promise<PaginatedProducts> {
+  const collection = await getCollectionByHandle(handle, first, sortKey, reverse, after);
+  if (!collection) return { products: [], pageInfo: { hasNextPage: false, endCursor: null } };
+  return {
+    products: collection.products.edges.map((e) => e.node),
+    pageInfo: collection.products.pageInfo,
+  };
 }
 
 export async function getProductByHandle(
@@ -454,4 +491,127 @@ export async function getCart(cartId: string): Promise<ShopifyCart | null> {
   }>(GET_CART_QUERY, { cartId });
 
   return data.cart;
+}
+
+const UPDATE_CART_LINES_MUTATION = gql`
+  ${CART_FRAGMENT}
+  mutation CartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+    cartLinesUpdate(cartId: $cartId, lines: $lines) {
+      cart {
+        ...CartFields
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+
+export async function updateCartLines(
+  cartId: string,
+  lines: { id: string; quantity: number }[],
+): Promise<ShopifyCart> {
+  const data = await client.request<{
+    cartLinesUpdate: { cart: ShopifyCart };
+  }>(UPDATE_CART_LINES_MUTATION, { cartId, lines });
+  return data.cartLinesUpdate.cart;
+}
+
+// Search
+
+export interface SearchResult {
+  products: ShopifyProduct[];
+  pageInfo: PageInfo;
+  totalCount: number;
+}
+
+const PREDICTIVE_SEARCH_QUERY = gql`
+  query PredictiveSearch($query: String!, $first: Int!) {
+    predictiveSearch(query: $query, limit: $first, types: [PRODUCT]) {
+      products {
+        id
+        title
+        handle
+        featuredImage {
+          url
+          altText
+        }
+        priceRange {
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+        }
+      }
+    }
+  }
+`;
+
+const SEARCH_PRODUCTS_QUERY = gql`
+  query SearchProducts($query: String!, $first: Int!, $after: String) {
+    search(query: $query, first: $first, after: $after, types: [PRODUCT]) {
+      edges {
+        node {
+          ... on Product {
+            id
+            title
+            handle
+            description
+            vendor
+            productType
+            availableForSale
+            featuredImage {
+              url
+              altText
+            }
+            priceRange {
+              minVariantPrice {
+                amount
+                currencyCode
+              }
+              maxVariantPrice {
+                amount
+                currencyCode
+              }
+            }
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      totalCount
+    }
+  }
+`;
+
+export async function predictiveSearch(
+  query: string,
+  first = 6,
+): Promise<ShopifyProduct[]> {
+  const data = await client.request<{
+    predictiveSearch: { products: ShopifyProduct[] };
+  }>(PREDICTIVE_SEARCH_QUERY, { query, first });
+  return data.predictiveSearch.products;
+}
+
+export async function searchProducts(
+  query: string,
+  first = 20,
+  after?: string,
+): Promise<SearchResult> {
+  const data = await client.request<{
+    search: {
+      edges: { node: ShopifyProduct }[];
+      pageInfo: PageInfo;
+      totalCount: number;
+    };
+  }>(SEARCH_PRODUCTS_QUERY, { query, first, after });
+  return {
+    products: data.search.edges.map((e) => e.node),
+    pageInfo: data.search.pageInfo,
+    totalCount: data.search.totalCount,
+  };
 }

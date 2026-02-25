@@ -1,9 +1,9 @@
-import { component$, Slot, useSignal, useVisibleTask$, useTask$, $ } from "@builder.io/qwik";
+import { component$, Slot, useSignal, useVisibleTask$, useTask$, $, useOnDocument } from "@builder.io/qwik";
 import { isServer } from "@builder.io/qwik/build";
 import { Link } from "@builder.io/qwik-city";
 import { Modal } from "@qwik-ui/headless";
-import { getCart, removeFromCart, formatPrice } from "~/lib/shopify";
-import type { ShopifyCart } from "~/lib/shopify";
+import { getCart, removeFromCart, updateCartLines, formatPrice, predictiveSearch } from "~/lib/shopify";
+import type { ShopifyCart, ShopifyProduct } from "~/lib/shopify";
 
 export default component$(() => {
   const darkMode = useSignal(false);
@@ -65,16 +65,75 @@ export default component$(() => {
     }
   });
 
+  const updateLineQuantity = $(async (lineId: string, quantity: number) => {
+    const cartId = localStorage.getItem("cart_id");
+    if (!cartId) return;
+    try {
+      let cart;
+      if (quantity <= 0) {
+        cart = await removeFromCart(cartId, [lineId]);
+      } else {
+        cart = await updateCartLines(cartId, [{ id: lineId, quantity }]);
+      }
+      cartData.value = cart;
+      cartCount.value = cart.totalQuantity;
+      localStorage.setItem("cart_count", String(cart.totalQuantity));
+    } catch (err) {
+      console.error("Failed to update quantity:", err);
+    }
+  });
+
+  // Search
+  const searchQuery = useSignal("");
+  const searchResults = useSignal<ShopifyProduct[]>([]);
+  const searchOpen = useSignal(false);
+  const searchLoading = useSignal(false);
+  const searchTimeout = useSignal<ReturnType<typeof setTimeout> | null>(null);
+
+  const doSearch = $((query: string) => {
+    if (searchTimeout.value) clearTimeout(searchTimeout.value);
+    if (!query.trim()) {
+      searchResults.value = [];
+      searchOpen.value = false;
+      return;
+    }
+    searchLoading.value = true;
+    searchOpen.value = true;
+    searchTimeout.value = setTimeout(async () => {
+      try {
+        const results = await predictiveSearch(query.trim());
+        searchResults.value = results;
+      } catch (err) {
+        console.error("Search failed:", err);
+      } finally {
+        searchLoading.value = false;
+      }
+    }, 300);
+  });
+
   const toggleDarkMode = $(() => {
     const isDark = document.documentElement.classList.toggle("dark");
     darkMode.value = isDark;
     localStorage.setItem("darkMode", String(isDark));
   });
 
+  // Click-outside to close search dropdown
+  useOnDocument(
+    "click",
+    $((e: Event) => {
+      if (!searchOpen.value) return;
+      const target = e.target as HTMLElement;
+      if (!target.closest("[data-search-container]")) {
+        searchOpen.value = false;
+      }
+    }),
+  );
+
   return (
-    <div class="max-w-site mx-auto bg-white dark:bg-[#121212] shadow-xl">
+    <div class="min-h-screen bg-gray-100 dark:bg-black">
+    <div class="bg-white dark:bg-[#121212] max-w-site mx-auto">
       {/* Announcement Bar */}
-      <div class="bg-dark text-white py-2 px-4 md:px-8 text-[0.65rem] md:text-[0.8rem] font-medium tracking-wider overflow-hidden">
+      <div class="bg-dark text-white py-[0.4vh] px-4 md:px-8 text-[clamp(0.6rem,0.8vw,0.8rem)] font-medium tracking-wider overflow-hidden">
         <div class="flex items-center justify-between">
           <div class="overflow-hidden flex-1 mr-4">
             <div class="announcement-scroll flex whitespace-nowrap">
@@ -130,6 +189,86 @@ export default component$(() => {
           </nav>
 
           <div class="flex items-center gap-1">
+            {/* Desktop search */}
+            <div class="hidden md:block relative" data-search-container>
+              <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden bg-white dark:bg-[#1e1e1e]">
+                <svg class="w-4 h-4 ml-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  class="w-[200px] lg:w-[260px] px-2 py-2 text-sm bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
+                  value={searchQuery.value}
+                  onInput$={(_, el) => {
+                    searchQuery.value = el.value;
+                    doSearch(el.value);
+                  }}
+                  onFocus$={() => {
+                    if (searchQuery.value.trim()) searchOpen.value = true;
+                  }}
+                  onKeyDown$={(e) => {
+                    if (e.key === "Enter" && searchQuery.value.trim()) {
+                      searchOpen.value = false;
+                      window.location.href = `/search/?q=${encodeURIComponent(searchQuery.value.trim())}`;
+                    }
+                  }}
+                />
+              </div>
+              {searchOpen.value && (
+                <div class="absolute top-full right-0 mt-1 w-[360px] bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl z-50 max-h-[400px] overflow-y-auto">
+                  {searchLoading.value ? (
+                    <div class="flex items-center justify-center py-6">
+                      <div class="w-5 h-5 border-2 border-gray-300 border-t-primary rounded-full animate-spin" />
+                    </div>
+                  ) : searchResults.value.length === 0 ? (
+                    <p class="text-sm text-gray-500 text-center py-6">No results found</p>
+                  ) : (
+                    <>
+                      {searchResults.value.map((product) => (
+                        <a
+                          key={product.id}
+                          href={`/product/${product.handle}/`}
+                          class="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                          onClick$={() => { searchOpen.value = false; }}
+                        >
+                          {product.featuredImage ? (
+                            <img src={product.featuredImage.url} alt="" width={40} height={40} class="w-10 h-10 rounded-md object-cover bg-gray-100 dark:bg-gray-800 flex-shrink-0" />
+                          ) : (
+                            <div class="w-10 h-10 rounded-md bg-gray-100 dark:bg-gray-800 flex-shrink-0" />
+                          )}
+                          <div class="flex-1 min-w-0">
+                            <p class="text-sm font-medium truncate">{product.title}</p>
+                            <p class="text-xs text-primary font-semibold">{formatPrice(product.priceRange.minVariantPrice)}</p>
+                          </div>
+                        </a>
+                      ))}
+                      <a
+                        href={`/search/?q=${encodeURIComponent(searchQuery.value.trim())}`}
+                        class="block text-center text-sm text-primary font-medium py-3 border-t border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                        onClick$={() => { searchOpen.value = false; }}
+                      >
+                        View all results
+                      </a>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile search icon */}
+            <a
+              href="/search/"
+              class="md:hidden flex items-center justify-center w-10 h-10 text-gray-600 dark:text-gray-300 hover:text-dark dark:hover:text-white transition-colors"
+              aria-label="Search"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+            </a>
+
             {/* Cart button + drawer */}
             <Modal.Root bind:show={cartOpen}>
               <Modal.Trigger
@@ -202,11 +341,27 @@ export default component$(() => {
                                 <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{line.merchandise.title}</p>
                               )}
                               <div class="flex items-center justify-between mt-1.5">
-                                <span class="text-xs text-gray-500 dark:text-gray-400">Qty: {line.quantity}</span>
-                                <div class="flex items-center gap-2">
+                                <div class="flex items-center gap-1.5">
                                   <button
                                     type="button"
-                                    class="text-gray-400 hover:text-red-500 transition-colors bg-transparent border-none p-0"
+                                    class="w-7 h-7 flex items-center justify-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#1e1e1e] text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-sm font-medium"
+                                    aria-label="Decrease quantity"
+                                    onClick$={() => updateLineQuantity(line.id, line.quantity - 1)}
+                                  >
+                                    -
+                                  </button>
+                                  <span class="text-sm font-medium w-6 text-center">{line.quantity}</span>
+                                  <button
+                                    type="button"
+                                    class="w-7 h-7 flex items-center justify-center rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#1e1e1e] text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-sm font-medium"
+                                    aria-label="Increase quantity"
+                                    onClick$={() => updateLineQuantity(line.id, line.quantity + 1)}
+                                  >
+                                    +
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="ml-1 text-gray-400 hover:text-red-500 transition-colors bg-transparent border-none p-0"
                                     aria-label="Remove item"
                                     onClick$={() => removeLineItem(line.id)}
                                   >
@@ -215,9 +370,17 @@ export default component$(() => {
                                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
                                     </svg>
                                   </button>
+                                </div>
+                                <div class="text-right">
                                   <span class="text-sm font-bold text-primary">
-                                    {formatPrice(line.merchandise.price)}
+                                    {formatPrice({
+                                      amount: String(parseFloat(line.merchandise.price.amount) * line.quantity),
+                                      currencyCode: line.merchandise.price.currencyCode,
+                                    })}
                                   </span>
+                                  {line.quantity > 1 && (
+                                    <p class="text-[11px] text-gray-400">{line.quantity} x {formatPrice(line.merchandise.price)}</p>
+                                  )}
                                 </div>
                               </div>
                             </div>
@@ -230,12 +393,19 @@ export default component$(() => {
 
                 {cartData.value && cartData.value.lines.edges.length > 0 && (
                   <div class="border-t border-gray-200 dark:border-gray-700 p-4">
-                    <div class="flex items-center justify-between mb-4">
-                      <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Subtotal</span>
-                      <span class="text-lg font-bold">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="text-sm text-gray-500 dark:text-gray-400">Subtotal</span>
+                      <span class="text-sm font-medium">
                         {formatPrice(cartData.value.cost.subtotalAmount)}
                       </span>
                     </div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-sm font-semibold">Estimated Total</span>
+                      <span class="text-lg font-bold">
+                        {formatPrice(cartData.value.cost.totalAmount)}
+                      </span>
+                    </div>
+                    <p class="text-[11px] text-gray-400 dark:text-gray-500 mb-3">Taxes and shipping calculated at checkout</p>
                     <a
                       href={cartData.value.checkoutUrl}
                       target="_blank"
@@ -327,8 +497,8 @@ export default component$(() => {
       <Slot />
 
       {/* Footer */}
-      <footer class="bg-dark text-white/80 mt-16">
-        <div class="pt-10 px-5 pb-7 md:pt-14 md:px-8 md:pb-8">
+      <footer class="bg-dark text-white/80">
+        <div class="pt-[4vh] px-5 pb-[3vh] md:pt-[5vh] md:px-8 md:pb-[3vh]">
           <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr_1fr] gap-8 md:gap-14 mb-10">
             <div>
               <img
@@ -415,6 +585,7 @@ export default component$(() => {
           </div>
         </div>
       </footer>
+    </div>
     </div>
   );
 });
