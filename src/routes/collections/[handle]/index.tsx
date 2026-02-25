@@ -63,11 +63,13 @@ export default component$(() => {
   const selectedTypes = useSignal<string[]>([]);
   const selectedSizes = useSignal<string[]>([]);
   const inStockOnly = useSignal(false);
+  const sortOpen = useSignal(false);
 
   const closeAllDropdowns = $(() => {
     brandFilterOpen.value = false;
     typeFilterOpen.value = false;
     sizeFilterOpen.value = false;
+    sortOpen.value = false;
   });
 
   useOnDocument(
@@ -82,6 +84,9 @@ export default component$(() => {
       }
       if (sizeFilterOpen.value && !target.closest("[data-size-filter]")) {
         sizeFilterOpen.value = false;
+      }
+      if (sortOpen.value && !target.closest("[data-sort-filter]")) {
+        sortOpen.value = false;
       }
     }),
   );
@@ -484,37 +489,48 @@ export default component$(() => {
             </button>
           )}
 
-          {/* Right side: count + sort */}
-          <div class="flex items-center gap-1.5 md:gap-3 md:ml-auto">
-            <span class="hidden md:block text-xs text-gray-400 dark:text-gray-500">
+          {/* Sort dropdown */}
+          <div class="relative md:ml-auto" data-sort-filter>
+            <span class="hidden md:inline text-xs text-gray-400 dark:text-gray-500 mr-1.5">
               {activeFilterCount.value > 0
                 ? `${filteredProducts.value.length} of ${loadedProducts.value.length}`
-                : `${loadedProducts.value.length}`} products
+                : `${loadedProducts.value.length}`} products &middot;
             </span>
-            <div class="flex items-center gap-1.5">
-              <label for="sort-select" class="hidden md:block text-xs text-gray-400 dark:text-gray-500 whitespace-nowrap">
-                Sort by
-              </label>
-              <select
-                id="sort-select"
-                aria-label="Sort by"
-                class="text-[12px] md:text-[13px] border border-gray-200 dark:border-gray-700 rounded-md px-2 md:px-3 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50 !py-1 md:!py-1.5"
-                value={currentSort.value}
-                onChange$={(_, el) => {
-                  currentSort.value = el.value;
-                  const url = new URL(window.location.href);
-                  if (el.value) url.searchParams.set("sort", el.value);
-                  else url.searchParams.delete("sort");
-                  history.replaceState(null, "", url.pathname + url.search);
-                }}
-              >
+            <button
+              type="button"
+              class={`text-[12px] md:text-[13px] border rounded-md px-2 py-1 md:px-3 md:py-1.5 inline-flex items-center gap-1 md:gap-1.5 transition-colors border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600`}
+              onClick$={() => {
+                const opening = !sortOpen.value;
+                closeAllDropdowns();
+                sortOpen.value = opening;
+              }}
+            >
+              {SORT_OPTIONS.find((o) => o.value === currentSort.value)?.label || "Latest"}
+              <svg class={`w-3.5 h-3.5 transition-transform ${sortOpen.value ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {sortOpen.value && (
+              <div class="absolute top-full right-0 mt-1 bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-20 min-w-[120px] py-1.5">
                 {SORT_OPTIONS.map((opt) => (
-                  <option key={opt.value} value={opt.value} selected={opt.value === currentSort.value}>
+                  <button
+                    key={opt.value}
+                    type="button"
+                    class={`w-full text-left px-4 py-1.5 text-sm transition-colors ${currentSort.value === opt.value ? "text-primary font-medium bg-primary/5" : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"}`}
+                    onClick$={() => {
+                      currentSort.value = opt.value;
+                      sortOpen.value = false;
+                      const url = new URL(window.location.href);
+                      if (opt.value) url.searchParams.set("sort", opt.value);
+                      else url.searchParams.delete("sort");
+                      history.replaceState(null, "", url.pathname + url.search);
+                    }}
+                  >
                     {opt.label}
-                  </option>
+                  </button>
                 ))}
-              </select>
-            </div>
+              </div>
+            )}
           </div>
         </div>
 

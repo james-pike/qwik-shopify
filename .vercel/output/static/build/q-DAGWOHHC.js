@@ -1,0 +1,1 @@
+import{f as t,z as a,R as e,A as n,s as r}from"./q-CXxju9N-.js";import{c as l}from"./q-B0Sxu0kH.js";const m=s=>{const i=t(l),o=`${i.localId}-description`;return a("div",{id:o,get"data-disabled"(){return i.isDisabledSig.value?"":void 0},...s,children:n(r,null,3,"EC_0")},{"data-disabled":e(d=>d.isDisabledSig.value?"":void 0,[i])},0,"EC_1")};export{m as s_DEee8iqo9yI};
