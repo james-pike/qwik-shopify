@@ -1,0 +1,1 @@
+import{v as c}from"./q-BU21zO9y.js";const a=()=>{const[e]=c(),l=e.numSlidesSig.value,n=e.slidesPerViewSig.value,i=e.moveSig.value,s=l-n,t=[];for(let o=0;o<=s;o+=i)t.push(o);return s%i!==0&&t.push(s),t};export{a as s_QTe7ppDtm7M};

@@ -485,7 +485,7 @@ export default component$(() => {
           )}
 
           {/* Right side: count + sort */}
-          <div class="flex items-center gap-3 ml-auto">
+          <div class="flex items-center gap-1.5 md:gap-3 md:ml-auto">
             <span class="hidden md:block text-xs text-gray-400 dark:text-gray-500">
               {activeFilterCount.value > 0
                 ? `${filteredProducts.value.length} of ${loadedProducts.value.length}`
@@ -498,7 +498,7 @@ export default component$(() => {
               <select
                 id="sort-select"
                 aria-label="Sort by"
-                class="text-[12px] md:text-[13px] border border-gray-200 dark:border-gray-700 rounded-md px-2 md:px-3 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50 leading-none py-[6px] md:py-[7px]"
+                class="text-[12px] md:text-[13px] border border-gray-200 dark:border-gray-700 rounded-md px-2 md:px-3 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50 !py-1 md:!py-1.5"
                 value={currentSort.value}
                 onChange$={(_, el) => {
                   currentSort.value = el.value;
