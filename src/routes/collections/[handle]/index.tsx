@@ -249,7 +249,7 @@ export default component$(() => {
         )}
       </div>
 
-      <div class="bg-white dark:bg-[#1a1a1a] border-y border-gray-200/60 dark:border-gray-700/40 px-2.5 md:px-8 py-2.5 md:py-4">
+      <div class="bg-white dark:bg-[#1a1a1a] border-y border-gray-200/60 dark:border-gray-700/40 px-4 md:px-8 py-2.5 md:py-4">
         {/* Breadcrumbs + mobile count */}
         <div class="flex items-center justify-between mb-3">
           <nav class="flex items-center gap-1.5 text-xs md:text-sm text-gray-500 dark:text-gray-400" aria-label="Breadcrumb">
