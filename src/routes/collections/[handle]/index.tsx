@@ -244,7 +244,7 @@ export default component$(() => {
         )}
       </div>
 
-      <div class="bg-white dark:bg-[#1a1a1a] border-y border-gray-200/60 dark:border-gray-700/40 px-4 md:px-8 py-3 md:py-4">
+      <div class="bg-white dark:bg-[#1a1a1a] border-y border-gray-200/60 dark:border-gray-700/40 px-2.5 md:px-8 py-2.5 md:py-4">
         {/* Breadcrumbs + mobile count */}
         <div class="flex items-center justify-between mb-3">
           <nav class="flex items-center gap-1.5 text-xs md:text-sm text-gray-500 dark:text-gray-400" aria-label="Breadcrumb">
@@ -288,13 +288,71 @@ export default component$(() => {
         </div>
 
         {/* Toolbar: filters left, count + sort right */}
-        <div class="flex flex-wrap items-center gap-2 md:gap-2.5">
+        <div class="flex flex-wrap items-center gap-1.5 md:gap-2.5">
+          {/* Product type filter */}
+          {(
+            <div class="relative" data-type-filter>
+              <button
+                type="button"
+                class={`text-[12px] md:text-[13px] border rounded-md px-2 py-1 md:px-3 md:py-1.5 flex items-center gap-1 md:gap-1.5 transition-colors ${selectedTypes.value.length > 0 ? "border-primary bg-primary/5 text-primary font-medium" : "border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"}`}
+                onClick$={() => {
+                  const opening = !typeFilterOpen.value;
+                  closeAllDropdowns();
+                  typeFilterOpen.value = opening;
+                }}
+              >
+                Type
+                {selectedTypes.value.length > 0 && (
+                  <span class="bg-primary text-white text-[10px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center leading-none">
+                    {selectedTypes.value.length}
+                  </span>
+                )}
+                <svg class={`w-3.5 h-3.5 transition-transform ${typeFilterOpen.value ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {typeFilterOpen.value && (
+                <div class="absolute top-full right-0 md:left-0 md:right-auto mt-1 bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-20 min-w-[200px] py-1.5 max-h-[280px] overflow-y-auto">
+                  {selectedTypes.value.length > 0 && (
+                    <button
+                      type="button"
+                      class="w-full text-left px-4 py-1.5 text-xs text-primary hover:bg-gray-50 dark:hover:bg-gray-800 font-medium"
+                      onClick$={() => { selectedTypes.value = []; }}
+                    >
+                      Clear
+                    </button>
+                  )}
+                  {productTypes.value.map((type) => (
+                    <label
+                      key={type}
+                      class="flex items-center gap-2 px-4 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
+                    >
+                      <input
+                        type="checkbox"
+                        class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary/50"
+                        checked={selectedTypes.value.includes(type)}
+                        onChange$={() => {
+                          const current = [...selectedTypes.value];
+                          const idx = current.indexOf(type);
+                          if (idx >= 0) current.splice(idx, 1);
+                          else current.push(type);
+                          selectedTypes.value = current;
+                        }}
+                      />
+                      {type}
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Brand filter */}
           {(
             <div class="relative" data-brand-filter>
               <button
                 type="button"
-                class={`text-[13px] border rounded-md px-3 py-1.5 flex items-center gap-1.5 transition-colors ${selectedBrands.value.length > 0 ? "border-primary bg-primary/5 text-primary font-medium" : "border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"}`}
+                class={`text-[12px] md:text-[13px] border rounded-md px-2 py-1 md:px-3 md:py-1.5 flex items-center gap-1 md:gap-1.5 transition-colors ${selectedBrands.value.length > 0 ? "border-primary bg-primary/5 text-primary font-medium" : "border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"}`}
                 onClick$={() => {
                   const opening = !brandFilterOpen.value;
                   closeAllDropdowns();
@@ -353,7 +411,7 @@ export default component$(() => {
             <div class="relative" data-size-filter>
               <button
                 type="button"
-                class={`text-[13px] border rounded-md px-3 py-1.5 flex items-center gap-1.5 transition-colors ${selectedSizes.value.length > 0 ? "border-primary bg-primary/5 text-primary font-medium" : "border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"}`}
+                class={`text-[12px] md:text-[13px] border rounded-md px-2 py-1 md:px-3 md:py-1.5 flex items-center gap-1 md:gap-1.5 transition-colors ${selectedSizes.value.length > 0 ? "border-primary bg-primary/5 text-primary font-medium" : "border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"}`}
                 onClick$={() => {
                   const opening = !sizeFilterOpen.value;
                   closeAllDropdowns();
@@ -406,68 +464,10 @@ export default component$(() => {
             </div>
           )}
 
-          {/* Product type filter */}
-          {(
-            <div class="relative" data-type-filter>
-              <button
-                type="button"
-                class={`text-[13px] border rounded-md px-3 py-1.5 flex items-center gap-1.5 transition-colors ${selectedTypes.value.length > 0 ? "border-primary bg-primary/5 text-primary font-medium" : "border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"}`}
-                onClick$={() => {
-                  const opening = !typeFilterOpen.value;
-                  closeAllDropdowns();
-                  typeFilterOpen.value = opening;
-                }}
-              >
-                Type
-                {selectedTypes.value.length > 0 && (
-                  <span class="bg-primary text-white text-[10px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center leading-none">
-                    {selectedTypes.value.length}
-                  </span>
-                )}
-                <svg class={`w-3.5 h-3.5 transition-transform ${typeFilterOpen.value ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {typeFilterOpen.value && (
-                <div class="absolute top-full right-0 md:left-0 md:right-auto mt-1 bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg z-20 min-w-[200px] py-1.5 max-h-[280px] overflow-y-auto">
-                  {selectedTypes.value.length > 0 && (
-                    <button
-                      type="button"
-                      class="w-full text-left px-4 py-1.5 text-xs text-primary hover:bg-gray-50 dark:hover:bg-gray-800 font-medium"
-                      onClick$={() => { selectedTypes.value = []; }}
-                    >
-                      Clear
-                    </button>
-                  )}
-                  {productTypes.value.map((type) => (
-                    <label
-                      key={type}
-                      class="flex items-center gap-2 px-4 py-1.5 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
-                    >
-                      <input
-                        type="checkbox"
-                        class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary/50"
-                        checked={selectedTypes.value.includes(type)}
-                        onChange$={() => {
-                          const current = [...selectedTypes.value];
-                          const idx = current.indexOf(type);
-                          if (idx >= 0) current.splice(idx, 1);
-                          else current.push(type);
-                          selectedTypes.value = current;
-                        }}
-                      />
-                      {type}
-                    </label>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-
           {/* Availability toggle */}
           <button
             type="button"
-            class={`text-[13px] border rounded-md px-3 py-1.5 flex items-center gap-1.5 transition-colors ${inStockOnly.value ? "border-primary bg-primary/5 text-primary font-medium" : "border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"}`}
+            class={`text-[12px] md:text-[13px] border rounded-md px-2 py-1 md:px-3 md:py-1.5 flex items-center gap-1 md:gap-1.5 transition-colors ${inStockOnly.value ? "border-primary bg-primary/5 text-primary font-medium" : "border-gray-200 dark:border-gray-700 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:border-gray-300 dark:hover:border-gray-600"}`}
             onClick$={() => { inStockOnly.value = !inStockOnly.value; }}
           >
             In Stock
@@ -498,7 +498,7 @@ export default component$(() => {
               <select
                 id="sort-select"
                 aria-label="Sort by"
-                class="text-[13px] border border-gray-200 dark:border-gray-700 rounded-md px-3 py-1.5 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50"
+                class="text-[12px] md:text-[13px] border border-gray-200 dark:border-gray-700 rounded-md px-2 md:px-3 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50 leading-none py-[6px] md:py-[7px]"
                 value={currentSort.value}
                 onChange$={(_, el) => {
                   currentSort.value = el.value;
