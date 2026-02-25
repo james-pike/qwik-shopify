@@ -370,4 +370,4 @@ ${String(e)}`)}catch(t){return t}},me=e=>{if(typeof e!="object"||e===null)throw 
       totalCount
     }
   }
-`;async function tn(e,t=6){return(await _.request(Ht,{query:e,first:t})).predictiveSearch.products}async function nn(e,t=20,n){const s=await _.request(Qt,{query:e,first:t,after:n});return{products:s.search.edges.map(i=>i.node),pageInfo:s.search.pageInfo,totalCount:s.search.totalCount}}export{Wt as a,zt as b,Xt as c,Jt as f,Kt as g,tn as p,Zt as r,nn as s,en as u};
+`;async function tn(e,t=6){return(await _.request(Ht,{query:e,first:t})).predictiveSearch.products}async function nn(e,t=20,n){const s=await _.request(Qt,{query:e,first:t,after:n});return{products:s.search.edges.map(i=>i.node),pageInfo:s.search.pageInfo,totalCount:s.search.totalCount}}export{zt as a,Wt as b,Xt as c,Jt as f,Kt as g,tn as p,Zt as r,nn as s,en as u};
