@@ -133,7 +133,7 @@ export default component$(() => {
     <div class="min-h-screen bg-gray-100 dark:bg-black">
     <div class="bg-white dark:bg-[#121212] max-w-site mx-auto">
       {/* Announcement Bar */}
-      <div class="bg-dark text-white py-[0.4vh] px-4 md:px-8 text-[clamp(0.6rem,0.8vw,0.8rem)] font-medium tracking-wider overflow-hidden">
+      <div class="bg-dark text-white py-[0.4vh] px-2 md:px-8 text-[clamp(0.6rem,0.8vw,0.8rem)] font-medium tracking-wider overflow-hidden">
         <div class="flex items-center justify-between">
           <div class="overflow-hidden flex-1 mr-4">
             <div class="announcement-scroll flex whitespace-nowrap">
@@ -160,7 +160,7 @@ export default component$(() => {
       </div>
 
       {/* Header */}
-      <header class="bg-white dark:bg-[#1e1e1e] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-[100] shadow-sm pl-3 pr-2 md:px-4">
+      <header class="bg-white dark:bg-[#1e1e1e] border-b border-gray-200 dark:border-gray-700 sticky top-0 z-[100] shadow-sm pl-2 pr-2 md:px-4">
         <div class="py-1 md:py-2 flex items-center justify-between">
           <Link href="/" class="text-xl font-extrabold tracking-tight flex items-center gap-2">
             <img
