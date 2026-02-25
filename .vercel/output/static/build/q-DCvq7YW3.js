@@ -1,1 +1,0 @@
-import{v as a}from"./q-CbQru-9N.js";import{x as c}from"./q-CbQru-9N.js";const s=({cleanup:r})=>{const[o,e]=a();if(o.length<2)return;const t=setInterval(()=>{e.value=e.value===0?1:0},5e3);r(()=>clearInterval(t))};export{c as _hW,s as s_Lopl3NyGy0U};

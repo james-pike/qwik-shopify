@@ -1,1 +1,0 @@
-import{d as s,h as t,R as a,A as d,s as e}from"./q-CbQru-9N.js";import{b as p}from"./q-CeHPNhDg.js";const g=r=>{const o=s(p);return t("span",{get id(){return o.groupLabelId},...r,children:d(e,null,3,"5R_0")},{id:a(n=>n.groupLabelId,[o])},0,"5R_1")};export{g as s_uuEgN6isZgk};

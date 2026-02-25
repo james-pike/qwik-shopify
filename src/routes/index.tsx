@@ -86,9 +86,9 @@ export default component$(() => {
       image: "/hero.jpg",
       badge: "Canada's Safety Experts",
       title: <>Where Work &amp; Lifestyle<br />Apparel <em class="not-italic text-primary">Intersect</em></>,
-      description: "The Safety House is your one stop shop for quality specialized clothing, CSA safety footwear, and in-house embroidery services.",
-      primaryLink: { href: "/#products", label: "Shop Products" },
-      secondaryLink: { href: "/about/", label: "Our Story" },
+      description: "",
+      primaryLink: { href: "/#products", label: "Explore Collections" },
+      secondaryLink: { href: "/about/", label: "About Us" },
     },
     {
       image: "/footwear.jpg",
@@ -151,9 +151,11 @@ export default component$(() => {
               <h2 class="text-[clamp(2rem,5vw,3.75rem)] font-extrabold leading-[1.1] tracking-tight mb-[1.5vh] [text-shadow:0_2px_12px_rgba(0,0,0,0.4)]">
                 {slide.title}
               </h2>
-              <p class="text-[clamp(0.9rem,1.5vw,1.25rem)] text-white/70 max-w-[520px] mx-auto mb-[2vh] leading-relaxed">
-                {slide.description}
-              </p>
+              {slide.description && (
+                <p class="text-[clamp(0.9rem,1.5vw,1.25rem)] text-white/70 max-w-[520px] mx-auto mb-[2vh] leading-relaxed">
+                  {slide.description}
+                </p>
+              )}
               <div class="flex gap-4 justify-center flex-wrap">
                 <Link
                   href={slide.primaryLink.href}
@@ -222,22 +224,32 @@ export default component$(() => {
       </section>
 
       {/* Brands */}
-      <div class="bg-white dark:bg-[#1e1e1e] border-y border-gray-200 dark:border-gray-700 py-[4vh] px-4 md:px-8 text-center">
-        <div class="flex flex-wrap justify-center items-center gap-2.5">
-          {brands.map((brand) => (
+      <div class="bg-white dark:bg-[#1e1e1e] py-[4vh] px-4 md:px-8 text-center">
+        <div class="flex flex-wrap justify-center items-center gap-x-2 gap-y-1.5 md:gap-x-3 md:gap-y-2">
+          {brands.slice(0, Math.ceil(brands.length / 2)).map((brand) => (
             <img
               key={brand.name}
               src={brand.img}
               alt={brand.name}
               width={120}
               height={48}
-              class="h-10 md:h-14 w-auto object-contain transition-all duration-200"
+              class="h-8 md:h-10 w-auto object-contain"
+            />
+          ))}
+          <p class="w-full text-sm md:text-lg uppercase tracking-[0.15em] text-gray-400 dark:text-gray-500 font-bold py-2">
+            Trusted Brands We Carry
+          </p>
+          {brands.slice(Math.ceil(brands.length / 2)).map((brand) => (
+            <img
+              key={brand.name}
+              src={brand.img}
+              alt={brand.name}
+              width={120}
+              height={48}
+              class="h-8 md:h-10 w-auto object-contain"
             />
           ))}
         </div>
-        <p class="text-xs uppercase tracking-[0.12em] text-gray-500 mt-6 font-semibold">
-          Trusted Brands We Carry
-        </p>
       </div>
 
       {/* Value Props */}

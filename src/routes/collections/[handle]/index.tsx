@@ -5,13 +5,12 @@ import { getCollectionByHandle, getCollectionProducts, formatPrice } from "~/lib
 import type { ShopifyProduct } from "~/lib/shopify";
 
 const SORT_OPTIONS = [
-  { value: "", label: "Default" },
+  { value: "newest", label: "Latest" },
   { value: "price-asc", label: "Price \u2191" },
   { value: "price-desc", label: "Price \u2193" },
   { value: "title-asc", label: "A\u2013Z" },
   { value: "title-desc", label: "Z\u2013A" },
   { value: "best-selling", label: "Popular" },
-  { value: "newest", label: "Newest" },
 ];
 
 function sortProducts(products: ShopifyProduct[], sortValue: string): ShopifyProduct[] {
@@ -53,7 +52,7 @@ export const useCollection = routeLoader$(async (requestEvent) => {
 export default component$(() => {
   const collection = useCollection();
   const location = useLocation();
-  const currentSort = useSignal(location.url.searchParams.get("sort") || "");
+  const currentSort = useSignal(location.url.searchParams.get("sort") || "newest");
   const gridCols = useSignal<1 | 2>(2);
 
   // Filter dropdown state
@@ -219,7 +218,7 @@ export default component$(() => {
 
   return (
     <>
-      <div class="relative text-white aspect-video px-8 text-center overflow-hidden flex flex-col items-center justify-center">
+      <div class="relative text-white aspect-video md:aspect-auto md:h-[40vh] md:max-h-[400px] px-8 text-center overflow-hidden flex flex-col items-center justify-center">
         {heroImages.length > 0 ? (
           heroImages.map((img, i) => (
             <img
@@ -291,7 +290,7 @@ export default component$(() => {
         {/* Toolbar: filters left, count + sort right */}
         <div class="flex flex-wrap items-center gap-2 md:gap-2.5">
           {/* Brand filter */}
-          {brands.value.length > 1 && (
+          {(
             <div class="relative" data-brand-filter>
               <button
                 type="button"
@@ -350,7 +349,7 @@ export default component$(() => {
           )}
 
           {/* Size filter */}
-          {sizes.value.length > 1 && (
+          {(
             <div class="relative" data-size-filter>
               <button
                 type="button"
@@ -408,7 +407,7 @@ export default component$(() => {
           )}
 
           {/* Product type filter */}
-          {productTypes.value.length > 1 && (
+          {(
             <div class="relative" data-type-filter>
               <button
                 type="button"
@@ -499,7 +498,7 @@ export default component$(() => {
               <select
                 id="sort-select"
                 aria-label="Sort by"
-                class="text-[13px] border border-gray-200 dark:border-gray-700 rounded-md px-2.5 py-1.5 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50"
+                class="text-[13px] border border-gray-200 dark:border-gray-700 rounded-md px-3 py-1.5 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary/50"
                 value={currentSort.value}
                 onChange$={(_, el) => {
                   currentSort.value = el.value;
