@@ -8,8 +8,8 @@ import {
   formatPrice,
   createCart,
   addToCart,
-} from "~/lib/shopify";
-import type { ShopifyVariant } from "~/lib/shopify";
+} from "~/lib/medusa";
+import type { ShopifyVariant } from "~/lib/medusa";
 import { Carousel } from "@qwik-ui/headless";
 
 export const useProduct = routeLoader$(async (requestEvent) => {

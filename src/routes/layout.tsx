@@ -2,8 +2,8 @@ import { component$, Slot, useSignal, useVisibleTask$, useTask$, $, useOnDocumen
 import { isServer } from "@builder.io/qwik/build";
 import { Link } from "@builder.io/qwik-city";
 import { Modal } from "@qwik-ui/headless";
-import { getCart, removeFromCart, updateCartLines, formatPrice, predictiveSearch } from "~/lib/shopify";
-import type { ShopifyCart, ShopifyProduct } from "~/lib/shopify";
+import { getCart, removeFromCart, updateCartLines, formatPrice, predictiveSearch } from "~/lib/medusa";
+import type { ShopifyCart, ShopifyProduct } from "~/lib/medusa";
 
 export default component$(() => {
   const darkMode = useSignal(false);

@@ -1,4 +1,4 @@
-import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$, $ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
 
@@ -32,35 +32,40 @@ export default component$(() => {
   ];
 
   const brands = [
-    { name: "Carhartt", img: "/brands/carhart.png" },
-    { name: "Timberland Pro", img: "/brands/timberland-pro.png" },
-    { name: "Blakl\u00e4der", img: "/brands/blaklader.png" },
-    { name: "Stormtech", img: "/brands/stormtech-logo.png" },
-    { name: "Pioneer", img: "/brands/pioneer.png" },
-    { name: "Viking", img: "/brands/viking_work_wear.png" },
-    { name: "Big Bill", img: "/brands/big_bill_workwear.png" },
-    { name: "Dickies", img: "/brands/dickies_workwear_ottawa.png" },
-    { name: "Tough Duck", img: "/brands/TOUGHDUCK.png" },
-    { name: "CX2", img: "/brands/CX2-Workwear.png" },
-    { name: "Oberon", img: "/brands/oberon.png" },
-    { name: "Orange River", img: "/brands/orange_river_logo.png" },
-    { name: "Red Kap", img: "/brands/redkap.png" },
-    { name: "Atlas", img: "/brands/atlas.png" },
-    { name: "Baffin", img: "/brands/baffin.png" },
-    { name: "Blundstone", img: "/brands/blunstone_logo.png" },
-    { name: "Canada West", img: "/brands/canada-west-boots-logo-1.png" },
-    { name: "Dunlop", img: "/brands/dunlop.png" },
-    { name: "Irish Setter", img: "/brands/irish-setter.png" },
-    { name: "JB Goodhue", img: "/brands/jb-goodhue.png" },
-    { name: "Keen", img: "/brands/keen.png" },
-    { name: "Mellow Walk", img: "/brands/mellow_wailk.png" },
-    { name: "Muck", img: "/brands/muck.png" },
-    { name: "Rasco", img: "/brands/rasco.png" },
-    { name: "Redback", img: "/brands/redback.png" },
-    { name: "Red Wing", img: "/brands/red-wing-shoes.png" },
-    { name: "Royer", img: "/brands/royer.png" },
-    { name: "STC", img: "/brands/stc.png" },
+    { name: "Carhartt", img: "/brands/carhart.png", url: "https://www.carhartt.com" },
+    { name: "Timberland Pro", img: "/brands/timberland-pro.png", url: "https://www.timberland.com/timberlandpro" },
+    { name: "Blakl\u00e4der", img: "/brands/blaklader.png", url: "https://www.blaklader.com" },
+    { name: "Stormtech", img: "/brands/stormtech-logo.png", url: "https://www.stormtech.ca" },
+    { name: "Pioneer", img: "/brands/pioneer.png", url: "https://www.pioneerprotective.com" },
+    { name: "Viking", img: "/brands/viking_work_wear.png", url: "https://www.viking.ca" },
+    { name: "Big Bill", img: "/brands/big_bill_workwear.png", url: "https://www.bigbill.com" },
+    { name: "Dickies", img: "/brands/dickies_workwear_ottawa.png", url: "https://www.dickies.ca" },
+    { name: "Tough Duck", img: "/brands/TOUGHDUCK.png", url: "https://www.toughduck.com" },
+    { name: "CX2", img: "/brands/CX2-Workwear.png", url: "https://www.cx2.ca" },
+    { name: "Oberon", img: "/brands/oberon.png", url: "https://www.oberoncompany.com" },
+    { name: "Orange River", img: "/brands/orange_river_logo.png", url: "" },
+    { name: "Red Kap", img: "/brands/redkap.png", url: "https://www.redkap.com" },
+    { name: "Atlas", img: "/brands/atlas.png", url: "https://www.atlascopco.com" },
+    { name: "Baffin", img: "/brands/baffin.png", url: "https://www.bfreinc.com/baffin" },
+    { name: "Blundstone", img: "/brands/blunstone_logo.png", url: "https://www.blundstone.ca" },
+    { name: "Canada West", img: "/brands/canada-west-boots-logo-1.png", url: "https://www.canadawestboots.com" },
+    { name: "Dunlop", img: "/brands/dunlop.png", url: "https://www.dunlopboots.com" },
+    { name: "Irish Setter", img: "/brands/irish-setter.png", url: "https://www.irishsetterboots.com" },
+    { name: "JB Goodhue", img: "/brands/jb-goodhue.png", url: "https://www.jbgoodhue.com" },
+    { name: "Keen", img: "/brands/keen.png", url: "https://www.keenfootwear.com" },
+    { name: "Mellow Walk", img: "/brands/mellow_wailk.png", url: "https://www.mellowwalk.com" },
+    { name: "Muck", img: "/brands/muck.png", url: "https://www.muckbootcompany.com" },
+    { name: "Rasco", img: "/brands/rasco.png", url: "https://www.rfrasco.com" },
+    { name: "Redback", img: "/brands/redback.png", url: "https://www.redbackboots.com" },
+    { name: "Red Wing", img: "/brands/red-wing-shoes.png", url: "https://www.redwingshoes.com" },
+    { name: "Royer", img: "/brands/royer.png", url: "https://www.royer.com" },
+    { name: "STC", img: "/brands/stc.png", url: "https://www.stcfootwear.com" },
   ];
+
+  const expandedBrand = useSignal<string | null>(null);
+  const toggleBrand = $((name: string) => {
+    expandedBrand.value = expandedBrand.value === name ? null : name;
+  });
 
   const currentSlide = useSignal(0);
   const paused = useSignal(false);
@@ -144,6 +149,7 @@ export default component$(() => {
               class="absolute inset-0 w-full h-full object-cover"
             />
             <div class="absolute inset-0 bg-gradient-to-br from-dark/60 to-[#2d2d2d]/50" />
+            <div class="absolute inset-0 shadow-[inset_0_0_60px_20px_rgba(0,0,0,0.6)] pointer-events-none" />
             <div class="relative z-10 max-w-[720px] mx-auto">
               <div class="hidden md:inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-[clamp(0.65rem,0.8vw,0.75rem)] font-bold tracking-widest uppercase mb-[1.5vh] border border-primary/30">
                 {slide.badge}
@@ -193,8 +199,8 @@ export default component$(() => {
       </section>
 
       {/* Categories */}
-      <section id="products" class="px-0 pt-2.5 pb-2.5">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-2.5">
+      <section id="products" class="px-0 pt-1 pb-1">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-1">
           {categories.map((cat) => (
             <Link
               key={cat.name}
@@ -208,9 +214,9 @@ export default component$(() => {
                 height={390}
                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              <div class="absolute inset-0 bg-black/40" />
-              {/* Edge vignette — fades card edges into the page background */}
-              <div class="absolute inset-0 shadow-[inset_0_0_50px_15px_rgba(0,0,0,0.5)] dark:shadow-[inset_0_0_50px_15px_rgba(0,0,0,0.8)] pointer-events-none" />
+              <div class="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:bg-black/25" />
+              {/* Edge vignette — fades card edges into the page background, removed on hover */}
+              <div class="absolute inset-0 shadow-[inset_0_0_50px_15px_rgba(0,0,0,0.5)] dark:shadow-[inset_0_0_50px_15px_rgba(0,0,0,0.8)] pointer-events-none transition-opacity duration-300 group-hover:opacity-0" />
               <div class="relative z-10 text-center">
                 <h3 class="text-white text-2xl font-bold">{cat.name}</h3>
                 <p class="text-white/60 text-base mt-1">{cat.desc}</p>
@@ -224,37 +230,103 @@ export default component$(() => {
       </section>
 
       {/* Brands */}
-      <div class="bg-white dark:bg-[#1e1e1e] py-[4vh] px-4 md:px-8 text-center">
-        <div class="flex flex-wrap justify-center items-center gap-x-2 gap-y-1.5 md:gap-x-3 md:gap-y-2">
+      <div class="bg-white dark:bg-[#1e1e1e] py-[4vh] px-4 md:px-8 text-center relative">
+        <div class="flex flex-wrap justify-center items-center gap-x-2 gap-y-1.5 md:gap-x-3 md:gap-y-2 relative">
           {brands.slice(0, Math.ceil(brands.length / 2)).map((brand) => (
-            <img
+            <button
               key={brand.name}
-              src={brand.img}
-              alt={brand.name}
-              width={120}
-              height={48}
-              class="h-8 md:h-10 w-auto object-contain"
-            />
+              type="button"
+              class={`bg-transparent border-none p-1 rounded-lg transition-all duration-200 hover:scale-110 hover:bg-gray-100 dark:hover:bg-white/10 ${expandedBrand.value === brand.name ? "ring-2 ring-primary scale-110 bg-gray-100 dark:bg-white/10" : ""}`}
+              onClick$={() => toggleBrand(brand.name)}
+              aria-label={brand.name}
+            >
+              <img
+                src={brand.img}
+                alt={brand.name}
+                width={120}
+                height={48}
+                class="h-8 md:h-10 w-auto object-contain"
+              />
+            </button>
           ))}
           <p class="w-full text-sm md:text-lg uppercase tracking-[0.15em] text-gray-400 dark:text-gray-500 font-bold py-2">
             Trusted Brands We Carry
           </p>
           {brands.slice(Math.ceil(brands.length / 2)).map((brand) => (
-            <img
+            <button
               key={brand.name}
-              src={brand.img}
-              alt={brand.name}
-              width={120}
-              height={48}
-              class="h-8 md:h-10 w-auto object-contain"
-            />
+              type="button"
+              class={`bg-transparent border-none p-1 rounded-lg transition-all duration-200 hover:scale-110 hover:bg-gray-100 dark:hover:bg-white/10 ${expandedBrand.value === brand.name ? "ring-2 ring-primary scale-110 bg-gray-100 dark:bg-white/10" : ""}`}
+              onClick$={() => toggleBrand(brand.name)}
+              aria-label={brand.name}
+            >
+              <img
+                src={brand.img}
+                alt={brand.name}
+                width={120}
+                height={48}
+                class="h-8 md:h-10 w-auto object-contain"
+              />
+            </button>
           ))}
+
+          {/* Brand popover overlay */}
+          {expandedBrand.value && (() => {
+            const brand = brands.find((b) => b.name === expandedBrand.value);
+            if (!brand) return null;
+            return (
+              <div
+                class="absolute inset-0 z-30 flex items-center justify-center animate-fade-in"
+                onClick$={() => { expandedBrand.value = null; }}
+              >
+                <div class="absolute inset-0 bg-white/80 dark:bg-[#1e1e1e]/90 backdrop-blur-sm rounded-lg" />
+                <div
+                  class="relative z-10 bg-white dark:bg-[#2a2a2a] border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-2xl max-w-sm w-full mx-4 text-center"
+                  onClick$={(e: Event) => e.stopPropagation()}
+                >
+                  <button
+                    type="button"
+                    class="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
+                    onClick$={() => { expandedBrand.value = null; }}
+                    aria-label="Close"
+                  >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                  </button>
+                  <img src={brand.img} alt={brand.name} width={140} height={56} class="h-12 w-auto object-contain mx-auto mb-3" />
+                  <h3 class="text-lg font-bold mb-1">{brand.name}</h3>
+                  <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">
+                    Shop our curated selection of {brand.name} products — quality workwear and safety gear trusted by professionals across Canada.
+                  </p>
+                  <div class="flex flex-col sm:flex-row gap-2 justify-center">
+                    <Link
+                      href={`/search/?q=${encodeURIComponent(brand.name)}`}
+                      class="inline-flex items-center justify-center gap-2 py-2.5 px-5 text-sm font-semibold rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors"
+                    >
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                      Shop {brand.name}
+                    </Link>
+                    {brand.url && (
+                      <a
+                        href={brand.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center gap-2 py-2.5 px-5 text-sm font-semibold rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                      >
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Visit {brand.name}
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </div>
 
       {/* Value Props */}
-      <section class="px-0 pb-2.5">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+      <section class="px-0 pb-1">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-1">
           {[
             {
               img: "/footwear.jpg",

@@ -1,8 +1,8 @@
 import { component$, useSignal, $ } from "@builder.io/qwik";
 import { routeLoader$, Link, useLocation } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import { searchProducts, formatPrice } from "~/lib/shopify";
-import type { ShopifyProduct, PageInfo } from "~/lib/shopify";
+import { searchProducts, formatPrice } from "~/lib/medusa";
+import type { ShopifyProduct, PageInfo } from "~/lib/medusa";
 
 export const useSearchResults = routeLoader$(async (requestEvent) => {
   const query = requestEvent.query.get("q") || "";
