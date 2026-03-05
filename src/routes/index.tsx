@@ -63,8 +63,12 @@ export default component$(() => {
   ];
 
   const expandedBrand = useSignal<string | null>(null);
-  const toggleBrand = $((name: string) => {
-    expandedBrand.value = expandedBrand.value === name ? null : name;
+  const brandThird = useSignal<'left' | 'center' | 'right'>('center');
+  const handleBrandHover = $((name: string, e: MouseEvent) => {
+    const x = e.clientX;
+    const third = window.innerWidth / 3;
+    brandThird.value = x < third ? 'left' : x > third * 2 ? 'right' : 'center';
+    expandedBrand.value = name;
   });
 
   const currentSlide = useSignal(0);
@@ -90,26 +94,20 @@ export default component$(() => {
     {
       image: "/hero.jpg",
       badge: "Canada's Safety Experts",
-      title: <>Where Work &amp; Lifestyle<br />Apparel <em class="not-italic text-primary">Intersect</em></>,
-      description: "",
-      primaryLink: { href: "/#products", label: "Explore Collections" },
-      secondaryLink: { href: "/about/", label: "About Us" },
+      title: <>Where Work &amp;<br />Lifestyle Apparel<br /><em class="not-italic text-primary">Intersect</em></>,
+      description: "Your one-stop shop for quality workwear, CSA safety footwear, and in-house embroidery services in Ottawa.",
     },
     {
       image: "/footwear.jpg",
       badge: "CSA Approved",
-      title: <>Safety Footwear<br />Built to <em class="not-italic text-primary">Protect</em></>,
-      description: "Browse our selection of CSA-approved boots and shoes from trusted brands like Timberland Pro, Red Wing, and Blundstone.",
-      primaryLink: { href: "/collections/safety-footwear/", label: "Shop Footwear" },
-      secondaryLink: { href: "/collections/work-wear/", label: "Work Wear" },
+      title: <>Safety Footwear<br />Built to<br /><em class="not-italic text-primary">Protect</em></>,
+      description: "CSA-approved boots and shoes from trusted brands like Timberland Pro, Red Wing, and Blundstone.",
     },
     {
       image: "/embroidery.jpg",
       badge: "In-House Embroidery",
-      title: <>Custom Decoration<br />for Your <em class="not-italic text-primary">Team</em></>,
+      title: <>Custom<br />Decoration for<br />Your <em class="not-italic text-primary">Team</em></>,
       description: "Timely, budget-conscious embroidery and transfer services for your company, school, or organization.",
-      primaryLink: { href: "/contact/", label: "Get a Quote" },
-      secondaryLink: { href: "/#products", label: "Browse All" },
     },
   ];
 
@@ -136,8 +134,8 @@ export default component$(() => {
         {heroSlides.map((slide, i) => (
           <div
             key={i}
-            class={`text-white px-8 text-center overflow-hidden transition-opacity duration-700 ease-in-out flex items-center justify-center ${
-              i === 0 ? "relative h-[45vh] md:h-[54vh] md:max-h-[630px]" : "absolute top-0 left-0 w-full h-full"
+            class={`text-white overflow-hidden transition-opacity duration-700 ease-in-out flex items-center ${
+              i === 0 ? "relative h-[33vh] md:h-[45vh] md:max-h-[520px]" : "absolute top-0 left-0 w-full h-full"
             } ${currentSlide.value === i ? "opacity-100 z-10" : "opacity-0 z-0"}`}
             aria-hidden={currentSlide.value !== i}
           >
@@ -148,40 +146,24 @@ export default component$(() => {
               height={600}
               class="absolute inset-0 w-full h-full object-cover"
             />
-            <div class="absolute inset-0 bg-gradient-to-br from-dark/60 to-[#2d2d2d]/50" />
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
             <div class="absolute inset-0 shadow-[inset_0_0_60px_20px_rgba(0,0,0,0.6)] pointer-events-none" />
-            <div class="relative z-10 max-w-[720px] mx-auto">
-              <div class="hidden md:inline-block bg-primary/15 text-primary py-1.5 px-4 rounded-full text-[clamp(0.65rem,0.8vw,0.75rem)] font-bold tracking-widest uppercase mb-[1.5vh] border border-primary/30">
+            <div class="relative z-10 px-6 md:px-12 max-w-xl">
+              <div class="inline-block bg-primary/15 text-primary py-1 px-3 rounded-full text-[0.65rem] md:text-xs font-bold tracking-widest uppercase mb-2 border border-primary/30">
                 {slide.badge}
               </div>
-              <h2 class="text-[clamp(2rem,5vw,3.75rem)] font-extrabold leading-[1.1] tracking-tight mb-[1.5vh] [text-shadow:0_2px_12px_rgba(0,0,0,0.4)]">
+              <h2 class="text-[clamp(1.75rem,4.5vw,3.5rem)] font-extrabold leading-[1.05] tracking-tight mb-2 [text-shadow:0_2px_16px_rgba(0,0,0,0.5)]">
                 {slide.title}
               </h2>
-              {slide.description && (
-                <p class="text-[clamp(0.9rem,1.5vw,1.25rem)] text-white/70 max-w-[520px] mx-auto mb-[2vh] leading-relaxed">
-                  {slide.description}
-                </p>
-              )}
-              <div class="flex gap-4 justify-center flex-wrap">
-                <Link
-                  href={slide.primaryLink.href}
-                  class="inline-flex items-center justify-center py-3 px-7 text-[0.9rem] font-semibold rounded-lg border-none transition-all duration-200 bg-primary text-white hover:bg-primary-dark hover:-translate-y-0.5 hover:shadow-lg"
-                >
-                  {slide.primaryLink.label}
-                </Link>
-                <Link
-                  href={slide.secondaryLink.href}
-                  class="inline-flex items-center justify-center py-3 px-7 text-[0.9rem] font-semibold rounded-lg transition-all duration-200 bg-transparent text-white border border-white/30 hover:bg-white/10 hover:border-white/50"
-                >
-                  {slide.secondaryLink.label}
-                </Link>
-              </div>
+              <p class="text-[clamp(0.8rem,1.2vw,1rem)] text-white/60 max-w-[400px] leading-relaxed">
+                {slide.description}
+              </p>
             </div>
           </div>
         ))}
 
         {/* Dot indicators */}
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2.5">
+        <div class="absolute bottom-4 right-6 md:right-12 z-20 flex items-center gap-2">
           {heroSlides.map((_, i) => (
             <button
               key={i}
@@ -205,7 +187,7 @@ export default component$(() => {
             <Link
               key={cat.name}
               href={`/collections/${cat.handle}/`}
-              class="group relative rounded overflow-hidden aspect-[4/3] md:aspect-[4/3] flex items-center justify-center p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
+              class="group relative rounded overflow-hidden aspect-[4/3] md:aspect-[4/3] flex items-end transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
             >
               <img
                 src={cat.img}
@@ -217,12 +199,9 @@ export default component$(() => {
               <div class="absolute inset-0 bg-black/40 transition-opacity duration-300 group-hover:bg-black/25" />
               {/* Edge vignette — fades card edges into the page background, removed on hover */}
               <div class="absolute inset-0 shadow-[inset_0_0_50px_15px_rgba(0,0,0,0.5)] dark:shadow-[inset_0_0_50px_15px_rgba(0,0,0,0.8)] pointer-events-none transition-opacity duration-300 group-hover:opacity-0" />
-              <div class="relative z-10 text-center">
+              <div class="relative z-10 text-left self-end w-full px-4 pb-4">
                 <h3 class="text-white text-2xl font-bold">{cat.name}</h3>
-                <p class="text-white/60 text-base mt-1">{cat.desc}</p>
-                <span class="inline-block text-primary text-lg mt-2 transition-transform duration-200 group-hover:translate-x-1">
-                  &rarr;
-                </span>
+                <p class="text-white/60 text-sm mt-0.5">{cat.desc}</p>
               </div>
             </Link>
           ))}
@@ -230,14 +209,17 @@ export default component$(() => {
       </section>
 
       {/* Brands */}
-      <div class="bg-white dark:bg-[#1e1e1e] py-[4vh] px-4 md:px-8 text-center relative">
-        <div class="flex flex-wrap justify-center items-center gap-x-2 gap-y-1.5 md:gap-x-3 md:gap-y-2 relative">
+      <div
+        class="bg-white dark:bg-[#1e1e1e] py-[4vh] px-4 md:px-8 text-center relative overflow-hidden"
+        onMouseLeave$={() => { expandedBrand.value = null; }}
+      >
+        <div class="flex flex-wrap justify-center items-center gap-x-2 gap-y-1.5 md:gap-x-3 md:gap-y-2">
           {brands.slice(0, Math.ceil(brands.length / 2)).map((brand) => (
             <button
               key={brand.name}
               type="button"
               class={`bg-transparent border-none p-1 rounded-lg transition-all duration-200 hover:scale-110 hover:bg-gray-100 dark:hover:bg-white/10 ${expandedBrand.value === brand.name ? "ring-2 ring-primary scale-110 bg-gray-100 dark:bg-white/10" : ""}`}
-              onClick$={() => toggleBrand(brand.name)}
+              onMouseEnter$={(e: MouseEvent) => handleBrandHover(brand.name, e)}
               aria-label={brand.name}
             >
               <img
@@ -257,7 +239,7 @@ export default component$(() => {
               key={brand.name}
               type="button"
               class={`bg-transparent border-none p-1 rounded-lg transition-all duration-200 hover:scale-110 hover:bg-gray-100 dark:hover:bg-white/10 ${expandedBrand.value === brand.name ? "ring-2 ring-primary scale-110 bg-gray-100 dark:bg-white/10" : ""}`}
-              onClick$={() => toggleBrand(brand.name)}
+              onMouseEnter$={(e: MouseEvent) => handleBrandHover(brand.name, e)}
               aria-label={brand.name}
             >
               <img
@@ -269,40 +251,28 @@ export default component$(() => {
               />
             </button>
           ))}
+        </div>
 
-          {/* Brand popover overlay */}
-          {expandedBrand.value && (() => {
-            const brand = brands.find((b) => b.name === expandedBrand.value);
-            if (!brand) return null;
-            return (
-              <div
-                class="absolute inset-0 z-30 flex items-center justify-center animate-fade-in"
-                onClick$={() => { expandedBrand.value = null; }}
-              >
-                <div class="absolute inset-0 bg-white/80 dark:bg-[#1e1e1e]/90 backdrop-blur-sm rounded-lg" />
-                <div
-                  class="relative z-10 bg-white dark:bg-[#2a2a2a] border border-gray-200 dark:border-gray-700 rounded-xl p-6 shadow-2xl max-w-sm w-full mx-4 text-center"
-                  onClick$={(e: Event) => e.stopPropagation()}
-                >
-                  <button
-                    type="button"
-                    class="absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors"
-                    onClick$={() => { expandedBrand.value = null; }}
-                    aria-label="Close"
-                  >
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-                  </button>
-                  <img src={brand.img} alt={brand.name} width={140} height={56} class="h-12 w-auto object-contain mx-auto mb-3" />
-                  <h3 class="text-lg font-bold mb-1">{brand.name}</h3>
-                  <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">
-                    Shop our curated selection of {brand.name} products — quality workwear and safety gear trusted by professionals across Canada.
-                  </p>
-                  <div class="flex flex-col sm:flex-row gap-2 justify-center">
+        {/* Brand info overlay — fills the banner height */}
+        {expandedBrand.value && (() => {
+          const brand = brands.find((b) => b.name === expandedBrand.value);
+          if (!brand) return null;
+          return (
+            <div class={`absolute inset-y-0 z-30 w-1/3 flex items-center justify-center animate-fade-in ${
+              brandThird.value === 'left' ? 'left-0' : brandThird.value === 'right' ? 'right-0' : 'left-1/3'
+            }`}>
+              <div class="absolute inset-0 bg-white/90 dark:bg-[#1e1e1e]/95 backdrop-blur-sm rounded-lg" />
+              <div class="relative z-10 flex flex-col items-center text-center gap-2 px-4">
+                <img src={brand.img} alt={brand.name} width={100} height={40} class="h-8 w-auto object-contain" />
+                <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
+                  Quality workwear and safety gear trusted across Canada.
+                </p>
+                <div class="flex gap-2">
                     <Link
                       href={`/search/?q=${encodeURIComponent(brand.name)}`}
-                      class="inline-flex items-center justify-center gap-2 py-2.5 px-5 text-sm font-semibold rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors"
+                      class="inline-flex items-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors"
                     >
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                       Shop {brand.name}
                     </Link>
                     {brand.url && (
@@ -310,18 +280,17 @@ export default component$(() => {
                         href={brand.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center justify-center gap-2 py-2.5 px-5 text-sm font-semibold rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                        class="inline-flex items-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                       >
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        Visit {brand.name}
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Website
                       </a>
                     )}
-                  </div>
                 </div>
               </div>
-            );
-          })()}
-        </div>
+            </div>
+          );
+        })()}
       </div>
 
       {/* Value Props */}

@@ -420,19 +420,26 @@ export async function getProductRecommendations(
 
     if (src?.collection?.handle) {
       // Try to get products from the same category
-      const catParams = new URLSearchParams({
-        handle: src.collection.handle,
-        fields: "+products.*",
-      });
       const catData = await medusaFetch<{
         product_categories: MedusaRawCategory[];
-      }>(`/store/product-categories?${catParams}`);
+      }>(`/store/product-categories?handle=${src.collection.handle}`);
       const cat = catData.product_categories?.[0];
-      if (cat?.products?.length) {
-        return cat.products
-          .filter((p) => p.id !== productId)
-          .slice(0, 8)
-          .map(adaptProduct);
+      if (cat) {
+        const catProdParams = new URLSearchParams({
+          category_id: cat.id,
+          fields: PRODUCT_FIELDS,
+          region_id: regionId,
+          limit: "9",
+        });
+        const catProdData = await medusaFetch<{ products: MedusaRawProduct[] }>(
+          `/store/products?${catProdParams}`,
+        );
+        if (catProdData.products?.length) {
+          return catProdData.products
+            .filter((p) => p.id !== productId)
+            .slice(0, 8)
+            .map(adaptProduct);
+        }
       }
     }
   } catch {
@@ -462,19 +469,28 @@ export async function getCollectionByHandle(
   reverse?: boolean,
   after?: string,
 ): Promise<ShopifyCollection | null> {
-  // Fetch category by handle with embedded products
-  const params = new URLSearchParams({
-    handle,
-    fields: "+products.*",
-  });
-  const data = await medusaFetch<{
+  // Fetch category by handle
+  const catData = await medusaFetch<{
     product_categories: MedusaRawCategory[];
-  }>(`/store/product-categories?${params}`);
+  }>(`/store/product-categories?handle=${handle}`);
 
-  const cat = data.product_categories?.[0];
+  const cat = catData.product_categories?.[0];
   if (!cat) return null;
 
-  let products = (cat.products ?? []).map(adaptProduct);
+  // Fetch products in this category with proper price fields
+  const regionId = await getRegionId();
+  const prodParams = new URLSearchParams({
+    category_id: cat.id,
+    fields: PRODUCT_FIELDS,
+    region_id: regionId,
+    limit: "100",
+    offset: "0",
+  });
+  const prodData = await medusaFetch<{ products: MedusaRawProduct[] }>(
+    `/store/products?${prodParams}`,
+  );
+
+  let products = (prodData.products ?? []).map(adaptProduct);
 
   // Sort
   if (sortKey) {
