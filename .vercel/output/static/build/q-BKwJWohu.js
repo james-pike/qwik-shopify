@@ -1,1 +1,0 @@
-import{g as p}from"./q-H2Dzeq1h.js";const y=(f,u,b,{indexToSelect:a,tabIdToSelect:n},v)=>{if(n&&(a=f.findIndex(m=>m.tabId===n)),typeof a!="number"||a&&a<0&&(!v||(a=u.value,typeof a!="number")))return;const r=p(f,a);r&&(r.index!==u.value||r.tabId!==b.value)&&(u.value=r.index,b.value=r.tabId)};export{y as s};
