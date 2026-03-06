@@ -180,7 +180,7 @@ export default component$(() => {
           </Link>
 
           {/* Desktop nav */}
-          <nav class="hidden md:flex items-center gap-7">
+          <nav class="hidden md:flex items-center gap-5 lg:gap-7">
             <Link href="/collections/work-wear/" class="nav-link">Work Wear</Link>
             <Link href="/collections/safety-footwear/" class="nav-link">Safety Footwear</Link>
             <Link href="/collections/safety-supplies/" class="nav-link">Safety Supplies</Link>
@@ -199,7 +199,7 @@ export default component$(() => {
                 <input
                   type="text"
                   placeholder="Search products..."
-                  class="w-[200px] lg:w-[260px] px-2 py-2 text-sm bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
+                  class="w-[140px] lg:w-[200px] px-2 py-2 text-sm bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
                   value={searchQuery.value}
                   onInput$={(_, el) => {
                     searchQuery.value = el.value;
