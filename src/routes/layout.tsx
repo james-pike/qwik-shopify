@@ -198,8 +198,8 @@ export default component$(() => {
                 </svg>
                 <input
                   type="text"
-                  placeholder="Search products..."
-                  class="w-[140px] lg:w-[200px] px-2 py-2 text-sm bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
+                  placeholder=""
+                  class="w-[80px] lg:w-[120px] px-2 py-2 text-sm bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
                   value={searchQuery.value}
                   onInput$={(_, el) => {
                     searchQuery.value = el.value;

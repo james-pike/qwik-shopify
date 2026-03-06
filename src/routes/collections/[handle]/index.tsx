@@ -5,11 +5,11 @@ import { getCollectionByHandle, getCollectionProducts, formatPrice } from "~/lib
 import type { ShopifyProduct } from "~/lib/medusa";
 
 const SORT_OPTIONS = [
-  { value: "newest", label: "Latest", icon: "M12 8v4l3 3" },
+  { value: "newest", label: "New Arrivals", icon: "M12 8v4l3 3" },
   { value: "price-asc", label: "Price: Low to High", icon: "M3 17l6-6 4 4 8-8" },
   { value: "price-desc", label: "Price: High to Low", icon: "M3 7l6 6 4-4 8 8" },
+  { value: "brand-asc", label: "Brand: A\u2013Z", icon: "M3 6h18M3 12h12M3 18h6" },
   { value: "title-asc", label: "Name: A\u2013Z", icon: "M3 6h18M3 12h12M3 18h6" },
-  { value: "title-desc", label: "Name: Z\u2013A", icon: "M3 6h6M3 12h12M3 18h18" },
   { value: "best-selling", label: "Popular", icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" },
 ];
 
@@ -23,10 +23,10 @@ function sortProducts(products: ShopifyProduct[], sortValue: string): ShopifyPro
     case "price-desc":
       return sorted.sort((a, b) =>
         parseFloat(b.priceRange.minVariantPrice.amount) - parseFloat(a.priceRange.minVariantPrice.amount));
+    case "brand-asc":
+      return sorted.sort((a, b) => (a.vendor || "").localeCompare(b.vendor || "") || a.title.localeCompare(b.title));
     case "title-asc":
       return sorted.sort((a, b) => a.title.localeCompare(b.title));
-    case "title-desc":
-      return sorted.sort((a, b) => b.title.localeCompare(a.title));
     case "newest":
       return sorted.sort((a, b) =>
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
@@ -53,7 +53,7 @@ export default component$(() => {
   const collection = useCollection();
   const location = useLocation();
   const currentSort = useSignal(location.url.searchParams.get("sort") || "newest");
-  const gridCols = useSignal<1 | 2 | 3>(3);
+  const gridCols = useSignal<1 | 2 | 3 | 4>(4);
 
   // Filter state
   const selectedBrands = useSignal<string[]>([]);
@@ -564,7 +564,7 @@ export default component$(() => {
 
                 {/* Grid toggle (desktop) */}
                 <div class="hidden md:flex items-center border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                  {([2, 3] as const).map((cols) => (
+                  {([3, 4] as const).map((cols) => (
                     <button
                       key={cols}
                       type="button"
@@ -572,16 +572,17 @@ export default component$(() => {
                       class={`p-1.5 transition-colors ${gridCols.value === cols ? "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white" : "bg-white dark:bg-[#1e1e1e] text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"}`}
                       onClick$={() => { gridCols.value = cols; }}
                     >
-                      {cols === 2 ? (
-                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                          <rect x="1" y="1" width="6" height="6" rx="1" /><rect x="9" y="1" width="6" height="6" rx="1" />
-                          <rect x="1" y="9" width="6" height="6" rx="1" /><rect x="9" y="9" width="6" height="6" rx="1" />
-                        </svg>
-                      ) : (
+                      {cols === 3 ? (
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                           <rect x="1" y="1" width="4" height="4" rx="0.5" /><rect x="6" y="1" width="4" height="4" rx="0.5" /><rect x="11" y="1" width="4" height="4" rx="0.5" />
                           <rect x="1" y="6" width="4" height="4" rx="0.5" /><rect x="6" y="6" width="4" height="4" rx="0.5" /><rect x="11" y="6" width="4" height="4" rx="0.5" />
                           <rect x="1" y="11" width="4" height="4" rx="0.5" /><rect x="6" y="11" width="4" height="4" rx="0.5" /><rect x="11" y="11" width="4" height="4" rx="0.5" />
+                        </svg>
+                      ) : (
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                          <rect x="1" y="1" width="3" height="3" rx="0.5" /><rect x="5" y="1" width="3" height="3" rx="0.5" /><rect x="9" y="1" width="3" height="3" rx="0.5" /><rect x="13" y="1" width="2" height="3" rx="0.5" />
+                          <rect x="1" y="5" width="3" height="3" rx="0.5" /><rect x="5" y="5" width="3" height="3" rx="0.5" /><rect x="9" y="5" width="3" height="3" rx="0.5" /><rect x="13" y="5" width="2" height="3" rx="0.5" />
+                          <rect x="1" y="9" width="3" height="3" rx="0.5" /><rect x="5" y="9" width="3" height="3" rx="0.5" /><rect x="9" y="9" width="3" height="3" rx="0.5" /><rect x="13" y="9" width="2" height="3" rx="0.5" />
                         </svg>
                       )}
                     </button>
@@ -595,7 +596,7 @@ export default component$(() => {
                       key={cols}
                       type="button"
                       class={`p-1.5 transition-colors ${gridCols.value === cols ? "bg-gray-100 dark:bg-gray-700" : "bg-white dark:bg-[#1e1e1e] hover:bg-gray-50 dark:hover:bg-gray-800"}`}
-                      onClick$={() => { gridCols.value = cols as 1 | 2 | 3; }}
+                      onClick$={() => { gridCols.value = cols as 1 | 2 | 3 | 4; }}
                     >
                       {cols === 1 ? (
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="14" height="6" rx="1" /><rect x="1" y="9" width="14" height="6" rx="1" /></svg>
@@ -702,7 +703,9 @@ export default component$(() => {
                   ? "grid-cols-1"
                   : gridCols.value === 2
                     ? "grid-cols-2"
-                    : "grid-cols-2 lg:grid-cols-3"
+                    : gridCols.value === 3
+                      ? "grid-cols-2 lg:grid-cols-3"
+                      : "grid-cols-2 lg:grid-cols-4"
               }`}>
                 {filteredProducts.value.map((product: ShopifyProduct) => (
                   <Link
