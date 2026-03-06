@@ -465,7 +465,7 @@ export default component$(() => {
                   onChange$={() => { inStockOnly.value = !inStockOnly.value; }}
                 />
               </div>
-              <span class="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">In stock only</span>
+              <span class="text-sm text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">In Stock</span>
             </label>
           </div>
         )}
@@ -489,7 +489,7 @@ export default component$(() => {
   return (
     <>
       {/* Hero */}
-      <div class="relative text-white aspect-video md:aspect-auto md:h-[33vh] md:max-h-[340px] px-8 text-center overflow-hidden flex flex-col items-center justify-center">
+      <div class="relative text-white h-[28vh] md:h-[33vh] md:max-h-[340px] px-8 text-center overflow-hidden flex flex-col items-center justify-center">
         {heroImages.length > 0 ? (
           heroImages.map((img, i) => (
             <img
@@ -740,7 +740,8 @@ export default component$(() => {
                         </span>
                       )}
                       <h3 class="text-[0.95rem] font-semibold mb-1 leading-snug line-clamp-2">
-                        {product.title}
+                        {/* TEMP: demo rename — remove after screenshot */}
+                        {c.handle === "safety-footwear" ? "Timberland Boots" : product.title}
                       </h3>
                       <span class="text-base font-bold text-primary mt-auto pt-2">
                         {formatPrice(product.priceRange.minVariantPrice)}
