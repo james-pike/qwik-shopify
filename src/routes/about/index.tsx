@@ -50,7 +50,7 @@ export default component$(() => {
           </h2>
           <p class="text-gray-500 dark:text-gray-400 leading-relaxed text-[0.95rem] mb-4">
             The Safety House specializes in apparel supply and embroidery for
-            construction workwear, medical apparel, school team sports wear, and
+            construction workwear, medical apparel, casual wear, and
             promotional products.
           </p>
           <p class="text-gray-500 dark:text-gray-400 leading-relaxed text-[0.95rem]">

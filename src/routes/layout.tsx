@@ -185,7 +185,7 @@ export default component$(() => {
             <Link href="/collections/safety-footwear/" class="nav-link">Safety Footwear</Link>
             <Link href="/collections/safety-supplies/" class="nav-link">Safety Supplies</Link>
             <Link href="/collections/flame-resistant/" class="nav-link">Flame Resistant</Link>
-            <Link href="/collections/school-wear/" class="nav-link">School & Sports Wear</Link>
+            <Link href="/collections/school-wear/" class="nav-link">Casual Wear</Link>
           </nav>
 
           <div class="flex items-center gap-1">
@@ -475,7 +475,7 @@ export default component$(() => {
                 </Modal.Close>
                 <Modal.Close class="bg-transparent border-none text-left">
                   <Link href="/collections/school-wear/" class="block py-3 px-3 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5 rounded-lg transition-colors">
-                    School & Sports Wear
+                    Casual Wear
                   </Link>
                 </Modal.Close>
               </nav>

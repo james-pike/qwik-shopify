@@ -489,7 +489,7 @@ export default component$(() => {
   return (
     <>
       {/* Hero */}
-      <div class="relative text-white aspect-video md:aspect-auto md:h-[36vh] md:max-h-[380px] px-8 text-center overflow-hidden flex flex-col items-center justify-center">
+      <div class="relative text-white aspect-video md:aspect-auto md:h-[33vh] md:max-h-[340px] px-8 text-center overflow-hidden flex flex-col items-center justify-center">
         {heroImages.length > 0 ? (
           heroImages.map((img, i) => (
             <img

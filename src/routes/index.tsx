@@ -24,9 +24,9 @@ export default component$(() => {
       img: "/flame-resistant-clothing.jpg",
     },
 {
-      name: "School Wear",
+      name: "Casual Wear",
       handle: "school-wear",
-      desc: "Sports and institutional apparel",
+      desc: "Everyday and casual apparel",
       img: "/schoolwear.jpg",
     },
   ];
