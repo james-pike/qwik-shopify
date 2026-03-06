@@ -63,13 +63,6 @@ export default component$(() => {
   ];
 
   const expandedBrand = useSignal<string | null>(null);
-  const brandThird = useSignal<'left' | 'center' | 'right'>('center');
-  const handleBrandHover = $((name: string, e: MouseEvent) => {
-    const x = e.clientX;
-    const third = window.innerWidth / 3;
-    brandThird.value = x < third ? 'left' : x > third * 2 ? 'right' : 'center';
-    expandedBrand.value = name;
-  });
 
   const currentSlide = useSignal(0);
   const paused = useSignal(false);
@@ -210,69 +203,36 @@ export default component$(() => {
 
       {/* Brands */}
       <div
-        class="bg-white dark:bg-[#1e1e1e] py-[4vh] px-4 md:px-8 text-center relative overflow-hidden"
+        class="bg-white dark:bg-[#1e1e1e] py-[4vh] px-4 md:px-8 text-center"
         onMouseLeave$={() => { expandedBrand.value = null; }}
       >
         <div class="flex flex-wrap justify-center items-center gap-x-2 gap-y-1.5 md:gap-x-3 md:gap-y-2">
           {brands.slice(0, Math.ceil(brands.length / 2)).map((brand) => (
-            <button
-              key={brand.name}
-              type="button"
-              class={`bg-transparent border-none p-1 rounded-lg transition-all duration-200 hover:scale-110 hover:bg-gray-100 dark:hover:bg-white/10 ${expandedBrand.value === brand.name ? "ring-2 ring-primary scale-110 bg-gray-100 dark:bg-white/10" : ""}`}
-              onMouseEnter$={(e: MouseEvent) => handleBrandHover(brand.name, e)}
-              aria-label={brand.name}
-            >
-              <img
-                src={brand.img}
-                alt={brand.name}
-                width={120}
-                height={48}
-                class="h-8 md:h-10 w-auto object-contain"
-              />
-            </button>
-          ))}
-          <p class="w-full text-sm md:text-lg uppercase tracking-[0.15em] text-gray-400 dark:text-gray-500 font-bold py-2">
-            Trusted Brands We Carry
-          </p>
-          {brands.slice(Math.ceil(brands.length / 2)).map((brand) => (
-            <button
-              key={brand.name}
-              type="button"
-              class={`bg-transparent border-none p-1 rounded-lg transition-all duration-200 hover:scale-110 hover:bg-gray-100 dark:hover:bg-white/10 ${expandedBrand.value === brand.name ? "ring-2 ring-primary scale-110 bg-gray-100 dark:bg-white/10" : ""}`}
-              onMouseEnter$={(e: MouseEvent) => handleBrandHover(brand.name, e)}
-              aria-label={brand.name}
-            >
-              <img
-                src={brand.img}
-                alt={brand.name}
-                width={120}
-                height={48}
-                class="h-8 md:h-10 w-auto object-contain"
-              />
-            </button>
-          ))}
-        </div>
-
-        {/* Brand info overlay — fills the banner height */}
-        {expandedBrand.value && (() => {
-          const brand = brands.find((b) => b.name === expandedBrand.value);
-          if (!brand) return null;
-          return (
-            <div class={`absolute inset-y-0 z-30 w-1/3 flex items-center justify-center animate-fade-in ${
-              brandThird.value === 'left' ? 'left-0' : brandThird.value === 'right' ? 'right-0' : 'left-1/3'
-            }`}>
-              <div class="absolute inset-0 bg-white/90 dark:bg-[#1e1e1e]/95 backdrop-blur-sm rounded-lg" />
-              <div class="relative z-10 flex flex-col items-center text-center gap-2 px-4">
-                <img src={brand.img} alt={brand.name} width={100} height={40} class="h-8 w-auto object-contain" />
-                <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
-                  Quality workwear and safety gear trusted across Canada.
-                </p>
-                <div class="flex gap-2">
+            <div key={brand.name} class="relative">
+              <button
+                type="button"
+                class={`bg-transparent border-none p-1 rounded-lg transition-all duration-200 ${expandedBrand.value === brand.name ? "scale-125 bg-gray-100 dark:bg-white/10" : "hover:scale-110"}`}
+                onMouseEnter$={() => { expandedBrand.value = brand.name; }}
+                aria-label={brand.name}
+              >
+                <img
+                  src={brand.img}
+                  alt={brand.name}
+                  width={120}
+                  height={48}
+                  class="h-8 md:h-10 w-auto object-contain"
+                />
+              </button>
+              {expandedBrand.value === brand.name && (
+                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 z-40 w-48 bg-white dark:bg-[#2a2a2a] rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-3 text-center animate-fade-in">
+                  <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed mb-2">
+                    Quality workwear and safety gear trusted across Canada.
+                  </p>
+                  <div class="flex flex-col gap-1.5">
                     <Link
                       href={`/search/?q=${encodeURIComponent(brand.name)}`}
-                      class="inline-flex items-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors"
+                      class="inline-flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors"
                     >
-                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                       Shop {brand.name}
                     </Link>
                     {brand.url && (
@@ -280,17 +240,63 @@ export default component$(() => {
                         href={brand.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#1e1e1e] text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                        class="inline-flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                       >
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                         Website
                       </a>
                     )}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
-          );
-        })()}
+          ))}
+          <p class="w-full text-sm md:text-lg uppercase tracking-[0.15em] text-gray-400 dark:text-gray-500 font-bold py-2">
+            Trusted Brands We Carry
+          </p>
+          {brands.slice(Math.ceil(brands.length / 2)).map((brand) => (
+            <div key={brand.name} class="relative">
+              <button
+                type="button"
+                class={`bg-transparent border-none p-1 rounded-lg transition-all duration-200 ${expandedBrand.value === brand.name ? "scale-125 bg-gray-100 dark:bg-white/10" : "hover:scale-110"}`}
+                onMouseEnter$={() => { expandedBrand.value = brand.name; }}
+                aria-label={brand.name}
+              >
+                <img
+                  src={brand.img}
+                  alt={brand.name}
+                  width={120}
+                  height={48}
+                  class="h-8 md:h-10 w-auto object-contain"
+                />
+              </button>
+              {expandedBrand.value === brand.name && (
+                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-40 w-48 bg-white dark:bg-[#2a2a2a] rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-3 text-center animate-fade-in">
+                  <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed mb-2">
+                    Quality workwear and safety gear trusted across Canada.
+                  </p>
+                  <div class="flex flex-col gap-1.5">
+                    <Link
+                      href={`/search/?q=${encodeURIComponent(brand.name)}`}
+                      class="inline-flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors"
+                    >
+                      Shop {brand.name}
+                    </Link>
+                    {brand.url && (
+                      <a
+                        href={brand.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                      >
+                        Website
+                      </a>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Value Props */}
