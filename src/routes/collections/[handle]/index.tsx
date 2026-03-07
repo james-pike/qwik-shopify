@@ -1,8 +1,12 @@
 import { component$, useSignal, useComputed$, $, useVisibleTask$ } from "@builder.io/qwik";
-import { routeLoader$, Link, useLocation } from "@builder.io/qwik-city";
+import { routeLoader$, server$, Link, useLocation } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { getCollectionMeta, getCollectionProducts, formatPrice } from "~/lib/medusa";
 import type { ShopifyProduct } from "~/lib/medusa";
+
+const fetchProductsServer = server$(async (handle: string, after?: string) => {
+  return getCollectionProducts(handle, 100, after);
+});
 
 const SORT_OPTIONS = [
   { value: "best-selling", label: "Popular", icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" },
@@ -101,7 +105,7 @@ export default component$(() => {
     const col = track(() => collection.value);
     if (!col) return;
     initialLoading.value = true;
-    getCollectionProducts(col.handle, 100)
+    fetchProductsServer(col.handle)
       .then((result) => {
         loadedProducts.value = result.products;
         endCursor.value = result.pageInfo.endCursor;
@@ -115,7 +119,7 @@ export default component$(() => {
     if (!hasNextPage.value || loadingMore.value) return;
     loadingMore.value = true;
     try {
-      const result = await getCollectionProducts(c.handle, 100, endCursor.value || undefined);
+      const result = await fetchProductsServer(c.handle, endCursor.value || undefined);
       loadedProducts.value = [...loadedProducts.value, ...result.products];
       endCursor.value = result.pageInfo.endCursor;
       hasNextPage.value = result.pageInfo.hasNextPage;
