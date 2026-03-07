@@ -486,7 +486,7 @@ export default component$(() => {
   return (
     <>
       {/* Hero */}
-      <div class="relative text-white h-[28vh] md:h-[33vh] md:max-h-[340px] text-center overflow-hidden flex flex-col items-center justify-center">
+      <div class="relative text-white h-[28vh] md:h-[25vh] md:max-h-[340px] text-center overflow-hidden flex flex-col items-center justify-center">
         {heroImages.length > 0 ? (
           heroImages.map((img, i) => (
             <img
@@ -520,7 +520,7 @@ export default component$(() => {
         <aside class="hidden lg:block w-[260px] xl:w-[280px] flex-shrink-0 border-r border-gray-200 dark:border-gray-700/40 bg-white dark:bg-[#161616] sticky top-[60px] self-start max-h-[calc(100vh-60px)] overflow-y-auto">
           <div class="p-5">
             {/* Sidebar header */}
-            <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-gray-200 dark:border-gray-700/50">
               <div class="flex items-center gap-2">
                 <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                   <line x1="4" y1="21" x2="4" y2="14" /><line x1="4" y1="10" x2="4" y2="3" />
@@ -530,17 +530,12 @@ export default component$(() => {
                   <line x1="17" y1="16" x2="23" y2="16" />
                 </svg>
                 <h2 class="text-sm font-semibold text-gray-900 dark:text-white">Filters</h2>
+                {activeFilterCount.value > 0 && (
+                  <span class="text-[10px] font-bold bg-primary/10 text-primary px-2 py-0.5 rounded-full">
+                    {activeFilterCount.value}
+                  </span>
+                )}
               </div>
-              {activeFilterCount.value > 0 && (
-                <span class="text-[10px] font-bold bg-primary/10 text-primary px-2 py-0.5 rounded-full">
-                  {activeFilterCount.value} active
-                </span>
-              )}
-            </div>
-
-            {/* Grid layout toggle */}
-            <div class="flex items-center justify-between mb-4 pb-3 border-b border-gray-200 dark:border-gray-700/50">
-              <span class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">Layout</span>
               <div class="flex items-center border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
                 {([3, 4] as const).map((cols) => (
                   <button
@@ -578,13 +573,53 @@ export default component$(() => {
           <div class="bg-white dark:bg-[#1a1a1a] border-b border-gray-200/60 dark:border-gray-700/40 px-4 md:px-6 py-3 sticky top-[60px] z-20">
             <div class="flex items-center justify-between">
               {/* Breadcrumbs */}
-              <nav class="flex items-center gap-1.5 text-xs md:text-sm text-gray-500 dark:text-gray-400" aria-label="Breadcrumb">
-                <Link href="/#products" class="hover:text-dark dark:hover:text-white transition-colors">Collections</Link>
-                <svg class="w-3 h-3 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
-                <span class="font-medium text-gray-900 dark:text-white">{c.title}</span>
-              </nav>
+              <div class="flex items-center gap-2 min-w-0 flex-1 overflow-x-auto">
+                <nav class="flex items-center gap-1.5 text-xs md:text-sm text-gray-500 dark:text-gray-400 flex-shrink-0" aria-label="Breadcrumb">
+                  <Link href="/#products" class="hover:text-dark dark:hover:text-white transition-colors">Collections</Link>
+                  <svg class="w-3 h-3 text-gray-400 dark:text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                  <span class="font-medium text-gray-900 dark:text-white">{c.title}</span>
+                </nav>
 
-              <div class="flex items-center gap-3">
+                {/* Active filter tags (inline with breadcrumbs) */}
+                {activeFilterCount.value > 0 && (
+                  <div class="hidden md:flex items-center gap-1.5 flex-shrink-0">
+                    {selectedBrands.value.map((brand) => (
+                      <span key={`brand-${brand}`} class="inline-flex items-center gap-1 text-[11px] bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full pl-2 pr-1 py-0.5">
+                        {brand}
+                        <button type="button" class="hover:text-red-500 transition-colors bg-transparent border-none p-0 text-gray-400" onClick$={() => { selectedBrands.value = selectedBrands.value.filter((b) => b !== brand); }}>
+                          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                      </span>
+                    ))}
+                    {selectedTypes.value.map((type) => (
+                      <span key={`type-${type}`} class="inline-flex items-center gap-1 text-[11px] bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full pl-2 pr-1 py-0.5">
+                        {type}
+                        <button type="button" class="bg-transparent border-none p-0 text-gray-400 hover:text-red-500 transition-colors" onClick$={() => { selectedTypes.value = selectedTypes.value.filter((t) => t !== type); }}>
+                          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                      </span>
+                    ))}
+                    {selectedSizes.value.map((size) => (
+                      <span key={`size-${size}`} class="inline-flex items-center gap-1 text-[11px] bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full pl-2 pr-1 py-0.5">
+                        {size}
+                        <button type="button" class="bg-transparent border-none p-0 text-gray-400 hover:text-red-500 transition-colors" onClick$={() => { selectedSizes.value = selectedSizes.value.filter((s) => s !== size); }}>
+                          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                      </span>
+                    ))}
+                    {inStockOnly.value && (
+                      <span class="inline-flex items-center gap-1 text-[11px] bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full pl-2 pr-1 py-0.5">
+                        In Stock
+                        <button type="button" class="bg-transparent border-none p-0 text-gray-400 hover:text-red-500 transition-colors" onClick$={() => { inStockOnly.value = false; }}>
+                          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              <div class="flex items-center gap-3 flex-shrink-0">
                 {/* Product count */}
                 <span class="hidden md:inline text-xs text-gray-400 dark:text-gray-500">
                   {activeFilterCount.value > 0
@@ -655,9 +690,9 @@ export default component$(() => {
               </div>
             </div>
 
-            {/* Active filter tags */}
+            {/* Active filter tags (mobile only — desktop tags are inline with breadcrumbs) */}
             {activeFilterCount.value > 0 && (
-              <div class="flex flex-wrap gap-1.5 mt-2.5">
+              <div class="flex flex-wrap gap-1.5 mt-2.5 md:hidden">
                 {selectedBrands.value.map((brand) => (
                   <span key={`brand-${brand}`} class="inline-flex items-center gap-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full pl-2.5 pr-1.5 py-0.5">
                     {brand}

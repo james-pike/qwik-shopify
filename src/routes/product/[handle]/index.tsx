@@ -296,12 +296,72 @@ export default component$(() => {
             )}
           </div>
 
-          {/* Description */}
-          {p.descriptionHtml && (
-            <div
-              class="border-t border-gray-200 dark:border-gray-700 pt-8 mt-2 text-[#444] dark:text-gray-300 leading-loose text-[0.925rem]"
-              dangerouslySetInnerHTML={p.descriptionHtml}
-            />
+          {/* Description & Details */}
+          {(p.description || p.meta?.features) && (
+            <div class="border-t border-gray-200 dark:border-gray-700 pt-6 mt-2 space-y-5">
+              {p.description && (
+                <p class="text-[#444] dark:text-gray-300 leading-relaxed text-[0.925rem]">{p.description}</p>
+              )}
+
+              {/* Features */}
+              {p.meta?.features && (
+                <div>
+                  <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2">Features</h3>
+                  <ul class="space-y-1.5 text-sm text-[#444] dark:text-gray-300">
+                    {p.meta.features.split("•").filter(Boolean).map((f, i) => (
+                      <li key={i} class="flex gap-2">
+                        <span class="text-primary mt-0.5 flex-shrink-0">•</span>
+                        <span>{f.trim()}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Specs */}
+              {(p.meta?.fabric || p.meta?.fit || p.meta?.origin) && (
+                <div class="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
+                  {p.meta.fabric && (
+                    <>
+                      <span class="text-gray-500 dark:text-gray-400">Material</span>
+                      <span class="text-gray-900 dark:text-white">{p.meta.fabric}</span>
+                    </>
+                  )}
+                  {p.meta.fit && (
+                    <>
+                      <span class="text-gray-500 dark:text-gray-400">Fit</span>
+                      <span class="text-gray-900 dark:text-white">{p.meta.fit}</span>
+                    </>
+                  )}
+                  {p.meta.origin && (
+                    <>
+                      <span class="text-gray-500 dark:text-gray-400">Origin</span>
+                      <span class="text-gray-900 dark:text-white">{p.meta.origin}</span>
+                    </>
+                  )}
+                  {p.meta.fr && (
+                    <>
+                      <span class="text-gray-500 dark:text-gray-400">FR Rated</span>
+                      <span class="text-green-600 font-semibold">Yes</span>
+                    </>
+                  )}
+                  {p.meta.hi_vis && (
+                    <>
+                      <span class="text-gray-500 dark:text-gray-400">Hi-Vis</span>
+                      <span class="text-green-600 font-semibold">Yes</span>
+                    </>
+                  )}
+                </div>
+              )}
+
+              {/* Care Instructions */}
+              {p.meta?.care_instructions && (
+                <div>
+                  <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-1.5">Care</h3>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">{p.meta.care_instructions}</p>
+                </div>
+              )}
+            </div>
           )}
         </div>
       </div>

@@ -128,6 +128,19 @@ export interface ShopifyVariant {
   price: ShopifyPrice;
 }
 
+export interface ProductMeta {
+  brand?: string;
+  color?: string;
+  material_number?: string;
+  features?: string;
+  care_instructions?: string;
+  fabric?: string;
+  fit?: string;
+  origin?: string;
+  fr?: boolean;
+  hi_vis?: boolean;
+}
+
 export interface ShopifyProduct {
   id: string;
   title: string;
@@ -138,6 +151,7 @@ export interface ShopifyProduct {
   vendor: string;
   productType: string;
   createdAt: string;
+  meta: ProductMeta;
   options: { name: string; values: string[] }[];
   featuredImage: ShopifyImage | null;
   priceRange: {
@@ -280,6 +294,7 @@ function adaptProduct(p: MedusaRawProduct): ShopifyProduct {
     vendor: (p as any).metadata?.brand || p.subtitle || p.collection?.title || "",
     productType: p.type?.value ?? "",
     createdAt: p.created_at,
+    meta: ((p as any).metadata || {}) as ProductMeta,
     options: (p.options ?? []).map((o) => ({
       name: o.title,
       values: o.values.map((v) => v.value),
