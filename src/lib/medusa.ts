@@ -56,6 +56,7 @@ interface MedusaRawProduct {
   id: string;
   title: string;
   handle: string;
+  subtitle: string | null;
   description: string | null;
   thumbnail: string | null;
   status: string;
@@ -68,6 +69,7 @@ interface MedusaRawProduct {
     title: string;
     sku: string;
     calculated_price?: { calculated_amount: number };
+    prices?: { amount: number; currency_code: string }[];
     inventory_quantity?: number;
     options?: { value: string }[];
   }[];
@@ -223,6 +225,19 @@ function centsToPrice(cents: number | undefined | null): ShopifyPrice {
   return { amount: (amt / 100).toFixed(2), currencyCode: CURRENCY };
 }
 
+function getVariantPrice(v: MedusaRawProduct["variants"] extends (infer V)[] | undefined ? V : never): number | null {
+  // Prefer calculated_price (region-aware), fall back to direct prices array
+  if (v.calculated_price?.calculated_amount != null) {
+    return v.calculated_price.calculated_amount;
+  }
+  // Use CAD price first, then any available price
+  if (v.prices?.length) {
+    const cadPrice = v.prices.find((p) => p.currency_code === "cad");
+    return (cadPrice ?? v.prices[0]).amount;
+  }
+  return null;
+}
+
 function adaptProduct(p: MedusaRawProduct): ShopifyProduct {
   const variants = (p.variants ?? []).map((v) => {
     const available =
@@ -231,7 +246,7 @@ function adaptProduct(p: MedusaRawProduct): ShopifyProduct {
       id: v.id,
       title: v.title || "Default",
       availableForSale: available,
-      price: centsToPrice(v.calculated_price?.calculated_amount),
+      price: centsToPrice(getVariantPrice(v)),
     };
   });
 
@@ -262,7 +277,7 @@ function adaptProduct(p: MedusaRawProduct): ShopifyProduct {
     description: p.description ?? "",
     descriptionHtml: p.description ?? "",
     availableForSale,
-    vendor: p.collection?.title ?? "",
+    vendor: (p as any).metadata?.brand || p.subtitle || p.collection?.title || "",
     productType: p.type?.value ?? "",
     createdAt: p.created_at,
     options: (p.options ?? []).map((o) => ({
@@ -362,7 +377,7 @@ function decodeCursor(cursor: string | undefined | null): number {
 // ---------------------------------------------------------------------------
 
 const PRODUCT_FIELDS =
-  "+variants.calculated_price,+variants.inventory_quantity";
+  "+subtitle,+metadata,*variants.prices,+variants.calculated_price,+variants.inventory_quantity";
 
 // ---------------------------------------------------------------------------
 // Public API — same signatures as shopify.ts

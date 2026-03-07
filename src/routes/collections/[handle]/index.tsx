@@ -1,8 +1,8 @@
-import { component$, useSignal, useComputed$, $, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useSignal, useComputed$, $, useVisibleTask$, useTask$ } from "@builder.io/qwik";
 import { routeLoader$, Link, useLocation } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import { getCollectionByHandle, getCollectionProducts, formatPrice } from "~/lib/medusa";
-import type { ShopifyProduct } from "~/lib/medusa";
+import { getCollectionByHandle, getCollectionProducts, formatPrice, addToCart, createCart } from "~/lib/medusa";
+import type { ShopifyProduct, ShopifyVariant } from "~/lib/medusa";
 
 const SORT_OPTIONS = [
   { value: "best-selling", label: "Popular", icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" },
@@ -57,7 +57,15 @@ export default component$(() => {
   const selectedTypes = useSignal<string[]>([]);
   const selectedSizes = useSignal<string[]>([]);
   const inStockOnly = useSignal(false);
+  const collectionSearch = useSignal("");
   const mobileFiltersOpen = useSignal(false);
+
+  // Quick view state
+  const quickViewProduct = useSignal<ShopifyProduct | null>(null);
+  const qvSelectedVariant = useSignal("");
+  const qvAdding = useSignal(false);
+  const qvAdded = useSignal(false);
+  const qvSelectedImage = useSignal(0);
 
   // Sidebar section collapse state (desktop)
   const sectionOpen = useSignal<Record<string, boolean>>({
@@ -94,6 +102,16 @@ export default component$(() => {
   const hasNextPage = useSignal(c.products.pageInfo.hasNextPage);
   const loadingMore = useSignal(false);
 
+  // Re-sync products when collection changes via client-side navigation
+  useTask$(({ track }) => {
+    const col = track(() => collection.value);
+    if (col) {
+      loadedProducts.value = col.products.edges.map((e) => e.node);
+      endCursor.value = col.products.pageInfo.endCursor;
+      hasNextPage.value = col.products.pageInfo.hasNextPage;
+    }
+  });
+
   const loadMore = $(async () => {
     if (!hasNextPage.value || loadingMore.value) return;
     loadingMore.value = true;
@@ -110,16 +128,12 @@ export default component$(() => {
   });
 
   // Derive filter options from products
-  // Default brands for when collection has no vendor data yet
-  const DEFAULT_BRANDS = ["Timberland PRO", "Carhartt", "Blundstone", "Keen", "Red Wing"];
-
   const brands = useComputed$(() => {
     const vendorSet = new Set<string>();
     for (const p of loadedProducts.value) {
       if (p.vendor) vendorSet.add(p.vendor);
     }
-    const found = [...vendorSet].sort();
-    return found.length > 0 ? found : DEFAULT_BRANDS;
+    return [...vendorSet].sort();
   });
 
   const productTypes = useComputed$(() => {
@@ -158,6 +172,40 @@ export default component$(() => {
     inStockOnly.value = false;
   });
 
+  const openQuickView = $((product: ShopifyProduct) => {
+    quickViewProduct.value = product;
+    qvSelectedImage.value = 0;
+    qvAdded.value = false;
+    qvAdding.value = false;
+    const variants = product.variants.edges.map((e) => e.node);
+    const available = variants.find((v) => v.availableForSale);
+    qvSelectedVariant.value = available?.id || variants[0]?.id || "";
+  });
+
+  const qvAddToCart = $(async () => {
+    if (!qvSelectedVariant.value || qvAdding.value) return;
+    qvAdding.value = true;
+    qvAdded.value = false;
+    try {
+      const cartId = localStorage.getItem("cart_id");
+      let cart;
+      if (cartId) {
+        cart = await addToCart(cartId, qvSelectedVariant.value, 1);
+      } else {
+        cart = await createCart(qvSelectedVariant.value, 1);
+      }
+      localStorage.setItem("cart_id", cart.id);
+      localStorage.setItem("cart_checkout_url", cart.checkoutUrl);
+      localStorage.setItem("cart_count", String(cart.totalQuantity));
+      qvAdded.value = true;
+      setTimeout(() => (qvAdded.value = false), 2500);
+    } catch (err) {
+      console.error("Add to cart failed:", err);
+    } finally {
+      qvAdding.value = false;
+    }
+  });
+
   const filteredProducts = useComputed$(() => {
     const sorted = sortProducts(loadedProducts.value, currentSort.value);
     let result = sorted;
@@ -178,6 +226,12 @@ export default component$(() => {
     }
     if (inStockOnly.value) {
       result = result.filter((p: ShopifyProduct) => p.availableForSale);
+    }
+    if (collectionSearch.value.trim()) {
+      const q = collectionSearch.value.trim().toLowerCase();
+      result = result.filter((p: ShopifyProduct) =>
+        p.title.toLowerCase().includes(q) || p.vendor.toLowerCase().includes(q)
+      );
     }
     return result;
   });
@@ -463,7 +517,7 @@ export default component$(() => {
       {/* Main layout: sidebar + grid */}
       <div class="flex">
         {/* Desktop sidebar */}
-        <aside class="hidden lg:block w-[260px] xl:w-[280px] flex-shrink-0 border-r border-gray-200 dark:border-gray-700/40 bg-white dark:bg-[#161616] sticky top-[60px] h-[calc(100vh-60px)] overflow-y-auto">
+        <aside class="hidden lg:block w-[260px] xl:w-[280px] flex-shrink-0 border-r border-gray-200 dark:border-gray-700/40 bg-white dark:bg-[#161616] sticky top-[60px] self-start max-h-[calc(100vh-60px)] overflow-y-auto">
           <div class="p-5">
             {/* Sidebar header */}
             <div class="flex items-center justify-between mb-4">
@@ -483,6 +537,37 @@ export default component$(() => {
                 </span>
               )}
             </div>
+
+            {/* Grid layout toggle */}
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-gray-200 dark:border-gray-700/50">
+              <span class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400">Layout</span>
+              <div class="flex items-center border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
+                {([3, 4] as const).map((cols) => (
+                  <button
+                    key={cols}
+                    type="button"
+                    aria-label={`${cols} column grid`}
+                    class={`p-1.5 transition-colors ${gridCols.value === cols ? "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white" : "bg-white dark:bg-[#1e1e1e] text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"}`}
+                    onClick$={() => { gridCols.value = cols; }}
+                  >
+                    {cols === 3 ? (
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="1" y="1" width="4" height="4" rx="0.5" /><rect x="6" y="1" width="4" height="4" rx="0.5" /><rect x="11" y="1" width="4" height="4" rx="0.5" />
+                        <rect x="1" y="6" width="4" height="4" rx="0.5" /><rect x="6" y="6" width="4" height="4" rx="0.5" /><rect x="11" y="6" width="4" height="4" rx="0.5" />
+                        <rect x="1" y="11" width="4" height="4" rx="0.5" /><rect x="6" y="11" width="4" height="4" rx="0.5" /><rect x="11" y="11" width="4" height="4" rx="0.5" />
+                      </svg>
+                    ) : (
+                      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="1" y="1" width="3" height="3" rx="0.5" /><rect x="5" y="1" width="3" height="3" rx="0.5" /><rect x="9" y="1" width="3" height="3" rx="0.5" /><rect x="13" y="1" width="2" height="3" rx="0.5" />
+                        <rect x="1" y="5" width="3" height="3" rx="0.5" /><rect x="5" y="5" width="3" height="3" rx="0.5" /><rect x="9" y="5" width="3" height="3" rx="0.5" /><rect x="13" y="5" width="2" height="3" rx="0.5" />
+                        <rect x="1" y="9" width="3" height="3" rx="0.5" /><rect x="5" y="9" width="3" height="3" rx="0.5" /><rect x="9" y="9" width="3" height="3" rx="0.5" /><rect x="13" y="9" width="2" height="3" rx="0.5" />
+                      </svg>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <FilterContent />
           </div>
         </aside>
@@ -507,31 +592,28 @@ export default component$(() => {
                     : `${loadedProducts.value.length}`} products
                 </span>
 
-                {/* Grid toggle (desktop) */}
-                <div class="hidden md:flex items-center border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden">
-                  {([3, 4] as const).map((cols) => (
+                {/* Collection search (desktop) */}
+                <div class="hidden md:flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden bg-white dark:bg-[#1e1e1e]">
+                  <svg class="w-3.5 h-3.5 ml-2.5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                  </svg>
+                  <input
+                    type="text"
+                    placeholder="Search collection..."
+                    class="w-[140px] px-2 py-1.5 text-xs bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
+                    value={collectionSearch.value}
+                    onInput$={(_, el) => { collectionSearch.value = el.value; }}
+                  />
+                  {collectionSearch.value && (
                     <button
-                      key={cols}
                       type="button"
-                      aria-label={`${cols} column grid`}
-                      class={`p-1.5 transition-colors ${gridCols.value === cols ? "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white" : "bg-white dark:bg-[#1e1e1e] text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"}`}
-                      onClick$={() => { gridCols.value = cols; }}
+                      class="mr-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 bg-transparent border-none p-0"
+                      onClick$={() => { collectionSearch.value = ""; }}
                     >
-                      {cols === 3 ? (
-                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                          <rect x="1" y="1" width="4" height="4" rx="0.5" /><rect x="6" y="1" width="4" height="4" rx="0.5" /><rect x="11" y="1" width="4" height="4" rx="0.5" />
-                          <rect x="1" y="6" width="4" height="4" rx="0.5" /><rect x="6" y="6" width="4" height="4" rx="0.5" /><rect x="11" y="6" width="4" height="4" rx="0.5" />
-                          <rect x="1" y="11" width="4" height="4" rx="0.5" /><rect x="6" y="11" width="4" height="4" rx="0.5" /><rect x="11" y="11" width="4" height="4" rx="0.5" />
-                        </svg>
-                      ) : (
-                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-                          <rect x="1" y="1" width="3" height="3" rx="0.5" /><rect x="5" y="1" width="3" height="3" rx="0.5" /><rect x="9" y="1" width="3" height="3" rx="0.5" /><rect x="13" y="1" width="2" height="3" rx="0.5" />
-                          <rect x="1" y="5" width="3" height="3" rx="0.5" /><rect x="5" y="5" width="3" height="3" rx="0.5" /><rect x="9" y="5" width="3" height="3" rx="0.5" /><rect x="13" y="5" width="2" height="3" rx="0.5" />
-                          <rect x="1" y="9" width="3" height="3" rx="0.5" /><rect x="5" y="9" width="3" height="3" rx="0.5" /><rect x="9" y="9" width="3" height="3" rx="0.5" /><rect x="13" y="9" width="2" height="3" rx="0.5" />
-                        </svg>
-                      )}
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
-                  ))}
+                  )}
                 </div>
 
                 {/* Mobile grid toggle */}
@@ -645,10 +727,10 @@ export default component$(() => {
                       : "grid-cols-2 lg:grid-cols-4"
               }`}>
                 {filteredProducts.value.map((product: ShopifyProduct) => (
-                  <Link
+                  <div
                     key={product.id}
-                    href={`/product/${product.handle}/?collection=${c.handle}`}
-                    class="group bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col"
+                    class="group bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col cursor-pointer"
+                    onClick$={() => openQuickView(product)}
                   >
                     <div class="relative overflow-hidden">
                       {product.featuredImage ? (
@@ -677,8 +759,7 @@ export default component$(() => {
                         </span>
                       )}
                       <h3 class="text-[0.95rem] font-semibold mb-1 leading-snug line-clamp-2">
-                        {/* TEMP: demo rename — remove after screenshot */}
-                        {c.handle === "safety-footwear" ? "Timberland Boots" : product.title}
+                        {product.title}
                       </h3>
                       <span class="text-base font-bold text-primary mt-auto pt-2">
                         {formatPrice(product.priceRange.minVariantPrice)}
@@ -689,7 +770,7 @@ export default component$(() => {
                         )}
                       </span>
                     </div>
-                  </Link>
+                  </div>
                 ))}
               </div>
             )}
@@ -755,6 +836,144 @@ export default component$(() => {
           </div>
         </div>
       )}
+
+      {/* Quick View Modal */}
+      {quickViewProduct.value && (() => {
+        const qp = quickViewProduct.value!;
+        const qImages = qp.images.edges.map((e) => e.node);
+        const qVariants = qp.variants.edges.map((e) => e.node);
+        const qAnyAvailable = qVariants.some((v: ShopifyVariant) => v.availableForSale);
+        const qActiveVariant = qVariants.find((v: ShopifyVariant) => v.id === qvSelectedVariant.value);
+
+        return (
+          <div class="fixed inset-0 z-[200] flex items-center justify-center p-4">
+            <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick$={() => { quickViewProduct.value = null; }} />
+            <div class="relative bg-white dark:bg-[#1e1e1e] rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto animate-fade-in">
+              {/* Close button */}
+              <button
+                type="button"
+                class="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors border-none"
+                onClick$={() => { quickViewProduct.value = null; }}
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+              </button>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                {/* Image */}
+                <div class="p-5">
+                  {qImages.length > 0 ? (
+                    <>
+                      <img
+                        src={qImages[qvSelectedImage.value]?.url}
+                        alt={qImages[qvSelectedImage.value]?.altText || qp.title}
+                        class="w-full rounded-xl aspect-square object-cover bg-gray-100 dark:bg-gray-800"
+                      />
+                      {qImages.length > 1 && (
+                        <div class="flex gap-1.5 mt-2 overflow-x-auto">
+                          {qImages.map((img, i) => (
+                            <button
+                              key={img.url}
+                              onClick$={() => (qvSelectedImage.value = i)}
+                              class={`w-12 h-12 rounded-lg overflow-hidden border-2 p-0 bg-transparent flex-shrink-0 transition-colors ${
+                                i === qvSelectedImage.value ? "border-primary" : "border-transparent"
+                              }`}
+                            >
+                              <img src={img.url} alt="" class="w-full h-full object-cover" />
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div class="w-full aspect-square bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-400 text-sm rounded-xl">
+                      No image
+                    </div>
+                  )}
+                </div>
+
+                {/* Info */}
+                <div class="p-5 pt-3 md:pt-5 flex flex-col">
+                  {qp.vendor && (
+                    <span class="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-widest mb-1">
+                      {qp.vendor}
+                    </span>
+                  )}
+                  <h2 class="text-xl font-extrabold tracking-tight mb-2">{qp.title}</h2>
+                  <p class="text-xl font-bold text-primary mb-4">
+                    {formatPrice(qp.priceRange.minVariantPrice)}
+                    {qp.priceRange.minVariantPrice.amount !== qp.priceRange.maxVariantPrice.amount && (
+                      <span class="text-gray-400 font-normal text-sm ml-1">
+                        &ndash; {formatPrice(qp.priceRange.maxVariantPrice)}
+                      </span>
+                    )}
+                  </p>
+
+                  {/* Availability */}
+                  {qActiveVariant && (
+                    <div class="flex items-center gap-2 mb-4">
+                      <span class={`w-2 h-2 rounded-full ${qActiveVariant.availableForSale ? "bg-green-600" : "bg-red-600"}`} />
+                      <span class={`text-sm font-semibold ${qActiveVariant.availableForSale ? "text-green-600" : "text-red-600"}`}>
+                        {qActiveVariant.availableForSale ? "In stock" : "Out of stock"}
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Variant selector */}
+                  {qVariants.length > 1 && (
+                    <div class="mb-4">
+                      <p class="text-[10px] uppercase tracking-widest text-gray-500 font-semibold mb-1.5">Select Option</p>
+                      <div class="flex flex-wrap gap-1.5">
+                        {qVariants.map((v: ShopifyVariant) => (
+                          <button
+                            key={v.id}
+                            onClick$={() => { if (v.availableForSale) qvSelectedVariant.value = v.id; }}
+                            class={`py-1.5 px-3 rounded-full border text-xs font-medium transition-all ${
+                              !v.availableForSale
+                                ? "opacity-40 cursor-not-allowed line-through border-gray-200 dark:border-gray-700"
+                                : v.id === qvSelectedVariant.value
+                                  ? "border-primary bg-primary/[0.08] text-primary font-semibold"
+                                  : "border-gray-200 dark:border-gray-700"
+                            }`}
+                            disabled={!v.availableForSale}
+                          >
+                            {v.title} &middot; {formatPrice(v.price)}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Add to cart */}
+                  <button
+                    class={`w-full py-3 px-6 text-sm font-semibold rounded-lg border-none transition-all mb-3 ${
+                      qAnyAvailable
+                        ? "bg-primary text-white hover:bg-primary-dark"
+                        : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    }`}
+                    onClick$={qvAddToCart}
+                    disabled={!qAnyAvailable || qvAdding.value}
+                  >
+                    {qvAdding.value ? "Adding..." : qvAdded.value ? "Added to Cart!" : qAnyAvailable ? "Add to Cart" : "Sold Out"}
+                  </button>
+
+                  {/* Description */}
+                  {qp.description && (
+                    <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed mb-4">{qp.description}</p>
+                  )}
+
+                  {/* Full details link */}
+                  <Link
+                    href={`/product/${qp.handle}/?collection=${c.handle}`}
+                    class="text-sm font-medium text-primary hover:underline mt-auto"
+                  >
+                    View Full Details &rarr;
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
     </>
   );
 });

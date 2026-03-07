@@ -44,6 +44,7 @@
     position: relative;
     padding: 0.25rem 0.5rem;
     border-radius: 0.25rem;
+    overflow: hidden;
   }
   .nav-link.pattern-stripes::before {
     content: "";
@@ -59,7 +60,8 @@
     opacity: 0.5;
   }
   .nav-link-active {
-    @apply text-primary font-semibold;
+    @apply text-primary;
+    text-shadow: 0 0 0.01px currentColor, 0 0 0.01px currentColor;
   }
   .nav-link-active::after {
     @apply w-full;
