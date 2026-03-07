@@ -133,6 +133,47 @@ export default component$(() => {
 
   const col = p._collection;
 
+  // Extract color option values
+  const colorOption = p.options.find((o) => o.name === "Color");
+  const colors = colorOption?.values ?? (p.meta?.color ? [p.meta.color] : []);
+
+  // Map color names to CSS values
+  const colorMap: Record<string, string> = {
+    "black": "#1a1a1a", "dark navy": "#1b2a4a", "navy": "#1b3a5c",
+    "dark blue": "#1a3a5c", "blue": "#2563eb", "light blue": "#60a5fa",
+    "gray": "#6b7280", "grey": "#6b7280", "light gray": "#d1d5db", "light grey": "#d1d5db",
+    "dark gray": "#374151", "dark grey": "#374151", "charcoal": "#36454f",
+    "white": "#f8f8f8", "red": "#dc2626", "dark red": "#991b1b", "dark crimson": "#8b0000",
+    "brown": "#78350f", "dark brown": "#4a2512", "canyon brown": "#8b5e3c",
+    "carhartt brown": "#7a5230", "frontier brown": "#6b4423",
+    "khaki": "#c3b091", "tan": "#d2b48c", "beige": "#e8dcc8",
+    "green": "#16a34a", "dark green": "#14532d", "olive": "#556b2f",
+    "moss": "#4a5d23", "basil": "#3e6b3e",
+    "orange": "#ea580c", "blaze orange": "#ff6600", "hi-vis orange": "#ff5500",
+    "yellow": "#eab308", "hi-vis yellow": "#d4e600", "brite lime": "#c5e600",
+    "hi-vis": "#d4e600", "hi-vis green": "#76b900",
+    "pink": "#ec4899", "purple": "#7c3aed",
+    "camo": "linear-gradient(135deg,#4a5d23 25%,#6b7f3a 25%,#6b7f3a 50%,#374a20 50%,#374a20 75%,#556b2f 75%)",
+  };
+
+  const getColorCss = (name: string) => {
+    const lower = name.toLowerCase().trim();
+    return colorMap[lower] || "#9ca3af";
+  };
+
+  // Find the active color from selected variant
+  const activeColor = activeVariant
+    ? colors.find((c) => activeVariant.title.toLowerCase().includes(c.toLowerCase()))
+    : colors[0];
+
+  // Select first variant matching a color
+  const selectColor = $((color: string) => {
+    const match = variants.find(
+      (v) => v.availableForSale && v.title.toLowerCase().includes(color.toLowerCase())
+    );
+    if (match) selectedVariantId.value = match.id;
+  });
+
   return (
     <div class="px-5 md:px-8 py-6 md:py-12">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
@@ -208,6 +249,36 @@ export default component$(() => {
               </span>
             )}
           </p>
+
+          {/* Color Swatches */}
+          {colors.length > 0 && (
+            <div class="mb-5">
+              <p class="text-xs uppercase tracking-widest text-gray-500 dark:text-gray-400 font-semibold mb-2">
+                Color{activeColor ? ` — ${activeColor}` : ""}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {colors.map((color) => {
+                  const css = getColorCss(color);
+                  const isGradient = css.startsWith("linear");
+                  const isActive = activeColor?.toLowerCase() === color.toLowerCase();
+                  return (
+                    <button
+                      key={color}
+                      type="button"
+                      title={color}
+                      onClick$={() => selectColor(color)}
+                      class={`w-8 h-8 rounded-sm border-2 transition-all duration-150 ${
+                        isActive
+                          ? "border-gray-900 dark:border-white scale-110 shadow-md"
+                          : "border-gray-300 dark:border-gray-600 hover:border-gray-500 dark:hover:border-gray-400"
+                      }`}
+                      style={isGradient ? { background: css } : { backgroundColor: css }}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          )}
 
           {/* Availability Indicator */}
           {activeVariant && (
