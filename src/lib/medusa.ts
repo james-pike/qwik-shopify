@@ -462,6 +462,17 @@ export async function getCollections(
   );
 }
 
+export async function getCollectionMeta(
+  handle: string,
+): Promise<ShopifyCollection | null> {
+  const catData = await medusaFetch<{
+    product_categories: MedusaRawCategory[];
+  }>(`/store/product-categories?handle=${handle}`);
+  const cat = catData.product_categories?.[0];
+  if (!cat) return null;
+  return adaptCategory(cat, [], { hasNextPage: false, endCursor: null });
+}
+
 export async function getCollectionByHandle(
   handle: string,
   first = 20,

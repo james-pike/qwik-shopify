@@ -1,11 +1,12 @@
 import { component$, Slot, useSignal, useVisibleTask$, useTask$, $, useOnDocument } from "@builder.io/qwik";
 import { isServer } from "@builder.io/qwik/build";
-import { Link } from "@builder.io/qwik-city";
+import { Link, useLocation } from "@builder.io/qwik-city";
 import { Modal } from "@qwik-ui/headless";
 import { getCart, removeFromCart, updateCartLines, formatPrice, predictiveSearch } from "~/lib/medusa";
 import type { ShopifyCart, ShopifyProduct } from "~/lib/medusa";
 
 export default component$(() => {
+  const loc = useLocation();
   const darkMode = useSignal(false);
   const cartCount = useSignal(0);
   const cartOpen = useSignal(false);
@@ -87,6 +88,7 @@ export default component$(() => {
   const searchQuery = useSignal("");
   const searchResults = useSignal<ShopifyProduct[]>([]);
   const searchOpen = useSignal(false);
+  const searchExpanded = useSignal(false);
   const searchLoading = useSignal(false);
   const searchTimeout = useSignal<ReturnType<typeof setTimeout> | null>(null);
 
@@ -125,6 +127,7 @@ export default component$(() => {
       const target = e.target as HTMLElement;
       if (!target.closest("[data-search-container]")) {
         searchOpen.value = false;
+        if (!searchQuery.value.trim()) searchExpanded.value = false;
       }
     }),
   );
@@ -133,7 +136,7 @@ export default component$(() => {
     <div class="min-h-screen bg-gray-100 dark:bg-black">
     <div class="bg-white dark:bg-[#121212] max-w-site mx-auto">
       {/* Announcement Bar */}
-      <div class="bg-dark text-white py-[0.4vh] px-2 md:px-8 text-[clamp(0.6rem,0.8vw,0.8rem)] font-medium tracking-wider overflow-hidden">
+      <div class="bg-dark text-white py-[0.4vh] px-2 md:px-4 text-[clamp(0.6rem,0.8vw,0.8rem)] font-medium tracking-wider overflow-hidden">
         <div class="flex items-center justify-between">
           <div class="overflow-hidden flex-1 mr-4">
             <div class="announcement-scroll flex whitespace-nowrap">
@@ -180,42 +183,67 @@ export default component$(() => {
           </Link>
 
           {/* Desktop nav */}
-          <nav class="hidden md:flex items-center gap-5 lg:gap-7">
-            <Link href="/collections/work-wear/" class="nav-link">Work Wear</Link>
-            <Link href="/collections/safety-footwear/" class="nav-link">Safety Footwear</Link>
-            <Link href="/collections/safety-supplies/" class="nav-link">Safety Supplies</Link>
-            <Link href="/collections/flame-resistant/" class="nav-link">Flame Resistant</Link>
-            <Link href="/collections/school-wear/" class="nav-link">Casual Wear</Link>
+          <nav class="hidden md:flex items-center gap-3 lg:gap-5">
+            <Link href="/collections/work-wear/" class={`nav-link pattern-stripes ${loc.url.pathname === '/collections/work-wear/' ? 'nav-link-active' : ''}`}>Work Wear</Link>
+            <Link href="/collections/safety-footwear/" class={`nav-link pattern-stripes ${loc.url.pathname === '/collections/safety-footwear/' ? 'nav-link-active' : ''}`}>Safety Footwear</Link>
+            <Link href="/collections/safety-supplies/" class={`nav-link pattern-stripes ${loc.url.pathname === '/collections/safety-supplies/' ? 'nav-link-active' : ''}`}>Safety Supplies</Link>
+            <Link href="/collections/flame-resistant/" class={`nav-link pattern-stripes ${loc.url.pathname === '/collections/flame-resistant/' ? 'nav-link-active' : ''}`}>Flame Resistant</Link>
+            <Link href="/collections/school-wear/" class={`nav-link pattern-stripes ${loc.url.pathname === '/collections/school-wear/' ? 'nav-link-active' : ''}`}>Casual Wear</Link>
           </nav>
 
           <div class="flex items-center gap-1">
             {/* Desktop search */}
             <div class="hidden md:block relative" data-search-container>
-              <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden bg-white dark:bg-[#1e1e1e]">
-                <svg class="w-4 h-4 ml-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <circle cx="11" cy="11" r="8" />
-                  <path d="m21 21-4.35-4.35" />
-                </svg>
-                <input
-                  type="text"
-                  placeholder=""
-                  class="w-[80px] lg:w-[120px] px-2 py-2 text-sm bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
-                  value={searchQuery.value}
-                  onInput$={(_, el) => {
-                    searchQuery.value = el.value;
-                    doSearch(el.value);
-                  }}
-                  onFocus$={() => {
-                    if (searchQuery.value.trim()) searchOpen.value = true;
-                  }}
-                  onKeyDown$={(e) => {
-                    if (e.key === "Enter" && searchQuery.value.trim()) {
-                      searchOpen.value = false;
-                      window.location.href = `/search/?q=${encodeURIComponent(searchQuery.value.trim())}`;
-                    }
-                  }}
-                />
-              </div>
+              {searchExpanded.value ? (
+                <div class="flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden bg-white dark:bg-[#1e1e1e] animate-fade-in">
+                  <svg class="w-4 h-4 ml-3 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                  </svg>
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    class="w-[180px] px-2 py-2 text-sm bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
+                    value={searchQuery.value}
+                    autoFocus
+                    onInput$={(_, el) => {
+                      searchQuery.value = el.value;
+                      doSearch(el.value);
+                    }}
+                    onFocus$={() => {
+                      if (searchQuery.value.trim()) searchOpen.value = true;
+                    }}
+                    onBlur$={() => {
+                      if (!searchQuery.value.trim()) {
+                        searchExpanded.value = false;
+                      }
+                    }}
+                    onKeyDown$={(e) => {
+                      if (e.key === "Escape") {
+                        searchQuery.value = "";
+                        searchOpen.value = false;
+                        searchExpanded.value = false;
+                      }
+                      if (e.key === "Enter" && searchQuery.value.trim()) {
+                        searchOpen.value = false;
+                        searchExpanded.value = false;
+                        window.location.href = `/search/?q=${encodeURIComponent(searchQuery.value.trim())}`;
+                      }
+                    }}
+                  />
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  class="flex items-center justify-center w-9 h-9 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-[#1e1e1e] text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  onClick$={() => { searchExpanded.value = true; }}
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                  </svg>
+                </button>
+              )}
               {searchOpen.value && (
                 <div class="absolute top-full right-0 mt-1 w-[360px] bg-white dark:bg-[#1e1e1e] border border-gray-200 dark:border-gray-700 rounded-lg shadow-xl z-50 max-h-[400px] overflow-y-auto">
                   {searchLoading.value ? (

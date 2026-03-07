@@ -1,16 +1,15 @@
-import { component$, useSignal, useComputed$, $, useOnDocument, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useSignal, useComputed$, $, useVisibleTask$ } from "@builder.io/qwik";
 import { routeLoader$, Link, useLocation } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import { getCollectionByHandle, getCollectionProducts, formatPrice } from "~/lib/medusa";
+import { getCollectionMeta, getCollectionProducts, formatPrice } from "~/lib/medusa";
 import type { ShopifyProduct } from "~/lib/medusa";
 
 const SORT_OPTIONS = [
+  { value: "best-selling", label: "Popular", icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" },
   { value: "newest", label: "New Arrivals", icon: "M12 8v4l3 3" },
   { value: "price-asc", label: "Price: Low to High", icon: "M3 17l6-6 4 4 8-8" },
   { value: "price-desc", label: "Price: High to Low", icon: "M3 7l6 6 4-4 8 8" },
-  { value: "brand-asc", label: "Brand: A\u2013Z", icon: "M3 6h18M3 12h12M3 18h6" },
   { value: "title-asc", label: "Name: A\u2013Z", icon: "M3 6h18M3 12h12M3 18h6" },
-  { value: "best-selling", label: "Popular", icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" },
 ];
 
 function sortProducts(products: ShopifyProduct[], sortValue: string): ShopifyProduct[] {
@@ -23,8 +22,6 @@ function sortProducts(products: ShopifyProduct[], sortValue: string): ShopifyPro
     case "price-desc":
       return sorted.sort((a, b) =>
         parseFloat(b.priceRange.minVariantPrice.amount) - parseFloat(a.priceRange.minVariantPrice.amount));
-    case "brand-asc":
-      return sorted.sort((a, b) => (a.vendor || "").localeCompare(b.vendor || "") || a.title.localeCompare(b.title));
     case "title-asc":
       return sorted.sort((a, b) => a.title.localeCompare(b.title));
     case "newest":
@@ -39,7 +36,7 @@ function sortProducts(products: ShopifyProduct[], sortValue: string): ShopifyPro
 
 export const useCollection = routeLoader$(async (requestEvent) => {
   const handle = requestEvent.params.handle;
-  const collection = await getCollectionByHandle(handle, 100);
+  const collection = await getCollectionMeta(handle);
 
   if (!collection) {
     requestEvent.status(404);
@@ -60,8 +57,6 @@ export default component$(() => {
   const selectedTypes = useSignal<string[]>([]);
   const selectedSizes = useSignal<string[]>([]);
   const inStockOnly = useSignal(false);
-  const priceMin = useSignal("");
-  const priceMax = useSignal("");
   const mobileFiltersOpen = useSignal(false);
 
   // Sidebar section collapse state (desktop)
@@ -70,7 +65,6 @@ export default component$(() => {
     type: true,
     brand: true,
     size: true,
-    price: true,
     availability: true,
   });
 
@@ -95,10 +89,27 @@ export default component$(() => {
   const c = collection.value;
 
   // Pagination state
-  const loadedProducts = useSignal<ShopifyProduct[]>(c.products.edges.map((e) => e.node));
-  const endCursor = useSignal<string | null>(c.products.pageInfo.endCursor);
-  const hasNextPage = useSignal(c.products.pageInfo.hasNextPage);
+  const loadedProducts = useSignal<ShopifyProduct[]>([]);
+  const endCursor = useSignal<string | null>(null);
+  const hasNextPage = useSignal(false);
   const loadingMore = useSignal(false);
+  const initialLoading = useSignal(true);
+
+  // Load products client-side (keeps page navigation instant)
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(({ track }) => {
+    const col = track(() => collection.value);
+    if (!col) return;
+    initialLoading.value = true;
+    getCollectionProducts(col.handle, 100)
+      .then((result) => {
+        loadedProducts.value = result.products;
+        endCursor.value = result.pageInfo.endCursor;
+        hasNextPage.value = result.pageInfo.hasNextPage;
+      })
+      .catch((err) => console.error("Failed to load products:", err))
+      .finally(() => { initialLoading.value = false; });
+  });
 
   const loadMore = $(async () => {
     if (!hasNextPage.value || loadingMore.value) return;
@@ -116,12 +127,16 @@ export default component$(() => {
   });
 
   // Derive filter options from products
+  // Default brands for when collection has no vendor data yet
+  const DEFAULT_BRANDS = ["Timberland PRO", "Carhartt", "Blundstone", "Keen", "Red Wing"];
+
   const brands = useComputed$(() => {
     const vendorSet = new Set<string>();
     for (const p of loadedProducts.value) {
       if (p.vendor) vendorSet.add(p.vendor);
     }
-    return [...vendorSet].sort();
+    const found = [...vendorSet].sort();
+    return found.length > 0 ? found : DEFAULT_BRANDS;
   });
 
   const productTypes = useComputed$(() => {
@@ -150,7 +165,6 @@ export default component$(() => {
     if (selectedTypes.value.length > 0) count += selectedTypes.value.length;
     if (selectedSizes.value.length > 0) count += selectedSizes.value.length;
     if (inStockOnly.value) count++;
-    if (priceMin.value || priceMax.value) count++;
     return count;
   });
 
@@ -159,8 +173,6 @@ export default component$(() => {
     selectedTypes.value = [];
     selectedSizes.value = [];
     inStockOnly.value = false;
-    priceMin.value = "";
-    priceMax.value = "";
   });
 
   const filteredProducts = useComputed$(() => {
@@ -184,26 +196,18 @@ export default component$(() => {
     if (inStockOnly.value) {
       result = result.filter((p: ShopifyProduct) => p.availableForSale);
     }
-    if (priceMin.value) {
-      const min = parseFloat(priceMin.value);
-      if (!isNaN(min)) result = result.filter((p) => parseFloat(p.priceRange.minVariantPrice.amount) >= min);
-    }
-    if (priceMax.value) {
-      const max = parseFloat(priceMax.value);
-      if (!isNaN(max)) result = result.filter((p) => parseFloat(p.priceRange.minVariantPrice.amount) <= max);
-    }
     return result;
   });
 
   // Hero
-  const heroData: Record<string, { subtitle?: string; img2?: string }> = {
+  const heroData: Record<string, { subtitle?: string; img2?: string; objectPos?: string }> = {
     "work-wear": { img2: "/workwear.jpg" },
     "safety-footwear": {
       subtitle: "CSA-approved boots and shoes from trusted brands.",
-      img2: "/footwear.jpg",
+      img2: "/footwear-hero.jpg",
     },
     "flame-resistant": { img2: "/flame-resistant-clothing.jpg" },
-    "safety-supplies": { img2: "/safety-supplies.jpg" },
+    "safety-supplies": { img2: "/safety-supplies.jpg", objectPos: "center 45%" },
     "school-wear": { img2: "/schoolwear.jpg" },
   };
   const hero = heroData[c.handle] || {};
@@ -262,51 +266,6 @@ export default component$(() => {
         )}
       </div>
 
-      {/* Product Type */}
-      {productTypes.value.length > 0 && (
-        <div class="border-b border-gray-200 dark:border-gray-700/50">
-          <button
-            type="button"
-            class="w-full flex items-center justify-between py-3 px-1 text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-            onClick$={() => toggleSection("type")}
-          >
-            <span class="flex items-center gap-2">
-              Type
-              {selectedTypes.value.length > 0 && (
-                <span class="bg-primary text-white text-[10px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center leading-none">
-                  {selectedTypes.value.length}
-                </span>
-              )}
-            </span>
-            <svg class={`w-3.5 h-3.5 transition-transform duration-200 ${sectionOpen.value.type ? "" : "-rotate-90"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-          </button>
-          {sectionOpen.value.type && (
-            <div class="pb-3 space-y-0.5 max-h-[240px] overflow-y-auto">
-              {productTypes.value.map((type) => (
-                <label
-                  key={type}
-                  class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer transition-colors"
-                >
-                  <input
-                    type="checkbox"
-                    class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary/50 w-4 h-4"
-                    checked={selectedTypes.value.includes(type)}
-                    onChange$={() => {
-                      const current = [...selectedTypes.value];
-                      const idx = current.indexOf(type);
-                      if (idx >= 0) current.splice(idx, 1);
-                      else current.push(type);
-                      selectedTypes.value = current;
-                    }}
-                  />
-                  <span class="flex-1">{type}</span>
-                </label>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
-
       {/* Brand */}
       {brands.value.length > 0 && (
         <div class="border-b border-gray-200 dark:border-gray-700/50">
@@ -345,6 +304,51 @@ export default component$(() => {
                     }}
                   />
                   <span class="flex-1">{brand}</span>
+                </label>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Product Type */}
+      {productTypes.value.length > 0 && (
+        <div class="border-b border-gray-200 dark:border-gray-700/50">
+          <button
+            type="button"
+            class="w-full flex items-center justify-between py-3 px-1 text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            onClick$={() => toggleSection("type")}
+          >
+            <span class="flex items-center gap-2">
+              Type
+              {selectedTypes.value.length > 0 && (
+                <span class="bg-primary text-white text-[10px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center leading-none">
+                  {selectedTypes.value.length}
+                </span>
+              )}
+            </span>
+            <svg class={`w-3.5 h-3.5 transition-transform duration-200 ${sectionOpen.value.type ? "" : "-rotate-90"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          {sectionOpen.value.type && (
+            <div class="pb-3 space-y-0.5 max-h-[240px] overflow-y-auto">
+              {productTypes.value.map((type) => (
+                <label
+                  key={type}
+                  class="flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 cursor-pointer transition-colors"
+                >
+                  <input
+                    type="checkbox"
+                    class="rounded border-gray-300 dark:border-gray-600 text-primary focus:ring-primary/50 w-4 h-4"
+                    checked={selectedTypes.value.includes(type)}
+                    onChange$={() => {
+                      const current = [...selectedTypes.value];
+                      const idx = current.indexOf(type);
+                      if (idx >= 0) current.splice(idx, 1);
+                      else current.push(type);
+                      selectedTypes.value = current;
+                    }}
+                  />
+                  <span class="flex-1">{type}</span>
                 </label>
               ))}
             </div>
@@ -399,50 +403,6 @@ export default component$(() => {
         </div>
       )}
 
-      {/* Price Range */}
-      <div class="border-b border-gray-200 dark:border-gray-700/50">
-        <button
-          type="button"
-          class="w-full flex items-center justify-between py-3 px-1 text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-          onClick$={() => toggleSection("price")}
-        >
-          <span class="flex items-center gap-2">
-            Price
-            {(priceMin.value || priceMax.value) && (
-              <span class="bg-primary text-white text-[10px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center leading-none">1</span>
-            )}
-          </span>
-          <svg class={`w-3.5 h-3.5 transition-transform duration-200 ${sectionOpen.value.price ? "" : "-rotate-90"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
-        </button>
-        {sectionOpen.value.price && (
-          <div class="pb-3 px-1">
-            <div class="flex items-center gap-2">
-              <div class="relative flex-1">
-                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-gray-400">$</span>
-                <input
-                  type="number"
-                  placeholder="Min"
-                  class="w-full pl-6 pr-2 py-2 text-sm bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-gray-700 rounded-lg outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 text-gray-900 dark:text-white placeholder:text-gray-400"
-                  value={priceMin.value}
-                  onInput$={(_, el) => { priceMin.value = el.value; }}
-                />
-              </div>
-              <span class="text-gray-400 text-xs">&ndash;</span>
-              <div class="relative flex-1">
-                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-gray-400">$</span>
-                <input
-                  type="number"
-                  placeholder="Max"
-                  class="w-full pl-6 pr-2 py-2 text-sm bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-gray-700 rounded-lg outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 text-gray-900 dark:text-white placeholder:text-gray-400"
-                  value={priceMax.value}
-                  onInput$={(_, el) => { priceMax.value = el.value; }}
-                />
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-
       {/* Availability */}
       <div>
         <button
@@ -489,7 +449,7 @@ export default component$(() => {
   return (
     <>
       {/* Hero */}
-      <div class="relative text-white h-[28vh] md:h-[33vh] md:max-h-[340px] px-8 text-center overflow-hidden flex flex-col items-center justify-center">
+      <div class="relative text-white h-[28vh] md:h-[33vh] md:max-h-[340px] text-center overflow-hidden flex flex-col items-center justify-center">
         {heroImages.length > 0 ? (
           heroImages.map((img, i) => (
             <img
@@ -499,19 +459,21 @@ export default component$(() => {
               width={1400}
               height={600}
               fetchPriority={i === 0 ? "high" : "auto"}
-              class={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${heroSlide.value === i ? "opacity-100" : "opacity-0"}`}
+              style={hero.objectPos ? { objectPosition: hero.objectPos } : undefined}
+              class={`absolute inset-0 w-full h-full object-cover ${hero.objectPos ? '' : 'object-[center_19.5%]'} transition-opacity duration-1000 ease-in-out ${heroSlide.value === i ? "opacity-100" : "opacity-0"}`}
             />
           ))
         ) : null}
         <div class="absolute inset-0 bg-gradient-to-br from-dark/60 to-[#2d2d2d]/50" />
+        <div class="absolute inset-0" style="box-shadow: inset 0 0 120px 40px rgba(0,0,0,0.6);" />
         {heroImages.length === 0 && (
           <div class="absolute inset-0 bg-gradient-to-br from-dark to-[#2d2d2d]" />
         )}
-        <h1 class="relative z-10 text-4xl md:text-5xl font-extrabold tracking-tight mb-3">{c.title}</h1>
+        <h1 class="relative z-10 text-5xl md:text-6xl font-extrabold tracking-tight mb-3 px-8">{c.title}</h1>
         {hero.subtitle ? (
-          <p class="relative z-10 text-white/60 text-lg max-w-[560px] mx-auto leading-relaxed">{hero.subtitle}</p>
+          <p class="relative z-10 text-white/60 text-xl max-w-[560px] mx-auto leading-relaxed">{hero.subtitle}</p>
         ) : (
-          c.description && <p class="relative z-10 text-white/60 text-lg max-w-[560px] mx-auto leading-relaxed">{c.description}</p>
+          c.description && <p class="relative z-10 text-white/60 text-xl max-w-[560px] mx-auto leading-relaxed">{c.description}</p>
         )}
       </div>
 
@@ -557,7 +519,7 @@ export default component$(() => {
               <div class="flex items-center gap-3">
                 {/* Product count */}
                 <span class="hidden md:inline text-xs text-gray-400 dark:text-gray-500">
-                  {activeFilterCount.value > 0
+                  {initialLoading.value ? "Loading..." : activeFilterCount.value > 0
                     ? `${filteredProducts.value.length} of ${loadedProducts.value.length}`
                     : `${loadedProducts.value.length}`} products
                 </span>
@@ -655,14 +617,6 @@ export default component$(() => {
                     </button>
                   </span>
                 ))}
-                {(priceMin.value || priceMax.value) && (
-                  <span class="inline-flex items-center gap-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full pl-2.5 pr-1.5 py-0.5">
-                    ${priceMin.value || "0"} &ndash; ${priceMax.value || "\u221E"}
-                    <button type="button" class="bg-transparent border-none p-0 text-gray-400 hover:text-red-500 transition-colors" onClick$={() => { priceMin.value = ""; priceMax.value = ""; }}>
-                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                    </button>
-                  </span>
-                )}
                 {inStockOnly.value && (
                   <span class="inline-flex items-center gap-1 text-xs bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 rounded-full pl-2.5 pr-1.5 py-0.5">
                     In Stock
@@ -677,15 +631,28 @@ export default component$(() => {
 
           {/* Product grid */}
           <section class="px-4 md:px-6 py-5 md:py-6">
-            {filteredProducts.value.length === 0 ? (
+            {initialLoading.value ? (
+              <div class={`grid gap-1 md:gap-1.5 grid-cols-2 lg:grid-cols-4`}>
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div key={i} class="bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 animate-pulse">
+                    <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700" />
+                    <div class="p-3 space-y-2">
+                      <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-3/4" />
+                      <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2" />
+                      <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mt-2" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : filteredProducts.value.length === 0 ? (
               <div class="text-center py-16">
                 <svg class="w-16 h-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
                 </svg>
                 <p class="text-gray-500 dark:text-gray-400 mb-2">
-                  {loadedProducts.value.length === 0
-                    ? "No products in this collection yet."
-                    : "No products match your filters."}
+                  {activeFilterCount.value > 0
+                    ? "No products match your filters."
+                    : "No products in this collection yet."}
                 </p>
                 {activeFilterCount.value > 0 && (
                   <button

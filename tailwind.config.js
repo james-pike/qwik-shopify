@@ -25,7 +25,7 @@ export default {
         ],
       },
       maxWidth: {
-        site: "1440px",
+        site: "80rem",
       },
       screens: {
         xs: "480px",
