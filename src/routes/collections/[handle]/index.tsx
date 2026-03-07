@@ -40,12 +40,21 @@ function sortProducts(products: ShopifyProduct[], sortValue: string): ShopifyPro
 
 export const useCollection = routeLoader$(async (requestEvent) => {
   const handle = requestEvent.params.handle;
-  const collection = await getCollectionMeta(handle);
+  const [collection, initialProducts] = await Promise.all([
+    getCollectionMeta(handle),
+    getCollectionProducts(handle, 8),
+  ]);
 
   if (!collection) {
     requestEvent.status(404);
     return null;
   }
+
+  // Attach initial products to collection
+  collection.products = {
+    edges: initialProducts.products.map((p) => ({ node: p })),
+    pageInfo: initialProducts.pageInfo,
+  };
 
   return collection;
 });
@@ -92,18 +101,23 @@ export default component$(() => {
 
   const c = collection.value;
 
-  // Pagination state
-  const loadedProducts = useSignal<ShopifyProduct[]>([]);
-  const endCursor = useSignal<string | null>(null);
-  const hasNextPage = useSignal(false);
+  // Pagination state — start with the 8 prefetched products
+  const loadedProducts = useSignal<ShopifyProduct[]>(c.products.edges.map((e) => e.node));
+  const endCursor = useSignal<string | null>(c.products.pageInfo.endCursor);
+  const hasNextPage = useSignal(c.products.pageInfo.hasNextPage);
   const loadingMore = useSignal(false);
-  const productsLoading = useSignal(true);
+  const productsLoading = useSignal(false);
 
-  // Load products via server$ (no CORS, non-blocking)
+  // Load remaining products via server$ after initial render
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ track }) => {
     const col = track(() => collection.value);
     if (!col) return;
+    // Sync prefetched products on client-side navigation
+    loadedProducts.value = col.products.edges.map((e) => e.node);
+    endCursor.value = col.products.pageInfo.endCursor;
+    hasNextPage.value = col.products.pageInfo.hasNextPage;
+    // Fetch the full set
     productsLoading.value = true;
     fetchProductsServer(col.handle)
       .then((result) => {
@@ -635,20 +649,7 @@ export default component$(() => {
 
           {/* Product grid */}
           <section class="px-4 md:px-6 py-5 md:py-6">
-            {productsLoading.value ? (
-              <div class="grid gap-1 md:gap-1.5 grid-cols-2 lg:grid-cols-4">
-                {Array.from({ length: 8 }).map((_, i) => (
-                  <div key={i} class="bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 animate-pulse">
-                    <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700" />
-                    <div class="p-3 space-y-2">
-                      <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-3/4" />
-                      <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2" />
-                      <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mt-2" />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : filteredProducts.value.length === 0 ? (
+            {filteredProducts.value.length === 0 && !productsLoading.value ? (
               <div class="text-center py-16">
                 <svg class="w-16 h-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
@@ -728,8 +729,16 @@ export default component$(() => {
               </div>
             )}
 
+            {/* Loading more indicator */}
+            {productsLoading.value && loadedProducts.value.length > 0 && (
+              <div class="flex items-center justify-center gap-2 py-6 text-sm text-gray-400">
+                <div class="w-4 h-4 border-2 border-gray-300 border-t-primary rounded-full animate-spin" />
+                Loading more products...
+              </div>
+            )}
+
             {/* Load More button */}
-            {hasNextPage.value && (
+            {hasNextPage.value && !productsLoading.value && (
               <div class="text-center mt-8">
                 <button
                   type="button"
