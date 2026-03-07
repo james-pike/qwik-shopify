@@ -1,10 +1,10 @@
 import { component$, useSignal, useComputed$, $, useVisibleTask$ } from "@builder.io/qwik";
 import { routeLoader$, server$, Link, useLocation } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import { getCollectionByHandle, getCollectionProducts, formatPrice } from "~/lib/medusa";
+import { getCollectionMeta, getCollectionProducts, formatPrice } from "~/lib/medusa";
 import type { ShopifyProduct } from "~/lib/medusa";
 
-const fetchMoreServer = server$(async (handle: string, after?: string) => {
+const fetchProductsServer = server$(async (handle: string, after?: string) => {
   return getCollectionProducts(handle, 100, after);
 });
 
@@ -40,7 +40,7 @@ function sortProducts(products: ShopifyProduct[], sortValue: string): ShopifyPro
 
 export const useCollection = routeLoader$(async (requestEvent) => {
   const handle = requestEvent.params.handle;
-  const collection = await getCollectionByHandle(handle, 100);
+  const collection = await getCollectionMeta(handle);
 
   if (!collection) {
     requestEvent.status(404);
@@ -93,16 +93,33 @@ export default component$(() => {
   const c = collection.value;
 
   // Pagination state
-  const loadedProducts = useSignal<ShopifyProduct[]>(c.products.edges.map((e) => e.node));
-  const endCursor = useSignal<string | null>(c.products.pageInfo.endCursor);
-  const hasNextPage = useSignal(c.products.pageInfo.hasNextPage);
+  const loadedProducts = useSignal<ShopifyProduct[]>([]);
+  const endCursor = useSignal<string | null>(null);
+  const hasNextPage = useSignal(false);
   const loadingMore = useSignal(false);
+  const productsLoading = useSignal(true);
+
+  // Load products via server$ (no CORS, non-blocking)
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(({ track }) => {
+    const col = track(() => collection.value);
+    if (!col) return;
+    productsLoading.value = true;
+    fetchProductsServer(col.handle)
+      .then((result) => {
+        loadedProducts.value = result.products;
+        endCursor.value = result.pageInfo.endCursor;
+        hasNextPage.value = result.pageInfo.hasNextPage;
+      })
+      .catch((err) => console.error("Failed to load products:", err))
+      .finally(() => { productsLoading.value = false; });
+  });
 
   const loadMore = $(async () => {
     if (!hasNextPage.value || loadingMore.value) return;
     loadingMore.value = true;
     try {
-      const result = await fetchMoreServer(c.handle, endCursor.value || undefined);
+      const result = await fetchProductsServer(c.handle, endCursor.value || undefined);
       loadedProducts.value = [...loadedProducts.value, ...result.products];
       endCursor.value = result.pageInfo.endCursor;
       hasNextPage.value = result.pageInfo.hasNextPage;
@@ -506,7 +523,7 @@ export default component$(() => {
               <div class="flex items-center gap-3">
                 {/* Product count */}
                 <span class="hidden md:inline text-xs text-gray-400 dark:text-gray-500">
-                  {activeFilterCount.value > 0
+                  {productsLoading.value ? "Loading..." : activeFilterCount.value > 0
                     ? `${filteredProducts.value.length} of ${loadedProducts.value.length}`
                     : `${loadedProducts.value.length}`} products
                 </span>
@@ -618,7 +635,20 @@ export default component$(() => {
 
           {/* Product grid */}
           <section class="px-4 md:px-6 py-5 md:py-6">
-            {filteredProducts.value.length === 0 ? (
+            {productsLoading.value ? (
+              <div class="grid gap-1 md:gap-1.5 grid-cols-2 lg:grid-cols-4">
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div key={i} class="bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 animate-pulse">
+                    <div class="w-full aspect-square bg-gray-200 dark:bg-gray-700" />
+                    <div class="p-3 space-y-2">
+                      <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-3/4" />
+                      <div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-1/2" />
+                      <div class="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mt-2" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : filteredProducts.value.length === 0 ? (
               <div class="text-center py-16">
                 <svg class="w-16 h-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
