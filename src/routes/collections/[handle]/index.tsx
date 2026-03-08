@@ -1,7 +1,7 @@
 import { component$, useSignal, useComputed$, $, useVisibleTask$, useTask$ } from "@builder.io/qwik";
 import { routeLoader$, Link, useLocation } from "@builder.io/qwik-city";
 import type { DocumentHead } from "@builder.io/qwik-city";
-import { getCollectionByHandle, getCollectionProducts, formatPrice, addToCart, createCart } from "~/lib/medusa";
+import { getCollectionByHandle, formatPrice, addToCart, createCart } from "~/lib/medusa";
 import type { ShopifyProduct, ShopifyVariant } from "~/lib/medusa";
 
 const COLOR_MAP: Record<string, string> = {
@@ -63,7 +63,7 @@ function sortProducts(products: ShopifyProduct[], sortValue: string): ShopifyPro
 
 export const useCollection = routeLoader$(async (requestEvent) => {
   const handle = requestEvent.params.handle;
-  const collection = await getCollectionByHandle(handle, 100);
+  const collection = await getCollectionByHandle(handle);
 
   if (!collection) {
     requestEvent.status(404);
@@ -128,41 +128,27 @@ export default component$(() => {
 
   const c = collection.value;
 
-  // Pagination state
-  const loadedProducts = useSignal<ShopifyProduct[]>(c.products.edges.map((e) => e.node));
-  const endCursor = useSignal<string | null>(c.products.pageInfo.endCursor);
-  const hasNextPage = useSignal(c.products.pageInfo.hasNextPage);
-  const loadingMore = useSignal(false);
+  // All products loaded server-side; client-side pagination controls how many are displayed
+  const allProducts = useSignal<ShopifyProduct[]>(c.products.edges.map((e) => e.node));
+  const displayCount = useSignal(12);
 
   // Re-sync products when collection changes via client-side navigation
   useTask$(({ track }) => {
     const col = track(() => collection.value);
     if (col) {
-      loadedProducts.value = col.products.edges.map((e) => e.node);
-      endCursor.value = col.products.pageInfo.endCursor;
-      hasNextPage.value = col.products.pageInfo.hasNextPage;
+      allProducts.value = col.products.edges.map((e) => e.node);
+      displayCount.value = 12;
     }
   });
 
-  const loadMore = $(async () => {
-    if (!hasNextPage.value || loadingMore.value) return;
-    loadingMore.value = true;
-    try {
-      const result = await getCollectionProducts(c.handle, 100, endCursor.value || undefined);
-      loadedProducts.value = [...loadedProducts.value, ...result.products];
-      endCursor.value = result.pageInfo.endCursor;
-      hasNextPage.value = result.pageInfo.hasNextPage;
-    } catch (err) {
-      console.error("Failed to load more products:", err);
-    } finally {
-      loadingMore.value = false;
-    }
+  const loadMore = $(() => {
+    displayCount.value = displayCount.value + 12;
   });
 
   // Derive filter options from products
   const brands = useComputed$(() => {
     const vendorSet = new Set<string>();
-    for (const p of loadedProducts.value) {
+    for (const p of allProducts.value) {
       if (p.vendor) vendorSet.add(p.vendor);
     }
     return [...vendorSet].sort();
@@ -170,7 +156,7 @@ export default component$(() => {
 
   const productTypes = useComputed$(() => {
     const typeSet = new Set<string>();
-    for (const p of loadedProducts.value) {
+    for (const p of allProducts.value) {
       if (p.productType) typeSet.add(p.productType);
     }
     return [...typeSet].sort();
@@ -178,7 +164,7 @@ export default component$(() => {
 
   const sizes = useComputed$(() => {
     const sizeSet = new Set<string>();
-    for (const p of loadedProducts.value) {
+    for (const p of allProducts.value) {
       if (!p.options) continue;
       const sizeOpt = p.options.find((o) => o.name.toLowerCase() === "size");
       if (sizeOpt) {
@@ -190,7 +176,7 @@ export default component$(() => {
 
   const colors = useComputed$(() => {
     const colorSet = new Set<string>();
-    for (const p of loadedProducts.value) {
+    for (const p of allProducts.value) {
       for (const c of getProductColors(p)) {
         if (c) colorSet.add(c);
       }
@@ -200,7 +186,7 @@ export default component$(() => {
 
   const priceExtent = useComputed$(() => {
     let min = Infinity, max = 0;
-    for (const p of loadedProducts.value) {
+    for (const p of allProducts.value) {
       const val = parseFloat(p.priceRange.minVariantPrice.amount);
       if (val < min) min = val;
       if (val > max) max = val;
@@ -263,7 +249,7 @@ export default component$(() => {
   });
 
   const filteredProducts = useComputed$(() => {
-    const sorted = sortProducts(loadedProducts.value, currentSort.value);
+    const sorted = sortProducts(allProducts.value, currentSort.value);
     let result = sorted;
 
     if (selectedBrands.value.length > 0) {
@@ -304,28 +290,34 @@ export default component$(() => {
     return result;
   });
 
+  const displayedProducts = useComputed$(() => {
+    return filteredProducts.value.slice(0, displayCount.value);
+  });
+
+  const hasMore = useComputed$(() => {
+    return displayCount.value < filteredProducts.value.length;
+  });
+
   // Hero
-  const heroData: Record<string, { subtitle?: string; img2?: string; objectPos?: string }> = {
-    "work-wear": { img2: "/workwear.jpg" },
+  const heroData: Record<string, { subtitle?: string; images: string[]; objectPos?: string }> = {
+    "work-wear": { subtitle: "Durable workwear built for the toughest jobs.", images: ["/workwear.jpg", "/carharrt-work-wear-ottawa.jpg", "/work-wear.jpg"], objectPos: "center 30%" },
     "safety-footwear": {
       subtitle: "CSA-approved boots and shoes from trusted brands.",
-      img2: "/footwear-hero.jpg",
+      images: ["/footwear-hero.jpg", "/footwear.jpg", "/work_boots_ottawa.png"],
     },
-    "flame-resistant": { img2: "/flame-resistant-clothing.jpg" },
-    "safety-supplies": { img2: "/safety-supplies.jpg", objectPos: "center 45%" },
-    "school-wear": { img2: "/schoolwear.jpg" },
+    "flame-resistant": { subtitle: "Certified FR clothing to keep you protected on the job.", images: ["/flame-resistant-clothing.jpg", "/flame-resistant-clothing-ottawa.jpg", "/flame-resistant-clothing-ottawa.png"] },
+    "safety-supplies": { subtitle: "Gloves, eyewear, hard hats and everything in between.", images: ["/safety-supplies.jpg", "/safety_clothing_ottawa.png", "/TheSafetyHouse-March2023-37.jpg"], objectPos: "center 45%" },
+    "casual-wear": { subtitle: "Uniforms and essentials for the school year.", images: ["/schoolwear.jpg", "/personalized_swag_ottawa.png", "/TheSafetyHouse-March2023-38.jpg"] },
   };
-  const hero = heroData[c.handle] || {};
-  const heroImg = c.image?.url;
-  const heroImg2 = hero.img2 || null;
-  const heroImages = [heroImg, heroImg2].filter(Boolean) as string[];
+  const hero = heroData[c.handle] || { images: [] };
+  const heroImages = hero.images.length > 0 ? hero.images : [c.image?.url].filter(Boolean) as string[];
   const heroSlide = useSignal(0);
 
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ cleanup }) => {
     if (heroImages.length < 2) return;
     const id = setInterval(() => {
-      heroSlide.value = heroSlide.value === 0 ? 1 : 0;
+      heroSlide.value = (heroSlide.value + 1) % heroImages.length;
     }, 5000);
     cleanup(() => clearInterval(id));
   });
@@ -351,7 +343,7 @@ export default component$(() => {
                 type="button"
                 class={`w-full text-left px-3 py-2 rounded-lg text-sm flex items-center gap-2.5 transition-all duration-150 ${
                   currentSort.value === opt.value
-                    ? "bg-primary/10 text-primary font-semibold"
+                    ? "stripe-active text-primary font-semibold"
                     : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5"
                 }`}
                 onClick$={() => {
@@ -692,11 +684,29 @@ export default component$(() => {
         {heroImages.length === 0 && (
           <div class="absolute inset-0 bg-gradient-to-br from-dark to-[#2d2d2d]" />
         )}
-        <h1 class="relative z-10 text-5xl md:text-6xl font-extrabold tracking-tight mb-3 px-8">{c.title}</h1>
+        <h1 class="relative z-10 text-4xl md:text-5xl font-extrabold tracking-tight mb-3 px-8">{c.title}</h1>
         {hero.subtitle ? (
           <p class="relative z-10 text-white/60 text-xl max-w-[560px] mx-auto leading-relaxed">{hero.subtitle}</p>
         ) : (
           c.description && <p class="relative z-10 text-white/60 text-xl max-w-[560px] mx-auto leading-relaxed">{c.description}</p>
+        )}
+        {/* Square slide indicators */}
+        {heroImages.length > 1 && (
+          <div class="absolute bottom-3 right-4 md:right-8 z-20 flex items-center gap-1.5">
+            {heroImages.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Go to slide ${i + 1}`}
+                class={`w-2 h-2 rounded-sm border-none cursor-pointer transition-all duration-300 ${
+                  heroSlide.value === i
+                    ? "bg-white scale-110"
+                    : "bg-white/40 hover:bg-white/70"
+                }`}
+                onClick$={() => { heroSlide.value = i; }}
+              />
+            ))}
+          </div>
         )}
       </div>
 
@@ -809,8 +819,8 @@ export default component$(() => {
                 {/* Product count */}
                 <span class="hidden md:inline text-xs text-gray-400 dark:text-gray-500">
                   {activeFilterCount.value > 0
-                    ? `${filteredProducts.value.length} of ${loadedProducts.value.length}`
-                    : `${loadedProducts.value.length}`} products
+                    ? `${filteredProducts.value.length} of ${allProducts.value.length}`
+                    : `${allProducts.value.length}`} products
                 </span>
 
                 {/* Collection search (desktop) */}
@@ -821,8 +831,8 @@ export default component$(() => {
                   </svg>
                   <input
                     type="text"
-                    placeholder="Search collection..."
-                    class="w-[140px] px-2 py-1.5 text-xs bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
+                    placeholder="Search..."
+                    class="w-[200px] px-2 py-1.5 text-xs bg-transparent border-none outline-none text-gray-900 dark:text-gray-100 placeholder:text-gray-400"
                     value={collectionSearch.value}
                     onInput$={(_, el) => { collectionSearch.value = el.value; }}
                   />
@@ -916,8 +926,8 @@ export default component$(() => {
           </div>
 
           {/* Product grid */}
-          <section class="px-4 md:px-6 py-5 md:py-6">
-            {filteredProducts.value.length === 0 ? (
+          <section class="px-3 md:px-5 py-4 md:py-5">
+            {displayedProducts.value.length === 0 ? (
               <div class="text-center py-16">
                 <svg class="w-16 h-16 mx-auto text-gray-300 dark:text-gray-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="11" cy="11" r="8" /><path d="m21 21-4.35-4.35" />
@@ -938,7 +948,7 @@ export default component$(() => {
                 )}
               </div>
             ) : (
-              <div class={`grid gap-1 md:gap-1.5 ${
+              <div class={`grid gap-2 md:gap-3 ${
                 gridCols.value === 1
                   ? "grid-cols-1"
                   : gridCols.value === 2
@@ -947,7 +957,7 @@ export default component$(() => {
                       ? "grid-cols-2 lg:grid-cols-3"
                       : "grid-cols-2 lg:grid-cols-4"
               }`}>
-                {filteredProducts.value.map((product: ShopifyProduct) => (
+                {displayedProducts.value.map((product: ShopifyProduct) => (
                   <div
                     key={product.id}
                     class="group bg-white dark:bg-[#1e1e1e] rounded-xl overflow-hidden border border-gray-200 dark:border-gray-700 transition-all duration-200 hover:-translate-y-1 hover:shadow-lg flex flex-col cursor-pointer"
@@ -1013,23 +1023,21 @@ export default component$(() => {
             )}
 
             {/* Load More button */}
-            {hasNextPage.value && (
-              <div class="text-center mt-8">
+            {hasMore.value && (
+              <div class="flex items-center mt-5">
+                <div class="flex-1" />
                 <button
                   type="button"
-                  class="inline-flex items-center gap-2 py-3 px-8 text-sm font-semibold rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors disabled:opacity-50"
-                  disabled={loadingMore.value}
+                  class="inline-flex items-center gap-2 py-3 px-8 text-sm font-semibold rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-[#1e1e1e] text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                   onClick$={loadMore}
                 >
-                  {loadingMore.value ? (
-                    <>
-                      <div class="w-4 h-4 border-2 border-gray-300 border-t-primary rounded-full animate-spin" />
-                      Loading...
-                    </>
-                  ) : (
-                    "Load More Products"
-                  )}
+                  Load More {c.title}
                 </button>
+                <div class="flex-1 text-right">
+                  <span class="text-xs text-gray-400 dark:text-gray-500">
+                    {displayedProducts.value.length} of {filteredProducts.value.length} products
+                  </span>
+                </div>
               </div>
             )}
           </section>

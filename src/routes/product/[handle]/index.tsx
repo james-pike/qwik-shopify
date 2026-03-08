@@ -426,12 +426,51 @@ export default component$(() => {
               )}
 
               {/* Care Instructions */}
-              {p.meta?.care_instructions && (
-                <div>
-                  <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-1.5">Care</h3>
-                  <p class="text-sm text-gray-500 dark:text-gray-400">{p.meta.care_instructions}</p>
-                </div>
-              )}
+              {p.meta?.care_instructions && (() => {
+                const instructions = p.meta.care_instructions.split(",").map((s: string) => s.trim()).filter(Boolean);
+                return (
+                  <div>
+                    <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-2.5">Care</h3>
+                    <ul class="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                      {instructions.map((inst: string, i: number) => {
+                        const lower = inst.toLowerCase();
+                        let icon: string;
+                        if (lower.includes("machine wash") || lower.includes("wash")) {
+                          icon = `<path d="M3 6h18v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6z"/><path d="M3 6l3-3h12l3 3"/><path d="M8 14a4 4 0 0 0 8 0" fill="none"/>`;
+                        } else if (lower.includes("bleach") && lower.includes("not")) {
+                          icon = `<polygon points="12,3 2,21 22,21"/><line x1="4" y1="4" x2="20" y2="20"/>`;
+                        } else if (lower.includes("bleach")) {
+                          icon = `<polygon points="12,3 2,21 22,21"/>`;
+                        } else if (lower.includes("tumble dry")) {
+                          icon = `<rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="12" cy="12" r="5" fill="none"/>`;
+                        } else if (lower.includes("iron") && lower.includes("not")) {
+                          icon = `<path d="M3 17h14l3-7H8l-1 3H3z"/><circle cx="10" cy="10" r="1"/><line x1="4" y1="4" x2="20" y2="20"/>`;
+                        } else if (lower.includes("iron")) {
+                          icon = `<path d="M3 17h14l3-7H8l-1 3H3z"/><circle cx="10" cy="10" r="1"/>`;
+                        } else if (lower.includes("dry clean") && lower.includes("not")) {
+                          icon = `<circle cx="12" cy="12" r="9" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="10" fill="currentColor">P</text><line x1="4" y1="4" x2="20" y2="20"/>`;
+                        } else if (lower.includes("dry clean")) {
+                          icon = `<circle cx="12" cy="12" r="9" fill="none"/><text x="12" y="16" text-anchor="middle" font-size="10" fill="currentColor">P</text>`;
+                        } else if (lower.includes("fabric softener")) {
+                          icon = `<path d="M8 2v4l4 3 4-3V2"/><path d="M12 9v11"/><path d="M7 20h10"/>`;
+                        } else if (lower.includes("starch") && lower.includes("not")) {
+                          icon = `<rect x="5" y="5" width="14" height="14" rx="1" fill="none"/><line x1="4" y1="4" x2="20" y2="20"/>`;
+                        } else if (lower.includes("like color")) {
+                          icon = `<circle cx="9" cy="12" r="5" fill="none"/><circle cx="15" cy="12" r="5" fill="none"/>`;
+                        } else {
+                          icon = `<circle cx="12" cy="12" r="9" fill="none"/><circle cx="12" cy="12" r="1"/>`;
+                        }
+                        return (
+                          <li key={i} class="flex items-center gap-2.5 text-sm text-gray-500 dark:text-gray-400">
+                            <svg class="w-5 h-5 flex-shrink-0 text-gray-400 dark:text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" dangerouslySetInnerHTML={icon} />
+                            <span>{inst}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              })()}
             </div>
           )}
         </div>

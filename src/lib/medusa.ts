@@ -556,13 +556,8 @@ export async function getCollectionByHandle(
     if (reverse) products.reverse();
   }
 
-  // Paginate
-  const offset = decodeCursor(after);
-  const page = products.slice(offset, offset + first);
-  const hasNextPage = offset + first < products.length;
-  const endCursor = hasNextPage ? encodeCursor(offset + first) : null;
-
-  return adaptCategory(cat, page, { hasNextPage, endCursor });
+  // Return all products — pagination is handled client-side
+  return adaptCategory(cat, products, { hasNextPage: false, endCursor: null });
 }
 
 export async function getCollectionProducts(

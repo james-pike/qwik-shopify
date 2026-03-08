@@ -31,7 +31,7 @@ export default component$(() => {
     },
   ];
 
-  const brands = [
+  const brandsRow1 = [
     { name: "Carhartt", img: "/brands/carhart.png", url: "https://www.carhartt.com" },
     { name: "Timberland Pro", img: "/brands/timberland-pro.png", url: "https://www.timberland.com/timberlandpro" },
     { name: "Blakl\u00e4der", img: "/brands/blaklader.png", url: "https://www.blaklader.com" },
@@ -41,21 +41,17 @@ export default component$(() => {
     { name: "Big Bill", img: "/brands/big_bill_workwear.png", url: "https://www.bigbill.com" },
     { name: "Dickies", img: "/brands/dickies_workwear_ottawa.png", url: "https://www.dickies.ca" },
     { name: "Tough Duck", img: "/brands/TOUGHDUCK.png", url: "https://www.toughduck.com" },
-    { name: "CX2", img: "/brands/CX2-Workwear.png", url: "https://www.cx2.ca" },
-    { name: "Oberon", img: "/brands/oberon.png", url: "https://www.oberoncompany.com" },
-    { name: "Orange River", img: "/brands/orange_river_logo.png", url: "" },
     { name: "Red Kap", img: "/brands/redkap.png", url: "https://www.redkap.com" },
-    { name: "Atlas", img: "/brands/atlas.png", url: "https://www.atlascopco.com" },
+    { name: "Rasco", img: "/brands/rasco.png", url: "https://www.rfrasco.com" },
+  ];
+  const brandsRow2 = [
     { name: "Baffin", img: "/brands/baffin.png", url: "https://www.bfreinc.com/baffin" },
     { name: "Blundstone", img: "/brands/blunstone_logo.png", url: "https://www.blundstone.ca" },
     { name: "Canada West", img: "/brands/canada-west-boots-logo-1.png", url: "https://www.canadawestboots.com" },
-    { name: "Dunlop", img: "/brands/dunlop.png", url: "https://www.dunlopboots.com" },
     { name: "Irish Setter", img: "/brands/irish-setter.png", url: "https://www.irishsetterboots.com" },
     { name: "JB Goodhue", img: "/brands/jb-goodhue.png", url: "https://www.jbgoodhue.com" },
     { name: "Keen", img: "/brands/keen.png", url: "https://www.keenfootwear.com" },
-    { name: "Mellow Walk", img: "/brands/mellow_wailk.png", url: "https://www.mellowwalk.com" },
     { name: "Muck", img: "/brands/muck.png", url: "https://www.muckbootcompany.com" },
-    { name: "Rasco", img: "/brands/rasco.png", url: "https://www.rfrasco.com" },
     { name: "Redback", img: "/brands/redback.png", url: "https://www.redbackboots.com" },
     { name: "Red Wing", img: "/brands/red-wing-shoes.png", url: "https://www.redwingshoes.com" },
     { name: "Royer", img: "/brands/royer.png", url: "https://www.royer.com" },
@@ -206,12 +202,12 @@ export default component$(() => {
         class="bg-white dark:bg-[#1e1e1e] py-[4vh] px-4 md:px-8 text-center"
         onMouseLeave$={() => { expandedBrand.value = null; }}
       >
-        <div class="flex flex-wrap justify-center items-center gap-x-2 gap-y-1.5 md:gap-x-3 md:gap-y-2">
-          {brands.slice(0, Math.ceil(brands.length / 2)).map((brand) => (
-            <div key={brand.name} class="relative">
+        <div class="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 md:gap-x-4 md:gap-y-3 relative">
+          {brandsRow1.map((brand) => (
+            <div key={brand.name} class="relative" style={expandedBrand.value === brand.name ? { zIndex: 50 } : { zIndex: 1 }}>
               <button
                 type="button"
-                class={`bg-transparent border-none p-1 rounded-lg transition-all duration-200 ${expandedBrand.value === brand.name ? "scale-125 bg-gray-100 dark:bg-white/10" : "hover:scale-110"}`}
+                class={`bg-transparent border-none p-2 rounded-lg transition-all duration-200 cursor-pointer ${expandedBrand.value === brand.name ? "" : "hover:scale-110"}`}
                 onMouseEnter$={() => { expandedBrand.value = brand.name; }}
                 aria-label={brand.name}
               >
@@ -220,18 +216,25 @@ export default component$(() => {
                   alt={brand.name}
                   width={120}
                   height={48}
-                  class="h-8 md:h-10 w-auto object-contain"
+                  class="h-8 md:h-10 w-auto object-contain relative z-10"
                 />
               </button>
               {expandedBrand.value === brand.name && (
-                <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 z-40 w-48 bg-white dark:bg-[#2a2a2a] rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-3 text-center animate-fade-in">
-                  <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed mb-2">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-[280px] bg-white dark:bg-[#252525] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 flex flex-col items-center py-5 px-4 gap-3">
+                  <img
+                    src={brand.img}
+                    alt={brand.name}
+                    width={160}
+                    height={64}
+                    class="h-10 md:h-12 w-auto object-contain"
+                  />
+                  <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
                     Quality workwear and safety gear trusted across Canada.
                   </p>
-                  <div class="flex flex-col gap-1.5">
+                  <div class="flex gap-2 w-full">
                     <Link
                       href={`/search/?q=${encodeURIComponent(brand.name)}`}
-                      class="inline-flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors"
+                      class="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-semibold rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors"
                     >
                       Shop {brand.name}
                     </Link>
@@ -240,9 +243,9 @@ export default component$(() => {
                         href={brand.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                        class="inline-flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-semibold rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                       >
-                        Website
+                        Visit Site
                       </a>
                     )}
                   </div>
@@ -253,11 +256,11 @@ export default component$(() => {
           <p class="w-full text-sm md:text-lg uppercase tracking-[0.15em] text-gray-400 dark:text-gray-500 font-bold py-2">
             Trusted Brands We Carry
           </p>
-          {brands.slice(Math.ceil(brands.length / 2)).map((brand) => (
-            <div key={brand.name} class="relative">
+          {brandsRow2.map((brand) => (
+            <div key={brand.name} class="relative" style={expandedBrand.value === brand.name ? { zIndex: 50 } : { zIndex: 1 }}>
               <button
                 type="button"
-                class={`bg-transparent border-none p-1 rounded-lg transition-all duration-200 ${expandedBrand.value === brand.name ? "scale-125 bg-gray-100 dark:bg-white/10" : "hover:scale-110"}`}
+                class={`bg-transparent border-none p-2 rounded-lg transition-all duration-200 cursor-pointer ${expandedBrand.value === brand.name ? "" : "hover:scale-110"}`}
                 onMouseEnter$={() => { expandedBrand.value = brand.name; }}
                 aria-label={brand.name}
               >
@@ -266,18 +269,25 @@ export default component$(() => {
                   alt={brand.name}
                   width={120}
                   height={48}
-                  class="h-8 md:h-10 w-auto object-contain"
+                  class="h-8 md:h-10 w-auto object-contain relative z-10"
                 />
               </button>
               {expandedBrand.value === brand.name && (
-                <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-40 w-48 bg-white dark:bg-[#2a2a2a] rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 p-3 text-center animate-fade-in">
-                  <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed mb-2">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 w-[280px] bg-white dark:bg-[#252525] rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 flex flex-col items-center py-5 px-4 gap-3">
+                  <img
+                    src={brand.img}
+                    alt={brand.name}
+                    width={160}
+                    height={64}
+                    class="h-10 md:h-12 w-auto object-contain"
+                  />
+                  <p class="text-[11px] text-gray-500 dark:text-gray-400 leading-relaxed">
                     Quality workwear and safety gear trusted across Canada.
                   </p>
-                  <div class="flex flex-col gap-1.5">
+                  <div class="flex gap-2 w-full">
                     <Link
                       href={`/search/?q=${encodeURIComponent(brand.name)}`}
-                      class="inline-flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors"
+                      class="flex-1 inline-flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-semibold rounded-lg bg-primary text-white hover:bg-primary-dark transition-colors"
                     >
                       Shop {brand.name}
                     </Link>
@@ -286,9 +296,9 @@ export default component$(() => {
                         href={brand.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-flex items-center justify-center gap-1.5 py-1.5 px-3 text-xs font-semibold rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                        class="inline-flex items-center justify-center gap-1.5 py-2 px-3 text-xs font-semibold rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                       >
-                        Website
+                        Visit Site
                       </a>
                     )}
                   </div>
