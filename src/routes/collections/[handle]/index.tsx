@@ -32,7 +32,7 @@ function getColorCss(name: string): string {
 }
 
 const SORT_OPTIONS = [
-  { value: "best-selling", label: "Popular", icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" },
+  { value: "best-selling", label: "Best Selling", icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" },
   { value: "newest", label: "New Arrivals", icon: "M12 8v4l3 3" },
   { value: "price-asc", label: "Price: Low to High", icon: "M3 17l6-6 4 4 8-8" },
   { value: "price-desc", label: "Price: High to Low", icon: "M3 7l6 6 4-4 8 8" },
@@ -83,6 +83,9 @@ export default component$(() => {
   const selectedBrands = useSignal<string[]>([]);
   const selectedTypes = useSignal<string[]>([]);
   const selectedSizes = useSignal<string[]>([]);
+  const selectedColors = useSignal<string[]>([]);
+  const priceRange = useSignal<[number, number]>([0, 0]);
+  const priceFilterActive = useSignal(false);
   const inStockOnly = useSignal(false);
   const collectionSearch = useSignal("");
   const mobileFiltersOpen = useSignal(false);
@@ -100,6 +103,8 @@ export default component$(() => {
     type: true,
     brand: true,
     size: true,
+    color: false,
+    price: false,
     availability: true,
   });
 
@@ -183,11 +188,33 @@ export default component$(() => {
     return [...sizeSet];
   });
 
+  const colors = useComputed$(() => {
+    const colorSet = new Set<string>();
+    for (const p of loadedProducts.value) {
+      for (const c of getProductColors(p)) {
+        if (c) colorSet.add(c);
+      }
+    }
+    return [...colorSet].sort();
+  });
+
+  const priceExtent = useComputed$(() => {
+    let min = Infinity, max = 0;
+    for (const p of loadedProducts.value) {
+      const val = parseFloat(p.priceRange.minVariantPrice.amount);
+      if (val < min) min = val;
+      if (val > max) max = val;
+    }
+    return [min === Infinity ? 0 : Math.floor(min), Math.ceil(max)] as [number, number];
+  });
+
   const activeFilterCount = useComputed$(() => {
     let count = 0;
     if (selectedBrands.value.length > 0) count += selectedBrands.value.length;
     if (selectedTypes.value.length > 0) count += selectedTypes.value.length;
     if (selectedSizes.value.length > 0) count += selectedSizes.value.length;
+    if (selectedColors.value.length > 0) count += selectedColors.value.length;
+    if (priceFilterActive.value) count++;
     if (inStockOnly.value) count++;
     return count;
   });
@@ -196,6 +223,8 @@ export default component$(() => {
     selectedBrands.value = [];
     selectedTypes.value = [];
     selectedSizes.value = [];
+    selectedColors.value = [];
+    priceFilterActive.value = false;
     inStockOnly.value = false;
   });
 
@@ -249,6 +278,18 @@ export default component$(() => {
         const sizeOpt = p.options.find((o) => o.name.toLowerCase() === "size");
         if (!sizeOpt) return false;
         return sizeOpt.values.some((v) => selectedSizes.value.includes(v));
+      });
+    }
+    if (selectedColors.value.length > 0) {
+      result = result.filter((p: ShopifyProduct) => {
+        const pColors = getProductColors(p);
+        return pColors.some((c) => selectedColors.value.includes(c));
+      });
+    }
+    if (priceFilterActive.value && priceRange.value[1] > 0) {
+      result = result.filter((p: ShopifyProduct) => {
+        const val = parseFloat(p.priceRange.minVariantPrice.amount);
+        return val >= priceRange.value[0] && val <= priceRange.value[1];
       });
     }
     if (inStockOnly.value) {
@@ -466,6 +507,124 @@ export default component$(() => {
           )}
         </div>
       )}
+
+      {/* Color */}
+      {colors.value.length > 0 && (
+        <div class="border-b border-gray-200 dark:border-gray-700/50">
+          <button
+            type="button"
+            class="w-full flex items-center justify-between py-3 px-1 text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+            onClick$={() => toggleSection("color")}
+          >
+            <span class="flex items-center gap-2">
+              Color
+              {selectedColors.value.length > 0 && (
+                <span class="bg-primary text-white text-[10px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center leading-none">
+                  {selectedColors.value.length}
+                </span>
+              )}
+            </span>
+            <svg class={`w-3.5 h-3.5 transition-transform duration-200 ${sectionOpen.value.color ? "" : "-rotate-90"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          {sectionOpen.value.color && (
+            <div class="pb-3">
+              <div class="flex flex-wrap gap-2 px-1">
+                {colors.value.map((color) => {
+                  const css = getColorCss(color);
+                  const isGradient = css.startsWith("linear");
+                  const isSelected = selectedColors.value.includes(color);
+                  return (
+                    <button
+                      key={color}
+                      type="button"
+                      title={color}
+                      class={`w-7 h-7 rounded-full border-2 transition-all ${
+                        isSelected
+                          ? "border-primary ring-2 ring-primary/30 scale-110"
+                          : "border-gray-300 dark:border-gray-600 hover:scale-110"
+                      }`}
+                      style={isGradient ? { background: css } : { backgroundColor: css }}
+                      onClick$={() => {
+                        const current = [...selectedColors.value];
+                        const idx = current.indexOf(color);
+                        if (idx >= 0) current.splice(idx, 1);
+                        else current.push(color);
+                        selectedColors.value = current;
+                      }}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Price Range */}
+      <div class="border-b border-gray-200 dark:border-gray-700/50">
+        <button
+          type="button"
+          class="w-full flex items-center justify-between py-3 px-1 text-xs font-semibold uppercase tracking-widest text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+          onClick$={() => toggleSection("price")}
+        >
+          <span class="flex items-center gap-2">
+            Price
+            {priceFilterActive.value && (
+              <span class="bg-primary text-white text-[10px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center leading-none">
+                1
+              </span>
+            )}
+          </span>
+          <svg class={`w-3.5 h-3.5 transition-transform duration-200 ${sectionOpen.value.price ? "" : "-rotate-90"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+        </button>
+        {sectionOpen.value.price && (
+          <div class="pb-3 px-1 space-y-3">
+            <div class="flex items-center gap-2">
+              <div class="flex-1">
+                <label class="text-[10px] text-gray-500 uppercase">Min</label>
+                <input
+                  type="number"
+                  class="w-full px-2 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm text-gray-900 dark:text-white"
+                  placeholder={`$${priceExtent.value[0]}`}
+                  value={priceRange.value[0] || ""}
+                  onInput$={(e) => {
+                    const val = parseFloat((e.target as HTMLInputElement).value) || 0;
+                    priceRange.value = [val, priceRange.value[1]];
+                    priceFilterActive.value = true;
+                  }}
+                />
+              </div>
+              <span class="text-gray-400 mt-4">–</span>
+              <div class="flex-1">
+                <label class="text-[10px] text-gray-500 uppercase">Max</label>
+                <input
+                  type="number"
+                  class="w-full px-2 py-1.5 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-sm text-gray-900 dark:text-white"
+                  placeholder={`$${priceExtent.value[1]}`}
+                  value={priceRange.value[1] || ""}
+                  onInput$={(e) => {
+                    const val = parseFloat((e.target as HTMLInputElement).value) || 0;
+                    priceRange.value = [priceRange.value[0], val];
+                    priceFilterActive.value = true;
+                  }}
+                />
+              </div>
+            </div>
+            {priceFilterActive.value && (
+              <button
+                type="button"
+                class="text-xs text-primary hover:underline"
+                onClick$={() => {
+                  priceRange.value = [0, 0];
+                  priceFilterActive.value = false;
+                }}
+              >
+                Clear price filter
+              </button>
+            )}
+          </div>
+        )}
+      </div>
 
       {/* Availability */}
       <div>
